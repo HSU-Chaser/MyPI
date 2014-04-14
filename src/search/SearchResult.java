@@ -1,6 +1,10 @@
-package main;
+package search;
 
-public class ResultObject {
+import java.io.Serializable;
+
+public class SearchResult implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	String title = null;
 	String link = null;
 	String displayLink = null;
@@ -9,7 +13,7 @@ public class ResultObject {
 	int exposure = 0;
 	int reliability = 0;
 
-	public ResultObject(String title, String link, String displayLink,
+	public SearchResult(String title, String link, String displayLink,
 			String snippet, int resultNumber) {
 		this.title = title;
 		this.link = link;
