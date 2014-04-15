@@ -4,20 +4,18 @@ import java.io.Serializable;
 
 public class SearchResult implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	String title = null;
-	String link = null;
-	String displayLink = null;
+	String url = null;
 	String snippet = null;
 	int resultNumber = 0;
 	int exposure = 0;
 	int reliability = 0;
 
-	public SearchResult(String title, String link, String displayLink,
-			String snippet, int resultNumber) {
+	public SearchResult(String title, String url, String snippet,
+			int resultNumber) {
 		this.title = title;
-		this.link = link;
-		this.displayLink = displayLink;
+		this.url = url;
 		this.snippet = snippet;
 		this.resultNumber = resultNumber;
 	}
@@ -42,12 +40,8 @@ public class SearchResult implements Serializable {
 		return title;
 	}
 
-	public String getLink() {
-		return link;
-	}
-
-	public String getDisplayLink() {
-		return displayLink;
+	public String getURL() {
+		return url;
 	}
 
 	public String getSnippet() {
