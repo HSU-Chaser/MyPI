@@ -1,23 +1,72 @@
 package main.search;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 public class DaumSearch {
 	private static final String daum = "http://apis.daum.net/search/web?";
 	private static final String key = "&apikey=8d960746ca81a14d1fd0fa4b8359ccfb1a1a0fab";
-	private String query;
 	private ArrayList<SearchResult> result = new ArrayList<SearchResult>();
+	private String query;
 
 	public DaumSearch(String query) {
 		this.query = query;
 	}
 
 	public ArrayList<SearchResult> getResult() {
-		String xml = getXMLResult();
+		// Initialize
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder;
+		InputStream is;
+		Document document = null;
+		try {
+			builder = factory.newDocumentBuilder();
+			is = new ByteArrayInputStream(getXMLResult().getBytes("UTF-8"));
+			document = builder.parse(is);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		document.getDocumentElement().normalize();
+
+		// Get Data
+		Element root = document.getDocumentElement();
+		NodeList list = root.getElementsByTagName("item");
+
+		// Make SearchResult ArrayList
+		for (int i = 0; i < list.getLength(); i++) {
+			Node node = list.item(i);
+			Element element = (Element) node;
+
+			String title = null;
+			String url = null;
+			String snippet = null;
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+				url = element.getElementsByTagName("link").item(0)
+						.getTextContent();
+				title = element.getElementsByTagName("title").item(0)
+						.getTextContent();
+				snippet = element.getElementsByTagName("description").item(0)
+						.getTextContent();
+			}
+			int resultNumber = i + 1;
+
+			SearchResult searchResult = new SearchResult(title, url, snippet,
+					resultNumber);
+			result.add(searchResult);
+		}
 
 		return result;
 	}
@@ -29,7 +78,7 @@ public class DaumSearch {
 		request.append(key);
 
 		// Optional parameters
-		request.append("&result=50");
+		request.append("&result=20");
 
 		return request.toString();
 	}
@@ -41,7 +90,6 @@ public class DaumSearch {
 		try {
 			// Build Query
 			URL url = new URL(buildSearchUrl());
-			System.out.println("Daum 요청 : " + url.toString());
 			// 연결
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");

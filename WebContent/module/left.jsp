@@ -1,12 +1,10 @@
-<%@ page contentType="text/html; charset=euc-kr"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <html>
 <head>
 <title></title>
 </head>
 <body>
-	<a href="/JSP/main.jsp">HOME</a>
-	<br>
-	<a href="#">INFO</a>
-	<br>
+	HOME<br>
+	JOIN<br>
 </body>
 </html>

@@ -49,14 +49,10 @@ public class GoogleSearch {
 			return null; // No Results
 		}
 
-		System.out.println("검색 결과수 : "
-				+ res.getElementsByTagName("M").item(0).getTextContent() + "개");
-
-		NodeList list = res.getElementsByTagName("R");
-
 		// Make SearchResult ArrayList
 		// System.out.println(Integer.parseInt(res.getAttribute("SN")));
 		// System.out.println(Integer.parseInt(res.getAttribute("EN")));
+		NodeList list = res.getElementsByTagName("R");
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
 			Element element = (Element) node;
@@ -105,7 +101,6 @@ public class GoogleSearch {
 		try {
 			// Build URL
 			URL url = new URL(buildSearchUrl());
-			System.out.println("Google Request : " + url.toString());
 			// Connect
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");

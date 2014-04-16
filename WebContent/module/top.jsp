@@ -1,9 +1,9 @@
-<%@ page contentType="text/html; charset=euc-kr"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <html>
 <head>
 <title></title>
 </head>
 <body>
-	<h1>My ¥ð(PI:Personal Information)</h1>
+	<h1>My Ï€(PI:Personal Information) Prototype</h1>
 </body>
 </html>
