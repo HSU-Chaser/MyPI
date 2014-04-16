@@ -1,4 +1,4 @@
-package search;
+package main.search;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -6,13 +6,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class NaverSearch {
-	private static final String naver = "http://openapi.naver.com/search?";
-	private static final String key = "&key=e9f2af290088b3d1d298ced9a41c4263";
+public class DaumSearch {
+	private static final String daum = "http://apis.daum.net/search/web?";
+	private static final String key = "&apikey=8d960746ca81a14d1fd0fa4b8359ccfb1a1a0fab";
 	private String query;
 	private ArrayList<SearchResult> result = new ArrayList<SearchResult>();
 
-	public NaverSearch(String query) {
+	public DaumSearch(String query) {
 		this.query = query;
 	}
 
@@ -24,12 +24,12 @@ public class NaverSearch {
 
 	private String buildSearchUrl() {
 		// Required parameters
-		StringBuilder request = new StringBuilder(naver);
-		request.append("query=\"" + query + "\"");
+		StringBuilder request = new StringBuilder(daum);
+		request.append("q=\"" + query + "\"");
 		request.append(key);
-		request.append("&target=webkr");
 
 		// Optional parameters
+		request.append("&result=50");
 
 		return request.toString();
 	}
@@ -41,7 +41,7 @@ public class NaverSearch {
 		try {
 			// Build Query
 			URL url = new URL(buildSearchUrl());
-			System.out.println("Naver 요청 : " + url.toString());
+			System.out.println("Daum 요청 : " + url.toString());
 			// 연결
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");

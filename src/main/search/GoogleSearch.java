@@ -1,4 +1,4 @@
-package search;
+package main.search;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
