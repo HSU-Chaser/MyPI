@@ -17,10 +17,10 @@ public class LogonDBBean {
 		String jdbcDriver = "jdbc:mysql://localhost:3306/mypi?"
 				+"useUnicode=true&characterEncoding=UTF-8";
 
-		return DriverManager.getConnection(jdbcDriver,"root","1234");
+		return DriverManager.getConnection(jdbcDriver,"root","root");
 	}
 
-	// µ¥ÀÌÅÍ ÀÔ·Â ¸Þ¼­µå
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
 	public void insertMember(LogonDataBean member) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -49,7 +49,7 @@ public class LogonDBBean {
 		}
 	}
 
-	// ·Î±×ÀÎ ·ÎÁ÷¿¡¼­ »ç¿ëÇÒ ¸Þ¼­µå
+	// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
 	public int userCheck(String email, String password) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -70,11 +70,11 @@ public class LogonDBBean {
 				dbpasswd = rs.getString("password");
 
 				if (dbpasswd.equals(password))
-					x = 1; // ÀÎÁõ ¼º°ø
+					x = 1; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				else
-					x = 0; // ºñ¹Ð¹øÈ£ Æ²¸²
+					x = 0; // ï¿½ï¿½Ð¹ï¿½È£ Æ²ï¿½ï¿½
 			} else
-				x = -1; // ÇØ´ç ÀÌ¸ÞÀÏ ¾øÀ½
+				x = -1; // ï¿½Ø´ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -97,7 +97,7 @@ public class LogonDBBean {
 		return x;
 	}
 
-	// È¸¿ø°¡ÀÔ½Ã Email¸¦ Ã¼Å©ÇÒ ¶§ È£ÃâÇÏ´Â ¸Þ¼­µå
+	// È¸ï¿½ï¿½ï¿½Ô½ï¿½ Emailï¿½ï¿½ Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
 	public int confirmEmail(String email) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -114,9 +114,9 @@ public class LogonDBBean {
 			rs = pstmt.executeQuery();
 
 			if (rs.next())
-				x = 1; // ÇØ´ç ÀÌ¸ÞÀÏ ÀÖÀ½
+				x = 1; // ï¿½Ø´ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			else
-				x = -1; // ÇØ´ç ÀÌ¸ÞÀÏ ¾øÀ½
+				x = -1; // ï¿½Ø´ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -139,7 +139,7 @@ public class LogonDBBean {
 		return x;
 	}
 
-	// ¾÷µ¥ÀÌÆ®½Ã ÀÔ·ÂµÈ µ¥ÀÌÅÍ¸¦ º¸¿©ÁÙ ¶§ »ç¿ëÇÏ´Â ¸Þ¼­µå
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ô·Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
 	public LogonDataBean getMember(String email) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -180,7 +180,7 @@ public class LogonDBBean {
 		return member;
 	}
 
-	// È¸¿øÁ¤º¸¸¦ ¼öÁ¤ÇÒ ¶§ »ç¿ëÇÏ´Â ¸Þ¼­µå
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
 	public void updateMember(LogonDataBean member) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -209,7 +209,7 @@ public class LogonDBBean {
 		}
 	}
 
-	// È¸¿øÁ¤º¸¸¦ »èÁ¦ÇÒ ¶§ »ç¿ëÇÏ´Â ¸Þ¼­µå
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
 	public int deleteMember(String email, String password) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -234,9 +234,9 @@ public class LogonDBBean {
 					pstmt.setString(1, email);
 					pstmt.executeUpdate();
 
-					x = 1; // È¸¿øÅ»Åð ¼º°ø
+					x = 1; // È¸ï¿½ï¿½Å»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				} else
-					x = 0; // ºñ¹Ð¹øÈ£ Æ²¸²
+					x = 0; // ï¿½ï¿½Ð¹ï¿½È£ Æ²ï¿½ï¿½
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -261,7 +261,7 @@ public class LogonDBBean {
 	}
 
 	/*
-	// ÀÌ¸ÞÀÏ Ã£±â
+	// ï¿½Ì¸ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½
 	public LogonDataBean searchId(String name, String jumin1, String jumin2)
 			throws Exception {
 		Connection conn = null;
@@ -305,7 +305,7 @@ public class LogonDBBean {
 		return sid;
 	}
 
-	// ºñ¹Ð¹øÈ£ Ã£±â
+	// ï¿½ï¿½Ð¹ï¿½È£ Ã£ï¿½ï¿½
 	public LogonDataBean searchPw(String id, String jumin1, String jumin2)
 			throws Exception {
 		Connection conn = null;
