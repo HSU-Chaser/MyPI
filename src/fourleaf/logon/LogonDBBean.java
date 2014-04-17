@@ -20,7 +20,7 @@ public class LogonDBBean {
 		return DriverManager.getConnection(jdbcDriver,"root","root");
 	}
 
-	// ������ �Է� �޼���
+	// 
 	public void insertMember(LogonDataBean member) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -29,7 +29,7 @@ public class LogonDBBean {
 		try {
 			conn = getConnection();
 			pstmt = conn
-					.prepareStatement("insert into MEMBER values(?,?)");
+					.prepareStatement("insert into member values(?,?)");
 			pstmt.setString(1, member.getEmail());
 			pstmt.setString(2, member.getPassword());
 			pstmt.executeUpdate();
@@ -49,7 +49,7 @@ public class LogonDBBean {
 		}
 	}
 
-	// �α��� �������� ����� �޼���
+	// 
 	public int userCheck(String email, String password) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -70,11 +70,11 @@ public class LogonDBBean {
 				dbpasswd = rs.getString("password");
 
 				if (dbpasswd.equals(password))
-					x = 1; // ���� ����
+					x = 1; //
 				else
-					x = 0; // ��й�ȣ Ʋ��
+					x = 0; // 
 			} else
-				x = -1; // �ش� �̸��� ����
+				x = -1; //
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -97,7 +97,7 @@ public class LogonDBBean {
 		return x;
 	}
 
-	// ȸ���Խ� Email�� üũ�� �� ȣ���ϴ� �޼���
+	// 
 	public int confirmEmail(String email) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -114,9 +114,9 @@ public class LogonDBBean {
 			rs = pstmt.executeQuery();
 
 			if (rs.next())
-				x = 1; // �ش� �̸��� ����
+				x = 1; //
 			else
-				x = -1; // �ش� �̸��� ����
+				x = -1; // 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -139,7 +139,7 @@ public class LogonDBBean {
 		return x;
 	}
 
-	// ������Ʈ�� �Էµ� �����͸� ������ �� ����ϴ� �޼���
+	// 
 	public LogonDataBean getMember(String email) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -180,7 +180,7 @@ public class LogonDBBean {
 		return member;
 	}
 
-	// ȸ�������� ������ �� ����ϴ� �޼���
+	// 
 	public void updateMember(LogonDataBean member) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -189,7 +189,7 @@ public class LogonDBBean {
 		try {
 			conn = getConnection();
 			pstmt = conn
-					.prepareStatement("update MEMBERS set email=?, passwd=?" );
+					.prepareStatement("update member set email=?, passwd=?" );
 			pstmt.setString(1, member.getEmail());
 			pstmt.setString(2, member.getPassword());
 			pstmt.executeUpdate();
@@ -209,7 +209,7 @@ public class LogonDBBean {
 		}
 	}
 
-	// ȸ�������� ������ �� ����ϴ� �޼���
+	//
 	public int deleteMember(String email, String password) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -234,9 +234,9 @@ public class LogonDBBean {
 					pstmt.setString(1, email);
 					pstmt.executeUpdate();
 
-					x = 1; // ȸ��Ż�� ����
+					x = 1; // 
 				} else
-					x = 0; // ��й�ȣ Ʋ��
+					x = 0; // 
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -272,7 +272,7 @@ public class LogonDBBean {
 		try {
 			conn = getConnection();
 			pstmt = conn
-					.prepareStatement("select id from MEMBERS where name = ? "
+					.prepareStatement("select id from member where name = ? "
 							+ "and jumin1 =? and jumin2 = ?");
 			pstmt.setString(1, name);
 			pstmt.setString(2, jumin1);
@@ -316,7 +316,7 @@ public class LogonDBBean {
 		try {
 			conn = getConnection();
 			pstmt = conn
-					.prepareStatement("select passwd from MEMBERS where id = ? "
+					.prepareStatement("select passwd from member where id = ? "
 							+ "and jumin1 =? and jumin2 = ?");
 			pstmt.setString(1, id);
 			pstmt.setString(2, jumin1);
