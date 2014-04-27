@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=euc-kr"%>
-<%@ page import="fourleaf.logon.*"%>
+<%@ page import="main.logon.*"%>
 
 <html>
 <head>
