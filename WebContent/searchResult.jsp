@@ -1,6 +1,7 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="main.search.SearchMain"%>
 <%@page import="main.search.SearchResult"%>
+<%@page import="main.extending.form.Storage"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <html>
@@ -19,9 +20,27 @@
 			<td width="58%" align="center">내용</td>
 		</tr>
 		<%
-			String query = "gtaer";
+	
+			String memberEmail = (String)session.getAttribute("memEmail");
+			String memberId = memberEmail.split("@")[0];
+			String nickNameOR ="";
+			
+			Storage storage = new Storage(memberEmail);
+			storage.execute(); //start the extending algorithm	
+			
+			for(int i=0; i<storage.nickNameList.size(); i++){
+				if(i == storage.nickNameList.size()-1){
+					nickNameOR = nickNameOR + storage.nickNameList.get(i);
+					break;
+				}
+				nickNameOR = nickNameOR + storage.nickNameList.get(i) + "+OR+";
+			}
+			
+			String searchWord = "\""+memberId+"\"" + "+OR+" + nickNameOR;
+
+		
 			SearchMain search = new SearchMain();
-			ArrayList<SearchResult> result = search.getResult(query);
+			ArrayList<SearchResult> result = search.getResult(searchWord);
 			for(int i=0; i<result.size(); i++) {
 		%>
 		<tr>

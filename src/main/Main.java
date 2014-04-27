@@ -21,10 +21,10 @@ public class Main {
 		ArrayList<SearchResult> result = search.getResult(query);
 
 		// 받아온 결과의 link의 페이지 분석 - 구현
-		for (int i = 0; i < result.size(); i++) {
-			OpenURL url = new OpenURL(result.get(i).getURL());
+		//for (int i = 0; i < result.size(); i++) {
+			OpenURL url = new OpenURL(result.get(1).getURL());
 			url.Reader();
-		}
+		//}
 
 		// 페이지 정렬하여 출력 - 미구현
 

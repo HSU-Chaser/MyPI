@@ -33,7 +33,7 @@ public class Twitter extends Search{
 					System.out.println("정지된 트위터 계정입니다.");
 				
 				if (list.get(i).contains("트위터의")) {
-					setNickName(list.get(i).substring(18).split("\\(")[0]);
+					setNickName(list.get(i).substring(18).split(" ")[0]);
 					storage.nickNameList.add(getNickName());
 					storage.exposureUrlList.add(getUrl());
 				}

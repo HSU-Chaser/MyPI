@@ -81,7 +81,7 @@ public class GoogleSearch {
 	private String buildSearchUrl() {
 		// Required parameters
 		StringBuilder request = new StringBuilder(google);
-		request.append("q=\"" + query + "\""); // Query
+		request.append("q=" + query); // Query
 		request.append(key); // API Key
 		request.append(cx); // Custom Search Engine ID
 

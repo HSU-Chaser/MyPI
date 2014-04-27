@@ -20,14 +20,19 @@ public class Storage {
 	public static ArrayList<String> nickNameList = new ArrayList<String>();
 	public static ArrayList<String> imgUrlList = new ArrayList<String>();
 	public static ArrayList<String> exposureUrlList = new ArrayList<String>();
-	private String clientId;
+	public static String realName;
+	public static String realBirthday;
+	public static String realEmail;
 	
-	public Storage(String clientId){
-		this.clientId = clientId;
+	private String clientId;
+	private String clientEmail;
+	
+	public Storage(String clientEmail){
+		this.clientEmail = clientEmail;
+		clientId = this.clientEmail.split("@")[0];
 	}
 	
 	public void execute(){
-
 		
 		Search[] webSite;
 		webSite = new Search[11];
@@ -36,7 +41,6 @@ public class Storage {
 		webSite[1] = new Twitter();
 		webSite[2] = new NaverMe2day();
 		webSite[3] = new DaumBlog();
-//		webSite[4] = new Tistory(); // 진행중
 		webSite[4] = new Egloos();
 		webSite[5] = new Gallog();
 		webSite[6] = new NaverKin();
@@ -44,10 +48,14 @@ public class Storage {
 		webSite[8] = new Dreamwiz();
 		webSite[9] = new CyworldBlog();
 		webSite[10] = new Cyworld();
+//		webSite[11] = new Tistory(); // 진행중
 
-		for (int i = 0; i < webSite.length; i++) {
+		
+		for (int i = 0; i < webSite.length-1; i++) {
 			webSite[i].searchMaterials(getClientId());
 		}
+		webSite[webSite.length-1].searchMaterials(getClientEmail()); //Cyworld
+		
 
 		System.out.println("");
 		System.out.println(getClientId() + "님의 닉네임");
@@ -64,10 +72,19 @@ public class Storage {
 		for (int i = 0; i < exposureUrlList.size(); i++) {
 			System.out.println(exposureUrlList.get(i));
 		}
+		
+		System.out.println("");
+		System.out.println(getClientId() + "님의 그 외 주요 신상정보");
+		System.out.println("실명 : " + realName);
+		System.out.println("생년월일 : " + realBirthday);
+		System.out.println("사용 이메일 : " + realEmail);
 
 	}
 	public String getClientId() {
 		return clientId;
+	}
+	public String getClientEmail(){
+		return clientEmail;
 	}
 
 }

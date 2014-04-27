@@ -10,7 +10,7 @@
 
 
 	<%
-		String query = "gtaer";
+		String query = "pdohanq";
 		Storage storage = new Storage(query);
 		storage.execute(); //start the extending algorithm
 
