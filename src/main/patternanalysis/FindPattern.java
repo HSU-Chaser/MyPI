@@ -40,5 +40,8 @@ public class FindPattern {
 		System.out.println("\n학교 패턴");
 		for (String outlist9 : list)
 			School.PatternAnalysis(outlist9);
+		System.out.println("\n취미,취향 패턴");
+		for (String outlist10 : list)
+			Hobby.PatternAnalysis(outlist10);
 	}
 }
