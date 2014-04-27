@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=euc-kr"%>
-<%@ page import="fourleaf.logon.LogonDBBean"%>
+<%@ page import="main.logon.LogonDBBean"%>
 
 <%
 	request.setCharacterEncoding("euc-kr");
