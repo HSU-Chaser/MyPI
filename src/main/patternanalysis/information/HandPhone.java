@@ -1,4 +1,4 @@
-package main.patternanalysis.information;
+﻿package main.patternanalysis.information;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
