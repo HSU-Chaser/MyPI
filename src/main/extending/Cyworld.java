@@ -18,7 +18,7 @@ public class Cyworld extends Search {
 	public void searchMaterials(String coreMaterial) {
 
 		String buffer = "";
-		setUrl(getBasicForm() + coreMaterial + "%40nate.com");
+		setUrl(getBasicForm() + coreMaterial.split("@")[0] + "%40" + coreMaterial.split("@")[1]);
 		ArrayList<String> list = new ArrayList<String>();
 		BufferedReader br = null;
 		int i = 0;

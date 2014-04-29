@@ -20,31 +20,31 @@
 			<td width="58%" align="center">내용</td>
 		</tr>
 		<%
-	
-			String memberEmail = (String)session.getAttribute("memEmail");
+			String memberEmail = (String) session.getAttribute("memEmail");
 			String memberId = memberEmail.split("@")[0];
-			String nickNameOR ="";
-			
+			String nickNameOR = "";
+
 			Storage storage = new Storage(memberEmail);
 			storage.execute(); //start the extending algorithm	
-			
-			for(int i=0; i<storage.nickNameList.size(); i++){
-				if(i == storage.nickNameList.size()-1){
+
+			for (int i = 0; i < storage.nickNameList.size(); i++) {
+				if (i == storage.nickNameList.size() - 1) {
 					nickNameOR = nickNameOR + storage.nickNameList.get(i);
 					break;
 				}
 				nickNameOR = nickNameOR + storage.nickNameList.get(i) + "+OR+";
 			}
-			
-			String searchWord = "\""+memberId+"\"" + "+OR+" + nickNameOR;
 
-		
+			String searchWord = "\"" + memberId + "\"" + "+OR+" + nickNameOR;
+
 			SearchMain search = new SearchMain();
 			ArrayList<SearchResult> result = search.getResult(searchWord);
-			for(int i=0; i<result.size(); i++) {
+
+			for (int i = 0; i < result.size(); i++) {
 		%>
+
 		<tr>
-			<td align="center"><%=i+1%></td>
+			<td align="center"><%=i + 1%></td>
 			<td align="center"><%=result.get(i).getTitle()%></td>
 			<td align="center"><a href="<%=result.get(i).getURL()%>"
 				target="_blank">링크</a></td>
@@ -57,7 +57,7 @@
 			}
 		%>
 
-
+		<%=searchWord%>
 	</table>
 </body>
 </html>

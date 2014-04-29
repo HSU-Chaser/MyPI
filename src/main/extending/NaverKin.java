@@ -36,7 +36,7 @@ public class NaverKin extends Search {
 				if (list.get(i).contains("og:title")) {
 					setNickName(list.get(i).split(" ")[2].replace('"', '!')
 							.split("!")[1]);
-					if (!storage.nickNameList.get(0).equals(getNickName())) {
+					if (!coreMaterial.equals(getNickName())) {
 						storage.nickNameList.add(getNickName());
 					}
 					storage.exposureUrlList.add(getUrl());
@@ -47,7 +47,7 @@ public class NaverKin extends Search {
 			br.close();
 
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("네이버지식인 : " + e);
 		}
 
 	}

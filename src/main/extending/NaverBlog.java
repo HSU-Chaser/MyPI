@@ -33,8 +33,11 @@ public class NaverBlog extends Search {
 				list.add(buffer);
 				if (list.get(i).contains("nickName")) {
 					setNickName(list.get(i).split("'")[1]);
-					storage.nickNameList.add(getNickName());
-					break;
+					if(!getNickName().equals("")){
+						System.out.println("네이버블로그 닉네임 : " + getNickName());
+						storage.nickNameList.add(getNickName());
+					}
+						break;
 				}
 				i++;
 			}
@@ -48,5 +51,4 @@ public class NaverBlog extends Search {
 		}
 
 	}
-
 }
