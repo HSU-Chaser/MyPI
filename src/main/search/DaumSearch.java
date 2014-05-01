@@ -63,8 +63,8 @@ public class DaumSearch {
 			}
 			int resultNumber = i + 1;
 
-			SearchResult searchResult = new SearchResult(title, url, snippet,
-					resultNumber);
+			SearchResult searchResult = new SearchResult("Daum", title, url,
+					snippet, resultNumber);
 			result.add(searchResult);
 		}
 

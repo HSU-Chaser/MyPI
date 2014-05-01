@@ -70,8 +70,8 @@ public class GoogleSearch {
 			}
 			int resultNumber = i + 1;
 
-			SearchResult searchResult = new SearchResult(title, url, snippet,
-					resultNumber);
+			SearchResult searchResult = new SearchResult("Google", title, url,
+					snippet, resultNumber);
 			result.add(searchResult);
 		}
 

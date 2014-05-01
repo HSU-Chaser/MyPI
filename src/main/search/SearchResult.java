@@ -4,16 +4,18 @@ import java.io.Serializable;
 
 public class SearchResult implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	String engine = null;
 	String title = null;
 	String url = null;
 	String snippet = null;
+
 	int resultNumber = 0;
 	int exposure = 0;
 	int reliability = 0;
 
-	public SearchResult(String title, String url, String snippet,
-			int resultNumber) {
+	public SearchResult(String engine, String title, String url,
+			String snippet, int resultNumber) {
+		this.engine = engine;
 		this.title = title;
 		this.url = url;
 		this.snippet = snippet;
@@ -51,4 +53,9 @@ public class SearchResult implements Serializable {
 	public int getResultNumber() {
 		return resultNumber;
 	}
+
+	public String getEngine() {
+		return engine;
+	}
+
 }
