@@ -20,9 +20,9 @@ public class Storage {
 	public static ArrayList<String> nickNameList = new ArrayList<String>();
 	public static ArrayList<String> imgUrlList = new ArrayList<String>();
 	public static ArrayList<String> exposureUrlList = new ArrayList<String>();
-	public static String realName;
-	public static String realBirthday;
-	public static String realEmail;
+	public static String realName = "null";
+	public static String realBirthday = "null";
+	public static String realEmail = "null";
 	
 	private String clientId;
 	private String clientEmail;

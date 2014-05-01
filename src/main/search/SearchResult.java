@@ -9,9 +9,9 @@ public class SearchResult implements Serializable {
 	String url = null;
 	String snippet = null;
 
-	int resultNumber = 0;
-	int exposure = 0;
-	int reliability = 0;
+	int resultNumber = 0; //결과 번호
+	int exposure = 0; //노출도
+	int reliability = 0; //신뢰도 
 
 	public SearchResult(String engine, String title, String url,
 			String snippet, int resultNumber) {

@@ -36,7 +36,17 @@
 				nickNameOR = nickNameOR + storage.nickNameList.get(i) + "+OR+";
 			}
 
+			// for google_ search word
 			String searchWord = "\"" + memberId + "\"" + "+OR+" + nickNameOR;
+			if (!storage.realBirthday.equals("null")) {
+				searchWord = searchWord + "+OR+" + storage.realBirthday;
+			}
+			if (!storage.realEmail.equals("null")) {
+				searchWord = searchWord + "+OR+" + storage.realEmail;
+			}
+			if (!storage.realName.equals("null")) {
+				searchWord = searchWord + "+OR+" + storage.realName;
+			}
 
 			SearchMain search = new SearchMain();
 			ArrayList<SearchResult> result = search.getResult(searchWord);
