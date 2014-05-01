@@ -80,7 +80,7 @@
 				<td colspan="2" align="center" ><input
 					type="submit" name="modify" value="수  정"> <input
 					type="button" value="취  소"
-					onclick="javascript:window.location='main.jsp'"></td>
+					onclick="javascript:window.location='index.jsp'"></td>
 			</tr>
 		</table>
 	</form>

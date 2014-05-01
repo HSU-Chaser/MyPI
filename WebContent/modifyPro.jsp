@@ -30,9 +30,9 @@
 			<td align="center">
 				<form>
 					<input type="button" value="메인으로"
-						onclick="window.location='main.jsp'">
+						onclick="window.location='index.jsp'">
 				</form> 5초후에 메인으로 이동합니다.
-				<meta http-equiv="Refresh" content="5;url=main.jsp">
+				<meta http-equiv="Refresh" content="5;url=index.jsp">
 			</td>
 		</tr>
 	</table>

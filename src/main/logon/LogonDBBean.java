@@ -14,10 +14,10 @@ public class LogonDBBean {
 	}
 
 	private Connection getConnection() throws Exception {
-		String jdbcDriver = "jdbc:mysql://localhost:3306/mypi?"
+		String jdbcDriver = "jdbc:mysql://localhost:3306/debind?"
 				+"useUnicode=true&characterEncoding=UTF-8";
 
-		return DriverManager.getConnection(jdbcDriver,"root","root");
+		return DriverManager.getConnection(jdbcDriver,"debind","chaser/14");
 	}
 
 	// 

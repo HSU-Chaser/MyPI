@@ -19,7 +19,7 @@
 %>
 
 <body>
-	<form method="post" action="main.jsp" name="userinput">
+	<form method="post" action="index.jsp" name="userinput">
 		<table width="270" border="0" cellspacing="0" cellpadding="5"
 			align="center">
 			<tr>
@@ -30,7 +30,7 @@
 				<td align="center">
 					<p>
 						안녕히 가세요.
-						<meta http-equiv="Refresh" content="5;url=main.jsp">
+						<meta http-equiv="Refresh" content="5;url=index.jsp">
 				</td>
 			</tr>
 			<tr>

@@ -38,7 +38,7 @@
 			<tr height="30">
 				<td colspan="2" align="middle"><input
 					type="submit" value="È¸¿øÅ»Åð"> <input type="button"
-					value="Ãë  ¼Ò" onclick="javascript:window.location='main.jsp'">
+					value="Ãë  ¼Ò" onclick="javascript:window.location='index.jsp'">
 				</td>
 			</tr>
 		</table>

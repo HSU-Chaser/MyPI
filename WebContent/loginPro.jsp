@@ -25,11 +25,11 @@
 
 	if (check == 1) {
 		session.setAttribute("memEmail", email);
-		response.sendRedirect("main.jsp");
+		response.sendRedirect("index.jsp");
 	} else if (check == 0) {
 %>
 
-<jsp:forward page="main.jsp" />
+<jsp:forward page="index.jsp" />
 
 <script>
 	alert("비밀번호가 틀렸습니다.");
