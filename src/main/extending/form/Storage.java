@@ -17,23 +17,33 @@ import main.extending.Twitter;
 
 public class Storage {
 
-	public static ArrayList<String> nickNameList = new ArrayList<String>();
-	public static ArrayList<String> imgUrlList = new ArrayList<String>();
-	public static ArrayList<String> exposureUrlList = new ArrayList<String>();
+	public static ArrayList<String> nickNameList = null;
+	public static ArrayList<String> imgUrlList = null;
+	public static ArrayList<String> exposureUrlList = null;
 	public static String realName = "null";
 	public static String realBirthday = "null";
 	public static String realEmail = "null";
-	
+
 	private String clientId;
 	private String clientEmail;
-	
-	public Storage(String clientEmail){
+
+	public Storage(String clientEmail) {
 		this.clientEmail = clientEmail;
 		clientId = this.clientEmail.split("@")[0];
+		init();
 	}
-	
-	public void execute(){
-		
+
+	public void init() {
+		nickNameList = null;
+		nickNameList = new ArrayList<String>();
+		imgUrlList = null;
+		imgUrlList = new ArrayList<String>();
+		exposureUrlList = null;
+		exposureUrlList = new ArrayList<String>();
+	}
+
+	public void execute() {
+
 		Search[] webSite;
 		webSite = new Search[11];
 
@@ -48,14 +58,12 @@ public class Storage {
 		webSite[8] = new Dreamwiz();
 		webSite[9] = new CyworldBlog();
 		webSite[10] = new Cyworld();
-//		webSite[11] = new Tistory(); // 진행중
+		// webSite[11] = new Tistory(); // 진행중
 
-		
-		for (int i = 0; i < webSite.length-1; i++) {
+		for (int i = 0; i < webSite.length - 1; i++) {
 			webSite[i].searchMaterials(getClientId());
 		}
-		webSite[webSite.length-1].searchMaterials(getClientEmail()); //Cyworld
-		
+		webSite[webSite.length - 1].searchMaterials(getClientEmail()); // Cyworld
 
 		System.out.println("");
 		System.out.println(getClientId() + "님의 닉네임");
@@ -72,7 +80,7 @@ public class Storage {
 		for (int i = 0; i < exposureUrlList.size(); i++) {
 			System.out.println(exposureUrlList.get(i));
 		}
-		
+
 		System.out.println("");
 		System.out.println(getClientId() + "님의 그 외 주요 신상정보");
 		System.out.println("실명 : " + realName);
@@ -80,10 +88,12 @@ public class Storage {
 		System.out.println("사용 이메일 : " + realEmail);
 
 	}
+
 	public String getClientId() {
 		return clientId;
 	}
-	public String getClientEmail(){
+
+	public String getClientEmail() {
 		return clientEmail;
 	}
 

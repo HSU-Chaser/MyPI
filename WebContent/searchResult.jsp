@@ -37,7 +37,8 @@
 			}
 
 			// for google_ search word
-			String searchWord = "\"" + memberId + "\"" + "+OR+" + nickNameOR;
+			String searchWord = null; 
+			searchWord = "\"" + memberId + "\"" + "+OR+" + nickNameOR;
 			if (!storage.realBirthday.equals("null")) {
 				searchWord = searchWord + "+OR+" + storage.realBirthday;
 			}
