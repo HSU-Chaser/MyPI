@@ -48,7 +48,7 @@
 								<a id="logo" class="brand" href="main.jsp"><h1 class="junseok1">∑ π</h1></a>
 								<div class="nav-collapse collapse">
 									<ul class="nav pull-right">
-								  		<li><a class="font_HYNAML" href="index.jsp">&lt; ë¡ê·¸ì¸ ì ë³´ &gt;</a></li>
+								  		<li><a class="font_HYNAML" href="index.jsp">&lt; 로그인 정보 &gt;</a></li>
 										<li><a href="main.jsp">Home</a></li>
 										<li><a href="changeInfo.jsp">Change Info</a></li>
 										<li><a href="how.jsp">How To</a></li>
