@@ -74,7 +74,7 @@ public class DaumSearch {
 	private String buildSearchUrl() {
 		// Required parameters
 		StringBuilder request = new StringBuilder(daum);
-		request.append("q=\"" + query + "\"");
+		request.append("q=" + query);
 		request.append(key);
 
 		// Optional parameters

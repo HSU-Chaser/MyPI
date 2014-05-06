@@ -46,7 +46,7 @@ public class GoogleSearch {
 		Element root = document.getDocumentElement();
 		Element res = (Element) root.getLastChild(); // RES
 		if (res.getNodeName() != "RES") {
-			return null; // No Results
+			return result; // No Results
 		}
 
 		// Make SearchResult ArrayList

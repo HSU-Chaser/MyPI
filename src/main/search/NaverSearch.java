@@ -45,6 +45,11 @@ public class NaverSearch {
 		Element root = document.getDocumentElement();
 		NodeList list = root.getElementsByTagName("item");
 
+		/*
+		 * Element channel = (Element) root.getLastChild(); if
+		 * (channel.getNodeName() != "channel") { return null; // No Results }
+		 */
+
 		// Make SearchResult ArrayList
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
@@ -63,8 +68,8 @@ public class NaverSearch {
 			}
 			int resultNumber = i + 1;
 
-			SearchResult searchResult = new SearchResult("Naver", title, url, snippet,
-					resultNumber);
+			SearchResult searchResult = new SearchResult("Naver", title, url,
+					snippet, resultNumber);
 			result.add(searchResult);
 		}
 
@@ -74,7 +79,7 @@ public class NaverSearch {
 	private String buildSearchUrl() {
 		// Required parameters
 		StringBuilder request = new StringBuilder(naver);
-		request.append("query=\"" + query + "\"");
+		request.append("query=" + query);
 		request.append(key);
 		request.append("&target=webkr");
 

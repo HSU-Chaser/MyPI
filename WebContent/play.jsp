@@ -88,16 +88,17 @@
 
 	<!-- Result -->
 	<%
-		String memberEmail = (String) session.getAttribute("memEmail");
+		String memberEmail = null;
+		memberEmail = (String) session.getAttribute("memEmail");
 
 		if (memberEmail == null) {
 	%>
-	<br />
-	<br />로그인 필요
-	<br />
+	<br>로그인 필요
+	<br>
 	<%
 		} else {
 	%>
+	<br>
 	<table border="1" style="table-layout: fixed;">
 		<tr>
 			<td width="4%" align="center">번호</td>
@@ -136,7 +137,7 @@
 					searchWord = searchWord + "+OR+" + storage.realName;
 				} */
 
-				out.println(searchWord);
+				System.out.println(searchWord);
 
 				SearchMain search = new SearchMain();
 				ArrayList<SearchResult> result = search.getResult(searchWord);
