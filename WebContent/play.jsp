@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 	<head>
 		<title>Team My Pi</title>
-
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
@@ -22,13 +21,9 @@
 			<link rel="stylesheet" href="css/skel-noscript.css" />
 			<link rel="stylesheet" href="css/style.css" />
 		</noscript>
+		
 
-		<style type="text/css" media="screen">
-			/*index Page button remove*/
-				.navbar .btn.btn-navbar {
-				display: none;
-			}
-		</style>
+		
 		
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
@@ -50,10 +45,15 @@
 									<span class="icon-bar"> </span>
 									<span class="icon-bar"> </span>
 								</a>
-								<a id="logo" class="brand" href="index.jsp"><h1 class="junseok1">â Ï</h1></a>
+								<a id="logo" class="brand" href="main.jsp"><h1 class="junseok1">â Ï</h1></a>
 								<div class="nav-collapse collapse">
 									<ul class="nav pull-right">
-								  		<li><a style="visibility: hidden">1</a></li>
+								  		<li><a class="font_HYNAML" href="index.jsp">&lt; ë¡ê·¸ì¸ ì ë³´ &gt;</a></li>
+										<li><a href="main.jsp">Home</a></li>
+										<li><a href="changeInfo.jsp">Change Info</a></li>
+										<li><a href="how.jsp">How To</a></li>
+										<li class="active"><a href="play.jsp">Play With</a></li>
+										<li><a href="contact.jsp">Contact</a></li>
 								  </ul>
 								</div>
 							  </div>
@@ -61,11 +61,13 @@
 						</div>
 			</header>
 			
-		<!--  Login -->
-			<section id="login" class="main style4 primary junseok2">
+		<!-- Contact -->
+			<section id="contact" class="main style3 secondary">
 				<div class="content container">
+					<header>
+						<h2 style="font-size: 6em;margin-bottom: 31%;margin-top: 13%;">Special &nbsp;&nbsp;Thank !</h2>
+					</header>
 					
-					<div class="box container small junseok4">
 						<!--
 							 Contact Form
 							 
@@ -73,53 +75,9 @@
 							 point the "action" attribute to it (eg. action="http://mydomain.tld/mail.php").
 							 More on how it all works here: http://www.1stwebdesigner.com/tutorials/custom-php-contact-forms/
 						-->
-							<form action="#" method="post">
-								<table cellspacing="5" cellpadding="5">
-									<tr>
-										<td rowspan="3" class="MyPI_destribute">
-											<img class="test_img" src="images/fulls/02.jpg">
-										</td>
-										<td colspan="2"><input type="text" id="fid" name="fid" onclick="if ( this.value == 'ID' ) { this.value = ''; }" onblur="if ( this.value == '' ) { this.value = 'ID'; }" value="ID" /><br>
-											<input type="text" id="fpass" name="fpass" onclick="if ( this.value == 'Password' ) { this.value = ''; }" onblur="if ( this.value == '' ) { this.value = 'Password'; }" value="Password" /></td>
-									</tr>
-									<tr>
-										<td id="button1"><input type="submit" class="button junseok4" value="  Sign  in  " /></td>
-										<td id="button2"><input type="button" class="button junseok4" value="  Sign  up " onclick="location.href='#' "/>	</td>	
-									</tr>
-									<tr>							
-										<td colspan="2">
-											<p style="color: white;">Lost your ID or Password??</p>
-											<input type="button" class="button junseok4" value="  Find Info  " onclick="location.href='main.jsp' "/></td>
-									</tr>
-								</table>
-								<!--
-								<div class="row half">
-										<div class="6u">
-										  	
-										</div> 
-									<div class="6u"><input type="text" id="fname" name="fname" placeholder="ID" /></div><br><br>
-									<div class="6u"><input type="text" id="fmail" name="fmail" placeholder="Password" /></div>
-								</div>
-								
-								<div class="row">
-									<div class="3u">
-										<ul class="actions">
-											<li><input type="submit" class="button" value="  S i g n    i n  " /></li>
-										</ul>
-									</div>
-									<div class="3u">
-										<ul class="actions">
-											<li><input type="button" class="button" value="  S i g n    u p " onclick="location.href='#' "/>
-											</li>
-										</ul>
-									</div>
-								</div>
-								-->
-							</form>
-
-					</div>
 				</div>
-			</section>		   
+			</section>
+			
 		<!-- Footer -->
 			<footer id="footer">
 			
