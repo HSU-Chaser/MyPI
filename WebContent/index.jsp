@@ -36,9 +36,6 @@
 
 		<!-- Header -->
 			<header id="header">
-
-				<!-- Logo -->
-					<!--<h1 id="logo"><a href="index.jsp"><pre>â Ï</pre></a></h1>-->
 				
 				<!-- Nav -->
 					
@@ -50,7 +47,7 @@
 									<span class="icon-bar"> </span>
 									<span class="icon-bar"> </span>
 								</a>
-								<a id="logo" class="brand" href="index.jsp"><h1 class="junseok1">â Ï</h1></a>
+								<a id="logo" class="brand" href="index.jsp"><h1 class="junseok1">∑ π</h1></a>
 								<div class="nav-collapse collapse">
 									<ul class="nav pull-right">
 								  		<li><a style="visibility: hidden">1</a></li>
