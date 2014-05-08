@@ -1559,3 +1559,16 @@ table, tr, th, td, input {
     line-height: 0;
     padding: 0;
 }
+/*Input-placeholder Color*/
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color: white;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: white;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: white;
+}
