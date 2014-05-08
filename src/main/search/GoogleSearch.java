@@ -90,6 +90,7 @@ public class GoogleSearch {
 		request.append("&output=xml_no_dtd"); // Output to XML
 		request.append("&ie=utf-8"); // Input Encoding
 		request.append("&oe=utf-8"); // Output Encoding
+		request.append("&lr=lang_ko");
 
 		return request.toString();
 	}
