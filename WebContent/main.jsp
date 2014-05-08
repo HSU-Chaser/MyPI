@@ -52,8 +52,10 @@
 							<%
 								if (session.getAttribute("memEmail") == null) {
 							%>
-							<li><a class="font_HYNAML" href="index.jsp">&lt; 로그인 필요 &gt;
-							</a></li>
+								<script language="JavaScript">
+									if(!alert("로그인 정보가 없습니다."))
+										location.replace("index.jsp");
+								</script>
 							<%
 								} else {
 							%>

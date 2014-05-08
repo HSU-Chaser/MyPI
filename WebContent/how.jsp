@@ -48,7 +48,22 @@
 								<a id="logo" class="brand" href="main.jsp"><h1 class="junseok1">∑ π</h1></a>
 								<div class="nav-collapse collapse">
 									<ul class="nav pull-right">
-								  		<li><a class="font_HYNAML" href="index.jsp">&lt; 로그인 정보 &gt;</a></li>
+								  		<%
+											if (session.getAttribute("memEmail") == null) {
+										%>
+											<script language="JavaScript">
+												if(!alert("로그인 정보가 없습니다."))
+													location.replace("index.jsp");
+											</script>
+										<%
+											} else {
+										%>
+										<li><a class="font_HYNAML" href="signout.jsp">&lt; <%=session.getAttribute("memEmail")%>님
+												환영합니다. &gt;
+										</a></li>
+										<%
+											}
+										%>
 										<li><a href="main.jsp">Home</a></li>
 										<li><a href="changeInfo.jsp">Change Info</a></li>
 										<li class="active"><a href="how.jsp">How To</a></li>
