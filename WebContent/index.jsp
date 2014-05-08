@@ -81,13 +81,8 @@
 							<td rowspan="3" class="MyPI_destribute"><img
 								class="test_img" src="images/fulls/02.jpg"></td>
 							<td colspan="2"><input type="text" id="fid" name="fid"
-								onclick="if ( this.value == 'ID' ) { this.value = ''; }"
-								onblur="if ( this.value == '' ) { this.value = 'ID'; }"
-								value="ID" /><br> <input type="password" id="fpass"
-								name="fpass"
-								onclick="if ( this.value == 'Password' ) { this.value = ''; }"
-								onblur="if ( this.value == '' ) { this.value = 'Password'; }"
-								value="Password" /></td>
+								placeholder="ID"/><br> <input type="password" id="fpass"
+								name="fpass" placeholder="Password"/></td>
 						</tr>
 						<tr>
 							<td id="button1"><input type="submit"
