@@ -83,99 +83,86 @@
 	</header>
 
 	<!-- Contact -->
-	<!-- 	<section id="contact" class="main style3 secondary">
+	<section id="contact" class="main style3 secondary">
 		<div class="content container">
-			<header>
-				<h2 style="font-size: 6em; margin-bottom: 31%; margin-top: 13%;">Special
-					&nbsp;&nbsp;Thank !</h2>
-			</header>
 
-			
-							 Contact Form
-							 
-							 To get this working, place a script on your server to receive the form data, then
-							 point the "action" attribute to it (eg. action="http://mydomain.tld/mail.php").
-							 More on how it all works here: http://www.1stwebdesigner.com/tutorials/custom-php-contact-forms/
-						
-		</div>
-	</section> -->
-
-	<!-- Result -->
-	<%
-		String memberEmail = null;
-		memberEmail = (String) session.getAttribute("memEmail");
-
-		if (memberEmail == null) {
-	%>
-	<br>로그인 필요
-	<br>
-	<%
-		} else {
-	%>
-	<br>
-	<table border="1" style="table-layout: fixed;">
-		<tr>
-			<td width="4%" align="center">번호</td>
-			<td width="20%" align="center">제목</td>
-			<td width="6%" align="center">엔진</td>
-			<td width="6%" align="center">링크</td>
-			<td width="6%" align="center">노출도</td>
-			<td width="6%" align="center">신뢰도</td>
-			<td width="52%" align="center">내용</td>
-		</tr>
-		<%
-			String memberId = memberEmail.split("@")[0];
-				String nickNameOR = "";
-				Storage storage = new Storage(memberEmail);
-				storage.execute(); //start the extending algorithm	
-
-				for (int i = 0; i < storage.nickNameList.size(); i++) {
-					if (i == storage.nickNameList.size() - 1) {
-						nickNameOR = nickNameOR + storage.nickNameList.get(i);
-						break;
+			<!-- Result -->
+			<%
+				String memberEmail = null;
+				memberEmail = (String) session.getAttribute("memEmail");
+		
+				if (memberEmail == null) {
+			%>
+			<br>로그인 필요
+			<br>
+			<%
+				} else {
+			%>
+			<br>
+			<table border="1" style="table-layout: fixed;">
+				<tr>
+					<td width="4%" align="center">번호</td>
+					<td width="20%" align="center">제목</td>
+					<td width="6%" align="center">엔진</td>
+					<td width="6%" align="center">링크</td>
+					<td width="6%" align="center">노출도</td>
+					<td width="6%" align="center">신뢰도</td>
+					<td width="52%" align="center">내용</td>
+				</tr>
+				<%
+					String memberId = memberEmail.split("@")[0];
+						String nickNameOR = "";
+						Storage storage = new Storage(memberEmail);
+						storage.execute(); //start the extending algorithm	
+		
+						for (int i = 0; i < storage.nickNameList.size(); i++) {
+							if (i == storage.nickNameList.size() - 1) {
+								nickNameOR = nickNameOR + storage.nickNameList.get(i);
+								break;
+							}
+							nickNameOR = nickNameOR + storage.nickNameList.get(i)
+									+ "+OR+";
+						}
+		
+						// for google_ search word
+						String searchWord = null;
+						searchWord = "\"" + memberId + "\"" /* + "+OR+" + nickNameOR*/;
+						/* if (!storage.realBirthday.equals("null")) {
+							searchWord = searchWord + "+OR+" + storage.realBirthday;
+						}
+						if (!storage.realEmail.equals("null")) {
+							searchWord = searchWord + "+OR+" + storage.realEmail;
+						}
+						if (!storage.realName.equals("null")) {
+							searchWord = searchWord + "+OR+" + storage.realName;
+						} */
+		
+						System.out.println(searchWord);
+		
+						SearchMain search = new SearchMain();
+						ArrayList<SearchResult> result = search.getResult(searchWord);
+		
+						for (int i = 0; i < result.size(); i++) {
+				%>
+		
+				<tr>
+					<td align="center"><%=i + 1%></td>
+					<td align="center"><%=result.get(i).getTitle()%></td>
+					<td align="center"><%=result.get(i).getEngine()%></td>
+					<td align="center"><a href="<%=result.get(i).getURL()%>"
+						target="_blank">링크</a></td>
+					<td align="center"><%=result.get(i).getExposure()%></td>
+					<td align="center"><%=result.get(i).getReliability()%></td>
+					<td><%=result.get(i).getSnippet()%></td>
+		
+				</tr>
+				<%
 					}
-					nickNameOR = nickNameOR + storage.nickNameList.get(i)
-							+ "+OR+";
-				}
-
-				// for google_ search word
-				String searchWord = null;
-				searchWord = "\"" + memberId + "\"" /* + "+OR+" + nickNameOR*/;
-				/* if (!storage.realBirthday.equals("null")) {
-					searchWord = searchWord + "+OR+" + storage.realBirthday;
-				}
-				if (!storage.realEmail.equals("null")) {
-					searchWord = searchWord + "+OR+" + storage.realEmail;
-				}
-				if (!storage.realName.equals("null")) {
-					searchWord = searchWord + "+OR+" + storage.realName;
-				} */
-
-				System.out.println(searchWord);
-
-				SearchMain search = new SearchMain();
-				ArrayList<SearchResult> result = search.getResult(searchWord);
-
-				for (int i = 0; i < result.size(); i++) {
-		%>
-
-		<tr>
-			<td align="center"><%=i + 1%></td>
-			<td align="center"><%=result.get(i).getTitle()%></td>
-			<td align="center"><%=result.get(i).getEngine()%></td>
-			<td align="center"><a href="<%=result.get(i).getURL()%>"
-				target="_blank">링크</a></td>
-			<td align="center"><%=result.get(i).getExposure()%></td>
-			<td align="center"><%=result.get(i).getReliability()%></td>
-			<td><%=result.get(i).getSnippet()%></td>
-
-		</tr>
-		<%
-			}
-			}
-		%>
-	</table>
-
+					}
+				%>
+			</table>
+		</div>
+	</section>
 	<!-- Footer -->
 	<footer id="footer">
 

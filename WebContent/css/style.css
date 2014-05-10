@@ -1485,8 +1485,9 @@
 				opacity: 1.0 !important;
 			}
 /*********************************************************************************/
-/* junseok_add                                                                */
+/* junseok_add_1                                                                */
 /*********************************************************************************/
+/*index file*/
 /*font > Korean > HY나무L*/
 .font_Nanum {
     font-family:NanumGothic,"나눔고딕",NanumGothicttf,NanumGothiceot,sans-serif;
@@ -1519,7 +1520,7 @@
     margin-left: 50px;
 }
 /*input size*/
-input#fid, input#fpass {
+input#fid, input#fpass{
     width: 80%;
     margin: auto;
     border: 1px solid white;
@@ -1552,23 +1553,55 @@ table, tr, th, td, input {
 #button2 {
     padding-right: 27px;
 }
-.button.junseok4 {
-    width: 7.3em;
+.button.junseok5 {
+    width: 9em;
     border-radius: 0.5em;
     height: 2.3em;
     line-height: 0;
     padding: 0;
 }
 /*Input-placeholder Color*/
-input::-webkit-input-placeholder { /* WebKit browsers */
+input.color::-webkit-input-placeholder { /* WebKit browsers */
     color: white;
 }
-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+input.color:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     color: white;
 }
-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+input.color::-moz-placeholder { /* Mozilla Firefox 19+ */
     color: white;
 }
-input:-ms-input-placeholder { /* Internet Explorer 10+ */
+input.color:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: white;
+}
+/*********************************************************************************/
+/* junseok_add_2                                                                */
+/*********************************************************************************/
+/*signup file*/
+/*signup.html > sction > id*/
+.main.style4.primary.junseok6 {
+    padding: 3.75em 0 3.75em 0;
+}
+/*table text color + size*/
+.junseok7 {
+	color: white;
+	font-size: 2em;
+	height: 2.5em;
+	width: 5%;
+}
+/*input size + align 1*/
+input#femail,input#fpass2,input#fpass3 {
+    width: 97%;
+    margin: auto;
+    margin-right: 11.3%;
+    border: 1px solid white;
+    color: white;
+    display: inline;
+}
+/*input size + align 2*/
+.junseok8 {
+	text-align: center;
+	padding-left: 0.4em;
+}
+#reset {
+	width: 6%;
 }

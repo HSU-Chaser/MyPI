@@ -1,9 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<!DOCTYPE HTML>
 <html>
 <head>
-<title>Sign Up</title>
+<title>Team My Pi</title>
+
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+<!--bootstrap-->
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css"
+	media="screen" title="no title" charset="utf-8" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.poptrox.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/init.js"></script>
+<noscript>
+	<link rel="stylesheet" href="css/skel-noscript.css" />
+	<link rel="stylesheet" href="css/style.css" />
+</noscript>
+
+<style type="text/css" media="screen">
+/*index Page button remove*/
+.navbar .btn.btn-navbar {
+	display: none;
+}
+table, tr, td, th {
+border: 1px solid white;
+}
+</style>
+
+<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
 <script language="javascript">
@@ -52,41 +83,113 @@
 </script>
 
 <body>
-	<form method="post" action="signupProcess.jsp" name="userinput"
-		onSubmit="return checkIt(),EmailCheck()">
-		<table width="600" border="1" cellspacing="0" cellpadding="3"
-			align="center">
-			<tr>
-				<td colspan="2" height="39" align="center"><font size="+1"><b>회원가입</b></font>
-				</td>
-			</tr>
-			<tr>
-				<td width="200"><b>이메일 입력</b></td>
-				<td width="400"></td>
-			</tr>
-			<tr>
-				<td width="200">사용자 E-Mail</td>
-				<td width="400"><input type="text" name="email" size="10"
-					maxlength="30"> <input type="button" name="confirm_email"
-					value="중복확인" onclick="openConfirmEmail(this.form)"></td>
-			</tr>
-			<tr>
-				<td width="200">비밀번호</td>
-				<td width="400"><input type="password" name="password"
-					size="15" maxlength="12"></td>
-			</tr>
-			<tr>
-				<td width="200">비밀번호 확인</td>
-				<td width="400"><input type="password" name="password2"
-					size="15" maxlength="12"></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center""><input type="submit"
-					name="confirm" value="등  록"> <input type="reset"
-					name="reset" value="다시입력"> <input type="button"
-					value="취소" onclick="javascript:window.location='index.jsp'"></td>
-			</tr>
-		</table>
-	</form>
+
+	<!-- Header -->
+	<header id="header">
+
+		<!-- Nav -->
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse"
+						data-target=".nav-collapse"> <span class="icon-bar"> </span> <span
+						class="icon-bar"> </span> <span class="icon-bar"> </span>
+					</a> <a id="logo" class="brand" href="index.jsp"><h1
+							class="junseok1">∑ π</h1></a>
+					<div class="nav-collapse collapse">
+						<ul class="nav pull-right">
+							<li><a style="visibility: hidden">1</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!--  Login -->
+	<section id="login" class="main style4 primary junseok6">
+		<div class="content container">
+
+			<div class="box container small junseok4">
+				<form method="post" action="signupProcess.jsp" name="userinput"
+					onSubmit="return checkIt(),EmailCheck()">
+					<table cellspacing="5" cellpadding="5" align="center">
+						<tr>
+							<td colspan="3" align="center" class="junseok7" style="font-size: 3em;">
+								Sign Up
+							</td>
+						</tr>
+						<tr>
+							<td class="junseok7">
+								User E-Mail
+							</td>
+							<td class="junseok8">
+								<input type="text" name="femail" id="femail" class="color"
+								size="10" maxlength="35" placeholder="Email">
+							</td>
+							<td class="junseok8">
+								<input type="button" name="confirm_email" value=" Double Check "
+								class="button junseok5" onclick="openConfirmEmail(this.form)">
+							</td>
+						</tr>
+						<tr>
+							<td class="junseok7">Password</td>
+							<td class="junseok8">
+								<input type="password" name="fpass2" id="fpass2" class="color"  
+								size="15" maxlength="12" placeholder="Password">
+							</td>
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td class="junseok7">Check Password</td>
+							<td class="junseok8"><input type="password" name="fpass3" id="fpass3"class="color" 
+								size="15" maxlength="12" placeholder="Check Password">
+							</td>
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td class="junseok7" align="center">
+								<input type="submit" name="confirm" class="button junseok5" value=" Confirm ">
+							</td>
+							<td class="junseok7" align="center" id="reset">
+								<input type="reset" name="reset" class="button junseok5" value=" ReEnter ">
+							</td>
+							<td class="junseok7" align="center">
+								<input type="button" class="button junseok5" value=" Cancel " onclick="javascript:window.location='index.jsp'">
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!-- Footer -->
+	<footer id="footer">
+
+		<!--
+				     Social Icons
+				     
+				     Use anything from here: http://fortawesome.github.io/Font-Awesome/cheatsheet/)
+				-->
+		<ul class="actions">
+			<li><a href="#" class="fa solo fa-twitter"><span>Twitter</span></a></li>
+			<li><a href="#" class="fa solo fa-facebook"><span>Facebook</span></a></li>
+			<li><a href="#" class="fa solo fa-google-plus"><span>Google+</span></a></li>
+			<li><a href="#" class="fa solo fa-dribbble"><span>Dribbble</span></a></li>
+			<li><a href="#" class="fa solo fa-pinterest"><span>Pinterest</span></a></li>
+			<li><a href="#" class="fa solo fa-instagram"><span>Instagram</span></a></li>
+		</ul>
+
+		<!-- Menu -->
+		<ul class="menu">
+			<li>&copy; copyright Team My Pi</li>
+			<li>Design: J, Develop: s, s, y, o</li>
+		</ul>
+
+	</footer>
+
 </body>
 </html>

@@ -80,48 +80,25 @@
 						<tr>
 							<td rowspan="3" class="MyPI_destribute"><img
 								class="test_img" src="images/fulls/02.jpg"></td>
-							<td colspan="2"><input type="text" id="fid" name="fid"
+							<td colspan="2"><input type="text" id="fid" name="fid" class="color"
 								placeholder="ID"/><br> <input type="password" id="fpass"
-								name="fpass" placeholder="Password"/></td>
+								name="fpass" class="color" placeholder="Password"/></td>
 						</tr>
 						<tr>
 							<td id="button1"><input type="submit"
-								class="button junseok4" value="  Sign  in  " /></td>
+								class="button junseok5" value="  Sign  in  " /></td>
 							<td id="button2"><input type="button"
-								class="button junseok4" value="  Sign  up "
+								class="button junseok5" value="  Sign  up "
 								onclick="location.href='signup.jsp' " /></td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<p style="color: white;">Lost your ID or Password??</p> <input
-								type="button" class="button junseok4" value="  Find Info  "
+								type="button" class="button junseok5" value="  Find Info  "
 								onclick="location.href='main.jsp' " />
 							</td>
 						</tr>
 					</table>
-					<!--
-								<div class="row half">
-										<div class="6u">
-										  	
-										</div> 
-									<div class="6u"><input type="text" id="fname" name="fname" placeholder="ID" /></div><br><br>
-									<div class="6u"><input type="text" id="fmail" name="fmail" placeholder="Password" /></div>
-								</div>
-								
-								<div class="row">
-									<div class="3u">
-										<ul class="actions">
-											<li><input type="submit" class="button" value="  S i g n    i n  " /></li>
-										</ul>
-									</div>
-									<div class="3u">
-										<ul class="actions">
-											<li><input type="button" class="button" value="  S i g n    u p " onclick="location.href='#' "/>
-											</li>
-										</ul>
-									</div>
-								</div>
-								-->
 				</form>
 
 			</div>
