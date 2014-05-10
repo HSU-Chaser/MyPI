@@ -1554,7 +1554,7 @@ table, tr, th, td, input {
     padding-right: 27px;
 }
 .button.junseok5 {
-    width: 9em;
+    width: 7.3em;
     border-radius: 0.5em;
     height: 2.3em;
     line-height: 0;
@@ -1601,6 +1601,13 @@ input#femail,input#fpass2,input#fpass3 {
 .junseok8 {
 	text-align: center;
 	padding-left: 0.4em;
+}
+.button.junseok9 {
+    width: 8.5em;
+    border-radius: 0.5em;
+    height: 2.3em;
+    line-height: 0;
+    padding: 0;
 }
 #reset {
 	width: 6%;

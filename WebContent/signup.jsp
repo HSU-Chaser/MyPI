@@ -130,7 +130,7 @@ border: 1px solid white;
 							</td>
 							<td class="junseok8">
 								<input type="button" name="confirm_email" value=" Double Check "
-								class="button junseok5" onclick="openConfirmEmail(this.form)">
+								class="button junseok9" onclick="openConfirmEmail(this.form)">
 							</td>
 						</tr>
 						<tr>
@@ -152,10 +152,10 @@ border: 1px solid white;
 						</tr>
 						<tr>
 							<td class="junseok7" align="center">
-								<input type="submit" name="confirm" class="button junseok5" value=" Confirm ">
+								<input type="submit" name="confirm" class="button junseok9" value=" Confirm ">
 							</td>
 							<td class="junseok7" align="center" id="reset">
-								<input type="reset" name="reset" class="button junseok5" value=" ReEnter ">
+								<input type="reset" name="reset" class="button junseok9" value=" ReEnter ">
 							</td>
 							<td class="junseok7" align="center">
 								<input type="button" class="button junseok5" value=" Cancel " onclick="javascript:window.location='index.jsp'">
