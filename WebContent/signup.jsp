@@ -107,7 +107,7 @@ border: 1px solid white;
 		</div>
 	</header>
 
-	<!--  Login -->
+	<!--  Sign Up -->
 	<section id="login" class="main style4 primary junseok6">
 		<div class="content container">
 
