@@ -155,8 +155,20 @@
 /*********************************************************************************/
 /* junseok_add                                                                */
 /*********************************************************************************/
+
 .junseok1 {
      font-family: FontAwesome; 
     font-size: 2.5em;
     margin-top: 2%;
+}
+/*test_img*/
+.test_img {
+    visibility: hidden;
+    border-radius: 0.7em;
+} 
+a.btn.btn-navbar.junseok10 {
+	margin-top: 1.6em;
+}
+div.nav-collapse.collapse.junseok11 > ul {
+	margin-top: 1.6em;
 }

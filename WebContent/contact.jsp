@@ -40,13 +40,14 @@
 						<div class="navbar">
 							<div class="navbar-inner">
 							  <div class="container">
-								<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+								<a class="btn btn-navbar junseok10" data-toggle="collapse"data-target=".nav-collapse">
 									<span class="icon-bar"> </span>
 									<span class="icon-bar"> </span>
 									<span class="icon-bar"> </span>
 								</a>
-								<a id="logo" class="brand" href="main.jsp"><h1 class="junseok1">∑ π</h1></a>
-								<div class="nav-collapse collapse">
+								<a id="logo" class="brand" href="main.jsp"><h1
+										class="junseok1">∑ π</h1></a>
+								<div class="nav-collapse collapse junseok11">
 									<ul class="nav pull-right">
 								  		<!--<%
 											if (session.getAttribute("memEmail") == null) {

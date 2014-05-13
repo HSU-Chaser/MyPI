@@ -42,12 +42,14 @@
 		<div class="navbar">
 			<div class="navbar-inner">
 				<div class="container">
-					<a class="btn btn-navbar" data-toggle="collapse"
-						data-target=".nav-collapse"> <span class="icon-bar"> </span> <span
-						class="icon-bar"> </span> <span class="icon-bar"> </span>
-					</a> <a id="logo" class="brand" href="main.jsp"><h1
+					<a class="btn btn-navbar junseok10" data-toggle="collapse"data-target=".nav-collapse">
+						<span class="icon-bar"> </span>
+						<span class="icon-bar"> </span>
+						<span class="icon-bar"> </span>
+					</a>
+					<a id="logo" class="brand" href="main.jsp"><h1
 							class="junseok1">∑ π</h1></a>
-					<div class="nav-collapse collapse">
+					<div class="nav-collapse collapse junseok11">
 						<ul class="nav pull-right">
 							<!--
 							<%
@@ -72,7 +74,7 @@
 							<li><a href="how.jsp">How To</a></li>
 							<li><a href="play.jsp">Play With</a></li>
 							<li><a href="contact.jsp">Contact</a></li>
-						</ul>
+						</ul>	
 					</div>
 				</div>
 			</div>
