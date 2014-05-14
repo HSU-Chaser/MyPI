@@ -150,7 +150,8 @@
 						</div>
 				</div>
 			</section>
-		
+		<!-- Contact -->
+		<section id="contact" class="main style3 secondary"></section>
 		<!-- Footer -->
 			<footer id="footer">
 			

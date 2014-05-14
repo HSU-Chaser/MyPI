@@ -30,9 +30,6 @@
 .navbar .btn.btn-navbar {
 	display: none;
 }
-	table, th, td, tr {
-		border: 1px solid red;
-	}
 </style>
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>

@@ -69,6 +69,9 @@
 								}
 							%>
 							-->
+							<li><a class="font_HYNAML">&lt; <%=session.getAttribute("memEmail")%>님
+								환영합니다. &gt;
+							</a></li>
 							<li class="active"><a href="main.jsp">Home</a></li>
 							<li><a href="changeInfo.jsp">Change Info</a></li>
 							<li><a href="how.jsp">How To</a></li>
@@ -153,7 +156,8 @@
 						</div>
 				</div>
 			</section>
-		
+		<!-- Contact -->
+		<section id="contact" class="main style3 secondary"></section>
 		<!-- Footer -->
 		<footer id="footer">
 
