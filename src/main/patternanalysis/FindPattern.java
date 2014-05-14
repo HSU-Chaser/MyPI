@@ -3,7 +3,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import main.patternanalysis.information.*;;
+import main.patternanalysis.information.*;
 
 public class FindPattern {
 	public List<String> list = new ArrayList<String>();

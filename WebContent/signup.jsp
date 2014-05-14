@@ -29,8 +29,9 @@
 .navbar .btn.btn-navbar {
 	display: none;
 }
-table, tr, td, th {
-border: 1px solid white;
+
+table,tr,td,th {
+	border: 1px solid white;
 }
 </style>
 
@@ -40,45 +41,62 @@ border: 1px solid white;
 <script language="javascript">
 	function checkIt() {
 		var userinput = eval("document.userinput");
+		var checkemail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		var checkpasswd = /^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,16}/;
 
-		if (!userinput.email.value) {
-			alert("이메일을 입력하세요");
+		if (!userinput.femail.value) {
+			alert("Email을 입력하세요");
+			return false;
+		} else if (!checkemail.test(userinput.femail.value)) {
+			alert("Email 형식이 올바르지 않습니다.");
+			userinput.femail.focus();
+			return false;
+		} else if (!userinput.fpass2.value) {
+			alert("Password를 입력하세요");
+			return false;
+		} else if (!checkpasswd.test(userinput.fpass2.value)) {
+			alert("Password는 6자에서 16자까지 입력 가능하며 영문과 숫자를 혼합해야합니다.");
+			userinput.fpass2.focus();
+			return false;
+		} else if (!(userinput.fpass2.value == userinput.fpass3.value)) {
+			alert("입력하신 Password와 Check Password가 일치하지 않습니다.");
 			return false;
 		}
 
-		if (!userinput.password.value) {
-			alert("비밀번호를 입력하세요");
-			return false;
-		}
 	}
 
-	function EmailCheck() {
-		var bol = true;
-		var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/; //^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+
-		var userinput = eval("document.userinput");
-		if (exptext.test(userinput.email.value) != true) {
-			alert("이메일 형식이 올바르지 않습니다.");
-			userinput.email.focus();
-			bol = false;
-		}
-		return bol;
-	}
+	/*
+	비밀번호 체크패턴
+	패턴1(영대/소문자,숫자 및 특수문자 조합 비밀번호 6자리이상 16자리이하체크)
+	/^.*(?=^.{6,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/
+	패턴2(영대/소문자,숫자 조합 비밀번호 )
+	/^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$)/
+	패턴3(이게좀더 정확한듯)
+	/^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,12}/
+	 */
 
-	// 아이디 중복 여부를 판단
+	// 이메일 중복 여부를 판단
 	function openConfirmEmail(userinput) {
-		// 아이디를 입력했는지 검사
-		if (userinput.email.value == "") {
+		 var checkemail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		// 이메일을 입력했는지 검사
+		if (userinput.femail.value == "") {
 			alert("이메일을 입력하세요");
-			return;
-		}
-
+			return false;
+		// 이메일 형식여부 검사
+		}else if (!checkemail.test(userinput.femail.value)) {
+			alert("Email 형식이 올바르지 않습니다.");
+			userinput.femail.focus();
+			return false;
+		} 
 		// url과 사용자 입력 아이디를 조합합니다.
-		url = "confirmEmail.jsp?id=" + userinput.email.value;
-
+		//url = "confirmEmail.jsp?id=" + userinput.femail.value;
 		// 새로운 윈도우를 엽니다.
-		open(url, "confirm", "toolbar = no, location = no, status = no,"
+		userinput.target = "femail";
+		userinput.action = "confirmEmail.jsp";
+		open("confirmEmail.jsp","femail", "toolbar = no, location = no, status = no,"
 				+ "menubar = no, scrollbars = no, resizable = no,"
-				+ "width = 300, height = 200");
+				+ "width = 300, height=200");
+		userinput.submit();
 	}
 </script>
 
@@ -89,9 +107,9 @@ border: 1px solid white;
 		<%
 			if (session.getAttribute("memEmail") != null) {
 		%>
-			<script language="JavaScript">
-				location.replace("main.jsp");
-			</script>
+		<script language="JavaScript">
+			location.replace("main.jsp");
+		</script>
 		<%
 			}
 		%>
@@ -121,53 +139,46 @@ border: 1px solid white;
 
 			<div class="box container small junseok4">
 				<form method="post" action="signupProcess.jsp" name="userinput"
-					onSubmit="return checkIt(),EmailCheck()">
+					onSubmit="return checkIt()">
 					<table cellspacing="5" cellpadding="5" align="center">
 						<tr>
-							<td colspan="3" align="center" class="junseok7" style="font-size: 3em;">
-								Sign Up
-							</td>
+							<td colspan="3" align="center" class="junseok7"
+								style="font-size: 3em;">Sign Up</td>
 						</tr>
 						<tr>
-							<td class="junseok7">
-								User E-Mail
-							</td>
-							<td class="junseok8">
-								<input type="text" name="femail" id="femail" class="color"
-								size="10" maxlength="35" placeholder="Email">
-							</td>
-							<td class="junseok8">
-								<input type="button" name="confirm_email" value=" Double Check "
+							<td class="junseok7">User E-Mail</td>
+							<td class="junseok8"><input type="text" name="femail"
+								id="femail" class="color" size="10" maxlength="35"
+								placeholder="Email"></td>
+							<td class="junseok8"><input type="button"
+								name="confirm_email" value=" Double Check "
 								class="button junseok9" onclick="openConfirmEmail(this.form)">
 							</td>
 						</tr>
 						<tr>
 							<td class="junseok7">Password</td>
-							<td class="junseok8">
-								<input type="password" name="fpass2" id="fpass2" class="color"  
-								size="15" maxlength="12" placeholder="Password">
-							</td>
-							<td>
-							</td>
+							<td class="junseok8"><input type="password" name="fpass2"
+								id="fpass2" class="color" size="15" maxlength="12"
+								placeholder="Password"></td>
+							<td></td>
 						</tr>
 						<tr>
 							<td class="junseok7">Check Password</td>
-							<td class="junseok8"><input type="password" name="fpass3" id="fpass3"class="color" 
-								size="15" maxlength="12" placeholder="Check Password">
-							</td>
-							<td>
-							</td>
+							<td class="junseok8"><input type="password" name="fpass3"
+								id="fpass3" class="color" size="15" maxlength="12"
+								placeholder="Check Password"></td>
+							<td></td>
 						</tr>
 						<tr>
-							<td class="junseok7" align="center">
-								<input type="submit" name="confirm" class="button junseok9" value=" Confirm ">
+							<td class="junseok7" align="center"><input type="submit"
+								name="confirm" class="button junseok9" value=" Confirm ">
 							</td>
-							<td class="junseok7" align="center" id="reset">
-								<input type="reset" name="reset" class="button junseok9" value=" ReEnter ">
-							</td>
-							<td class="junseok7" align="center">
-								<input type="button" class="button junseok5" value=" Cancel " onclick="javascript:window.location='index.jsp'">
-							</td>
+							<td class="junseok7" align="center" id="reset"><input
+								type="reset" name="reset" class="button junseok9"
+								value=" ReEnter "></td>
+							<td class="junseok7" align="center"><input type="button"
+								class="button junseok5" value=" Cancel "
+								onclick="javascript:window.location='index.jsp'"></td>
 						</tr>
 					</table>
 				</form>

@@ -12,11 +12,11 @@
 %>
 
 <%
-	String email = request.getParameter("email");
-	out.println(email);
+	String femail = request.getParameter("femail");
+	out.println(femail);
 	LogonDBBean manager = LogonDBBean.getInstance();
 
-	int check = manager.confirmEmail(email);
+	int check = manager.confirmEmail(femail);
 %>
 
 <body>
@@ -25,10 +25,10 @@
 	%>
 	<table width="270" border="0" cellspacing="0" cellpadding="5">
 		<tr>
-			<td height="39"><%=email%>이미 사용중인 이메일입니다.</td>
+			<td height="39"><%=femail%>이미 사용중인 이메일입니다.</td>
 		</tr>
 	</table>
-	<form name="checkForm" method="post" action="confirmId.jsp">
+	<form name="checkForm" method="post" action="confirmEmail.jsp">
 		<table width="270" border="0" cellspacing="0" cellpadding="5">
 			<tr>
 				<td align="center">다른 이메일을 사용하세요.
@@ -46,7 +46,7 @@
 		<tr>
 			<td align="center"><p>
 					입력하신
-					<%=email%>는 사용하실 수 있는 이메일입니다. <input type="button" value="닫기"
+					<%=femail%>는 사용하실 수 있는 이메일입니다. <input type="button" value="닫기"
 						onclick="setEmail()"></td>
 		</tr>
 	</table>
@@ -59,7 +59,7 @@
 
       function setEmail()
       {
-            opener.document.userinput.email.value = "<%=email%>";
+            opener.document.userinput.femail.value = "<%=femail%>";
 		self.close();
 	}
 </script>
