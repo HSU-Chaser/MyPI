@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Team My Pi</title>
+<title>Team Chaser</title>
 
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -86,7 +86,15 @@ border: 1px solid white;
 
 	<!-- Header -->
 	<header id="header">
-
+		<%
+			if (session.getAttribute("memEmail") != null) {
+		%>
+			<script language="JavaScript">
+				location.replace("main.jsp");
+			</script>
+		<%
+			}
+		%>
 		<!-- Nav -->
 
 		<div class="navbar">

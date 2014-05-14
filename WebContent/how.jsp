@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Team My Pi</title>
+		<title>Team Chaser</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -150,9 +150,6 @@
 						</div>
 				</div>
 			</section>
-			
-		<!-- Contact -->
-		<section id="contact" style="margin-bottom: 0em"></section>
 		
 		<!-- Footer -->
 			<footer id="footer">
