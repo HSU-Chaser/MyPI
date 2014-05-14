@@ -1,7 +1,10 @@
 package main.logon;
 
-import java.sql.*;
-import java.util.Vector;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LogonDBBean {
 	private static LogonDBBean instance = new LogonDBBean();

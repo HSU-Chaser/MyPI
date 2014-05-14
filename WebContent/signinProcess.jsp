@@ -1,4 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page import="main.logon.Encryptor"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="main.logon.LogonDBBean"%>
 
@@ -9,6 +10,8 @@
 <%
 	String email = request.getParameter("fid");
 	String password = request.getParameter("fpass");
+	Encryptor encryptor = new Encryptor();
+	password = encryptor.encrypt(password);
 	LogonDBBean manager = LogonDBBean.getInstance();
 
 	String emailcheck = request.getParameter("saveEmail");

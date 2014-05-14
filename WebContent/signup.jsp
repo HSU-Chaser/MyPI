@@ -44,21 +44,21 @@ table,tr,td,th {
 		var checkemail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		var checkpasswd = /^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,16}/;
 
-		if (!userinput.femail.value) {
+		if (!userinput.email.value) {
 			alert("Email을 입력하세요");
 			return false;
-		} else if (!checkemail.test(userinput.femail.value)) {
+		} else if (!checkemail.test(userinput.email.value)) {
 			alert("Email 형식이 올바르지 않습니다.");
-			userinput.femail.focus();
+			userinput.email.focus();
 			return false;
-		} else if (!userinput.fpass2.value) {
+		} else if (!userinput.password.value) {
 			alert("Password를 입력하세요");
 			return false;
-		} else if (!checkpasswd.test(userinput.fpass2.value)) {
+		} else if (!checkpasswd.test(userinput.password.value)) {
 			alert("Password는 6자에서 16자까지 입력 가능하며 영문과 숫자를 혼합해야합니다.");
-			userinput.fpass2.focus();
+			userinput.password.focus();
 			return false;
-		} else if (!(userinput.fpass2.value == userinput.fpass3.value)) {
+		} else if (!(userinput.password.value == userinput.password2.value)) {
 			alert("입력하신 Password와 Check Password가 일치하지 않습니다.");
 			return false;
 		}
@@ -79,21 +79,21 @@ table,tr,td,th {
 	function openConfirmEmail(userinput) {
 		 var checkemail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		// 이메일을 입력했는지 검사
-		if (userinput.femail.value == "") {
+		if (userinput.email.value == "") {
 			alert("이메일을 입력하세요");
 			return false;
 		// 이메일 형식여부 검사
-		}else if (!checkemail.test(userinput.femail.value)) {
+		}else if (!checkemail.test(userinput.email.value)) {
 			alert("Email 형식이 올바르지 않습니다.");
-			userinput.femail.focus();
+			userinput.email.focus();
 			return false;
 		} 
 		// url과 사용자 입력 아이디를 조합합니다.
-		//url = "confirmEmail.jsp?id=" + userinput.femail.value;
+		//url = "confirmEmail.jsp?id=" + userinput.email.value;
 		// 새로운 윈도우를 엽니다.
-		userinput.target = "femail";
+		userinput.target = "email";
 		userinput.action = "confirmEmail.jsp";
-		open("confirmEmail.jsp","femail", "toolbar = no, location = no, status = no,"
+		open("confirmEmail.jsp","email", "toolbar = no, location = no, status = no,"
 				+ "menubar = no, scrollbars = no, resizable = no,"
 				+ "width = 300, height=200");
 		userinput.submit();
@@ -147,8 +147,8 @@ table,tr,td,th {
 						</tr>
 						<tr>
 							<td class="junseok7">User E-Mail</td>
-							<td class="junseok8"><input type="text" name="femail"
-								id="femail" class="color" size="10" maxlength="35"
+							<td class="junseok8"><input type="text" name="email"
+								id="email" class="color" size="10" maxlength="35"
 								placeholder="Email"></td>
 							<td class="junseok8"><input type="button"
 								name="confirm_email" value=" Double Check "
@@ -157,15 +157,15 @@ table,tr,td,th {
 						</tr>
 						<tr>
 							<td class="junseok7">Password</td>
-							<td class="junseok8"><input type="password" name="fpass2"
-								id="fpass2" class="color" size="15" maxlength="12"
+							<td class="junseok8"><input type="password" name="password"
+								id="password" class="color" size="15" maxlength="12"
 								placeholder="Password"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td class="junseok7">Check Password</td>
-							<td class="junseok8"><input type="password" name="fpass3"
-								id="fpass3" class="color" size="15" maxlength="12"
+							<td class="junseok8"><input type="password" name="password2"
+								id="password2" class="color" size="15" maxlength="12"
 								placeholder="Check Password"></td>
 							<td></td>
 						</tr>

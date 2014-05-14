@@ -1588,7 +1588,7 @@ input.color:-ms-input-placeholder { /* Internet Explorer 10+ */
 	width: 5%;
 }
 /*input size + align 1*/
-input#femail,input#fpass2,input#fpass3 {
+input#email,input#password,input#password2 {
     width: 97%;
     margin: auto;
     margin-right: 11.3%;
