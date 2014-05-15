@@ -92,7 +92,7 @@
 							class="junseok1">∑ π</h1></a>
 					<div class="nav-collapse collapse junseok11">
 						<ul class="nav pull-right">
-					  		<!--<%
+					  		<%
 								if (session.getAttribute("memEmail") == null) {
 							%>
 								<script language="JavaScript">
@@ -108,7 +108,7 @@
 							<%
 								}
 							%>
-							-->
+							
 							<li><a href="main.jsp">Home</a></li>
 							<li class="active"><a href="changeInfo.jsp">Change Info</a></li>
 							<li><a href="how.jsp">How To</a></li>
