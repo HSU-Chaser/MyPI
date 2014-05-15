@@ -23,8 +23,7 @@ public class MailService {
 		try {
 			// Create Message
 			msg.setFrom(new InternetAddress(from));
-
-			msg.setSubject("MyPI 이메일 인증코드");
+			msg.setSubject(subject);
 			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			msg.setContent(content, "text/html");
 
@@ -34,7 +33,7 @@ public class MailService {
 			// Message Transport
 			SMTPTransport transport = (SMTPTransport) session
 					.getTransport("smtp");
-			transport.connect("mw-002.cafe24.com", "admin@mypi.co.kr",
+			transport.connect("mw-002.cafe24.com", "noreply@mypi.co.kr",
 					"chaser/14");
 			transport.sendMessage(msg, msg.getAllRecipients());
 			transport.close();
