@@ -1,5 +1,6 @@
-﻿<%@page import="java.util.Iterator"%>
-<%@page import="main.search.SearchMain"%>
+<%@page import="main.ranking.Ranking"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="main.search.MakeObject"%>
 <%@page import="main.search.SearchResult"%>
 <%@page import="main.extending.form.Storage"%>
 <%@page import="java.util.ArrayList"%>
@@ -38,8 +39,8 @@
 			}
 
 			// for google_ search word
-			String searchWord = null; 
-			searchWord = "\"" + memberId + "\"" /* + "+OR+" + nickNameOR*/; 
+			String searchWord = null;
+			searchWord = "\"" + memberId + "\"" /* + "+OR+" + nickNameOR*/;
 			/* if (!storage.realBirthday.equals("null")) {
 				searchWord = searchWord + "+OR+" + storage.realBirthday;
 			}
@@ -49,11 +50,12 @@
 			if (!storage.realName.equals("null")) {
 				searchWord = searchWord + "+OR+" + storage.realName;
 			} */
-			
+
 			out.println(searchWord);
 
-			SearchMain search = new SearchMain();
-			ArrayList<SearchResult> result = search.getResult(searchWord);
+			MakeObject search = new MakeObject();
+			Ranking ranking = new Ranking();
+			ArrayList<SearchResult> result = ranking.getResult(searchWord);
 
 			for (int i = 0; i < result.size(); i++) {
 		%>

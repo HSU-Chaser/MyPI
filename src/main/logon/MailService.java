@@ -33,7 +33,7 @@ public class MailService {
 			// Message Transport
 			SMTPTransport transport = (SMTPTransport) session
 					.getTransport("smtp");
-			transport.connect("mw-002.cafe24.com", "noreply@mypi.co.kr",
+			transport.connect("mw-002.cafe24.com", "admin@mypi.co.kr",
 					"chaser/14");
 			transport.sendMessage(msg, msg.getAllRecipients());
 			transport.close();

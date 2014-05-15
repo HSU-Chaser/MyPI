@@ -1,5 +1,5 @@
 <%@page import="java.util.Iterator"%>
-<%@page import="main.search.SearchMain"%>
+<%@page import="main.search.MakeObject"%>
 <%@page import="main.search.SearchResult"%>
 <%@page import="main.extending.form.Storage"%>
 <%@page import="java.util.ArrayList"%>
@@ -56,22 +56,16 @@
 							class="junseok1">∑ π</h1></a>
 					<div class="nav-collapse collapse junseok11">
 						<ul class="nav pull-right">
-							<!--<%
-								if (session.getAttribute("memEmail") == null) {
-							%>
+							<!--<%if (session.getAttribute("memEmail") == null) {%>
 								<script language="JavaScript">
 									if(!alert("로그인 정보가 없습니다."))
 										location.replace("index.jsp");
 								</script>
-							<%
-								} else {
-							%>
+							<%} else {%>
 							<li><a class="font_HYNAML" href="signout.jsp">&lt; <%=session.getAttribute("memEmail")%>님
 									환영합니다. &gt;
 							</a></li>
-							<%
-								}
-							%>
+							<%}%>
 							-->
 							<li><a href="main.jsp">Home</a></li>
 							<li><a href="changeInfo.jsp">Change Info</a></li>
@@ -92,9 +86,9 @@
 			<!-- Result -->
 			<%
 				String memberEmail = null;
-				memberEmail = (String) session.getAttribute("memEmail");
-		
-				if (memberEmail == null) {
+					memberEmail = (String) session.getAttribute("memEmail");
+					
+					if (memberEmail == null) {
 			%>
 			<br>로그인 필요
 			<br>
@@ -114,38 +108,38 @@
 				</tr>
 				<%
 					String memberId = memberEmail.split("@")[0];
-						String nickNameOR = "";
-						Storage storage = new Storage(memberEmail);
-						storage.execute(); //start the extending algorithm	
-		
-						for (int i = 0; i < storage.nickNameList.size(); i++) {
-							if (i == storage.nickNameList.size() - 1) {
-								nickNameOR = nickNameOR + storage.nickNameList.get(i);
-								break;
-							}
-							nickNameOR = nickNameOR + storage.nickNameList.get(i)
-									+ "+OR+";
-						}
-		
-						// for google_ search word
-						String searchWord = null;
-						searchWord = "\"" + memberId + "\"" /* + "+OR+" + nickNameOR*/;
-						/* if (!storage.realBirthday.equals("null")) {
-							searchWord = searchWord + "+OR+" + storage.realBirthday;
-						}
-						if (!storage.realEmail.equals("null")) {
-							searchWord = searchWord + "+OR+" + storage.realEmail;
-						}
-						if (!storage.realName.equals("null")) {
-							searchWord = searchWord + "+OR+" + storage.realName;
-						} */
-		
-						System.out.println(searchWord);
-		
-						SearchMain search = new SearchMain();
-						ArrayList<SearchResult> result = search.getResult(searchWord);
-		
-						for (int i = 0; i < result.size(); i++) {
+								String nickNameOR = "";
+								Storage storage = new Storage(memberEmail);
+								storage.execute(); //start the extending algorithm	
+						
+								for (int i = 0; i < storage.nickNameList.size(); i++) {
+									if (i == storage.nickNameList.size() - 1) {
+										nickNameOR = nickNameOR + storage.nickNameList.get(i);
+										break;
+									}
+									nickNameOR = nickNameOR + storage.nickNameList.get(i)
+											+ "+OR+";
+								}
+						
+								// for google_ search word
+								String searchWord = null;
+								searchWord = "\"" + memberId + "\"" /* + "+OR+" + nickNameOR*/;
+								/* if (!storage.realBirthday.equals("null")) {
+									searchWord = searchWord + "+OR+" + storage.realBirthday;
+								}
+								if (!storage.realEmail.equals("null")) {
+									searchWord = searchWord + "+OR+" + storage.realEmail;
+								}
+								if (!storage.realName.equals("null")) {
+									searchWord = searchWord + "+OR+" + storage.realName;
+								} */
+						
+								System.out.println(searchWord);
+						
+								MakeObject search = new MakeObject();
+								ArrayList<SearchResult> result = search.getResult(searchWord);
+						
+								for (int i = 0; i < result.size(); i++) {
 				%>
 		
 				<tr>
