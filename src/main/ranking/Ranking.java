@@ -18,7 +18,6 @@ public class Ranking {
 			SearchResult sr = result.get(i);
 
 			int exposure = 0;
-			int reliability = 0;
 
 			OpenURL pattern = new OpenURL(sr.getURL());
 			try {
@@ -27,9 +26,9 @@ public class Ranking {
 				e.printStackTrace();
 			}
 			// 매칭하여 점수계산
-
+			
+			
 			sr.setExposure(exposure);
-			sr.setReliability(reliability);
 			result.set(i, sr);
 		}
 
