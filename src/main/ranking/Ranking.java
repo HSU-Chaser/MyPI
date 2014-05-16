@@ -10,12 +10,12 @@ import main.search.SearchResult;
 public class Ranking {
 	static ArrayList<SearchResult> result;
 
-	public ArrayList<SearchResult> getResult(String query) {
+	public ArrayList<SearchResult> getResult() {
 		CalculateExp calExp = new CalculateExp();
-		MakeObject object = new MakeObject();
+		MakeObject makeObject = new MakeObject();
 		
 		//먼저, 구글, 네이버, 다음 검색하게 하고
-		result = object.getResult(query);
+		result = makeObject.getResult(null);   // 140517 0848 <- 이부분부터 수정
 
 		for (int i = 0; i < result.size(); i++) {
 			SearchResult sr = result.get(i);

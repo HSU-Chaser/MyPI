@@ -31,11 +31,9 @@ public class LogonDBBean {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("insert into member values(?,?,?,?)");
+			pstmt = conn.prepareStatement("insert into member values(?,?)");
 			pstmt.setString(1, member.getEmail());
 			pstmt.setString(2, member.getPassword());
-			pstmt.setString(3, member.getCertKey());
-			pstmt.setBoolean(4, false);
 
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
@@ -54,6 +52,7 @@ public class LogonDBBean {
 		}
 	}
 
+	//
 	public int userCheck(String email, String password) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -74,11 +73,11 @@ public class LogonDBBean {
 				dbpasswd = rs.getString("password");
 
 				if (dbpasswd.equals(password))
-					x = 1;
+					x = 1; //
 				else
-					x = 0;
+					x = 0; //
 			} else
-				x = -1;
+				x = -1; //
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -101,6 +100,7 @@ public class LogonDBBean {
 		return x;
 	}
 
+	//
 	public int confirmEmail(String email) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -142,79 +142,6 @@ public class LogonDBBean {
 		return x;
 	}
 
-	public int getCertKey(String email, String key) throws Exception {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		int x = -1;
-
-		try {
-			conn = getConnection();
-			pstmt = conn
-					.prepareStatement("select mail_cert_key from member where email = ?");
-			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-				String cert = rs.getString(1);
-			if (cert.equals(key))
-				x = 1;
-			else 
-				x = 0;
-			}else x = -1;
-			
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException ex) {
-				}
-			if (pstmt != null)
-				try {
-					pstmt.close();
-				} catch (SQLException ex) {
-				}
-			if (conn != null)
-				try {
-					conn.close();
-				} catch (SQLException ex) {
-				}
-		}
-		return x;
-	}
-	
-	public void updateCertStatus(String email) throws Exception {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-
-		try {
-			conn = getConnection();
-			pstmt = conn
-					.prepareStatement("update member set mail_cert_status=?");
-			pstmt.setBoolean(1, true);
-			pstmt.executeUpdate();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (pstmt != null)
-				try {
-					pstmt.close();
-				} catch (SQLException ex) {
-				}
-			if (conn != null)
-				try {
-					conn.close();
-				} catch (SQLException ex) {
-				}
-		}
-	}
-
 	//
 	public LogonDataBean getMember(String email) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -234,7 +161,16 @@ public class LogonDBBean {
 				member = new LogonDataBean();
 				member.setEmail(rs.getString("email"));
 				member.setPassword(rs.getString("password"));
-				member.setCertStatus(rs.getBoolean("mail_cert_status"));
+				// 추가되는 부분
+				member.setExp_grade(rs.getInt("exp_grade"));
+				member.setName(rs.getString("name"));
+				member.setCellphone(rs.getString("cellphone"));
+				member.setSex(rs.getString("sex"));
+				member.setBirthday(rs.getString("birthday"));
+				member.setHomephone(rs.getString("homephone"));
+				member.setOccupation(rs.getString("occupation"));
+				member.setSchool(rs.getString("school"));
+
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -258,7 +194,7 @@ public class LogonDBBean {
 		return member;
 	}
 
-	//
+	// 폼 나온 후에 수정 필요
 	public void updateMember(LogonDataBean member) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -287,7 +223,7 @@ public class LogonDBBean {
 		}
 	}
 
-	//
+	// 회원 탈퇴
 	public int deleteMember(String email, String password) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;

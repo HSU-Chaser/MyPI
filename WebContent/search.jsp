@@ -1,64 +1,55 @@
+<%@page import="main.ranking.Ranking"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="main.search.MakeObject"%>
+<%@page import="main.search.SearchResult"%>
+<%@page import="main.extending.form.Storage"%>
+<%@page import="main.search.BindingWord"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE HTML>
 <html>
 <head>
-<title>Team Chaser</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-<!--bootstrap-->
-<link rel="stylesheet" href="css/bootstrap.css" type="text/css"
-	media="screen" title="no title" charset="utf-8" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
-
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.poptrox.min.js"></script>
-<script src="js/skel.min.js"></script>
-<script src="js/init.js"></script>
-<noscript>
-	<link rel="stylesheet" href="css/skel-noscript.css" />
-	<link rel="stylesheet" href="css/style.css" />
-</noscript>
-
-
-
-
-<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+<title>검색결과</title>
 </head>
+
 <body>
+	<table border="1" style="table-layout: fixed;">
+		<tr>
+			<td width="4%" align="center">번호</td>
+			<td width="20%" align="center">제목</td>
+			<td width="6%" align="center">엔진</td>
+			<td width="6%" align="center">링크</td>
+			<td width="6%" align="center">노출도</td>
+			<td width="52%" align="center">내용</td>
+		</tr>
+		<%
+			BindingWord binding;
+			MakeObject makeObject = new MakeObject();
+			Ranking ranking = new Ranking();	
+			String memberEmail = (String) session.getAttribute("memEmail");
+			
+			binding = new BindingWord(memberEmail);
+			makeObject.getResult(binding.getSearchWord());
+			
+			
+			ArrayList<SearchResult> result = ranking.getResult();
 
-	<jsp:include page="/common/header.jsp" />
+			for (int i = 0; i < result.size(); i++) {
+		%>
 
-	<!-- Contact -->
-	<section id="contact" class="main style3 secondary">
-		<div class="content container">
+		<tr>
+			<td align="center"><%=i + 1%></td>
+			<td align="center"><%=result.get(i).getTitle()%></td>
+			<td align="center"><%=result.get(i).getEngine()%></td>
+			<td align="center"><a href="<%=result.get(i).getURL()%>"
+				target="_blank">링크</a></td>
+			<td align="center"><%=result.get(i).getExposure()%></td>
+			<td><%=result.get(i).getSnippet()%></td>
 
-			<!-- Result -->
-			<%
-				String memberEmail = null;
-				memberEmail = (String) session.getAttribute("memEmail");
-
-				if (memberEmail == null) {
-			%>
-			<br>로그인 필요 <br>
-			<%
-				} else {
-			%>
-			<script type="text/javascript">
-				// AJAX 부분
-			</script>
-			<%
-				}
-			%>
-			</table>
-		</div>
-	</section>
-
-	<jsp:include page="/common/footer.jsp" />
-
+		</tr>
+		<%
+			}
+		%>
+	</table>
 </body>
 </html>

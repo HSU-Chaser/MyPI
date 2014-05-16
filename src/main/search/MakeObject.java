@@ -5,11 +5,16 @@ import java.util.ArrayList;
 public class MakeObject {
 	static ArrayList<SearchResult> result;
 
-	public ArrayList<SearchResult> getResult(String query) {
+	
+	public ArrayList<SearchResult> getResult(String searchWord) {
 		result = null;
 		GoogleSearch googleSearch = null;
 		NaverSearch naverSearch = null;
 		DaumSearch daumSearch = null;
+		
+		String query = "";
+		// query = 바인딩 한 쿼리 전달
+		
 		
 		googleSearch = new GoogleSearch(query);
 		naverSearch = new NaverSearch(query);
