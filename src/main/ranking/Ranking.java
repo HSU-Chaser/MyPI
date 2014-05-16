@@ -25,8 +25,8 @@ public class Ranking {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			// 매칭하여 점수계산
 			
+			// 점수계산
 			
 			sr.setExposure(exposure);
 			result.set(i, sr);

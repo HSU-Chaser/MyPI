@@ -7,6 +7,7 @@ import java.util.*;
 public class OpenURL {
 	private String url, buffer = "";
 	FindPattern findpattern;
+	InfoStorage infoStorage;
 
 	public OpenURL(String url) {
 		this.url = url;
@@ -30,6 +31,7 @@ public class OpenURL {
 			System.err.println(e);
 		}
 		findpattern = new FindPattern(list);
+		infoStorage = new InfoStorage(list);
 		findpattern.find();
 	}
 

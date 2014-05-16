@@ -11,7 +11,7 @@ public class FindPattern {
 		// TODO Auto-generated constructor stub
 		this.list = list;
 	}
-	
+
 	public void find(){
 		System.out.println("주소 패턴");
 		for(String outlist1 : list) Address.PatternAnalysis(outlist1);
