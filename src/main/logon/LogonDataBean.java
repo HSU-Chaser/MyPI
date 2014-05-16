@@ -4,7 +4,7 @@ public class LogonDataBean {
 	private String email;
 	private String password;
 	private String certKey;
-	private String certStatus;
+	private boolean certStatus;
 
 	public String getCertKey() {
 		return certKey;
@@ -15,11 +15,11 @@ public class LogonDataBean {
 		this.certKey = encryptor.encryptMD5();
 	}
 
-	public String getCertStatus() {
+	public boolean getCertStatus() {
 		return certStatus;
 	}
 
-	public void setCertStatus(String certStatus) {
+	public void setCertStatus(boolean certStatus) {
 		this.certStatus = certStatus;
 	}
 

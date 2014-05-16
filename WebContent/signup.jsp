@@ -77,25 +77,26 @@ table,tr,td,th {
 
 	// 이메일 중복 여부를 판단
 	function openConfirmEmail(userinput) {
-		 var checkemail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		var checkemail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		// 이메일을 입력했는지 검사
 		if (userinput.email.value == "") {
 			alert("이메일을 입력하세요");
 			return false;
-		// 이메일 형식여부 검사
-		}else if (!checkemail.test(userinput.email.value)) {
+			// 이메일 형식여부 검사
+		} else if (!checkemail.test(userinput.email.value)) {
 			alert("Email 형식이 올바르지 않습니다.");
 			userinput.email.focus();
 			return false;
-		} 
+		}
 		// url과 사용자 입력 아이디를 조합합니다.
 		//url = "confirmEmail.jsp?id=" + userinput.email.value;
 		// 새로운 윈도우를 엽니다.
 		userinput.target = "email";
 		userinput.action = "confirmEmail.jsp";
-		open("confirmEmail.jsp","email", "toolbar = no, location = no, status = no,"
-				+ "menubar = no, scrollbars = no, resizable = no,"
-				+ "width = 300, height=200");
+		open("confirmEmail.jsp", "email",
+				"toolbar = no, location = no, status = no,"
+						+ "menubar = no, scrollbars = no, resizable = no,"
+						+ "width = 300, height=200");
 		userinput.submit();
 	}
 </script>

@@ -42,16 +42,24 @@
 	-->
 </script>
 
-<%
-	String email = (String) session.getAttribute("memEmail");
-
-	LogonDBBean manager = LogonDBBean.getInstance();
-	LogonDataBean c = manager.getMember(email);
-
-	try {
-%>
 
 <body>
+	<%
+		String email = (String) session.getAttribute("memEmail");
+
+		LogonDBBean manager = LogonDBBean.getInstance();
+		LogonDataBean c = manager.getMember(email);
+
+		if (c.getCertStatus() == false) {
+			// 인증이 안되어 있을 경우
+	%>
+
+	<%
+		} else {
+			try {
+	%>
+
+
 	<form method="post" action="modifyProcess.jsp" name="userinput"
 		onSubmit="return checkIt()">
 		<table width="600" border="1" cellspacing="0" cellpadding="3"
@@ -86,6 +94,7 @@
 </body>
 <%
 	} catch (Exception e) {
+		}
 	}
 %>
 </html>
