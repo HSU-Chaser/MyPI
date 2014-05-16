@@ -21,13 +21,17 @@ public class MailService {
 		Session session = Session.getInstance(props, null);
 		Message msg = new MimeMessage(session);
 		try {
-			// Create Message
+			// 보내는 이
 			msg.setFrom(new InternetAddress(from));
+			// 제목
 			msg.setSubject(subject);
+			// 받는 이
 			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			// 내용
 			msg.setContent(content, "text/html");
-
+			// 헤더
 			msg.setHeader("content-type", "text/html;charset=utf-8");
+			// 보낸 날짜
 			msg.setSentDate(new Date());
 
 			// Message Transport

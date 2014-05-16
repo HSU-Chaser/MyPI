@@ -11,7 +11,7 @@
 	String email = request.getParameter("fid");
 	String password = request.getParameter("fpass");
 	Encryptor encryptor = new Encryptor();
-	password = encryptor.encrypt(password);
+	password = encryptor.encryptSHA(password);
 	LogonDBBean manager = LogonDBBean.getInstance();
 
 	String emailcheck = request.getParameter("saveEmail");
