@@ -91,7 +91,8 @@ public class GoogleSearch {
 		request.append("&ie=utf-8"); // Input Encoding
 		request.append("&oe=utf-8"); // Output Encoding
 		request.append("&lr=lang_ko");
-
+//		request.append("&num=10");
+	
 		return request.toString();
 	}
 

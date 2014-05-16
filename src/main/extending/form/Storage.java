@@ -59,7 +59,7 @@ public class Storage {
 		webSite[9] = new CyworldBlog();
 		webSite[10] = new Cyworld();
 		// webSite[11] = new Tistory(); // 진행중
-
+		
 		for (int i = 0; i < webSite.length - 1; i++) {
 			webSite[i].searchMaterials(getClientId());
 		}
@@ -96,5 +96,7 @@ public class Storage {
 	public String getClientEmail() {
 		return clientEmail;
 	}
+	
+	
 
 }

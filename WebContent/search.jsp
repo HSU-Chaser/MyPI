@@ -49,7 +49,7 @@
 				} else {
 			%>
 			<script type="text/javascript">
-				
+				// AJAX 부분
 			</script>
 			<%
 				}

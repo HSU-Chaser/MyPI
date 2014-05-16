@@ -11,7 +11,10 @@ public class Ranking {
 	static ArrayList<SearchResult> result;
 
 	public ArrayList<SearchResult> getResult(String query) {
+		CalculateExp calExp = new CalculateExp();
 		MakeObject object = new MakeObject();
+		
+		//먼저, 구글, 네이버, 다음 검색하게 하고
 		result = object.getResult(query);
 
 		for (int i = 0; i < result.size(); i++) {
@@ -20,13 +23,15 @@ public class Ranking {
 			int exposure = 0;
 
 			OpenURL pattern = new OpenURL(sr.getURL());
+			
 			try {
-				pattern.Reader();
+				pattern.Reader(); 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			
-			// 점수계산
+			// 계산을 해서, exposure를 리턴해줘서 받으면 됨
+			exposure = calExp.getExposure();
 			
 			sr.setExposure(exposure);
 			result.set(i, sr);

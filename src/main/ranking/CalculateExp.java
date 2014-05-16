@@ -1,19 +1,17 @@
 package main.ranking;
 
-import main.patternanalysis.InfoStorage;
 
 
 public class CalculateExp {
 	
 
-//	int addressCount[];
-//	int birthdayCount[];
-//	int emailCount[];
-//	int handphoneCount[];
-//	int idCount[];
-//	int nameCount[];
-//	int schoolCount[];
+
+	
+	
+	
 	int totalExposure;
+	
+	// InfoStorage 로부터 해당 카운트를 멤버로 받아서 계산을 하고
 	
 	public int getExposure(){
 		

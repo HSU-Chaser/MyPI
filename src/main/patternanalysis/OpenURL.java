@@ -1,14 +1,17 @@
 package main.patternanalysis;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OpenURL {
 	private String url, buffer = "";
 	FindPattern findpattern;
-	InfoStorage infoStorage;
-
+	
 	public OpenURL(String url) {
 		this.url = url;
 	}
@@ -31,8 +34,10 @@ public class OpenURL {
 			System.err.println(e);
 		}
 		findpattern = new FindPattern(list);
-		infoStorage = new InfoStorage(list);
-		findpattern.find();
+		
+		findpattern.find(); // find()로, 해당 리스트들의 각 메소드를 실행시켜 리스트를 다 만든다.
+		
+		
 	}
 
 }

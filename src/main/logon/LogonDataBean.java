@@ -1,5 +1,8 @@
 package main.logon;
 
+
+
+
 public class LogonDataBean {
 	private String email;
 	private String password;
@@ -23,6 +26,9 @@ public class LogonDataBean {
 		this.certStatus = certStatus;
 	}
 
+	
+	
+	
 	public String getEmail() {
 		return email;
 	}

@@ -18,17 +18,17 @@ public class Cyworld extends Search {
 	public void searchMaterials(String coreMaterial) {
 
 		String buffer = "";
-		setUrl(getBasicForm() + coreMaterial.split("@")[0] + "%40" + coreMaterial.split("@")[1]);
+		setUrl(getBasicForm() + coreMaterial.split("@")[0] + "%40"
+				+ coreMaterial.split("@")[1]);
 		ArrayList<String> list = new ArrayList<String>();
 		BufferedReader br = null;
 		int i = 0;
-		String tid = ""; //uid에 대한 tid
-		
-		String realName = ""; //본명
-		String email = ""; //이메일
-		String birthday = ""; //생년월일(양, 음력)
-		
-		
+		String tid = ""; // uid에 대한 tid
+
+		String realName = ""; // 본명
+		String email = ""; // 이메일
+		String birthday = ""; // 생년월일(양, 음력)
+
 		try {
 			InputStream inputURL = new URL(getUrl()).openStream();
 			InputStreamReader rd = new InputStreamReader(inputURL, "euc-kr");
@@ -62,24 +62,28 @@ public class Cyworld extends Search {
 				}
 				if (list.get(i).contains("tName")) {
 					storage.realName = list.get(i).replace('"', '!').split("!")[5];
-					storage.exposureUrlList.add("http://minihp.cyworld.com/pims/main/pims_main.asp?tid="+tid);
+					storage.exposureUrlList
+							.add("http://minihp.cyworld.com/pims/main/pims_main.asp?tid="
+									+ tid);
 
-				} 
-				if(list.get(i).contains("mailto")){
-					email = list.get(i).split(":")[1].replace('"','!').split("!")[0];
 				}
-				
-				if(list.get(i).contains("생년월일")){
+				if (list.get(i).contains("mailto")) {
+					email = list.get(i).split(":")[1].replace('"', '!').split(
+							"!")[0];
+				}
+
+				if (list.get(i).contains("생년월일")) {
 					storage.realBirthday = list.get(i).split(">")[4].split("<")[0];
 				}
-				
-				if(list.get(i).contains("미니홈피 주소")){   //주소 뒷부분에 코어한 정보가 많아서 nickname으로 빼놓음
+
+				if (list.get(i).contains("미니홈피 주소")) { // 주소 뒷부분에 코어한 정보가 많아서
+														// nickname으로 빼놓음
 					setNickName(list.get(i).split("/")[3]);
 					storage.nickNameList.add(getNickName());
 				}
-				
-				if(list.get(i).contains("swfphotoPath")){
-					setImgUrl(list.get(i).replace('"','!').split("!")[5]);
+
+				if (list.get(i).contains("swfphotoPath")) {
+					setImgUrl(list.get(i).replace('"', '!').split("!")[5]);
 					storage.imgUrlList.add(getImgUrl());
 				}
 				i++;

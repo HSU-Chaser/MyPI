@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import main.extending.form.Search;
 
 public class TodayHumor extends Search {
+	
 	public TodayHumor() {
 		setBasicForm("http://www.todayhumor.co.kr/board/list.php?kind=search&keyfield=name&keyword=");
 	}

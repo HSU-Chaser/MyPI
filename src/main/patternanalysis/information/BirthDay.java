@@ -3,7 +3,7 @@ package main.patternanalysis.information;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import main.patternanalysis.InfoStorage;
+import main.patternanalysis.RankingCount;
 
 public class BirthDay {
 	
@@ -14,7 +14,7 @@ public class BirthDay {
 				+ "\\s[0-9]{1,2}월\\s[0-9]{1,2}일|[0-9]{1,2}월\\s[0-9]{1,2}일|(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])");
 		Matcher m = birth.matcher(file);
 		
-		while(m.find()) InfoStorage.birthdayList.add(m.group()); //System.out.println(m.group());
+		while(m.find()) RankingCount.birthdayList.add(m.group()); //System.out.println(m.group());
 	}
 
 }

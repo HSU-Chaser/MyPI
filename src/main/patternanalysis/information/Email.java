@@ -3,7 +3,7 @@ package main.patternanalysis.information;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import main.patternanalysis.InfoStorage;
+import main.patternanalysis.RankingCount;
 
 public class Email{
 
@@ -11,6 +11,6 @@ public class Email{
 		// TODO Auto-generated method stub
 		Pattern Email = Pattern.compile("[\\w\\~\\-\\.]+@[\\w\\~\\-]+(\\.[\\w\\~\\-]+)+");
 		Matcher  m = Email.matcher(file);
-		while(m.find()) InfoStorage.emailList.add(m.group());//System.out.println(m.group());
+		while(m.find()) RankingCount.emailList.add(m.group());//System.out.println(m.group());
 	}
 }
