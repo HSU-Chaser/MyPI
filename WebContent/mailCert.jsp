@@ -8,15 +8,7 @@
 <title>MyPI</title>
 </head>
 <body>
-	<form action="">
-		<table>
-			<tr>
-				<td>인증 키 입력 : </td>
-				<td><input type="text"></td>
-				<td><input type="submit" value="확인"></td>
-			</tr>
-		</table>
-	</form>
+
 
 </body>
 </html>

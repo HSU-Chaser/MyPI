@@ -63,6 +63,9 @@ table,th,tr,td {
 	border: 1px solid red;
 }
 </style>
+
+<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+</head>
 <%
 	String email = (String) session.getAttribute("memEmail");
 	LogonDBBean manager = LogonDBBean.getInstance();
@@ -70,8 +73,6 @@ table,th,tr,td {
 
 	try {
 %>
-<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-</head>
 <body>
 
 	<!-- Header -->
@@ -122,6 +123,20 @@ table,th,tr,td {
 	</header>
 
 	<!-- Change Info -->
+	<%
+		if (c.getCertStatus() == false) {
+	%>
+	<form action="mailCert.jsp" method="post"></form>
+	<table>
+		<tr>
+			<td>인증번호 입력 :</td>
+			<td><input type="text"></td>
+			<td><input type="submit">
+		</tr>
+	</table>
+	<%
+		} else {
+	%>
 	<section id="contact" class="main style3 secondary">
 		<div class="content container">
 			<form method="post" action="modifyProcess.jsp" name="userinput"
@@ -140,27 +155,13 @@ table,th,tr,td {
 						<td width="400"></td>
 					</tr> -->
 					<tr>
-						<%
-							if (c.getCertStatus() == false) {
-						%>
-						<td><input type="text" /></td>
-						<td><input type="submit" /></td>
-						<%
-							} else {
-						%>
-						<td>이메일 인증 완료.</td>
-						<%
-							}
-						%>
-					</tr>
-					<tr>
 						<td width="200">사용자 이메일</td>
 						<td width="400"><%=c.getEmail()%></td>
 					</tr>
 					<tr>
 						<td width="200">비밀번호</td>
 						<td width="400"><input type="password" name="passwd"
-							size="10" maxlength="10" value="<%=c.getPassword()%>"></td>
+							size="10" maxlength="10"></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
@@ -199,6 +200,7 @@ table,th,tr,td {
 
 </body>
 <%
+	}
 	} catch (Exception e) {
 	}
 %>

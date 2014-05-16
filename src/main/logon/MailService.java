@@ -22,7 +22,7 @@ public class MailService {
 		Message msg = new MimeMessage(session);
 		try {
 			// 보내는 이
-			msg.setFrom(new InternetAddress(from));
+			msg.setFrom(new InternetAddress(from, "MyPI"));
 			// 제목
 			msg.setSubject(subject);
 			// 받는 이
