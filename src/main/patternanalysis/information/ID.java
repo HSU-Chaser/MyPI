@@ -10,7 +10,11 @@ public class ID {
 		String TextWithoutTag = file.replaceAll("<(/)?([a-zA-Z-_]*)(\\s[a-zA-Z-_]*=[^>]*)?(\\s)*(/)?>", "");
 		Pattern Id = Pattern.compile("[\\w\\-\\_]{5,16}");
 		Matcher m = Id.matcher(TextWithoutTag);
-		while(m.find()) System.out.println(m.group());
+
+		
+		
+		
+		// while(m.find()) System.out.println(m.group());
 	}
 
 }

@@ -7,18 +7,23 @@ public class MakeObject {
 
 	
 	public ArrayList<SearchResult> getResult(String searchWord) {
+		
+//		result = new ArrayList<SearchResult>();
 		result = null;
+		
 		GoogleSearch googleSearch = null;
 		NaverSearch naverSearch = null;
 		DaumSearch daumSearch = null;
 		
-		String query = "";
-		// query = 바인딩 한 쿼리 전달
+		String googleQuery = searchWord.replace("|", "+OR+");
+		String naverQuery = searchWord;
+		String daumQuery = searchWord;
+
 		
 		
-		googleSearch = new GoogleSearch(query);
-		naverSearch = new NaverSearch(query);
-		daumSearch = new DaumSearch(query);
+		googleSearch = new GoogleSearch(googleQuery);
+		naverSearch = new NaverSearch(naverQuery);
+		daumSearch = new DaumSearch(daumQuery);
 
 		result = googleSearch.getResult();
 		result.addAll(naverSearch.getResult());

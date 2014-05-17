@@ -16,7 +16,7 @@ public class Name {
 				// 영문이름 ex) si-young yang OR yang si-young OR siyoung yang OR yang siyoung OR yang si young
 				// 영문이름은 일단 보류 |[\\w\\-]{2,10}\\s[\\w\\-]{2,10}\\s[\\w\\-]{2,10}
 				Matcher m = name.matcher(file);
-				while(m.find()) System.out.println(m.group());
+		//		while(m.find()) System.out.println(m.group());
 	}
 
 }

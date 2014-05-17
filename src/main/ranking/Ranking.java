@@ -10,14 +10,22 @@ import main.search.SearchResult;
 public class Ranking {
 	static ArrayList<SearchResult> result;
 
-	public ArrayList<SearchResult> getResult() {
+	public ArrayList<SearchResult> getResult(String searchWord) {
 		CalculateExp calExp = new CalculateExp();
+		
+		
+		System.out.println("들어옴 1");
 		MakeObject makeObject = new MakeObject();
+		System.out.println("들어옴 2 : " + searchWord);
+		
 		
 		//먼저, 구글, 네이버, 다음 검색하게 하고
-		result = makeObject.getResult(null);   // 140517 0848 <- 이부분부터 수정
-
+		result = makeObject.getResult(searchWord);
+		System.out.println("들어옴 3");
+		
 		for (int i = 0; i < result.size(); i++) {
+			
+			System.out.println("들어옴 4");
 			SearchResult sr = result.get(i);
 
 			int exposure = 0;
@@ -39,6 +47,7 @@ public class Ranking {
 
 		// 정렬
 
+		System.out.println("들어옴 5");
 		return result;
 	}
 }

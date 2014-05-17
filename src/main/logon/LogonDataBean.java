@@ -33,6 +33,7 @@ public class LogonDataBean {
 	private String homephone;
 	private String occupation;
 	private String school;
+	private String extraInfo;
 
 	public int getExp_grade() {
 		return exp_grade;
@@ -110,8 +111,17 @@ public class LogonDataBean {
 		return password;
 	}
 
+	// 로그인 암호화
 	public void setPassword(String password) {
 		Encryptor encryptor = new Encryptor();
 		this.password = encryptor.encryptSHA(password);
+	}
+
+	public String getExtraInfo() {
+		return extraInfo;
+	}
+
+	public void setExtraInfo(String extraInfo) {
+		this.extraInfo = extraInfo;
 	}
 }

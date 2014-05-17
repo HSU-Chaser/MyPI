@@ -25,14 +25,13 @@
 		<%
 			BindingWord binding;
 			MakeObject makeObject = new MakeObject();
-			Ranking ranking = new Ranking();	
+			Ranking ranking = new Ranking();
 			String memberEmail = (String) session.getAttribute("memEmail");
-			
-			binding = new BindingWord(memberEmail);
-			makeObject.getResult(binding.getSearchWord());
-			
-			
-			ArrayList<SearchResult> result = ranking.getResult();
+
+			binding = new BindingWord(memberEmail); //binding 에 전달
+
+			ArrayList<SearchResult> result = ranking.getResult(binding
+					.getSearchWord());
 
 			for (int i = 0; i < result.size(); i++) {
 		%>

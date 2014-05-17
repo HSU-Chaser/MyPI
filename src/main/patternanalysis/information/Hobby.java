@@ -8,6 +8,11 @@ public class Hobby {
 		// TODO Auto-generated method stub
 		Pattern hobby = Pattern.compile("취미[\\s\\d-_:,.가-힣]{1,15}|취향[\\s-_:,.가-힣\\d]{1,15}"); 
 		Matcher m  = hobby.matcher(file);
-		while(m.find()) System.out.println(m.group());		
+	
+		
+		
+		
+		
+		//	while(m.find()) System.out.println(m.group());		
 	}
 }

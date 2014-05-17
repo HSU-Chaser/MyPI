@@ -170,6 +170,7 @@ public class LogonDBBean {
 				member.setHomephone(rs.getString("homephone"));
 				member.setOccupation(rs.getString("occupation"));
 				member.setSchool(rs.getString("school"));
+				member.setExtraInfo(rs.getString("extraInfo"));
 
 			}
 		} catch (Exception ex) {

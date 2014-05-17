@@ -9,7 +9,13 @@ public class HousePhone{
 		// TODO Auto-generated method stub
 		Pattern housephone = Pattern.compile("0[2-6]{1,2}[0-9-]{3,4}[0-9-]{3,4}|0[2-6]{1,2}\\s[0-9]{3,4}\\s[0-9]{3,4}|0[2-6]{1,2}[0-9]{3,4}[0-9]{3,4}");
 		Matcher m = housephone.matcher(file);
-		while(m.find()) System.out.println(m.group());
+	
+		
+		
+		
+		
+		
+		//	while(m.find()) System.out.println(m.group());
 	}
 
 }
