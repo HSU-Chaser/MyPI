@@ -18,7 +18,7 @@ import org.w3c.dom.NodeList;
 
 public class NaverSearch {
 	private static final String naver = "http://openapi.naver.com/search?";
-	private static final String key = "&key=e9f2af290088b3d1d298ced9a41c4263";
+	private static final String key = "key=e9f2af290088b3d1d298ced9a41c4263";
 	private ArrayList<SearchResult> result = new ArrayList<SearchResult>();
 	private String query;
 
@@ -79,12 +79,13 @@ public class NaverSearch {
 	private String buildSearchUrl() {
 		// Required parameters
 		StringBuilder request = new StringBuilder(naver);
-		request.append("query=" + query);
 		request.append(key);
-		request.append("&target=webkr");
+		request.append("&query=" + query.split("_")[0]);
+		request.append("&ie=utf8");
+		request.append("&target=cafearticle");
 
 		// Optional parameters
-		request.append("&display=20");
+		request.append("&display=10");
 
 		return request.toString();
 	}

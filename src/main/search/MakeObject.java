@@ -21,8 +21,11 @@ public class MakeObject {
 
 		
 		
+		
 		googleSearch = new GoogleSearch(googleQuery);
+		
 		naverSearch = new NaverSearch(naverQuery);
+		
 		daumSearch = new DaumSearch(daumQuery);
 
 		result = googleSearch.getResult();

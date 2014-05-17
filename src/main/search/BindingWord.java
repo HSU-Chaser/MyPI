@@ -25,7 +25,7 @@ public class BindingWord {
 		ArrayList<String> extendingInfo = new ArrayList<String>();
 		String combinedExtending = "";
 		
-		searchWord = "\"" + memberId + "\"";
+		searchWord = "\"" + memberId + "\"" + "_"; // _는 구분자 역할
 		
 		try {
 			dataBean = new LogonDataBean();
@@ -34,37 +34,38 @@ public class BindingWord {
 			//extraInfo는 tinyInt로 default 0, true일때 1을 저장할 것이므로
 			
 			System.out.println("ExtraInfo에 들어있는 값 : " + dataBean.getExtraInfo());
-			if(Boolean.parseBoolean(dataBean.getExtraInfo())){
+			System.out.println(Boolean.parseBoolean(dataBean.getExtraInfo()));
+			if(true){
 				
-				if(!dataBean.getBirthday().equals(null)){
+				dbInfo.add(dataBean.getEmail());
+				
+				if(!dataBean.getBirthday().equals("null")){
 					dbInfo.add(dataBean.getBirthday());
 				}
-				if(!dataBean.getCellphone().equals(null)){
+				if(!dataBean.getCellphone().equals("null")){
 					dbInfo.add(dataBean.getCellphone());
-				}
-				if(!dataBean.getEmail().equals(null)){
-					dbInfo.add(dataBean.getEmail());
 				}			
-				if(!dataBean.getHomephone().equals(null)){
+				if(!dataBean.getHomephone().equals("null")){
 					dbInfo.add(dataBean.getHomephone());
 				}			
-				if(!dataBean.getName().equals(null)){
+				if(!dataBean.getName().equals("null")){
 					dbInfo.add(dataBean.getName());
 				}
-				if(!dataBean.getOccupation().equals(null)){
+				if(!dataBean.getOccupation().equals("null")){
 					dbInfo.add(dataBean.getOccupation());
 				}
-				if(!dataBean.getSchool().equals(null)){
+				if(!dataBean.getSchool().equals("null")){
 					dbInfo.add(dataBean.getSchool());
 				}
-				if(!dataBean.getSex().equals(null)){
+				if(!dataBean.getSex().equals("null")){
 					dbInfo.add(dataBean.getSex());
 				}
+				
 				for(int i=0; i<dbInfo.size(); i++){
 					combinedDB = combinedDB.concat("|" + dbInfo.get(i));
 				}
 				
-				searchWord.concat(combinedDB);
+				searchWord = searchWord.concat(combinedDB);
 			}	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

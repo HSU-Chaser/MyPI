@@ -81,17 +81,20 @@ public class GoogleSearch {
 	private String buildSearchUrl() {
 		// Required parameters
 		StringBuilder request = new StringBuilder(google);
-		request.append("q=" + query); // Query
+		
+		request.append("start=0");
+		request.append("&num=10");
 		request.append(key); // API Key
 		request.append(cx); // Custom Search Engine ID
-
+		request.append("&as_q=&as_epq=" + query.split("_")[0]); // Query
+		request.append("&as_oq=" + query.split("_")[1]);
 		// Optional parameters
+		
 		request.append("&client=google-csbe"); // Search Engine Type
 		request.append("&output=xml_no_dtd"); // Output to XML
 		request.append("&ie=utf-8"); // Input Encoding
 		request.append("&oe=utf-8"); // Output Encoding
-		request.append("&lr=lang_ko");
-//		request.append("&num=10");
+		request.append("&lr=lang_ko");	
 	
 		return request.toString();
 	}

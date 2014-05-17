@@ -17,7 +17,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class DaumSearch {
-	private static final String daum = "http://apis.daum.net/search/web?";
+	private static final String daum = "http://apis.daum.net/search/web?"; //web검색
 	private static final String key = "&apikey=8d960746ca81a14d1fd0fa4b8359ccfb1a1a0fab";
 	private ArrayList<SearchResult> result = new ArrayList<SearchResult>();
 	private String query;
