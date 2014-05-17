@@ -13,7 +13,7 @@ public class SearchTest {
 		BindingWord binding;
 		Ranking ranking = new Ranking();
 
-		binding = new BindingWord("super@naver.com"); // binding 에 전달
+		binding = new BindingWord("tera16@naver.com"); // binding 에 전달
 
 		String searchWord = "";
 
