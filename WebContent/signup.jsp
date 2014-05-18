@@ -103,36 +103,7 @@ table,tr,td,th {
 
 <body>
 
-	<!-- Header -->
-	<header id="header">
-		<%
-			if (session.getAttribute("memEmail") != null) {
-		%>
-		<script language="JavaScript">
-			location.replace("main.jsp");
-		</script>
-		<%
-			}
-		%>
-		<!-- Nav -->
-
-		<div class="navbar">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="btn btn-navbar" data-toggle="collapse"
-						data-target=".nav-collapse"> <span class="icon-bar"> </span> <span
-						class="icon-bar"> </span> <span class="icon-bar"> </span>
-					</a> <a id="logo" class="brand" href="index.jsp"><h1
-							class="junseok1">∑ π</h1></a>
-					<div class="nav-collapse collapse">
-						<ul class="nav pull-right">
-							<li><a style="visibility: hidden">1</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+	<jsp:include page="/common/header.jsp" />
 
 	<!--  Sign Up -->
 	<section id="login" class="main style4 primary junseok6">
@@ -186,30 +157,8 @@ table,tr,td,th {
 			</div>
 		</div>
 	</section>
-	<!-- Footer -->
-	<footer id="footer">
 
-		<!--
-				     Social Icons
-				     
-				     Use anything from here: http://fortawesome.github.io/Font-Awesome/cheatsheet/)
-				-->
-		<ul class="actions">
-			<li><a href="#" class="fa solo fa-twitter"><span>Twitter</span></a></li>
-			<li><a href="#" class="fa solo fa-facebook"><span>Facebook</span></a></li>
-			<li><a href="#" class="fa solo fa-google-plus"><span>Google+</span></a></li>
-			<li><a href="#" class="fa solo fa-dribbble"><span>Dribbble</span></a></li>
-			<li><a href="#" class="fa solo fa-pinterest"><span>Pinterest</span></a></li>
-			<li><a href="#" class="fa solo fa-instagram"><span>Instagram</span></a></li>
-		</ul>
-
-		<!-- Menu -->
-		<ul class="menu">
-			<li>&copy; copyright Team My Pi</li>
-			<li>Design: J, Develop: s, s, y, o</li>
-		</ul>
-
-	</footer>
+	<jsp:include page="/common/footer.jsp" />
 
 </body>
 </html>

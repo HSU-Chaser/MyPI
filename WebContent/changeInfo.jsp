@@ -74,53 +74,7 @@ table,th,tr,td {
 	try {
 %>
 <body>
-
-	<!-- Header -->
-	<header id="header">
-
-		<!-- Logo -->
-		<!--<h1 id="logo"><a href="index.jsp"><pre>∑ π</pre></a></h1>-->
-
-		<!-- Nav -->
-
-		<div class="navbar">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="btn btn-navbar junseok10" data-toggle="collapse"
-						data-target=".nav-collapse"> <span class="icon-bar"> </span> <span
-						class="icon-bar"> </span> <span class="icon-bar"> </span>
-					</a> <a id="logo" class="brand" href="main.jsp"><h1
-							class="junseok1">∑ π</h1></a>
-					<div class="nav-collapse collapse junseok11">
-						<ul class="nav pull-right">
-							<%
-								if (session.getAttribute("memEmail") == null) {
-							%>
-							<script language="JavaScript">
-								if (!alert("로그인 정보가 없습니다."))
-									location.replace("index.jsp");
-							</script>
-							<%
-								} else {
-							%>
-							<li><a class="font_HYNAML" href="signout.jsp">&lt; <%=session.getAttribute("memEmail")%>님
-									환영합니다. &gt;
-							</a></li>
-							<%
-								}
-							%>
-
-							<li><a href="main.jsp">Home</a></li>
-							<li class="active"><a href="changeInfo.jsp">Change Info</a></li>
-							<li><a href="how.jsp">How To</a></li>
-							<li><a href="play.jsp">Play With</a></li>
-							<li><a href="contact.jsp">Contact</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+	<jsp:include page="/common/header.jsp" />
 
 	<!-- Change Info -->
 	<%
@@ -175,30 +129,7 @@ table,th,tr,td {
 		</div>
 	</section>
 
-	<!-- Footer -->
-	<footer id="footer">
-
-		<!--
-			     Social Icons
-			     
-			     Use anything from here: http://fortawesome.github.io/Font-Awesome/cheatsheet/)
-			-->
-		<ul class="actions">
-			<li><a href="#" class="fa solo fa-twitter"><span>Twitter</span></a></li>
-			<li><a href="#" class="fa solo fa-facebook"><span>Facebook</span></a></li>
-			<li><a href="#" class="fa solo fa-google-plus"><span>Google+</span></a></li>
-			<li><a href="#" class="fa solo fa-dribbble"><span>Dribbble</span></a></li>
-			<li><a href="#" class="fa solo fa-pinterest"><span>Pinterest</span></a></li>
-			<li><a href="#" class="fa solo fa-instagram"><span>Instagram</span></a></li>
-		</ul>
-
-		<!-- Menu -->
-		<ul class="menu">
-			<li>&copy; copyright Team My Pi</li>
-			<li>Design: J, Develop: s, s, y, o</li>
-		</ul>
-
-	</footer>
+	<jsp:include page="/common/footer.jsp" />
 
 </body>
 <%
