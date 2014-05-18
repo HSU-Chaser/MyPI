@@ -29,12 +29,8 @@ public class BindingWord {
 			dataBean = new LogonDataBean();
 			dataBean = LogonDBBean.getInstance().getMember(memberEmail);
 
+			
 			// extraInfo는 tinyInt로 default 0, true일때 1을 저장할 것이므로
-
-			// System.out
-			// .println("ExtraInfo에 들어있는 값 : " + dataBean.getExtraInfo());
-			// System.out.println(Boolean.parseBoolean(dataBean.getExtraInfo()));
-
 			keywordMap.put("memberid", memberId);
 			keywordMap.put("email", dataBean.getEmail());
 

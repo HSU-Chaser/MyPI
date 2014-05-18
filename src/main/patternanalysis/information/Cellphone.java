@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 import main.patternanalysis.RankingCount;
 
-public class HandPhone{
+public class Cellphone{
 
 	public static void PatternAnalysis(String file) {
 		// TODO Auto-generated method stub

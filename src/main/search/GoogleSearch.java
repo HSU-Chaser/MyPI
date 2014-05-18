@@ -22,9 +22,11 @@ public class GoogleSearch {
 	private static final String cx = "&cx=010276989280583185703:8ss-tvlus7w";
 	private ArrayList<SearchResult> result = new ArrayList<SearchResult>();
 	private String query;
+	private int limit;
 
-	public GoogleSearch(String query) {
+	public GoogleSearch(String query, int limit) {
 		this.query = query;
+		this.limit = limit;
 	}
 
 	public ArrayList<SearchResult> getResult() {
@@ -84,7 +86,7 @@ public class GoogleSearch {
 		StringBuilder request = new StringBuilder(google);
 		
 		request.append("start=0");
-		request.append("&num=10");
+		request.append("&num=" + limit); // 검색 제한 수 조정
 		request.append(key); // API Key
 		request.append(cx); // Custom Search Engine ID
 		request.append("&as_q=&as_epq=" + query); // Query

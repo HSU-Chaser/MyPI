@@ -13,7 +13,7 @@ public class Ranking {
 
 	public ArrayList<SearchResult> getResult(HashMap<String, String> keywordMap) {
 		
-		CalculateExp calExp = new CalculateExp();
+		CalculateExp calExp = null;
 		
 		MakeObject makeObject = new MakeObject();
 		
@@ -35,7 +35,7 @@ public class Ranking {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+			calExp = new CalculateExp(keywordMap);
 			// 계산을 해서, exposure를 리턴해줘서 받으면 됨
 			exposure = calExp.getExposure();
 			

@@ -14,29 +14,30 @@ public class MakeObject {
 	public ArrayList<SearchResult> getResult(HashMap<String, String> keywordMap) {
 
 		result = null;
-		
+
 		Set<String> keySet = keywordMap.keySet();
 		Iterator<String> itBind = keySet.iterator();
 		Iterator<String> itCase = keySet.iterator();
-		
+
+		String naverCategory[] = {"blog", "news", "cafearticle", "kin", "webkr", "doc"};
+		String daumCategory[] = {"board", "web", "knowledge" /* , "cafe", "blog" */};
+
 		System.out.println("Test : 현재 키 리스트 개수 : " + keySet.size());
-		
-		
+
 		StringBuffer orBinding = new StringBuffer("");
-		
-		while(itBind.hasNext()){
+
+		while (itBind.hasNext()) {
 			String data = keywordMap.get(itBind.next());
 			System.out.println("현재 들어온 데이터 : " + data);
-			
+
 			orBinding.append("+OR+");
 			orBinding.append(data);
-			
-			
+
 		}
-		System.out.println(orBinding);		
-		googleSearch = new GoogleSearch(orBinding.toString());
+		System.out.println(orBinding);
+		// 구글 통합 바인딩 검색어
+		googleSearch = new GoogleSearch(orBinding.toString(), 5);
 		result = googleSearch.getResult();
-				
 
 		while (itCase.hasNext()) {
 			String key = itCase.next();
@@ -44,54 +45,83 @@ public class MakeObject {
 
 			switch (key) {
 
-			// memberid, email, birthday, cellphone, homephone, name, occupation, school, sex, email2
-			
+			// memberid, email, birthday, cellphone, homephone, name,
+			// occupation, school, sex, email2
+
 			case "cellphone":
-				
-				addingResultGND("\"" + keywordMap.get(key) + "\"");
-				
+
+				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
+				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
+						naverCategory);
+			//	addingDaum("\"" + keywordMap.get(key) + "\"", 10, daumCategory);
+
 				break;
 			case "email":
-				
-				addingResultGND("\"" + keywordMap.get(key) + "\"");
-				
+
+				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
+				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
+						naverCategory);
+			//	addingDaum("\"" + keywordMap.get(key) + "\"", 10, daumCategory);
+
 				break;
 			case "email2":
-				
-				addingResultGND("\"" + keywordMap.get(key) + "\"");
-				
+
+				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
+				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
+						naverCategory);
+			//	addingDaum("\"" + keywordMap.get(key) + "\"", 10, daumCategory);
+
 				break;
 			case "homephone":
-				
-				addingResultGND("\"" + keywordMap.get(key) + "\"");
-				
+
+				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
+				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
+						naverCategory);
+			//	addingDaum("\"" + keywordMap.get(key) + "\"", 10, daumCategory);
+
 				break;
 			case "memberid":
-				
-				addingResultGND("\"" + keywordMap.get(key) + "\"");
-				
+
+				// memberid의 복잡도 계산 가능한지 체크
+				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
+				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
+						naverCategory);
+			//	addingDaum("\"" + keywordMap.get(key) + "\"", 3, daumCategory);
+
 				break;
-			
-				
-				
+
 			}
 
 		}
 
-
 		return result;
 	}
 
-	public void addingResultGND(String query) {
+	public void addingGoogle(String query, int limit) {
 
-		googleSearch = new GoogleSearch(query);
-		naverSearch = new NaverSearch(query);
-		daumSearch = new DaumSearch(query);
+		googleSearch = new GoogleSearch(query, limit);
 
 		result.addAll(googleSearch.getResult());
-		result.addAll(naverSearch.getResult());
-		result.addAll(daumSearch.getResult());
 
 	}
 
+	public void addingNaver(String query, int limit, String[] category) {
+
+		for (int i = 0; i < category.length; i++) {
+			naverSearch = new NaverSearch(query, limit, category[i]);
+			result.addAll(naverSearch.getResult());
+		}
+
+	}
+
+	public void addingDaum(String query, int limit, String[] category) {
+
+		for (int i = 0; i < category.length; i++) {
+
+			daumSearch = new DaumSearch(query, limit, category[i]);
+			result.addAll(daumSearch.getResult());
+
+		}
+
+	}
 }

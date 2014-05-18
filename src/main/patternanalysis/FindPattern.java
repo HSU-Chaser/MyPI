@@ -24,7 +24,7 @@ public class FindPattern {
 			Email.PatternAnalysis(outlist3);
 		System.out.println("\n핸드폰 패턴");
 		for (String outlist4 : list)
-			HandPhone.PatternAnalysis(outlist4);
+			Cellphone.PatternAnalysis(outlist4);
 		System.out.println("\n집전화 패턴");
 		for (String outlist5 : list)
 			HousePhone.PatternAnalysis(outlist5);

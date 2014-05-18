@@ -17,13 +17,17 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class DaumSearch {
-	private static final String daum = "http://apis.daum.net/search/web?"; //web검색
+	private static final String daum = "http://apis.daum.net/search/"; //web검색
 	private static final String key = "&apikey=8d960746ca81a14d1fd0fa4b8359ccfb1a1a0fab";
 	private ArrayList<SearchResult> result = new ArrayList<SearchResult>();
 	private String query;
+	private String category;
+	private int limit;
 
-	public DaumSearch(String query) {
+	public DaumSearch(String query, int limit, String category) {
 		this.query = query;
+		this.limit = limit;
+		this.category = category;
 	}
 
 	public ArrayList<SearchResult> getResult() {
@@ -74,11 +78,12 @@ public class DaumSearch {
 	private String buildSearchUrl() {
 		// Required parameters
 		StringBuilder request = new StringBuilder(daum);
+		request.append(category + "?"); // 카테고리 조정
 		request.append("q=" + query);
 		request.append(key);
 
 		// Optional parameters
-		request.append("&result=20");
+		request.append("&result=" + limit); // 검색 제한 수 조정
 
 		
 		System.out.println("다음API XML 주소 : " + request);

@@ -21,9 +21,12 @@ public class NaverSearch {
 	private static final String key = "key=e9f2af290088b3d1d298ced9a41c4263";
 	private ArrayList<SearchResult> result = new ArrayList<SearchResult>();
 	private String query;
-
-	public NaverSearch(String query) {
+	private int limit;
+	private String category;
+	public NaverSearch(String query, int limit, String category) {
 		this.query = query;
+		this.limit = limit;
+		this.category = category;
 	}
 
 	public ArrayList<SearchResult> getResult() {
@@ -82,10 +85,9 @@ public class NaverSearch {
 		request.append(key);
 		request.append("&query=" + query.split("_")[0]);
 		request.append("&ie=utf8");
-		request.append("&target=cafearticle");
-
-		// Optional parameters
-		request.append("&display=10");
+		
+		request.append("&target=" + category); // category 조정
+		request.append("&display=" + limit); // 결과값 제한 조정
 
 		
 		System.out.println("네이버API XML 주소 : " + request);
