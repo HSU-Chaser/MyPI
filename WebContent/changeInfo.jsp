@@ -126,14 +126,16 @@ table,th,tr,td {
 	<%
 		if (c.getCertStatus() == false) {
 	%>
-	<form action="mailCert.jsp" method="post"></form>
+	<form action="mailCert.jsp" method="post" name="certinput">
 	<table>
+	<tr><td>인증코드</td></tr>
 		<tr>
 			<td>인증번호 입력 :</td>
-			<td><input type="text"></td>
-			<td><input type="submit">
+			<td><input type="text" name="cert" id="cert"></td>
+			<td><input type="submit" name ="submit" class ="button junseok9" value="제출">
 		</tr>
 	</table>
+	</form>
 	<%
 		} else {
 	%>

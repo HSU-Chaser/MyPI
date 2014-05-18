@@ -156,12 +156,15 @@ public class LogonDBBean {
 					.prepareStatement("select mail_cert_key from member where email = ?");
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
-
-			if (rs.getString(1) == key) {
+			
+			if(rs.next()){
+				String cert = rs.getString(1);
+			if (cert.equals(key))
 				x = 1;
-			} else {
-				x = -1;
-			}
+			else 
+				x = 0;
+			}else x = -1;
+			
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -184,36 +187,21 @@ public class LogonDBBean {
 		}
 		return x;
 	}
-
-	public int getCertStatus(String email) throws Exception {
+	
+	public void updateCertStatus(String email) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		int x = -1;
 
 		try {
 			conn = getConnection();
 			pstmt = conn
-					.prepareStatement("select mail_cert_status from member where email = ?");
-			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();
-
-			if (rs.getBoolean(1) == true) {
-				x = 1;
-			} else {
-				x = -1;
-			}
-
+					.prepareStatement("update member set mail_cert_status=?");
+			pstmt.setBoolean(1, true);
+			pstmt.executeUpdate();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException ex) {
-				}
 			if (pstmt != null)
 				try {
 					pstmt.close();
@@ -225,7 +213,6 @@ public class LogonDBBean {
 				} catch (SQLException ex) {
 				}
 		}
-		return x;
 	}
 
 	//
@@ -247,6 +234,7 @@ public class LogonDBBean {
 				member = new LogonDataBean();
 				member.setEmail(rs.getString("email"));
 				member.setPassword(rs.getString("password"));
+				member.setCertStatus(rs.getBoolean("mail_cert_status"));
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
