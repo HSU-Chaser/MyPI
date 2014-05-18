@@ -75,6 +75,7 @@ public class GoogleSearch {
 			result.add(searchResult);
 		}
 
+		//최종적으로 만들어진 결과객체 리스트를 전달
 		return result;
 	}
 
@@ -86,9 +87,9 @@ public class GoogleSearch {
 		request.append("&num=10");
 		request.append(key); // API Key
 		request.append(cx); // Custom Search Engine ID
-		request.append("&as_q=&as_epq=" + query.split("_")[0]); // Query
-		request.append("&as_oq=" + query.split("_")[1]);
-		// Optional parameters
+		request.append("&as_q=&as_epq=" + query); // Query
+		
+		request.append("&as_oq=");
 		
 		request.append("&client=google-csbe"); // Search Engine Type
 		request.append("&output=xml_no_dtd"); // Output to XML
@@ -96,6 +97,7 @@ public class GoogleSearch {
 		request.append("&oe=utf-8"); // Output Encoding
 		request.append("&lr=lang_ko");	
 	
+		System.out.println("구글API XML주소 : " + request);
 		return request.toString();
 	}
 

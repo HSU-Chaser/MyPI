@@ -15,12 +15,8 @@ public class SearchTest {
 
 		binding = new BindingWord("tera16@naver.com"); // binding 에 전달
 
-		String searchWord = "";
 
-		ArrayList<SearchResult> result = ranking.getResult(searchWord = binding
-				.getSearchWord());
-
-		System.out.println("검색어 : " + searchWord);
+		ArrayList<SearchResult> result = ranking.getResult(binding.getSearchWord());
 
 		
 		System.out.println("result의 갯수 : " + result.size());

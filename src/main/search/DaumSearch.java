@@ -80,6 +80,8 @@ public class DaumSearch {
 		// Optional parameters
 		request.append("&result=20");
 
+		
+		System.out.println("다음API XML 주소 : " + request);
 		return request.toString();
 	}
 

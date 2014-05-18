@@ -1,6 +1,7 @@
 package main.search;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import main.extending.form.Storage;
 import main.logon.LogonDBBean;
@@ -15,87 +16,78 @@ public class BindingWord {
 		this.memberEmail = memberEmail;
 	}
 
-	public String getSearchWord() {
+	public HashMap<String, String> getSearchWord() {
 
+		HashMap<String, String> keywordMap = null;
+		keywordMap = new HashMap<String, String>();
 		LogonDataBean dataBean;
 		String memberId = memberEmail.split("@")[0];
-		String searchWord = "";
-		ArrayList<String> dbInfo = new ArrayList<String>();
-		String combinedDB = "";
-		ArrayList<String> extendingInfo = new ArrayList<String>();
-		String combinedExtending = "";
-		
-		searchWord = "\"" + memberId + "\"" + "_"; // _는 구분자 역할
-		
+
+		// searchWord = "\"" + memberId + "\"" + "_"; // _는 구분자 역할
+
 		try {
 			dataBean = new LogonDataBean();
 			dataBean = LogonDBBean.getInstance().getMember(memberEmail);
-			
-			//extraInfo는 tinyInt로 default 0, true일때 1을 저장할 것이므로
-			
-			System.out.println("ExtraInfo에 들어있는 값 : " + dataBean.getExtraInfo());
-			System.out.println(Boolean.parseBoolean(dataBean.getExtraInfo()));
-			if(true){
-				
-				dbInfo.add(dataBean.getEmail());
-				
-				if(!dataBean.getBirthday().equals("null")){
-					dbInfo.add(dataBean.getBirthday());
-				}
-				if(!dataBean.getCellphone().equals("null")){
-					dbInfo.add(dataBean.getCellphone());
-				}			
-				if(!dataBean.getHomephone().equals("null")){
-					dbInfo.add(dataBean.getHomephone());
-				}			
-				if(!dataBean.getName().equals("null")){
-					dbInfo.add(dataBean.getName());
-				}
-				if(!dataBean.getOccupation().equals("null")){
-					dbInfo.add(dataBean.getOccupation());
-				}
-				if(!dataBean.getSchool().equals("null")){
-					dbInfo.add(dataBean.getSchool());
-				}
-				if(!dataBean.getSex().equals("null")){
-					dbInfo.add(dataBean.getSex());
-				}
-				
-				for(int i=0; i<dbInfo.size(); i++){
-					combinedDB = combinedDB.concat("|" + dbInfo.get(i));
-				}
-				
-				searchWord = searchWord.concat(combinedDB);
-			}	
+
+			// extraInfo는 tinyInt로 default 0, true일때 1을 저장할 것이므로
+
+			// System.out
+			// .println("ExtraInfo에 들어있는 값 : " + dataBean.getExtraInfo());
+			// System.out.println(Boolean.parseBoolean(dataBean.getExtraInfo()));
+
+			keywordMap.put("memberid", memberId);
+			keywordMap.put("email", dataBean.getEmail());
+
+			if (!dataBean.getBirthday().equals("null")) {
+				keywordMap.put("birthday", dataBean.getBirthday());
+			}
+			if (!dataBean.getCellphone().equals("null")) {
+				keywordMap.put("cellphone", dataBean.getCellphone());
+			}
+			if (!dataBean.getHomephone().equals("null")) {
+				keywordMap.put("homephone", dataBean.getHomephone());
+			}
+			if (!dataBean.getName().equals("null")) {
+				keywordMap.put("name", dataBean.getName());
+			}
+			if (!dataBean.getOccupation().equals("null")) {
+				keywordMap.put("occupation", dataBean.getOccupation());
+			}
+			if (!dataBean.getSchool().equals("null")) {
+				keywordMap.put("school", dataBean.getSchool());
+			}
+			if (!dataBean.getSex().equals("null")) {
+				keywordMap.put("sex", dataBean.getSex());
+			}
+
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+
 		storage = new Storage(memberEmail);
 		storage.execute(); // start the extending algorithm
-		
-		extendingInfo.addAll(Storage.nickNameList);
-		if(!Storage.realName.equals("null")){
-			extendingInfo.add(Storage.realName);
+
+		if (!keywordMap.containsKey("name")) {
+			if (!Storage.realName.equals("null")) {
+				
+				System.out.println("Test : " + Storage.realName);
+				keywordMap.put("name", Storage.realName);
+			}
 		}
-		if(!Storage.realBirthday.equals("null")){
-			extendingInfo.add(Storage.realBirthday);
+		if (!keywordMap.containsKey("birthday")) {
+			if (!Storage.realBirthday.equals("null")) {
+				
+				System.out.println("Test : " + Storage.realBirthday);
+				keywordMap.put("occupation", Storage.realBirthday);
+			}
 		}
-		if(!Storage.realEmail.equals("null")){
-			extendingInfo.add(Storage.realEmail);
+		if ((!Storage.realEmail.equals("null")) && !(Storage.realEmail.equals(memberEmail))) {
+			
+			System.out.println("Test : " + Storage.realEmail);
+			keywordMap.put("email2", Storage.realEmail);
 		}
 
-		System.out.println("extendingInfo의 size : " + extendingInfo.size());
-		
-		for(int i=0; i<extendingInfo.size(); i++){
-			combinedExtending = combinedExtending.concat("|" + extendingInfo.get(i));
-		}
-		
-		searchWord = searchWord.concat(combinedExtending);
-		System.out.println("combinedDB : " + combinedDB + " combinedExtending : " + combinedExtending);
-	
-		return searchWord;
+		return keywordMap;
+
 	}
-
 }

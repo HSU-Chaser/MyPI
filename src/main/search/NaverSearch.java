@@ -87,6 +87,8 @@ public class NaverSearch {
 		// Optional parameters
 		request.append("&display=10");
 
+		
+		System.out.println("네이버API XML 주소 : " + request);
 		return request.toString();
 	}
 
