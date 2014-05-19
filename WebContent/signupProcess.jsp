@@ -17,10 +17,15 @@
 	LogonDBBean manager = LogonDBBean.getInstance();
 	manager.insertMember(member);
 
-	MailService mailService = new MailService();
-	mailService.send("noreply@mypi.co.kr", member.getEmail(),
-			"[MyPI] 회원가입 인증 코드",
-			"회원님의 인증 코드는 <br>" + member.getCertKey() + "<br> 입니다.");
+	// Send Mail
+	String from = "noreply@mypi.co.kr";
+	String to = member.getEmail();
+	String subject = "[MyPI] 회원가입 인증 코드";
+	String content = "회원님의 인증 코드는 <br>" + member.getCertKey()
+			+ "<br> 입니다." + "<br><br> 이 메일은 발신전용 메일입니다.";
 
-	response.sendRedirect("main.jsp");
+	MailService mailService = new MailService();
+	mailService.send(from, to, subject, content);
+
+	response.sendRedirect("index.jsp");
 %>

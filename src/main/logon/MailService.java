@@ -22,15 +22,15 @@ public class MailService {
 		Message msg = new MimeMessage(session);
 		try {
 			// 보내는 이
-			msg.setFrom(new InternetAddress(from, "MyPI"));
+			msg.setFrom(new InternetAddress(from, "MyPI", "UTF-8"));
 			// 제목
 			msg.setSubject(subject);
 			// 받는 이
-			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to, to, "UTF-8"));
 			// 내용
-			msg.setContent(content, "text/html");
+			msg.setContent(content, "text/html; charset=UTF-8");
 			// 헤더
-			msg.setHeader("content-type", "text/html;charset=utf-8");
+			msg.setHeader("Content-Type", "text/html;charset=UTF-8");
 			// 보낸 날짜
 			msg.setSentDate(new Date());
 

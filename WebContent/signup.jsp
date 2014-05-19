@@ -103,7 +103,36 @@ table,tr,td,th {
 
 <body>
 
-	<jsp:include page="/common/header.jsp" />
+	<!-- Header -->
+	<header id="header">
+		<%
+			if (session.getAttribute("memEmail") != null) {
+		%>
+		<script language="JavaScript">
+			location.replace("main.jsp");
+		</script>
+		<%
+			}
+		%>
+		<!-- Nav -->
+
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse"
+						data-target=".nav-collapse"> <span class="icon-bar"> </span> <span
+						class="icon-bar"> </span> <span class="icon-bar"> </span>
+					</a> <a id="logo" class="brand" href="index.jsp"><h1
+							class="junseok1">∑ π</h1></a>
+					<div class="nav-collapse collapse">
+						<ul class="nav pull-right">
+							<li><a style="visibility: hidden">1</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
 
 	<!--  Sign Up -->
 	<section id="login" class="main style4 primary junseok6">
