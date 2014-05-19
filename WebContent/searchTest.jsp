@@ -67,7 +67,7 @@
 			<td align="center"><a href="<%=result.get(i).getURL()%>"
 				target="_blank">링크</a></td>
 			<td align="center"><%=result.get(i).getExposure()%></td>
-			<td align="center"><%=result.get(i).getReliability()%></td>
+			<td align="center"><%=result.get(i).getExposure()%></td>
 			<td><%=result.get(i).getSnippet()%></td>
 
 		</tr>
