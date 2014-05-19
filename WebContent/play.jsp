@@ -2,6 +2,7 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="main.search.MakeObject"%>
 <%@page import="main.search.SearchResult"%>
+<%@page import="main.search.BindingWord" %>
 <%@page import="main.extending.form.Storage"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -109,36 +110,12 @@
 				</tr>
 				<%
 					String memberId = memberEmail.split("@")[0];
-								String nickNameOR = "";
-								Storage storage = new Storage(memberEmail);
-								storage.execute(); //start the extending algorithm	
+								String email = "";
 						
-								for (int i = 0; i < storage.nickNameList.size(); i++) {
-									if (i == storage.nickNameList.size() - 1) {
-										nickNameOR = nickNameOR + storage.nickNameList.get(i);
-										break;
-									}
-									nickNameOR = nickNameOR + storage.nickNameList.get(i)
-											+ "+OR+";
-								}
-						
-								// for google_ search word
-								String searchWord = null;
-								searchWord = "\"" + memberId + "\"" /* + "+OR+" + nickNameOR*/;
-								/* if (!storage.realBirthday.equals("null")) {
-									searchWord = searchWord + "+OR+" + storage.realBirthday;
-								}
-								if (!storage.realEmail.equals("null")) {
-									searchWord = searchWord + "+OR+" + storage.realEmail;
-								}
-								if (!storage.realName.equals("null")) {
-									searchWord = searchWord + "+OR+" + storage.realName;
-								} */
-						
-								System.out.println(searchWord);
-						
-								MakeObject search = new MakeObject();
-								ArrayList<SearchResult> result = search.getResult(searchWord);
+								BindingWord binding = new BindingWord(email);
+								
+								MakeObject makeObject = new MakeObject();
+								ArrayList<SearchResult> result = makeObject.getResult(binding.getSearchWord());
 						
 								for (int i = 0; i < result.size(); i++) {
 				%>

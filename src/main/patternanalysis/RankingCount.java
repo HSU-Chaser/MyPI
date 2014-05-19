@@ -36,9 +36,10 @@ public class RankingCount implements Reliability{
 	private int schoolCount[] = new int[3];
 
 	// private int hobbyCount = 0;
-
 	public void initCount(){
 		
+		System.out.println("TEST : " + "initCount()");
+	
 		for(int i=0; i<3; i++){
 			emailCount[i] = 0;
 			cellphoneCount[i] = 0;
@@ -46,6 +47,7 @@ public class RankingCount implements Reliability{
 			addressCount[i] = 0;
 			residentCount[i] = 0;
 		}
+		
 	}
 	
 	public void countProcess() {
@@ -55,23 +57,39 @@ public class RankingCount implements Reliability{
 		for (int i = 0; i < emailList.size(); i++) {
 
 			if(emailList.get(i).contains(keywordMap.get("email"))){
-				emailCount[ORINAL]++;
+				
+				emailCount[ORIGIN]++;
+				System.out.println(emailCount[ORIGIN]);
 			}
 			else if(keywordMap.containsKey("email2")){
 				if(emailList.get(i).contains(keywordMap.get("email2"))){
-					emailCount[0]++;
+					emailCount[ORIGIN]++;
 				}
 			}
 			else{
-				emailCount[2]++;
+				emailCount[PATTERN]++;
 			}
+			//test
+			System.out.println(emailCount[ORIGIN]);
+			System.out.println(emailCount[PATTERN]);
 		}
 
 		for (int i = 0; i < addressList.size(); i++) {
-
+			
+			
 		}
 		for (int i = 0; i < cellphoneList.size(); i++) {
 
+			if(cellphoneList.get(i).contains(keywordMap.get("cellphone"))){
+				cellphoneCount[ORIGIN]++;
+			}
+			else{
+				cellphoneCount[PATTERN]++;
+			}
+			//test
+			System.out.println(cellphoneCount[ORIGIN]);
+			System.out.println(cellphoneCount[PATTERN]);
+			
 		}
 		for (int i = 0; i < residentList.size(); i++) {
 
@@ -79,7 +97,7 @@ public class RankingCount implements Reliability{
 		for (int i = 0; i < birthdayList.size(); i++) {
 
 		}
-
+		
 	}
 
 	public int[] getHomephoneCount() {

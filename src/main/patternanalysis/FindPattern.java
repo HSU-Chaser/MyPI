@@ -11,8 +11,21 @@ public class FindPattern {
 	public FindPattern(List<String> list) {
 		this.list = list;
 	}
+	
+	public void initList(){
+		
+		RankingCount.emailList.clear();
+		RankingCount.addressList.clear();
+		RankingCount.cellphoneList.clear();
+		RankingCount.residentList.clear();
+		RankingCount.birthdayList.clear();
+		
+	}
 
 	public void find() {
+		
+		initList();
+		
 		System.out.println("주소 패턴");
 		for (String outlist1 : list)
 			Address.PatternAnalysis(outlist1);
@@ -25,23 +38,25 @@ public class FindPattern {
 		System.out.println("\n핸드폰 패턴");
 		for (String outlist4 : list)
 			Cellphone.PatternAnalysis(outlist4);
-		System.out.println("\n집전화 패턴");
-		for (String outlist5 : list)
-			Homephone.PatternAnalysis(outlist5);
-		System.out.println("\nID 패턴");
-		for (String outlist6 : list)
-			ID.PatternAnalysis(outlist6);
-		System.out.println("\n이름 패턴");
-		for (String outlist7 : list)
-			Name.PatternAnalysis(outlist7);
 		System.out.println("\n주민등록번호 패턴");
 		for (String outlist8 : list)
 			ResidentNumber.PatternAnalysis(outlist8);
-		System.out.println("\n학교 패턴");
-		for (String outlist9 : list)
-			School.PatternAnalysis(outlist9);
-		System.out.println("\n취미 패턴");
-		for (String outlist10 : list)
-			Hobby.PatternAnalysis(outlist10);
+		
+//		System.out.println("\n집전화 패턴");
+//		for (String outlist5 : list)
+//			Homephone.PatternAnalysis(outlist5);
+//		System.out.println("\nID 패턴");
+//		for (String outlist6 : list)
+//			ID.PatternAnalysis(outlist6);
+//		System.out.println("\n이름 패턴");
+//		for (String outlist7 : list)
+//			Name.PatternAnalysis(outlist7);
+//		System.out.println("\n학교 패턴");
+//		for (String outlist9 : list)
+//			School.PatternAnalysis(outlist9);
+//		System.out.println("\n취미 패턴");
+//		for (String outlist10 : list)
+//			Hobby.PatternAnalysis(outlist10);
+		
 	}
 }

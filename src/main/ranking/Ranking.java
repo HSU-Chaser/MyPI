@@ -20,7 +20,6 @@ public class Ranking {
 		//먼저, 구글, 네이버, 다음 검색하게 하고
 		result = makeObject.getResult(keywordMap);
 		
-
 		
 		for (int i = 0; i < result.size(); i++) {
 		
@@ -28,23 +27,66 @@ public class Ranking {
 
 			int exposure = 0;
 
-			OpenURL pattern = new OpenURL(sr.getURL());
+			OpenURL openUrl = new OpenURL(sr.getURL());
 			
 			try {
-				pattern.Reader(); 
+				openUrl.urlRead(); 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			calExp = new CalculateExp(keywordMap);
 			// 계산을 해서, exposure를 리턴해줘서 받으면 됨
 			exposure = calExp.getExposure();
+			System.out.println("이 url의 노출도는 : " + exposure);
 			
 			sr.setExposure(exposure);
 			result.set(i, sr);
 		}
-
-		// 정렬
-
+		
+		sortResult();
+		
 		return result;
 	}
+	
+	
+	//quick_sort
+	public void sortResult(){
+		quicksort(result, 0, result.size() - 1);			
+	}
+	
+	public int partition(ArrayList<SearchResult> arr, int left, int right,
+			int pivotIndex) {
+		SearchResult pivotValue = arr.get(pivotIndex);
+		SearchResult tmp = arr.get(pivotIndex);
+		arr.set(pivotIndex, arr.get(right));
+		arr.set(right, tmp);
+
+		int storeIndex = left;
+
+		for (int i = left; i < right; i++) {
+			if (arr.get(i).getExposure() > pivotValue.getExposure()) { // '<'를 ">로 바꿔서 오름차순 정렬완료
+				tmp = arr.get(i);
+				arr.set(i, arr.get(storeIndex));
+				arr.set(storeIndex, tmp);
+				storeIndex++;
+			}
+		}
+		tmp = arr.get(storeIndex);
+		arr.set(storeIndex, arr.get(right));
+		arr.set(right, tmp);
+
+		return storeIndex;
+	}
+
+	public void quicksort(ArrayList<SearchResult> arr, int left, int right) {
+		
+		if (right > left) {
+			int pivotIndex = left + (right - left) / 2;
+			int pivotNewIndex = partition(arr, left, right, pivotIndex);
+			quicksort(arr, left, pivotNewIndex - 1);
+			quicksort(arr, pivotNewIndex + 1, right);
+		}
+		
+	}
+	
 }

@@ -8,9 +8,15 @@ import main.patternanalysis.RankingCount;
 public class Email{
 
 	public static void PatternAnalysis(String file) {
-		// TODO Auto-generated method stub
+
 		Pattern Email = Pattern.compile("[\\w\\~\\-\\.]+@[\\w\\~\\-]+(\\.[\\w\\~\\-]+)+");
+		
 		Matcher  m = Email.matcher(file);
-		while(m.find()) RankingCount.emailList.add(m.group());//System.out.println(m.group());
+	
+		
+		
+		while(m.find()) {
+			RankingCount.emailList.add(m.group());//System.out.println(m.group());
+		}
 	}
 }

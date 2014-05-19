@@ -16,7 +16,7 @@ public class OpenURL {
 		this.url = url;
 	}
 
-	public void Reader() throws IOException {
+	public void urlRead() throws IOException {
 		List<String> list = new ArrayList<String>();
 		BufferedReader br = null;
 
