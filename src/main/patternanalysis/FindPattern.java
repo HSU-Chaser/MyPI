@@ -27,7 +27,7 @@ public class FindPattern {
 			Cellphone.PatternAnalysis(outlist4);
 		System.out.println("\n집전화 패턴");
 		for (String outlist5 : list)
-			HousePhone.PatternAnalysis(outlist5);
+			Homephone.PatternAnalysis(outlist5);
 		System.out.println("\nID 패턴");
 		for (String outlist6 : list)
 			ID.PatternAnalysis(outlist6);

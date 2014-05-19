@@ -11,6 +11,6 @@ public class Cellphone{
 		// TODO Auto-generated method stub
 		Pattern handphone = Pattern.compile("01[016789]+[\\d{3,4}]+[\\d{4}]|01[016789]+[-\\d{3,4}]+[-\\d{4}]|01[016789]+[.\\d{3,4}]+[.\\d{4}]"); //(\\d{3})(\\d{3,4})(\\d{4})
 		Matcher m  = handphone.matcher(file);
-		while(m.find()) RankingCount.handphoneList.add(m.group());//System.out.println(m.group());		
+		while(m.find()) RankingCount.cellphoneList.add(m.group());//System.out.println(m.group());		
 	}
 }
