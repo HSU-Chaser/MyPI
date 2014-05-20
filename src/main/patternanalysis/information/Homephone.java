@@ -7,7 +7,12 @@ public class Homephone{
 
 	public static void PatternAnalysis(String file) {
 		// TODO Auto-generated method stub
-		Pattern homephone = Pattern.compile("0[2-6]{1,2}[0-9-]{3,4}[0-9-]{3,4}|0[2-6]{1,2}\\s[0-9]{3,4}\\s[0-9]{3,4}|0[2-6]{1,2}[0-9]{3,4}[0-9]{3,4}");
+		// 집전화 패턴 xx-xxxx-xxxx 으로 완료
+		Pattern homephone = Pattern.compile("02-[\\d]{3,4}-[\\d]{4}|"
+				  + "03[1-3]-[\\d]{3}-[\\d]{4}|"
+				  + "04[1-3]-[\\d]{3}-[\\d]{4}|"
+				  + "05[1-5]-[\\d]{3}-[\\d]{4}|"
+				  + "06[1-4]-[\\d]{3}-[\\d]{4}");
 		Matcher m = homephone.matcher(file);
 	
 		
