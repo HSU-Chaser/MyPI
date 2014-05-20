@@ -7,7 +7,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import main.extending.form.Search;
-import main.extending.form.Storage;
+import main.extending.form.ExtendedStorage;
 
 public class Cyworld extends Search {
 	public Cyworld() {
@@ -68,18 +68,18 @@ public class Cyworld extends Search {
 					storage.exposureUrlList
 							.add("http://minihp.cyworld.com/pims/main/pims_main.asp?tid="
 									+ tid);
-					Storage.realName = realName;
+					ExtendedStorage.realName = realName;
 
 				}
 				if (list.get(i).contains("mailto")) {
 					email = list.get(i).split(":")[1].replace('"', '!').split(
 							"!")[0];
-					Storage.realEmail = email;
+					ExtendedStorage.realEmail = email;
 				}
 
 				if (list.get(i).contains("생년월일")) {
 					birthday = list.get(i).split(">")[4].split("<")[0];
-					Storage.realBirthday = birthday;
+					ExtendedStorage.realBirthday = birthday;
 				}
 
 				if (list.get(i).contains("미니홈피 주소")) { // 주소 뒷부분에 코어한 정보가 많아서

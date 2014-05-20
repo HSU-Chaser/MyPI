@@ -17,11 +17,12 @@ public class RankingCount implements Reliability{
 	}
 
 	// deterministic list
-	public static List<String> emailList = new ArrayList<String>();
-	public static List<String> addressList = new ArrayList<String>();
-	public static List<String> cellphoneList = new ArrayList<String>();
-	public static List<String> residentList = new ArrayList<String>();
-	public static List<String> birthdayList = new ArrayList<String>();
+	public static ArrayList<String> emailList = new ArrayList<String>();
+	public static ArrayList<String> addressList = new ArrayList<String>();
+	public static ArrayList<String> cellphoneList = new ArrayList<String>();
+	public static ArrayList<String> residentList = new ArrayList<String>();
+	public static ArrayList<String> birthdayList = new ArrayList<String>();
+	public static ArrayList<String> homephoneList = new ArrayList<String>();
 
 	private int emailCount[] = new int[3];
 	private int cellphoneCount[] = new int[3];
@@ -41,6 +42,7 @@ public class RankingCount implements Reliability{
 		System.out.println("TEST : " + "initCount()");
 	
 		for(int i=0; i<3; i++){
+			
 			emailCount[i] = 0;
 			cellphoneCount[i] = 0;
 			birthdayCount[i] = 0;
@@ -59,7 +61,7 @@ public class RankingCount implements Reliability{
 			if(emailList.get(i).contains(keywordMap.get("email"))){
 				
 				emailCount[ORIGIN]++;
-				System.out.println(emailCount[ORIGIN]);
+//				System.out.println(emailCount[ORIGIN]);
 			}
 			else if(keywordMap.containsKey("email2")){
 				if(emailList.get(i).contains(keywordMap.get("email2"))){
@@ -70,12 +72,21 @@ public class RankingCount implements Reliability{
 				emailCount[PATTERN]++;
 			}
 			//test
-			System.out.println(emailCount[ORIGIN]);
-			System.out.println(emailCount[PATTERN]);
+//			System.out.println(emailCount[ORIGIN]);
+//			System.out.println(emailCount[PATTERN]);
 		}
 
 		for (int i = 0; i < addressList.size(); i++) {
 			
+			if(addressList.get(i).contains(keywordMap.get("address"))){
+				addressCount[ORIGIN]++;
+			}
+			else{
+				addressCount[PATTERN]++;
+			}
+			//test
+//			System.out.println(addressCount[ORIGIN]);
+//			System.out.println(addressCount[PATTERN]);
 			
 		}
 		for (int i = 0; i < cellphoneList.size(); i++) {
@@ -87,19 +98,36 @@ public class RankingCount implements Reliability{
 				cellphoneCount[PATTERN]++;
 			}
 			//test
-			System.out.println(cellphoneCount[ORIGIN]);
-			System.out.println(cellphoneCount[PATTERN]);
-			
+//			System.out.println(cellphoneCount[ORIGIN]);
+//			System.out.println(cellphoneCount[PATTERN]);
+//			
 		}
 		for (int i = 0; i < residentList.size(); i++) {
-
+			if(residentList.get(i).contains(keywordMap.get("resident"))){
+				residentCount[ORIGIN]++;
+			}
+			else{
+				residentCount[PATTERN]++;
+			}
+			//test
+//			System.out.println(residentCount[ORIGIN]);
+//			System.out.println(residentCount[PATTERN]);
 		}
 		for (int i = 0; i < birthdayList.size(); i++) {
-
+			if(birthdayList.get(i).contains(keywordMap.get("birthday"))){
+				birthdayCount[ORIGIN]++;
+			}
+			else{
+				birthdayCount[PATTERN]++;
+			}
+			//test
+//			System.out.println(birthdayCount[ORIGIN]);
+//			System.out.println(birthdayCount[PATTERN]);
 		}
 		
 	}
 
+	
 	public int[] getHomephoneCount() {
 
 		return homephoneCount;

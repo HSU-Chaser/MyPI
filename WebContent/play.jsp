@@ -3,7 +3,7 @@
 <%@page import="main.search.MakeObject"%>
 <%@page import="main.search.SearchResult"%>
 <%@page import="main.search.BindingWord" %>
-<%@page import="main.extending.form.Storage"%>
+<%@page import="main.extending.form.ExtendedStorage"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

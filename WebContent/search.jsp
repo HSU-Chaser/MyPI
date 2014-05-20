@@ -2,7 +2,7 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="main.search.MakeObject"%>
 <%@page import="main.search.SearchResult"%>
-<%@page import="main.extending.form.Storage"%>
+<%@page import="main.extending.form.ExtendedStorage"%>
 <%@page import="main.search.BindingWord"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

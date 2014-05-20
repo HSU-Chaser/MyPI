@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 abstract public class Search {
 
-	protected static Storage storage = new Storage("");
+	protected static ExtendedStorage storage = new ExtendedStorage("");
 
 	private String basicForm;
 	private String nickName;

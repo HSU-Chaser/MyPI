@@ -17,10 +17,7 @@ public class Homephone{
 	
 		
 		
-		
-		
-		
-		//	while(m.find()) System.out.println(m.group());
+			while(m.find()) System.out.println(m.group());
 	}
 
 }

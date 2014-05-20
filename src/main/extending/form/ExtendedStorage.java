@@ -15,7 +15,7 @@ import main.extending.Tistory;
 import main.extending.TodayHumor;
 import main.extending.Twitter;
 
-public class Storage {
+public class ExtendedStorage {
 
 	public static ArrayList<String> nickNameList = null;
 	public static ArrayList<String> imgUrlList = null;
@@ -27,7 +27,7 @@ public class Storage {
 	private String clientId;
 	private String clientEmail;
 
-	public Storage(String clientEmail) {
+	public ExtendedStorage(String clientEmail) {
 		this.clientEmail = clientEmail;
 		clientId = this.clientEmail.split("@")[0];
 		init();

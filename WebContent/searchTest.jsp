@@ -2,7 +2,7 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="main.search.MakeObject"%>
 <%@page import="main.search.SearchResult"%>
-<%@page import="main.extending.form.Storage"%>
+<%@page import="main.extending.form.ExtendedStorage"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -27,7 +27,7 @@
 			String memberId = memberEmail.split("@")[0];
 			String nickNameOR = "";
 
-			Storage storage = new Storage(memberEmail);
+			ExtendedStorage storage = new ExtendedStorage(memberEmail);
 			storage.execute(); //start the extending algorithm	
 
 			for (int i = 0; i < storage.nickNameList.size(); i++) {

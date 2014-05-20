@@ -3,14 +3,14 @@ package main.search;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import main.extending.form.Storage;
+import main.extending.form.ExtendedStorage;
 import main.logon.LogonDBBean;
 import main.logon.LogonDataBean;
 
 public class BindingWord {
 
 	String memberEmail = "";
-	Storage storage;
+	ExtendedStorage storage;
 
 	public BindingWord(String memberEmail) {
 		this.memberEmail = memberEmail;
@@ -60,27 +60,27 @@ public class BindingWord {
 			e.printStackTrace();
 		}
 
-		storage = new Storage(memberEmail);
+		storage = new ExtendedStorage(memberEmail);
 		storage.execute(); // start the extending algorithm
 
 		if (!keywordMap.containsKey("name")) {
-			if (!Storage.realName.equals("null")) {
+			if (!ExtendedStorage.realName.equals("null")) {
 				
-				System.out.println("Test : " + Storage.realName);
-				keywordMap.put("name", Storage.realName);
+				System.out.println("Test : " + ExtendedStorage.realName);
+				keywordMap.put("name", ExtendedStorage.realName);
 			}
 		}
 		if (!keywordMap.containsKey("birthday")) {
-			if (!Storage.realBirthday.equals("null")) {
+			if (!ExtendedStorage.realBirthday.equals("null")) {
 				
-				System.out.println("Test : " + Storage.realBirthday);
-				keywordMap.put("occupation", Storage.realBirthday);
+				System.out.println("Test : " + ExtendedStorage.realBirthday);
+				keywordMap.put("occupation", ExtendedStorage.realBirthday);
 			}
 		}
-		if ((!Storage.realEmail.equals("null")) && !(Storage.realEmail.equals(memberEmail))) {
+		if ((!ExtendedStorage.realEmail.equals("null")) && !(ExtendedStorage.realEmail.equals(memberEmail))) {
 			
-			System.out.println("Test : " + Storage.realEmail);
-			keywordMap.put("email2", Storage.realEmail);
+			System.out.println("Test : " + ExtendedStorage.realEmail);
+			keywordMap.put("email2", ExtendedStorage.realEmail);
 		}
 
 		return keywordMap;
