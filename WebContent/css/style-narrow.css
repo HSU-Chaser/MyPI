@@ -35,4 +35,11 @@
 /* junseok_add                                                                */
 /*********************************************************************************/
 
-
+.container.small {
+	width: 900px;
+}
+/*Sign in, Sing up control*/
+#button1 {
+    width: 80%;
+    height: 53%;
+}

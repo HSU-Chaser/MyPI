@@ -30,6 +30,9 @@
 .navbar .btn.btn-navbar {
 	display: none;
 }
+table, tr, th, td {
+	border: 1px solid red;
+}
 </style>
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
@@ -87,22 +90,25 @@
 						<tr>
 							<td rowspan="3" class="MyPI_destribute"><img
 								class="test_img" src="images/fulls/02.jpg"></td>
-							<td colspan="2"><input type="text" id="fid" name="fid"
-								class="color" placeholder="ID" /><br> <input
-								type="password" id="fpass" name="fpass" class="color"
-								placeholder="Password" /></td>
+							<td colspan="3"><input type="text" id="fid" name="fid"
+								class="color font_HYNAML" placeholder="이메일" /> <input
+								type="password" id="fpass" name="fpass" class="color font_HYNAML"
+								placeholder="비밀번호" /></td>
+							<td><input type="submit"
+								class="button junseok5 font_HYNAML" id="button1" value=" 로그인  " />
+							</td>
 						</tr>
 						<tr>
-							<td id="button1"><input type="submit"
-								class="button junseok5" value="  Sign  in  " /></td>
-							<td id="button2"><input type="button"
-								class="button junseok5" value="  Sign  up "
-								onclick="location.href='signup.jsp' " /></td>
+							<td colspan="4">
+								<span style="color: white;" class="font_HYNAML">MyPI가 처음이신가요? </span>
+								<input type="button" class="button junseok5 font_HYNAML" id="button2" value=" 회원 가입 "
+								onclick="location.href='signup.jsp' " />
+							</td>
 						</tr>
 						<tr>
-							<td colspan="2">
-								<p style="color: white;">Lost your ID or Password??</p> <input
-								type="button" class="button junseok5" value="  Find Info  "
+							<td colspan="4">
+								<span style="color: white;" class="font_HYNAML">비밀번호를 잊으셨나요?</span>
+								<input type="button" class="button junseok5 font_HYNAML" id="button3" value=" 비밀번호 찾기  "
 								onclick="location.href='main.jsp' " />
 							</td>
 						</tr>
