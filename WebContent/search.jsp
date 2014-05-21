@@ -24,19 +24,19 @@
 		$.ajax({
 			type : "POST",
 			url : "./searchProcess.jsp",
-			success : function(resultText) {
-				$('#loading').hide();
-				$('#result').html(resultText);
+			success : function(result) {
+				$('#result').html(result);
 			},
 			error : function() {
 				$('#result').html("서버 오류입니다.");
 			},
 			beforeSend : function() {
-				$('#result').hide();
-				$('#loading').show();
+				$('#information').hide();
+				$('#loading').fadeIn(1000);
 			},
 			complete : function() {
-				$('#result').show();
+				$('#loading').hide();
+				$('#result').fadeIn(1000);
 			}
 		});
 	}
@@ -60,13 +60,13 @@
 				<img src="/MyPI/css/images/ajax-loader.gif"> <br>
 				로딩중입니다...<br> <br>
 			</div>
-
-			<div id="result">
+			<div id="information">
 				회원정보를 추가하시면 검색결과 정확도가 높아집니다.
 				<form name="search">
-					<input type="button" value="검색" onclick="LoadData()"><br>
+					<input class="button" type="button" value="검색" onclick="LoadData()"><br>
 				</form>
 			</div>
+			<div id="result" style="display: none"></div>
 
 
 		</div>

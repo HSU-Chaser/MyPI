@@ -11,7 +11,8 @@ import javax.mail.internet.MimeMessage;
 import com.sun.mail.smtp.SMTPTransport;
 
 public class MailService {
-	public void send(String from, String to, String subject, String content) {
+	public static boolean send(String from, String to, String subject,
+			String content) {
 		// JavaMail Session
 		Properties props = System.getProperties();
 		props.put("mail.smtp.host", "mypi.co.kr");
@@ -26,7 +27,8 @@ public class MailService {
 			// 제목
 			msg.setSubject(subject);
 			// 받는 이
-			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to, to, "UTF-8"));
+			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to,
+					to, "UTF-8"));
 			// 내용
 			msg.setContent(content, "text/html; charset=UTF-8");
 			// 헤더
@@ -42,7 +44,8 @@ public class MailService {
 			transport.sendMessage(msg, msg.getAllRecipients());
 			transport.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 }

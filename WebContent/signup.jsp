@@ -14,7 +14,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
-
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.poptrox.min.js"></script>
 <script src="js/skel.min.js"></script>
@@ -38,7 +37,7 @@ table,tr,td,th {
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
-<script language="javascript">
+<script type="text/javascript">
 	function checkIt() {
 		var userinput = eval("document.userinput");
 		var checkemail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
@@ -62,7 +61,6 @@ table,tr,td,th {
 			alert("입력하신 Password와 Check Password가 일치하지 않습니다.");
 			return false;
 		}
-
 	}
 
 	/*
@@ -75,8 +73,7 @@ table,tr,td,th {
 	/^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,12}/
 	 */
 
-	// 이메일 중복 여부를 판단
-	function openConfirmEmail(userinput) {
+	function ConfirmEmail(userinput) {
 		var checkemail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		// 이메일을 입력했는지 검사
 		if (userinput.email.value == "") {
@@ -87,28 +84,43 @@ table,tr,td,th {
 			alert("Email 형식이 올바르지 않습니다.");
 			userinput.email.focus();
 			return false;
+		} else {
+			$.ajax({
+				type : "GET",
+				data : userinput,
+				url : "./confirmEmail.jsp?email=" + userinput,
+				success : function(result) {
+					alert(result);
+				},
+				error : function() {
+					alert("서버 오류");
+				}
+			});
 		}
-		// url과 사용자 입력 아이디를 조합합니다.
-		//url = "confirmEmail.jsp?id=" + userinput.email.value;
-		// 새로운 윈도우를 엽니다.
-		userinput.target = "email";
-		userinput.action = "confirmEmail.jsp";
-		open("confirmEmail.jsp", "email",
-				"toolbar = no, location = no, status = no,"
-						+ "menubar = no, scrollbars = no, resizable = no,"
-						+ "width = 300, height=200");
-		userinput.submit();
+	}
+
+	function ConfirmCertKey(userinput) {
+		$.ajax({
+			type : "POST",
+			data : userinput,
+			url : "./mailCert.jsp",
+			success : function() {
+
+			},
+			error : function() {
+				alert("서버 오류");
+			}
+		});
 	}
 </script>
 
 <body>
-
 	<!-- Header -->
 	<header id="header">
 		<%
 			if (session.getAttribute("memEmail") != null) {
 		%>
-		<script language="JavaScript">
+		<script type="text/javascript">
 			location.replace("main.jsp");
 		</script>
 		<%
@@ -144,41 +156,48 @@ table,tr,td,th {
 					<table cellspacing="5" cellpadding="5" align="center">
 						<tr>
 							<td colspan="3" align="center" class="junseok7"
-								style="font-size: 3em;">Sign Up</td>
+								style="font-size: 3em;">회원가입</td>
 						</tr>
 						<tr>
-							<td class="junseok7">User E-Mail</td>
+							<td class="junseok7">이메일</td>
 							<td class="junseok8"><input type="text" name="email"
 								id="email" class="color" size="10" maxlength="35"
 								placeholder="Email"></td>
 							<td class="junseok8"><input type="button"
-								name="confirm_email" value=" Double Check "
-								class="button junseok9" onclick="openConfirmEmail(this.form)">
-							</td>
+								name="confirm_email" value=" 중복 확인 " class="button junseok9"
+								onclick="ConfirmEmail(this.form.email)"></td>
+						</tr>
+						<tr id="cert" style="display: none">
+							<td class="junseok7">인증키 입력</td>
+							<td class="junseok8"><input type="text" name="certkey"
+								id="certkey" class="color" size="15" maxlength="12"
+								placeholder="인증키"></td>
+							<td class="junseok8"><input type="button"
+								name="confirm_certkey" value=" 인증 " class="button junseok9"
+								onclick="ConfirmCertKey(this.form.certkey)"></td>
 						</tr>
 						<tr>
-							<td class="junseok7">Password</td>
+							<td class="junseok7">비밀번호</td>
 							<td class="junseok8"><input type="password" name="password"
 								id="password" class="color" size="15" maxlength="12"
-								placeholder="Password"></td>
+								placeholder="비밀번호"></td>
 							<td></td>
 						</tr>
 						<tr>
-							<td class="junseok7">Check Password</td>
+							<td class="junseok7">비밀번호 확인</td>
 							<td class="junseok8"><input type="password" name="password2"
 								id="password2" class="color" size="15" maxlength="12"
-								placeholder="Check Password"></td>
+								placeholder="비밀번호 확인"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td class="junseok7" align="center"><input type="submit"
-								name="confirm" class="button junseok9" value=" Confirm ">
-							</td>
+								name="confirm" class="button junseok9" value=" 회원가입 "></td>
 							<td class="junseok7" align="center" id="reset"><input
 								type="reset" name="reset" class="button junseok9"
-								value=" ReEnter "></td>
+								value=" 입력 초기화 "></td>
 							<td class="junseok7" align="center"><input type="button"
-								class="button junseok5" value=" Cancel "
+								class="button junseok5" value=" 가입취소 "
 								onclick="javascript:window.location='index.jsp'"></td>
 						</tr>
 					</table>

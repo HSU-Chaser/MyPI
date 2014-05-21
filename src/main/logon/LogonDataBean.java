@@ -1,7 +1,7 @@
 package main.logon;
 
 public class LogonDataBean {
-	
+
 	private String email;
 	private String password;
 	private String certKey;
@@ -12,8 +12,7 @@ public class LogonDataBean {
 	}
 
 	public void setCertKey() {
-		Encryptor encryptor = new Encryptor();
-		this.certKey = encryptor.encryptMD5();
+		this.certKey = Encryptor.encryptMD5();
 	}
 
 	public boolean getCertStatus() {
@@ -113,8 +112,7 @@ public class LogonDataBean {
 
 	// 로그인 암호화
 	public void setPassword(String password) {
-		Encryptor encryptor = new Encryptor();
-		this.password = encryptor.encryptSHA(password);
+		this.password = Encryptor.encryptSHA(password);
 	}
 
 	public String getExtraInfo() {

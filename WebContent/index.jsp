@@ -45,7 +45,7 @@ table, tr, th, td {
 		<%
 			if (session.getAttribute("memEmail") != null) {
 		%>
-		<script language="JavaScript">
+		<script type="text/javascript" >
 			location.replace("main.jsp");
 		</script>
 		<%

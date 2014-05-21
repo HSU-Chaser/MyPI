@@ -7,7 +7,7 @@
 <title>회원정보수정</title>
 </head>
 <link href="style.css" rel="stylesheet" type="text/css">
-<script language="javascript">
+<script type="text/javascript">
 <!--
 	function checkIt() {
 		var userinput = eval("document.userinput");
