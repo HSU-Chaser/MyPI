@@ -14,6 +14,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.poptrox.min.js"></script>
 <script src="js/skel.min.js"></script>
@@ -30,14 +31,14 @@
 }
 
 table,tr,td,th {
-	border: 1px solid white;
+	border: 3px solid white;
 }
 </style>
 
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
-<script type="text/javascript">
+<script language="javascript">
 	function checkIt() {
 		var userinput = eval("document.userinput");
 		var checkemail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
@@ -64,13 +65,13 @@ table,tr,td,th {
 	}
 
 	/*
-	비밀번호 체크패턴
-	패턴1(영대/소문자,숫자 및 특수문자 조합 비밀번호 6자리이상 16자리이하체크)
-	/^.*(?=^.{6,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/
-	패턴2(영대/소문자,숫자 조합 비밀번호 )
-	/^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$)/
-	패턴3(이게좀더 정확한듯)
-	/^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,12}/
+	 비밀번호 체크패턴
+	 패턴1(영대/소문자,숫자 및 특수문자 조합 비밀번호 6자리이상 16자리이하체크)
+	 /^.*(?=^.{6,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/
+	 패턴2(영대/소문자,숫자 조합 비밀번호 )
+	 /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$)/
+	 패턴3(이게좀더 정확한듯)
+	 /^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,12}/
 	 */
 
 	function ConfirmEmail(userinput) {
@@ -115,12 +116,13 @@ table,tr,td,th {
 </script>
 
 <body>
+
 	<!-- Header -->
 	<header id="header">
 		<%
 			if (session.getAttribute("memEmail") != null) {
 		%>
-		<script type="text/javascript">
+		<script language="JavaScript">
 			location.replace("main.jsp");
 		</script>
 		<%
@@ -155,49 +157,52 @@ table,tr,td,th {
 					onSubmit="return checkIt()">
 					<table cellspacing="5" cellpadding="5" align="center">
 						<tr>
-							<td colspan="3" align="center" class="junseok7"
-								style="font-size: 3em;">회원가입</td>
+							<td colspan="3" align="center" class="junseok7 font_HYNAML"
+								style="font-size: 2em;">회원 가입</td>
 						</tr>
 						<tr>
-							<td class="junseok7">이메일</td>
+							<td class="junseok7 font_HYNAML">계정 이메일</td>
 							<td class="junseok8"><input type="text" name="email"
-								id="email" class="color" size="10" maxlength="35"
-								placeholder="Email"></td>
+								id="email" class="color font_HYNAML" size="10" maxlength="35"
+								placeholder="이메일"></td>
 							<td class="junseok8"><input type="button"
-								name="confirm_email" value=" 중복 확인 " class="button junseok9"
-								onclick="ConfirmEmail(this.form.email)"></td>
-						</tr>
-						<tr id="cert" style="display: none">
-							<td class="junseok7">인증키 입력</td>
-							<td class="junseok8"><input type="text" name="certkey"
-								id="certkey" class="color" size="15" maxlength="12"
-								placeholder="인증키"></td>
-							<td class="junseok8"><input type="button"
-								name="confirm_certkey" value=" 인증 " class="button junseok9"
-								onclick="ConfirmCertKey(this.form.certkey)"></td>
+								name="confirm_email" value=" 메일 인증 "
+								class="button junseok9 font_HYNAML"
+								onblur="openConfirmEmail(this.form)"></td>
 						</tr>
 						<tr>
-							<td class="junseok7">비밀번호</td>
+							<td class="junseok7 font_HYNAML">이메일 인증</td>
+							<td class="junseok8"><input type="text" name="email"
+								id="email" class="color font_HYNAML" size="10" maxlength="35"
+								placeholder="인증코드"></td>
+							<td class="junseok8"><input type="button"
+								name="confirm_email" value=" 인증 확인 "
+								class="button junseok9 font_HYNAML"
+								onclick="openConfirmEmail(this.form)"></td>
+						</tr>
+						<tr>
+							<td class="junseok7 font_HYNAML">비밀번호</td>
 							<td class="junseok8"><input type="password" name="password"
-								id="password" class="color" size="15" maxlength="12"
+								id="password" class="color font_HYNAML" size="15" maxlength="12"
 								placeholder="비밀번호"></td>
 							<td></td>
 						</tr>
 						<tr>
-							<td class="junseok7">비밀번호 확인</td>
+							<td class="junseok7 font_HYNAML">비밀번호 확인</td>
 							<td class="junseok8"><input type="password" name="password2"
-								id="password2" class="color" size="15" maxlength="12"
-								placeholder="비밀번호 확인"></td>
+								id="password2" class="color font_HYNAML" size="15"
+								maxlength="12" placeholder="비밀번호 확인"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td class="junseok7" align="center"><input type="submit"
-								name="confirm" class="button junseok9" value=" 회원가입 "></td>
+								name="confirm" class="button junseok9 font_HYNAML"
+								value=" 회원가입 "></td>
 							<td class="junseok7" align="center" id="reset"><input
-								type="reset" name="reset" class="button junseok9"
-								value=" 입력 초기화 "></td>
+								type="reset" name="reset" class="button junseok9 font_HYNAML"
+								value=" 다시입력하기 "></td>
 							<td class="junseok7" align="center"><input type="button"
-								class="button junseok5" value=" 가입취소 "
+								class="button junseok5 font_HYNAML" value=" 취소 "
 								onclick="javascript:window.location='index.jsp'"></td>
 						</tr>
 					</table>

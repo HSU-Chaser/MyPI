@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -11,9 +11,9 @@
 <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 <!--bootstrap-->
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css"
-	media="screen" title="no title" charset="utf-8" />
+   media="screen" title="no title" charset="utf-8" />
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+   src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 
 <script src="js/jquery.min.js"></script>
@@ -21,17 +21,14 @@
 <script src="js/skel.min.js"></script>
 <script src="js/init.js"></script>
 <noscript>
-	<link rel="stylesheet" href="css/skel-noscript.css" />
-	<link rel="stylesheet" href="css/style.css" />
+   <link rel="stylesheet" href="css/skel-noscript.css" />
+   <link rel="stylesheet" href="css/style.css" />
 </noscript>
 
 <style type="text/css" media="screen">
 /*index Page button remove*/
 .navbar .btn.btn-navbar {
-	display: none;
-}
-table, tr, th, td {
-	border: 1px solid red;
+   display: none;
 }
 </style>
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
@@ -40,84 +37,84 @@ table, tr, th, td {
 
 <body>
 
-	<!-- Header -->
-	<header id="header">
-		<%
-			if (session.getAttribute("memEmail") != null) {
-		%>
-		<script type="text/javascript" >
-			location.replace("main.jsp");
-		</script>
-		<%
-			}
-		%>
-		<!-- Nav -->
+   <!-- Header -->
+   <header id="header">
+      <%
+         if (session.getAttribute("memEmail") != null) {
+      %>
+      <script language="JavaScript">
+         location.replace("main.jsp");
+      </script>
+      <%
+         }
+      %>
+      <!-- Nav -->
 
-		<div class="navbar">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="btn btn-navbar" data-toggle="collapse"
-						data-target=".nav-collapse"> <span class="icon-bar"> </span> <span
-						class="icon-bar"> </span> <span class="icon-bar"> </span>
-					</a> <a id="logo" class="brand" href="index.jsp"><h1
-							class="junseok1">∑ π</h1></a>
-					<div class="nav-collapse collapse">
-						<ul class="nav pull-right">
-							<li><a style="visibility: hidden">1</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+      <div class="navbar">
+         <div class="navbar-inner">
+            <div class="container">
+               <a class="btn btn-navbar" data-toggle="collapse"
+                  data-target=".nav-collapse"> <span class="icon-bar"> </span> <span
+                  class="icon-bar"> </span> <span class="icon-bar"> </span>
+               </a> <a id="logo" class="brand" href="index.jsp"><h1
+                     class="junseok1">∑ π</h1></a>
+               <div class="nav-collapse collapse">
+                  <ul class="nav pull-right">
+                     <li><a style="visibility: hidden">1</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
 
-	<!--  Login -->
-	<section id="login" class="main style4 primary junseok2">
-		<div class="content container">
+   <!--  Login -->
+   <section id="login" class="main style4 primary junseok2">
+      <div class="content container">
 
-			<div class="box container small junseok4">
-				<!--
-							 Contact Form
-							 
-							 To get this working, place a script on your server to receive the form data, then
-							 point the "action" attribute to it (eg. action="http://mydomain.tld/mail.php").
-							 More on how it all works here: http://www.1stwebdesigner.com/tutorials/custom-php-contact-forms/
-						-->
+         <div class="box container small junseok4">
+            <!--
+                      Contact Form
+                      
+                      To get this working, place a script on your server to receive the form data, then
+                      point the "action" attribute to it (eg. action="http://mydomain.tld/mail.php").
+                      More on how it all works here: http://www.1stwebdesigner.com/tutorials/custom-php-contact-forms/
+                  -->
 
 
-				<form action="signinProcess.jsp" method="post">
-					<table cellspacing="5" cellpadding="5">
-						<tr>
-							<td rowspan="3" class="MyPI_destribute"><img
-								class="test_img" src="images/fulls/02.jpg"></td>
-							<td colspan="3"><input type="text" id="fid" name="fid"
-								class="color font_HYNAML" placeholder="이메일" /> <input
-								type="password" id="fpass" name="fpass" class="color font_HYNAML"
-								placeholder="비밀번호" /></td>
-							<td><input type="submit"
-								class="button junseok5 font_HYNAML" id="button1" value=" 로그인  " />
-							</td>
-						</tr>
-						<tr>
-							<td colspan="4">
-								<span style="color: white;" class="font_HYNAML">MyPI가 처음이신가요? </span>
-								<input type="button" class="button junseok5 font_HYNAML" id="button2" value=" 회원 가입 "
-								onclick="location.href='signup.jsp' " />
-							</td>
-						</tr>
-						<tr>
-							<td colspan="4">
-								<span style="color: white;" class="font_HYNAML">비밀번호를 잊으셨나요?</span>
-								<input type="button" class="button junseok5 font_HYNAML" id="button3" value=" 비밀번호 찾기  "
-								onclick="location.href='main.jsp' " />
-							</td>
-						</tr>
-					</table>
-				</form>
+            <form action="signinProcess.jsp" method="post">
+               <table cellspacing="5" cellpadding="5">
+                  <tr>
+                     <td rowspan="3" class="MyPI_destribute"><img
+                        class="test_img" src="images/fulls/02.jpg"></td>
+                     <td colspan="3"><input type="text" id="fid" name="fid"
+                        class="color font_HYNAML" placeholder="이메일" /> <input
+                        type="password" id="fpass" name="fpass" class="color font_HYNAML"
+                        placeholder="비밀번호" /></td>
+                     <td><input type="submit"
+                        class="button junseok5 font_HYNAML" id="button1" value=" 로그인  " />
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="4">
+                        <span style="color: white;" class="font_HYNAML">MyPI가 처음이신가요? </span>
+                        <input type="button" class="button junseok5 font_HYNAML" id="button2" value=" 회원 가입 "
+                        onclick="location.href='signup.jsp' " />
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="4" style="padding-bottom: 4%;">
+                        <span style="color: white;" class="font_HYNAML">비밀번호를 잊으셨나요?</span>
+                        <input type="button" class="button junseok5 font_HYNAML" id="button3" value=" 비밀번호 찾기  "
+                        onclick="location.href='main.jsp' " />
+                     </td>
+                  </tr>
+               </table>
+            </form>
 
-			</div>
-		</div>
-	</section>
-	<jsp:include page="/common/footer.jsp" />
+         </div>
+      </div>
+   </section>
+   <jsp:include page="/common/footer.jsp" />
 </body>
 </html>
