@@ -20,72 +20,26 @@
 <script src="js/skel.min.js"></script>
 <script src="js/init.js"></script>
 <script type="text/javascript">
-	/* 	var xhr = null;
-
-	 function getXMLHttpRequest() {
-	 if (window.ActiveXObject) {
-	 try {
-	 return new ActiveXObject("Msxml2.XMLHTTP");
-	 } catch (e1) {
-	 try {
-	 return new ActiveXObject("Microsoft.XMLHTTP");
-	 } catch (e2) {
-	 return null;
-	 }
-	 }
-	 } else if (window.XMLHttpRequest) {
-	 return new XMLHttpRequest();
-	 } else {
-	 return null;
-	 }
-	 }
-
-	 function requestResult(URL) {
-	 xhr = getXMLHttpRequest();
-	 xhr.onreadystatechange = responseResult;
-	 xhr.open("POST", URL, true);
-	 xhr.send(null);
-	 }
-
-	 function responseResult() {
-	 if (xhr.readyState == 4) {
-	 var str = xhr.responseText;
-	 document.getElementById("result").innerHTML = str;
-	 } else {
-	 alert(!"Fail : " + httpRequest.status);
-	 }
-	 } */
-	function fLoadData() {
+	function LoadData() {
 		$.ajax({
 			type : "POST",
 			url : "./searchProcess.jsp",
-			data : "",
 			success : function(resultText) {
+				$('#loading').hide();
 				$('#result').html(resultText);
 			},
 			error : function() {
-				alert("Error.");
+				$('#result').html("서버 오류입니다.");
+			},
+			beforeSend : function() {
+				$('#result').hide();
+				$('#loading').show();
+			},
+			complete : function() {
+				$('#result').show();
 			}
 		});
 	}
-
-	$(document).ready(function($) {
-		$('#loading').hide();
-
-		$('#loading').ajaxStart(function() {
-			$('#loading').css('position', 'absolute');
-			$('#loading').css('left', $('#result').offset().left);
-			$('#loading').css('top', $('#result').offset().top);
-			$('#loading').css('width', $('#result').css('width'));
-			$('#loading').css('height', $('#result').css('height'));
-
-			//$(this).show();
-			$(this).fadeIn(500);
-		}).ajaxStop(function() {
-			//$(this).hide();
-			$(this).fadeOut(500);
-		});
-	});
 </script>
 <noscript>
 	<link rel="stylesheet" href="css/skel-noscript.css" />
@@ -102,14 +56,15 @@
 	<section id="contact" class="main style3 secondary">
 		<div class="content container">
 
-			<div id="loading">
-				<img src="/MyPI/css/images/loader.gif">
+			<div id="loading" style="display: none">
+				<img src="/MyPI/css/images/ajax-loader.gif"> <br>
+				로딩중입니다...<br> <br>
 			</div>
 
 			<div id="result">
 				회원정보를 추가하시면 검색결과 정확도가 높아집니다.
 				<form name="search">
-					<input type="button" value="검색" onclick="fLoadData()">
+					<input type="button" value="검색" onclick="LoadData()"><br>
 				</form>
 			</div>
 

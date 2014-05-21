@@ -25,13 +25,20 @@ td {
 	border: thin solid white;
 }
 </style>
+<script type="text/javascript">
+	function open(n) {
+		var content = document.getElementById('content' + n);
+		content.style.display = block;
+	}
+</script>
+
 
 <body>
 	<%
 		String memberEmail = null;
-			memberEmail = (String) session.getAttribute("memEmail");
+		memberEmail = (String) session.getAttribute("memEmail");
 
-			if (memberEmail == null) {
+		if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -96,12 +103,12 @@ td {
 			<table>
 				<tr>
 					<td width="4%" align="center">번호</td>
-					<td width="20%" align="center">제목</td>
+					<td width="54%" align="center">제목</td>
 					<td width="6%" align="center">엔진</td>
 					<td width="6%" align="center">링크</td>
-					<td width="6%" align="center">노출도</td>
-					<td width="6%" align="center">신뢰도</td>
-					<td width="52%" align="center">내용</td>
+					<td width="10%" align="center">노출도</td>
+					<td width="10%" align="center">신뢰도</td>
+					<td width="10%" align="center">더 보기</td>
 				</tr>
 				<%
 					String memberId = memberEmail.split("@")[0];
@@ -123,6 +130,10 @@ td {
 						target="_blank">링크</a></td>
 					<td align="center"><%=result.get(i).getExposure()%></td>
 					<td align="center"><%=result.get(i).getResultNumber()%></td>
+					<td><button onclick="open(n)">클릭</button></td>
+				</tr>
+
+				<tr id="content<%=i + 1%>" style="display: none">
 					<td><%=result.get(i).getSnippet()%></td>
 				</tr>
 
