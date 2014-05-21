@@ -1523,7 +1523,7 @@ input#fid, input#fpass{
     width: 80%;
     margin: 6% auto 6% auto;
     border: 1px solid white;
-    color: white;
+    color: rgb(184, 138, 120);
 }
 /******/
 .row.half {
