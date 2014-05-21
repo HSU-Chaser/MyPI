@@ -106,7 +106,7 @@ table,tr,td,th {
 			data : userinput,
 			url : "./mailCert.jsp",
 			success : function() {
-
+				alert("인증 완료");
 			},
 			error : function() {
 				alert("서버 오류");
@@ -122,7 +122,7 @@ table,tr,td,th {
 		<%
 			if (session.getAttribute("memEmail") != null) {
 		%>
-		<script language="JavaScript">
+		<script type="text/javascript">
 			location.replace("main.jsp");
 		</script>
 		<%
@@ -173,7 +173,7 @@ table,tr,td,th {
 						<tr>
 							<td class="junseok7 font_HYNAML">이메일 인증</td>
 							<td class="junseok8"><input type="text" name="email"
-								id="email" class="color font_HYNAML" size="10" maxlength="35"
+								id="cert" class="color font_HYNAML" size="10" maxlength="35"
 								placeholder="인증코드"></td>
 							<td class="junseok8"><input type="button"
 								name="confirm_email" value=" 인증 확인 "
