@@ -95,14 +95,14 @@
 								id="button1" value=" 로그인  " /></td>
 						</tr>
 						<tr>
-							<td colspan="4"><span style="color: white;"
+							<td colspan="4"><span style="color: rgb(184, 138, 120);"
 								class="font_HYNAML">MyPI가 처음이신가요? </span> <input type="button"
 								class="button junseok5 font_HYNAML" id="button2" value=" 회원 가입 "
 								onclick="location.href='signup.jsp' " /></td>
 						</tr>
 						<tr>
 							<td colspan="4" style="padding-bottom: 4%;"><span
-								style="color: white;" class="font_HYNAML">비밀번호를 잊으셨나요?</span> <input
+								style="color: rgb(184, 138, 120);" class="font_HYNAML">비밀번호를 잊으셨나요?</span> <input
 								type="button" class="button junseok5 font_HYNAML" id="button3"
 								value=" 비밀번호 찾기  " onclick="location.href='main.jsp' " /></td>
 						</tr>

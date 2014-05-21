@@ -113,6 +113,96 @@ table,tr,td,th {
 			}
 		});
 	}
+	function ConfirmCertKey(userinput) {
+		$.ajax({
+			type : "POST",
+			data : userinput,
+			url : "./mailCert.jsp",
+			success : function() {
+				alert("인증 완료");
+			},
+			error : function() {
+				alert("서버 오류");
+			}
+		});
+	}
+	function checkPass1(userinput) {
+		var checkpasswd = /^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,16}/;
+		// 입력이 아예 없을 경우
+		if (userinput.password.value == "") {
+			document.getElementById("pass1Msg").style.color = "red";
+			document.getElementById("pass1Msg").innerHTML ='비밀번호를 입력하세요';
+			return false;
+		}
+		// 규칙에 안맞았을 경우.
+		else if (!checkpasswd.test(userinput.password.value)) {
+			document.getElementById("pass1Msg").style.color = "red";
+			document.getElementById("pass1Msg").innerHTML="6자에서 16자의 영문과 숫자를 혼합해야합니다.";
+			return false;
+		}
+		// 메일 확인 부분에 비번이 있는데 다를경우.
+		else if (userinput.password2.value) {
+			if (userinput.password.value != userinput.password2.value) {
+				document.getElementById("pass1Msg").style.color = "red";
+				document.getElementById("pass1Msg").innerHTML="두 값이 다릅니다.";
+				document.getElementById("pass2Msg").style.color = "red";
+				document.getElementById("pass2Msg").innerHTML="두 값이 다릅니다.";
+				return false;
+			}
+			else {
+				document.getElementById("pass1Msg").style.color = "rgb(184, 138, 120)";
+				document.getElementById("pass1Msg").innerHTML="적합한 비밀번호입니다.";
+				document.getElementById("pass2Msg").style.color = "rgb(184, 138, 120)";
+				document.getElementById("pass2Msg").innerHTML="적합한 비밀번호입니다.";
+				return 0;
+			}
+		}
+		// ㅇㅋ 통과.
+		else {
+			document.getElementById("pass1Msg").style.color = "rgb(184, 138, 120)";
+			document.getElementById("pass1Msg").innerHTML="아래의 비밀번호을 입력하세요.";
+			return 0;
+		}
+	}
+	
+	function checkPass2(userinput) {
+		var checkpasswd = /^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,16}/;
+		// 입력이 아예 없을 경우
+		if (userinput.password2.value == "") {
+			document.getElementById("pass2Msg").style.color = "red";
+			document.getElementById("pass2Msg").innerHTML ='비밀번호를 입력하세요';
+			return false;
+		}
+		// 규칙에 안맞았을 경우.
+		else if (!checkpasswd.test(userinput.password2.value)) {
+			document.getElementById("pass2Msg").style.color = "red";
+			document.getElementById("pass2Msg").innerHTML="6자에서 16자의 영문과 숫자를 혼합해야합니다.";
+			return false;
+		}
+		// 메일 확인 부분에 비번이 있는데 다를경우.
+		else if (userinput.password.value) {
+			if (userinput.password.value != userinput.password2.value) {
+				document.getElementById("pass1Msg").style.color = "red";
+				document.getElementById("pass1Msg").innerHTML="두 값이 다릅니다.";
+				document.getElementById("pass2Msg").style.color = "red";
+				document.getElementById("pass2Msg").innerHTML="두 값이 다릅니다.";
+				return false;
+			}
+			else {
+				document.getElementById("pass1Msg").style.color = "rgb(184, 138, 120)";
+				document.getElementById("pass1Msg").innerHTML="적합한 비밀번호입니다.";
+				document.getElementById("pass2Msg").style.color = "rgb(184, 138, 120)";
+				document.getElementById("pass2Msg").innerHTML="적합한 비밀번호입니다.";
+				return 0;
+			}
+		}
+		// ㅇㅋ 통과.
+		else {
+			document.getElementById("pass2Msg").style.color = "rgb(184, 138, 120)";
+			document.getElementById("pass2Msg").innerHTML="위의 비밀번호를 입력하세요.";
+			return 0;
+		}
+	}
 </script>
 
 <body>
@@ -155,16 +245,17 @@ table,tr,td,th {
 			<div class="box container small junseok4">
 				<form method="post" action="signupProcess.jsp" name="userinput"
 					onSubmit="return checkIt()">
-					<table cellspacing="5" cellpadding="5" align="center">
+					<table cellspacing="5" cellpadding="5" style="text-align: center; background-color: rgba(255,255,255,0.2);">
 						<tr>
 							<td colspan="3" align="center" class="junseok7 font_HYNAML"
 								style="font-size: 2em;">회원 가입</td>
 						</tr>
 						<tr>
 							<td class="junseok7 font_HYNAML">계정 이메일</td>
-							<td class="junseok8"><input type="text" name="email"
+							<td class="junseok8 font_HYNAML"><input type="text" name="email"
 								id="email" class="color font_HYNAML" size="10" maxlength="35"
-								placeholder="이메일"></td>
+								placeholder="이메일">
+								<span id="mailMsg">계정으로 쓰일 이메일입니다.</span></td>
 							<td class="junseok8"><input type="button"
 								name="confirm_email" value=" 메일 인증 "
 								class="button junseok9 font_HYNAML"
@@ -172,26 +263,29 @@ table,tr,td,th {
 						</tr>
 						<tr>
 							<td class="junseok7 font_HYNAML">이메일 인증</td>
-							<td class="junseok8"><input type="text" name="email"
+							<td class="junseok8 font_HYNAML"><input type="text" name="email"
 								id="cert" class="color font_HYNAML" size="10" maxlength="35"
-								placeholder="인증코드"></td>
-							<td class="junseok8"><input type="button"
+								placeholder="인증키">
+								<span id="keyMsg">인증키를 입력하세요.</span></td>
+							<td class="junseok8 font_HYNAML"><input type="button"
 								name="confirm_email" value=" 인증 확인 "
 								class="button junseok9 font_HYNAML"
 								onclick="openConfirmEmail(this.form)"></td>
 						</tr>
 						<tr>
 							<td class="junseok7 font_HYNAML">비밀번호</td>
-							<td class="junseok8"><input type="password" name="password"
+							<td class="junseok8 font_HYNAML"><input type="password" name="password"
 								id="password" class="color font_HYNAML" size="15" maxlength="12"
-								placeholder="비밀번호"></td>
+								placeholder="비밀번호" onblur="checkPass1(this.form)">
+								<span id="pass1Msg">비밀번호를 입력해주세요.</span></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td class="junseok7 font_HYNAML">비밀번호 확인</td>
-							<td class="junseok8"><input type="password" name="password2"
-								id="password2" class="color font_HYNAML" size="15"
-								maxlength="12" placeholder="비밀번호 확인"></td>
+							<td class="junseok8 font_HYNAML"><input type="password" name="password2"
+								id="password2" class="color font_HYNAML" size="15" maxlength="12"
+								placeholder="비밀번호 확인" onblur="checkPass2(this.form)">
+								<span id="pass2Msg">비밀번호를 확인해주세요.</span></td>
 							<td></td>
 						</tr>
 						<tr>

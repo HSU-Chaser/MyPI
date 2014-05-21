@@ -402,7 +402,7 @@
 	/* Buttons */
 		
 		.button {
-			background-color: #0F86AC;
+			background-color: #8BB1BD;
 			border: 0;
 			color: #fff;
 			cursor: pointer;
@@ -455,7 +455,7 @@
 			}
 			
 			.button:hover {
-				background-color: #a8d5a3;
+				background-color: #82C4B7;
 			}
 			
 			.button:active {
@@ -1252,11 +1252,11 @@
 
     #login { 
         background-color: #1376E9;
-        background-image: url('../images/junseok/header.svg'), -moz-linear-gradient(162deg, #5ECE5E 40%, #316CB1 80%);
-        background-image: url('../images/junseok/header.svg'), -webkit-linear-gradient(162deg, #5ECE5E 40%, #316CB1 80%);
-        background-image: url('../images/junseok/header.svg'), -o-linear-gradient(162deg, #5ECE5E 40%, #316CB1 80%);
-        background-image: url('../images/junseok/header.svg'), -ms-linear-gradient(162deg, #5ECE5E 40%, #316CB1 80%);
-        background-image: url('../images/junseok/header.svg'), linear-gradient(162deg, #5ECE5E 40%, #316CB1 80%);
+        background-image: url('../images/junseok/header.svg'), -moz-linear-gradient(162deg, #D7CBB5 20%, #D7E6E5 60%, #784137 120%);
+        background-image: url('../images/junseok/header.svg'), -webkit-linear-gradient(162deg, #D7CBB5 20%, #D7E6E5 60%, #784137 120%);
+        background-image: url('../images/junseok/header.svg'), -o-linear-gradient(162deg, #D7CBB5 20%, #D7E6E5 60%, #784137 120%);
+        background-image: url('../images/junseok/header.svg'), -ms-linear-gradient(162deg, #D7CBB5 20%, #D7E6E5 60%, #784137 120%);
+        background-image: url('../images/junseok/header.svg'), linear-gradient(162deg, #DFD1A4 20%, #D7E6E5 60%, #784137 120%);
         background-size: 100% 100%, cover;
         background-attachment: fixed, fixed;
         background-position: top right, center right;
@@ -1567,16 +1567,16 @@ table, tr, th, td, input {
 }
 /*Input-placeholder Color*/
 input.color::-webkit-input-placeholder { /* WebKit browsers */
-    color: white;
+    color: rgb(184, 138, 120);
 }
 input.color:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: white;
+    color: rgb(184, 138, 120);
 }
 input.color::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: white;
+    color: rgb(184, 138, 120);
 }
 input.color:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: white;
+    color: rgb(184, 138, 120);
 }
 /*********************************************************************************/
 /* junseok_add_2                                                                */
@@ -1588,9 +1588,9 @@ input.color:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 /*table text color + size*/
 .junseok7 {
-	color: white;
+	color: rgb(184, 138, 120);
 	font-size: 1.8em;
-	height: 2.5em;
+	height: 3em;
 	width: 5%;
 }
 /*input size + align 1*/
@@ -1599,11 +1599,12 @@ input#email,input#cert,input#password,input#password2 {
     margin: auto;
     margin-right: 11.3%;
     border: 1px solid white;
-    color: white;
+    color: rgb(184, 138, 120);
     display: inline;
 }
 /*input size + align 2*/
 .junseok8 {
+	color: rgb(184, 138, 120);
 	text-align: center;
 	padding-left: 0.4em;
 }
