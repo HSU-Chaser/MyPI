@@ -1596,7 +1596,7 @@ input.color:-ms-input-placeholder { /* Internet Explorer 10+ */
 	padding: 5% 0 5% 0;
 }
 /*input size + align 1*/
-input#email,input#cert,input#password,input#password2 {
+input#email,input#certkey,input#password,input#password2 {
     width: 90%;
     margin: auto;
     margin-right: 11.3%;

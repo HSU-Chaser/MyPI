@@ -95,14 +95,14 @@ table,tr,td,th {
 	}
 
 	function confirmCertKey(userinput) {
-		if (userinput.certKey.value == "") {
+		if (userinput.certkey.value == "") {
 			alert("인증키를 입력하세요.");
 			$('#keyMsg').css('color', 'red');
 			$('#keyMsg').html("인증키를 입력하세요.");
 		} else {
 			$.ajax({
 				type : "GET",
-				url : "mailCert.jsp?key=" + userinput.certKey.value,
+				url : "mailCert.jsp?key=" + userinput.certkey.value,
 				success : function(result) {
 					if (result == "true") {
 						alert("인증을 완료하였습니다.");
@@ -115,7 +115,7 @@ table,tr,td,th {
 					}
 				},
 				error : function() {
-					alert("인증키 오류");
+					alert("이메일을 확인하세요.");
 				}
 			});
 		}
@@ -241,7 +241,8 @@ table,tr,td,th {
 					<table cellspacing="5" cellpadding="5"
 						style="text-align: center; background-color: rgba(255, 255, 255, 0.2);">
 						<tr>
-							<td colspan="3" align="center" class="junseok7 font_HYNAML">회원 가입</td>
+							<td colspan="3" align="center" class="junseok7 font_HYNAML">회원
+								가입</td>
 						</tr>
 						<tr>
 							<td class="junseok7 font_HYNAML">계정 이메일</td>
@@ -257,9 +258,8 @@ table,tr,td,th {
 						<tr>
 							<td class="junseok7 font_HYNAML">이메일 인증</td>
 							<td class="junseok8 font_HYNAML"><input type="text"
-								name="certKey" id="certKey" class="color font_HYNAML" size="10"
-								maxlength="35" placeholder="인증키"> <span id="keyMsg">인증키를
-									입력하세요.</span></td>
+								name="certkey" id="certkey" class="color font_HYNAML" size="10"
+								maxlength="35" placeholder="인증키"><span id="keyMsg"></span></td>
 							<td class="junseok8 font_HYNAML"><input type="button"
 								name="confirm_email" value=" 인증 확인 "
 								class="button junseok5 font_HYNAML"
