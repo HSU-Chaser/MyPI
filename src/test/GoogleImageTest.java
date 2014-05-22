@@ -25,7 +25,7 @@ public class GoogleImageTest {
     public static void main(String[] args) throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         // TODO Auto-generated method stub
          
-        String query = "한성대 김영웅";
+        String query = "황기태";
         URL url = new URL("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="+URLEncoder.encode(query, "UTF-8")+
                 "&userip=127.0.0.1&rsz=8");
         URLConnection connection = url.openConnection();

@@ -70,10 +70,7 @@ public class Ranking {
 				currentSize--;
 			}
 		}
-		
-		
 	}
-	
 	
 	//quick_sort
 	public void sortResult(){

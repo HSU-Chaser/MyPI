@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MakeObject {
 	static ArrayList<SearchResult> result;
@@ -100,6 +102,19 @@ public class MakeObject {
 
 		return result;
 	}
+	
+	   public static boolean properID(String id){
+		      boolean flag = false;
+		      
+		      Pattern proper = Pattern.compile("[\\w]{6,10}[\\d]{2,4}|[\\d]{2,4}[\\w]{6,10}");
+		      Matcher m = proper.matcher(id);
+		      
+		      if(m.matches() == true) flag = true;
+		      else flag = false;
+		      
+		      return flag;
+		      
+		   }
 
 	public void addingGoogle(String query, int limit) {
 
