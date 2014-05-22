@@ -84,7 +84,7 @@ public class GoogleSearch {
 	private String buildSearchUrl() {
 		// Required parameters
 		StringBuilder request = new StringBuilder(google);
-		
+		request.append("searchtype=image");
 		request.append("start=0");
 		request.append("&num=" + limit); // 검색 제한 수 조정
 		request.append(key); // API Key

@@ -30,13 +30,17 @@ public class MakeObject {
 			String data = keywordMap.get(itBind.next());
 			System.out.println("현재 들어온 데이터 : " + data);
 
-			orBinding.append("+OR+");
+			orBinding.append("OR+");
 			orBinding.append(data);
 
 		}
-		System.out.println(orBinding);
-		// 구글 통합 바인딩 검색어
-		googleSearch = new GoogleSearch(orBinding.toString(), 5);
+		String testImageSearch = "황기태";
+		
+//		System.out.println(orBinding);
+//		googleSearch = new GoogleSearch(orBinding.toString(), 5);
+		
+		googleSearch = new GoogleSearch(testImageSearch, 5);
+		
 		result = googleSearch.getResult();
 
 		while (itCase.hasNext()) {

@@ -43,9 +43,35 @@ public class Ranking {
 			result.set(i, sr);
 		}
 		
+
 		sortResult();
+
+		System.out.println("퀵소트 직후의 result 사이즈 : " + result.size());
+		
+		checkDupUrl();
+		
+		System.out.println("중복체크 직후의 result 사이즈 : " + result.size());
 		
 		return result;
+	}
+	
+	//URL duplication check after sort 
+	public void checkDupUrl(){
+		
+		int currentSize = result.size();
+		
+		for(int i=0; i<currentSize-1; i++){
+			
+			
+			if(result.get(i).getURL().equals(result.get(i+1).getURL())){
+				
+				result.remove(i);
+				i--;
+				currentSize--;
+			}
+		}
+		
+		
 	}
 	
 	
