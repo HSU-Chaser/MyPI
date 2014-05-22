@@ -241,18 +241,17 @@ table,tr,td,th {
 					<table cellspacing="5" cellpadding="5"
 						style="text-align: center; background-color: rgba(255, 255, 255, 0.2);">
 						<tr>
-							<td colspan="3" align="center" class="junseok7 font_HYNAML"
-								style="font-size: 2em;">회원 가입</td>
+							<td colspan="3" align="center" class="junseok7 font_HYNAML">회원 가입</td>
 						</tr>
 						<tr>
 							<td class="junseok7 font_HYNAML">계정 이메일</td>
 							<td class="junseok8 font_HYNAML"><input type="text"
 								name="email" id="email" class="color font_HYNAML" size="10"
 								maxlength="35" placeholder="이메일" onblur="checkEmail(this.form)">
-								<span id="mailMsg">계정으로 쓰일 이메일입니다.</span></td>
+								<span id="mailMsg"></span></td>
 							<td class="junseok8"><input type="button" id="sendKey"
 								name="sendKey" value=" 인증키 전송 "
-								class="button junseok9 font_HYNAML"
+								class="button junseok5 font_HYNAML"
 								onclick="sendCertKey(this.form)"></td>
 						</tr>
 						<tr>
@@ -263,7 +262,7 @@ table,tr,td,th {
 									입력하세요.</span></td>
 							<td class="junseok8 font_HYNAML"><input type="button"
 								name="confirm_email" value=" 인증 확인 "
-								class="button junseok9 font_HYNAML"
+								class="button junseok5 font_HYNAML"
 								onclick="confirmCertKey(this.form)"></td>
 						</tr>
 						<tr>
@@ -271,8 +270,7 @@ table,tr,td,th {
 							<td class="junseok8 font_HYNAML"><input type="password"
 								name="password" id="password" class="color font_HYNAML"
 								size="15" maxlength="12" placeholder="비밀번호"
-								onblur="checkPass1(this.form)"> <span id="pass1Msg">비밀번호를
-									입력해주세요.</span></td>
+								onblur="checkPass1(this.form)"> <span id="pass1Msg"></span></td>
 							<td></td>
 						</tr>
 						<tr>
@@ -280,17 +278,16 @@ table,tr,td,th {
 							<td class="junseok8 font_HYNAML"><input type="password"
 								name="password2" id="password2" class="color font_HYNAML"
 								size="15" maxlength="12" placeholder="비밀번호 확인"
-								onblur="checkPass2(this.form)"> <span id="pass2Msg">비밀번호를
-									확인해주세요.</span></td>
+								onblur="checkPass2(this.form)"> <span id="pass2Msg"></span></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td class="junseok7" align="center"><input type="submit"
-								name="confirm" class="button junseok9 font_HYNAML"
+								name="confirm" class="button junseok5 font_HYNAML"
 								value=" 회원가입 "></td>
 							<td class="junseok7" align="center" id="reset"><input
-								type="reset" name="reset" class="button junseok9 font_HYNAML"
-								value=" 다시입력하기 "></td>
+								type="reset" name="reset" class="button junseok5 font_HYNAML"
+								value=" 다시입력 "></td>
 							<td class="junseok7" align="center"><input type="button"
 								class="button junseok5 font_HYNAML" value=" 취소 "
 								onclick="javascript:window.location='index.jsp'"></td>
