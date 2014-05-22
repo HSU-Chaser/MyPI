@@ -4,6 +4,7 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="main.search.SearchResult"%>
 <%@page import="java.util.ArrayList"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -36,9 +37,9 @@ td {
 <body>
 	<%
 		String memberEmail = null;
-		memberEmail = (String) session.getAttribute("memEmail");
+			memberEmail = (String) session.getAttribute("memEmail");
 
-		if (memberEmail == null) {
+			if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
