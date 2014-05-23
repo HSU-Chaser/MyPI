@@ -60,11 +60,16 @@ public class ExtendedStorage {
 		webSite[9] = new CyworldBlog();
 		webSite[10] = new Cyworld();
 		// webSite[11] = new Tistory(); // 진행중
-		
+
 		for (int i = 0; i < webSite.length - 1; i++) {
 			webSite[i].searchMaterials(getClientId());
 		}
 		webSite[webSite.length - 1].searchMaterials(getClientEmail()); // Cyworld
+
+		checkDupNick();
+		
+		// 프로필 이미지 저장
+		ImageStorage.getImgUrlList().addAll(imgUrlList);
 
 		System.out.println("");
 		System.out.println(getClientId() + "님의 닉네임");
@@ -88,12 +93,22 @@ public class ExtendedStorage {
 		System.out.println("생년월일 : " + realBirthday);
 		System.out.println("사용 이메일 : " + realEmail);
 
-		
-		// 프로필 이미지 저장
-		ImageStorage.getImgUrlList().addAll(imgUrlList);
-		
-		
-		
+	}
+
+	public void checkDupNick() {
+
+		int currentSize = nickNameList.size();
+
+		for (int i = 0; i < currentSize - 1; i++) {
+
+			if (nickNameList.get(i).equals(nickNameList.get(i + 1))) {
+				System.out.println("비교 : " + nickNameList.get(i) + " 와 " + nickNameList.get(i+1) + "가 같은지 비교");
+				nickNameList.remove(i);
+				System.out.println("삭제 : " + i + "번째 항목이 삭제되었습니다");
+				i--;
+				currentSize--;
+			}
+		}
 	}
 
 	public String getClientId() {
@@ -103,7 +118,5 @@ public class ExtendedStorage {
 	public String getClientEmail() {
 		return clientEmail;
 	}
-	
-	
 
 }

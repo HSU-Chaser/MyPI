@@ -16,7 +16,7 @@ public class BindingWord {
 		this.memberEmail = memberEmail;
 	}
 
-	public HashMap<String, String> getSearchWord() {
+	public HashMap<String, String> getKeywordMap() {
 
 		HashMap<String, String> keywordMap = null;
 		keywordMap = new HashMap<String, String>();

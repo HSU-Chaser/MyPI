@@ -23,7 +23,7 @@ public class SearchTest {
 
 		
 		ArrayList<SearchResult> result = ranking.getResult(binding
-				.getSearchWord());
+				.getKeywordMap());
 
 		for(int i=0; i<ImageStorage.getImgUrlList().size(); i++){
 			System.out.println("Test : " + ImageStorage.getImgUrlList().get(i));
