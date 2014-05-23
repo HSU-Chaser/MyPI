@@ -8,6 +8,10 @@
 @font-face {font-family:'HancomYouneot';src:url('font/HANYGO.eot');}
 @font-face {font-family:'HYNAMLttf';src:url('font/HYNAML.ttf');} 
 @font-face {font-family:'HYNAMLeot';src:url('font/HYNAML.eot');} 
+@font-face {font-family:'HYNAMLwoff';src:url('font/HYNAML.woff');} 
+@font-face {font-family:'GODOMttf';src:url('font/GodoM.ttf');} 
+@font-face {font-family:'GODOMeot';src:url('font/GodoM.eot');} 
+@font-face {font-family:'GODOMwoff';src:url('font/GodoM.woff');}   
 
 
 /*********************************************************************************/
@@ -1496,7 +1500,13 @@
     font-family:HANYGO,"한컴윤고딕",HancomYounttf,HancomYouneot,sans-serif;
 }
 .font_HYNAML {
-    font-family:HYNAML,"HY나무L",HYNAMLttf,HYNAMLeot,sans-serif;
+    font-family:HYNAML,"HY나무L",HYNAMLttf,HYNAMLeot,HYNAMLwoff,sans-serif;
+}
+.font_HYNAML {
+    font-family:HYNAML,"HY나무L",HYNAMLttf,HYNAMLeot,HYNAMLwoff,sans-serif;
+}
+.font_GODOM {
+    font-family:GODOM,"고도M",GODOMttf,GODOMeof,GODOMwoff,sans-serif;
 }
 /*logo*/
 .junseok1 {

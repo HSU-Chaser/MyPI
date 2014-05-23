@@ -27,7 +27,7 @@
 						<%
 							} else {
 						%>
-						<li><a class="font_HYNAML" href="signout.jsp">&lt; <%=session.getAttribute("memEmail")%>님
+						<li><a class="font_GODOM" href="signout.jsp">&lt; <%=session.getAttribute("memEmail")%>님
 								환영합니다. &gt;
 						</a></li>
 						<%
