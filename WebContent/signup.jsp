@@ -250,7 +250,7 @@ table,tr,td,th {
 								name="email" id="email" class="color font_HYNAML" size="10"
 								maxlength="35" placeholder="이메일" onblur="checkEmail(this.form)">
 								<span id="mailMsg"></span></td>
-							<td class="junseok8"><input type="button" id="sendKey"
+							<td class="junseok9"><input type="button" id="sendKey"
 								name="sendKey" value=" 인증키 전송 "
 								class="button junseok5 font_HYNAML"
 								onclick="sendCertKey(this.form)"></td>
@@ -260,7 +260,7 @@ table,tr,td,th {
 							<td class="junseok8 font_HYNAML"><input type="text"
 								name="certkey" id="certkey" class="color font_HYNAML" size="10"
 								maxlength="35" placeholder="인증키"><span id="keyMsg"></span></td>
-							<td class="junseok8 font_HYNAML"><input type="button"
+							<td class="junseok9 font_HYNAML"><input type="button"
 								name="confirm_email" value=" 인증 확인 "
 								class="button junseok5 font_HYNAML"
 								onclick="confirmCertKey(this.form)"></td>
