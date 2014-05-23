@@ -11,7 +11,6 @@ import main.extending.Gallog;
 import main.extending.NaverBlog;
 import main.extending.NaverKin;
 import main.extending.NaverMe2day;
-import main.extending.Tistory;
 import main.extending.TodayHumor;
 import main.extending.Twitter;
 import main.ranking.ImageStorage;

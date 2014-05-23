@@ -37,9 +37,9 @@ td {
 <body>
 	<%
 		String memberEmail = null;
-			memberEmail = (String) session.getAttribute("memEmail");
+		memberEmail = (String) session.getAttribute("memEmail");
 
-			if (memberEmail == null) {
+		if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -118,7 +118,7 @@ td {
 						// Ranking ranking = new Ranking();
 
 						ArrayList<SearchResult> result = object.getResult(binding
-								.getSearchWord());
+								.getKeywordMap());
 
 						for (int i = 0; i < result.size(); i++) {
 				%>

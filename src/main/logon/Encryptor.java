@@ -24,24 +24,15 @@ public class Encryptor {
 		return buffer.toString();
 	}
 
-	public static String encryptMD5() {
-		MessageDigest md = null;
-		Random random = new Random(System.currentTimeMillis());
-		byte[] word = new byte[20];
-		random.nextBytes(word);
-
-		try {
-			md = MessageDigest.getInstance("MD5");
-
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-
-		md.update(word);
-		byte[] digest = md.digest();
+	public static String getRandomString() {
 		StringBuffer buffer = new StringBuffer();
-		for (int i = 0; i < digest.length; i++) {
-			buffer.append(Integer.toHexString(0xFF & digest[i]));
+		Random random = new Random();
+
+		String chars[] = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"
+				.split(",");
+
+		for (int i = 0; i < 6; i++) {
+			buffer.append(chars[random.nextInt(chars.length)]);
 		}
 		return buffer.toString();
 	}

@@ -1,6 +1,5 @@
 package main.search;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import main.extending.form.ExtendedStorage;

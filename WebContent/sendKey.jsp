@@ -7,7 +7,7 @@
 <%
 	// 메일 전송
 	String email = request.getParameter("email");
-	String certKey = Encryptor.encryptMD5();
+	String certKey = Encryptor.getRandomString();
 	String from = "noreply@mypi.co.kr";
 	String to = email;
 	String subject = "[MyPI] 회원가입 인증 코드";

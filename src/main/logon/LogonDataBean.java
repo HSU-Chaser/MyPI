@@ -1,19 +1,9 @@
 package main.logon;
 
 public class LogonDataBean {
-
 	private String email;
 	private String password;
-	private String certKey;
 	private boolean certStatus;
-
-	public String getCertKey() {
-		return certKey;
-	}
-
-	public void setCertKey() {
-		this.certKey = Encryptor.encryptMD5();
-	}
 
 	public boolean getCertStatus() {
 		return certStatus;

@@ -6,7 +6,6 @@
 	<!--<h1 id="logo"><a href="index.jsp"><pre>∑ π</pre></a></h1>-->
 
 	<!-- Nav -->
-
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container">
@@ -20,9 +19,9 @@
 						<%
 							if (session.getAttribute("memEmail") == null) {
 						%>
-						<script language="JavaScript">
-							if (!alert("로그인 정보가 없습니다."))
-								location.replace("index.jsp");
+						<script type="text/javascript">
+							alert("로그인 정보가 없습니다.");
+							location.replace("index.jsp");
 						</script>
 						<%
 							} else {
