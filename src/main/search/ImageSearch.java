@@ -24,7 +24,7 @@ public class ImageSearch {
     public void setImageSearchResult(String SearchWord, int limit) throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
      	  	
  
-        String query = "한성대 pocs";
+        String query = SearchWord;
         URL url = new URL("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="+URLEncoder.encode(query, "UTF-8")+
                 "&userip=192.168.0.7&rsz=" + limit);
         URLConnection connection = url.openConnection();
