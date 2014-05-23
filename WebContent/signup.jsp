@@ -106,7 +106,7 @@ table,tr,td,th {
 				success : function(result) {
 					if (result == "true") {
 						alert("인증을 완료하였습니다.");
-						$('#mailMsg').css('color', 'rgb(184, 138, 120)');
+						$('#keyMsg').css('color', 'rgb(184, 138, 120)');
 						$('#keyMsg').html('이메일이 인증되었습니다.');
 						return true;
 					} else {
