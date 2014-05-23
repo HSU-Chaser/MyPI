@@ -1597,7 +1597,7 @@ input.color:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 /*input size + align 1*/
 input#email,input#certkey,input#password,input#password2 {
-    width: 90%;
+    width: 100%;
     margin: auto;
     margin-right: 11.3%;
     border: 1px solid white;
@@ -1608,7 +1608,7 @@ input#email,input#certkey,input#password,input#password2 {
 .junseok8 {
 	color: rgb(184, 138, 120);
 	text-align: center;
-	padding-left: 1em;
+	padding: 0 1em 0 1em;
 	font-size: 100%;
 }
 /*

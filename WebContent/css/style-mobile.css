@@ -178,13 +178,42 @@ div.nav-collapse.collapse.junseok11 > ul {
 	margin-top: 1.6em;
 }
 /*Sign in, Sing up control*/
+.button.junseok5 {
+	font-size: 11px;
+}
 #button1 {
     width: 80%;
     height: 72%;
 }
 .junseok7 {
-	font-size: 75%;
+	font-size: 67%;
 }
 .junseok8 {
 	font-size: 70%;
+	width: 15%;
+}
+.junseok9 {
+	
+}
+/*placeholder control*/
+form .formerize-placeholder {
+    font-size: 8px;
+}
+
+::-webkit-input-placeholder {
+    font-size: 8px;
+}
+
+::-moz-placeholder {
+    font-size: 8px;
+}
+
+::-moz-placeholder {
+    font-size: 8px;
+}
+
+:-ms-input-placeholder {
+    font-size: 8px;
+}
+form ::-moz-focus-inner {
 }
