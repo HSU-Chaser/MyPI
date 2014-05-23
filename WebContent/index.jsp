@@ -24,17 +24,18 @@
 	<link rel="stylesheet" href="css/skel-noscript.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </noscript>
-
+<!-- effecter_start -->
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/effecter/modernizr.custom.js"></script>
+<!-- effecter_end -->
 <style type="text/css" media="screen">
 /*index Page button remove*/
-.navbar .btn.btn-navbar {
-	display: none;
-}
+	.navbar .btn.btn-navbar {
+		display: none;
+		}
 </style>
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
-
-
 <body>
 	<!-- Header -->
 	<header id="header">
@@ -71,7 +72,6 @@
 	<!--  Login -->
 	<section id="login" class="main style4 primary junseok2">
 		<div class="content container">
-
 			<div class="box container small junseok4">
 				<!--
                       Contact Form
@@ -87,7 +87,7 @@
 						<tr>
 							<td rowspan="3" class="MyPI_destribute"><img
 								class="test_img" src="images/fulls/02.jpg"></td>
-							<td colspan="3" style="width: 36%"><input type="text" id="fid" name="fid"
+							<td colspan="3" class="junseok9"><input type="text" id="fid" name="fid"
 								class="color font_GODOM" placeholder="이메일" /> <input
 								type="password" id="fpass" name="fpass"
 								class="color font_GODOM" placeholder="비밀번호" /></td>
@@ -108,7 +108,6 @@
 						</tr>
 					</table>
 				</form>
-
 			</div>
 		</div>
 	</section>

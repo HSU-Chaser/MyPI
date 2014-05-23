@@ -57,7 +57,7 @@
 		<div class="content container">
 
 			<div id="loading" style="display: none">
-				<img src="/MyPI/css/images/ajax-loader.gif"> <br>
+				<img src="./css/images/ajax-loader.gif"> <br>
 				로딩중입니다...<br> <br>
 			</div>
 			<div id="information">
