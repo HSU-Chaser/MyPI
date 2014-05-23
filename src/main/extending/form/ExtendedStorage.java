@@ -14,6 +14,7 @@ import main.extending.NaverMe2day;
 import main.extending.Tistory;
 import main.extending.TodayHumor;
 import main.extending.Twitter;
+import main.ranking.ImageStorage;
 
 public class ExtendedStorage {
 
@@ -87,6 +88,12 @@ public class ExtendedStorage {
 		System.out.println("생년월일 : " + realBirthday);
 		System.out.println("사용 이메일 : " + realEmail);
 
+		
+		// 프로필 이미지 저장
+		ImageStorage.getImgUrlList().addAll(imgUrlList);
+		
+		
+		
 	}
 
 	public String getClientId() {

@@ -7,27 +7,26 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
- 
+
+import main.ranking.ImageStorage;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
  
 public class ImageSearch {
  
-    /**
-     * @param args
-     * @throws IOException 
-     * @throws NoSuchMethodException 
-     * @throws InvocationTargetException 
-     * @throws IllegalAccessException 
-     */
-    public static void main(String[] args) throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-        // TODO Auto-generated method stub
-         
+    
+	public static ArrayList<String> imageSearchResult = new ArrayList<String>();
+
+
+    public void setImageSearchResult(String SearchWord, int limit) throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+     	  	
+ 
         String query = "한성대 pocs";
         URL url = new URL("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="+URLEncoder.encode(query, "UTF-8")+
-                "&userip=192.168.0.7&rsz=8");
+                "&userip=192.168.0.7&rsz=" + limit);
         URLConnection connection = url.openConnection();
         connection.addRequestProperty("Referer", "http://google.com");
          
@@ -50,10 +49,12 @@ public class ImageSearch {
          
         for (int i = 0; i < image_data.size(); i++) {
             //System.out.println( image_data.get(i) );
-            JSONArray img_url = JSONArray.fromObject(image_data.get(i));
-            System.out.println(JSONObject.fromObject(img_url.get(0)).get("url"));           
+            JSONArray img_url = JSONArray.fromObject(image_data.get(i));        
+            imageSearchResult.add((JSONObject.fromObject(img_url.get(0)).get("url")).toString());
         }
-         
- 
+        
+    	ImageStorage.getImgUrlList().addAll(imageSearchResult);
+        
     }
+    
 }

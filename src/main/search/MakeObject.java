@@ -1,5 +1,7 @@
 package main.search;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,16 +15,18 @@ public class MakeObject {
 	NaverSearch naverSearch = null;
 	DaumSearch daumSearch = null;
 
-	public ArrayList<SearchResult> getResult(HashMap<String, String> keywordMap) {
-
+	public ArrayList<SearchResult> getResult(HashMap<String, String> keywordMap) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
+		ImageSearch imageSearch = new ImageSearch();
+		
 		result = null;
 
 		Set<String> keySet = keywordMap.keySet();
 		Iterator<String> itBind = keySet.iterator();
 		Iterator<String> itCase = keySet.iterator();
 
-		String naverCategory[] = {"blog", "news", "cafearticle", "kin", "webkr", "doc"};
-		String daumCategory[] = {"board", "web", "knowledge" /* , "cafe", "blog" */};
+		String naverCategory[] = { "blog", "news", "cafearticle", "kin",
+				"webkr", "doc" };
+		String daumCategory[] = { "board", "web", "knowledge" /* , "cafe", "blog" */};
 
 		System.out.println("Test : 현재 키 리스트 개수 : " + keySet.size());
 
@@ -37,12 +41,12 @@ public class MakeObject {
 
 		}
 		String testImageSearch = "황기태";
-		
-//		System.out.println(orBinding);
-//		googleSearch = new GoogleSearch(orBinding.toString(), 5);
-		
+
+		// System.out.println(orBinding);
+		// googleSearch = new GoogleSearch(orBinding.toString(), 5);
+
 		googleSearch = new GoogleSearch(testImageSearch, 5);
-		
+
 		result = googleSearch.getResult();
 
 		while (itCase.hasNext()) {
@@ -59,7 +63,8 @@ public class MakeObject {
 				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
 				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
 						naverCategory);
-			//	addingDaum("\"" + keywordMap.get(key) + "\"", 10, daumCategory);
+				// addingDaum("\"" + keywordMap.get(key) + "\"", 10,
+				// daumCategory);
 
 				break;
 			case "email":
@@ -67,7 +72,8 @@ public class MakeObject {
 				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
 				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
 						naverCategory);
-			//	addingDaum("\"" + keywordMap.get(key) + "\"", 10, daumCategory);
+				// addingDaum("\"" + keywordMap.get(key) + "\"", 10,
+				// daumCategory);
 
 				break;
 			case "email2":
@@ -75,7 +81,8 @@ public class MakeObject {
 				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
 				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
 						naverCategory);
-			//	addingDaum("\"" + keywordMap.get(key) + "\"", 10, daumCategory);
+				// addingDaum("\"" + keywordMap.get(key) + "\"", 10,
+				// daumCategory);
 
 				break;
 			case "homephone":
@@ -83,7 +90,8 @@ public class MakeObject {
 				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
 				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
 						naverCategory);
-			//	addingDaum("\"" + keywordMap.get(key) + "\"", 10, daumCategory);
+				// addingDaum("\"" + keywordMap.get(key) + "\"", 10,
+				// daumCategory);
 
 				break;
 			case "memberid":
@@ -92,29 +100,42 @@ public class MakeObject {
 				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
 				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
 						naverCategory);
-			//	addingDaum("\"" + keywordMap.get(key) + "\"", 3, daumCategory);
+				// addingDaum("\"" + keywordMap.get(key) + "\"", 3,
+				// daumCategory);
 
 				break;
 
 			}
 
 		}
-
+		
+		
+		
+	/*	
+	 * imageSearch.setImageSearchResult();
+	 * 
+	 * setImageSearchResult(검색어, 이미지 갯수제한)
+	 */
+		
 		return result;
 	}
-	
-	   public static boolean properID(String id){
-		      boolean flag = false;
-		      
-		      Pattern proper = Pattern.compile("[\\w]{6,10}[\\d]{2,4}|[\\d]{2,4}[\\w]{6,10}");
-		      Matcher m = proper.matcher(id);
-		      
-		      if(m.matches() == true) flag = true;
-		      else flag = false;
-		      
-		      return flag;
-		      
-		   }
+
+	public static boolean properID(String id) {
+		
+		boolean flag = false;
+
+		Pattern proper = Pattern
+				.compile("[\\w]{6,10}[\\d]{2,4}|[\\d]{2,4}[\\w]{6,10}");
+		Matcher m = proper.matcher(id);
+
+		if (m.matches() == true)
+			flag = true;
+		else
+			flag = false;
+
+		return flag;
+
+	}
 
 	public void addingGoogle(String query, int limit) {
 
