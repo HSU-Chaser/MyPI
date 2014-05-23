@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page session="true"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -10,7 +11,7 @@
 <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 <!--bootstrap-->
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css"
-	media="screen" title="no title" charset="utf-8" />
+	media="screen" title="no title" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
@@ -31,73 +32,169 @@
 }
 
 table,tr,td,th {
-	border: 1px solid white;
+	border: 3px solid white;
 }
 </style>
 
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
-<script language="javascript">
-	function checkIt() {
-		var userinput = eval("document.userinput");
-		var checkemail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-		var checkpasswd = /^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,16}/;
-
-		if (!userinput.email.value) {
-			alert("Email을 입력하세요");
-			return false;
-		} else if (!checkemail.test(userinput.email.value)) {
-			alert("Email 형식이 올바르지 않습니다.");
-			userinput.email.focus();
-			return false;
-		} else if (!userinput.password.value) {
-			alert("Password를 입력하세요");
-			return false;
-		} else if (!checkpasswd.test(userinput.password.value)) {
-			alert("Password는 6자에서 16자까지 입력 가능하며 영문과 숫자를 혼합해야합니다.");
-			userinput.password.focus();
-			return false;
-		} else if (!(userinput.password.value == userinput.password2.value)) {
-			alert("입력하신 Password와 Check Password가 일치하지 않습니다.");
-			return false;
-		}
-
-	}
-
-	/*
-	비밀번호 체크패턴
-	패턴1(영대/소문자,숫자 및 특수문자 조합 비밀번호 6자리이상 16자리이하체크)
-	/^.*(?=^.{6,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/
-	패턴2(영대/소문자,숫자 조합 비밀번호 )
-	/^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$)/
-	패턴3(이게좀더 정확한듯)
-	/^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,12}/
-	 */
-
-	// 이메일 중복 여부를 판단
-	function openConfirmEmail(userinput) {
-		var checkemail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+<script type="text/javascript">
+	function checkEmail(userinput) {
+		var emailRegex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		// 이메일을 입력했는지 검사
 		if (userinput.email.value == "") {
-			alert("이메일을 입력하세요");
-			return false;
-			// 이메일 형식여부 검사
-		} else if (!checkemail.test(userinput.email.value)) {
-			alert("Email 형식이 올바르지 않습니다.");
-			userinput.email.focus();
+			$('#mailMsg').css('color', 'red');
+			$('#mailMsg').html('이메일을 입력하세요');
 			return false;
 		}
-		// url과 사용자 입력 아이디를 조합합니다.
-		//url = "confirmEmail.jsp?id=" + userinput.email.value;
-		// 새로운 윈도우를 엽니다.
-		userinput.target = "email";
-		userinput.action = "confirmEmail.jsp";
-		open("confirmEmail.jsp", "email",
-				"toolbar = no, location = no, status = no,"
-						+ "menubar = no, scrollbars = no, resizable = no,"
-						+ "width = 300, height=200");
-		userinput.submit();
+		// 이메일 형식여부 검사
+		else if (!emailRegex.test(userinput.email.value)) {
+			$('#mailMsg').css('color', 'red');
+			$('#mailMsg').html('이메일 형식이 맞지 않습니다.');
+			return false;
+		}
+		// 이메일 형식 맞으면 중복검사
+		else {
+			$.ajax({
+				type : "GET",
+				dataType : "text",
+				url : "mailCheck.jsp?email=" + userinput.email.value,
+				success : function(result) {
+					if (result == "true") {
+						$('#mailMsg').css('color', 'rgb(184, 138, 120)');
+						$('#mailMsg').html('사용 가능한 이메일입니다.');
+						return true;
+					} else {
+						$('#mailMsg').css('color', 'red');
+						$('#mailMsg').html('이메일이 중복됩니다.');
+						return false;
+					}
+				},
+				error : function() {
+					alert("서버 통신 오류");
+				}
+			});
+		}
+	}
+	function sendCertKey(userinput) {
+		$.ajax({
+			type : "GET",
+			url : "sendKey.jsp?email=" + userinput.email.value,
+			success : function(result) {
+				if (result == "true") {
+					alert("인증키를 보냈습니다.");
+				} else {
+					alert("인증키를 보내는 데 실패하였습니다.");
+				}
+			},
+			error : function() {
+				alert("이메일 인증 오류");
+			}
+		});
+	}
+
+	function confirmCertKey(userinput) {
+		if (userinput.certkey.value == "") {
+			alert("인증키를 입력하세요.");
+			$('#keyMsg').css('color', 'red');
+			$('#keyMsg').html("인증키를 입력하세요.");
+		} else {
+			$.ajax({
+				type : "GET",
+				url : "mailCert.jsp?key=" + userinput.certkey.value,
+				success : function(result) {
+					if (result == "true") {
+						alert("인증을 완료하였습니다.");
+						$('#mailMsg').css('color', 'rgb(184, 138, 120)');
+						$('#keyMsg').html('이메일이 인증되었습니다.');
+						return true;
+					} else {
+						alert("인증을 실패하였습니다.");
+						return false;
+					}
+				},
+				error : function() {
+					alert("이메일을 확인하세요.");
+				}
+			});
+		}
+	}
+
+	function checkPass1(userinput) {
+		var passwdRegex = /^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,16}/;
+		// 입력이 아예 없을 경우
+		if (userinput.password.value == "") {
+			$('#pass1Msg').css('color', 'red');
+			$('#pass1Msg').html('비밀번호를 입력하세요');
+			return false;
+		}
+		// 규칙에 안맞았을 경우.
+		else if (!passwdRegex.test(userinput.password.value)) {
+			$('#pass1Msg').css('color', 'red');
+			$('#pass1Msg').html('6자에서 16자의 영문과 숫자를 혼합해야합니다.');
+			return false;
+		}
+		// 메일 확인 부분에 비번이 있는데 다를경우.
+		else if (userinput.password2.value) {
+			if (userinput.password.value != userinput.password2.value) {
+				$('#pass1Msg').css('color', 'red');
+				$('#pass1Msg').html('두 값이 다릅니다.');
+				$('#pass2Msg').css('color', 'red');
+				$('#pass2Msg').html('두 값이 다릅니다.');
+				return false;
+			} else {
+				$('#pass1Msg').css('color', 'rgb(184, 138, 120)');
+				$('#pass1Msg').html('적합한 비밀번호입니다.');
+				$('#pass2Msg').css('color', 'rgb(184, 138, 120)');
+				$('#pass2Msg').html('적합한 비밀번호입니다.');
+				return 0;
+			}
+		}
+		// ㅇㅋ 통과.
+		else {
+			$('#pass1Msg').css('color', 'rgb(184, 138, 120)');
+			$('#pass1Msg').html('아래의 비밀번호을 입력하세요.');
+			return 0;
+		}
+	}
+
+	function checkPass2(userinput) {
+		var checkpasswd = /^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,16}/;
+		// 입력이 아예 없을 경우
+		if (userinput.password2.value == "") {
+			$('#pass2Msg').css('color', 'red');
+			$('#pass2Msg').html('비밀번호를 입력하세요');
+			return false;
+		}
+		// 규칙에 안맞았을 경우.
+		else if (!checkpasswd.test(userinput.password2.value)) {
+			$('#pass2Msg').css('color', 'red');
+			$('#pass2Msg').html('6자에서 16자의 영문과 숫자를 혼합해야합니다.');
+			return false;
+		}
+		// 메일 확인 부분에 비번이 있는데 다를경우.
+		else if (userinput.password.value) {
+			if (userinput.password.value != userinput.password2.value) {
+				$('#pass1Msg').css('color', 'red');
+				$('#pass1Msg').html('두 값이 다릅니다.');
+				$('#pass2Msg').css('color', 'red');
+				$('#pass2Msg').html('두 값이 다릅니다.');
+				return false;
+			} else {
+				$('#pass1Msg').css('color', 'rgb(184, 138, 120)');
+				$('#pass1Msg').html('적합한 비밀번호입니다.');
+				$('#pass2Msg').css('color', 'rgb(184, 138, 120)');
+				$('#pass2Msg').html('적합한 비밀번호입니다.');
+				return 0;
+			}
+		}
+		// ㅇㅋ 통과.
+		else {
+			$('#pass2Msg').css('color', 'rgb(184, 138, 120)');
+			$('#pass2Msg').html('위의 비밀번호를 입력하세요.');
+			return 0;
+		}
 	}
 </script>
 
@@ -108,7 +205,7 @@ table,tr,td,th {
 		<%
 			if (session.getAttribute("memEmail") != null) {
 		%>
-		<script language="JavaScript">
+		<script type="text/javascript">
 			location.replace("main.jsp");
 		</script>
 		<%
@@ -141,44 +238,58 @@ table,tr,td,th {
 			<div class="box container small junseok4">
 				<form method="post" action="signupProcess.jsp" name="userinput"
 					onSubmit="return checkIt()">
-					<table cellspacing="5" cellpadding="5" align="center">
+					<table cellspacing="5" cellpadding="5"
+						style="text-align: center; background-color: rgba(255, 255, 255, 0.2);">
 						<tr>
-							<td colspan="3" align="center" class="junseok7"
-								style="font-size: 3em;">Sign Up</td>
+							<td colspan="3" align="center" class="junseok7 font_HYNAML">회원
+								가입</td>
 						</tr>
 						<tr>
-							<td class="junseok7">User E-Mail</td>
-							<td class="junseok8"><input type="text" name="email"
-								id="email" class="color" size="10" maxlength="35"
-								placeholder="Email"></td>
-							<td class="junseok8"><input type="button"
-								name="confirm_email" value=" Double Check "
-								class="button junseok9" onclick="openConfirmEmail(this.form)">
-							</td>
+							<td class="junseok7 font_HYNAML">계정 이메일</td>
+							<td class="junseok8 font_HYNAML"><input type="text"
+								name="email" id="email" class="color font_HYNAML" size="10"
+								maxlength="35" placeholder="이메일" onblur="checkEmail(this.form)">
+								<span id="mailMsg"></span></td>
+							<td class="junseok8"><input type="button" id="sendKey"
+								name="sendKey" value=" 인증키 전송 "
+								class="button junseok5 font_HYNAML"
+								onclick="sendCertKey(this.form)"></td>
 						</tr>
 						<tr>
-							<td class="junseok7">Password</td>
-							<td class="junseok8"><input type="password" name="password"
-								id="password" class="color" size="15" maxlength="12"
-								placeholder="Password"></td>
+							<td class="junseok7 font_HYNAML">이메일 인증</td>
+							<td class="junseok8 font_HYNAML"><input type="text"
+								name="certkey" id="certkey" class="color font_HYNAML" size="10"
+								maxlength="35" placeholder="인증키"><span id="keyMsg"></span></td>
+							<td class="junseok8 font_HYNAML"><input type="button"
+								name="confirm_email" value=" 인증 확인 "
+								class="button junseok5 font_HYNAML"
+								onclick="confirmCertKey(this.form)"></td>
+						</tr>
+						<tr>
+							<td class="junseok7 font_HYNAML">비밀번호</td>
+							<td class="junseok8 font_HYNAML"><input type="password"
+								name="password" id="password" class="color font_HYNAML"
+								size="15" maxlength="12" placeholder="비밀번호"
+								onblur="checkPass1(this.form)"> <span id="pass1Msg"></span></td>
 							<td></td>
 						</tr>
 						<tr>
-							<td class="junseok7">Check Password</td>
-							<td class="junseok8"><input type="password" name="password2"
-								id="password2" class="color" size="15" maxlength="12"
-								placeholder="Check Password"></td>
+							<td class="junseok7 font_HYNAML">비밀번호 확인</td>
+							<td class="junseok8 font_HYNAML"><input type="password"
+								name="password2" id="password2" class="color font_HYNAML"
+								size="15" maxlength="12" placeholder="비밀번호 확인"
+								onblur="checkPass2(this.form)"> <span id="pass2Msg"></span></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td class="junseok7" align="center"><input type="submit"
-								name="confirm" class="button junseok9" value=" Confirm ">
-							</td>
+								name="confirm" class="button junseok5 font_HYNAML"
+								value=" 회원가입 "></td>
 							<td class="junseok7" align="center" id="reset"><input
-								type="reset" name="reset" class="button junseok9"
-								value=" ReEnter "></td>
+								type="reset" name="reset" class="button junseok5 font_HYNAML"
+								value=" 다시입력 "></td>
 							<td class="junseok7" align="center"><input type="button"
-								class="button junseok5" value=" Cancel "
+								class="button junseok5 font_HYNAML" value=" 취소 "
 								onclick="javascript:window.location='index.jsp'"></td>
 						</tr>
 					</table>

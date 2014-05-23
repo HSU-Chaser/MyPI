@@ -7,7 +7,7 @@
 	}
 
 	body,input,textarea,select {
-		font-size: 12pt;
+		font-size: 13pt;
 		line-height: 1.5em;
 	}
 
@@ -161,14 +161,30 @@
     font-size: 2.5em;
     margin-top: 2%;
 }
-/*test_img*/
+/*delete_picture 1*/
 .test_img {
     visibility: hidden;
     border-radius: 0.7em;
-} 
+}
+/*delete_picture 2*/ 
+.MyPI_destribute {
+width: 1%;
+vertical-align: middle;
+}
 a.btn.btn-navbar.junseok10 {
 	margin-top: 1.6em;
 }
 div.nav-collapse.collapse.junseok11 > ul {
 	margin-top: 1.6em;
+}
+/*Sign in, Sing up control*/
+#button1 {
+    width: 80%;
+    height: 72%;
+}
+.junseok7 {
+	font-size: 75%;
+}
+.junseok8 {
+	font-size: 70%;
 }

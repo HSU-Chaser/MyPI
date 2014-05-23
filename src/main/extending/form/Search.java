@@ -1,6 +1,5 @@
 package main.extending.form;
 
-import java.util.ArrayList;
 
 abstract public class Search {
 

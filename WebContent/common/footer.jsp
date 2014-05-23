@@ -7,7 +7,7 @@
 				     
 				     Use anything from here: http://fortawesome.github.io/Font-Awesome/cheatsheet/)
 	-->
-	
+	<!--
 	<ul class="actions">
 		<li><a href="#" class="fa solo fa-twitter"><span>Twitter</span></a></li>
 		<li><a href="#" class="fa solo fa-facebook"><span>Facebook</span></a></li>
@@ -16,11 +16,12 @@
 		<li><a href="#" class="fa solo fa-pinterest"><span>Pinterest</span></a></li>
 		<li><a href="#" class="fa solo fa-instagram"><span>Instagram</span></a></li>
 	</ul>
-
+	-->
 	<!-- Menu -->
 	<ul class="menu">
-		<li>&copy; copyright Team My Pi</li>
+		<li>&copy; Copyright Team Chaser</li>
 		<li>Design: J, Develop: s, s, y, o</li>
+		<li>Contact: <a href="">hsuteamchaser@gmail.com</a></li>
 	</ul>
 
 </footer>

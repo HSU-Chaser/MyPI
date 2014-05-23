@@ -36,13 +36,13 @@
 
 
 <body>
-
 	<!-- Header -->
 	<header id="header">
 		<%
 			if (session.getAttribute("memEmail") != null) {
 		%>
-		<script language="JavaScript">
+		<script type="text/javascript">
+			alert("이미 로그인되어있습니다.");
 			location.replace("main.jsp");
 		</script>
 		<%
@@ -74,12 +74,12 @@
 
 			<div class="box container small junseok4">
 				<!--
-							 Contact Form
-							 
-							 To get this working, place a script on your server to receive the form data, then
-							 point the "action" attribute to it (eg. action="http://mydomain.tld/mail.php").
-							 More on how it all works here: http://www.1stwebdesigner.com/tutorials/custom-php-contact-forms/
-						-->
+                      Contact Form
+                      
+                      To get this working, place a script on your server to receive the form data, then
+                      point the "action" attribute to it (eg. action="http://mydomain.tld/mail.php").
+                      More on how it all works here: http://www.1stwebdesigner.com/tutorials/custom-php-contact-forms/
+                  -->
 
 
 				<form action="signinProcess.jsp" method="post">
@@ -87,24 +87,24 @@
 						<tr>
 							<td rowspan="3" class="MyPI_destribute"><img
 								class="test_img" src="images/fulls/02.jpg"></td>
-							<td colspan="2"><input type="text" id="fid" name="fid"
-								class="color" placeholder="ID" /><br> <input
-								type="password" id="fpass" name="fpass" class="color"
-								placeholder="Password" /></td>
+							<td colspan="3"><input type="text" id="fid" name="fid"
+								class="color font_HYNAML" placeholder="이메일" /> <input
+								type="password" id="fpass" name="fpass"
+								class="color font_HYNAML" placeholder="비밀번호" /></td>
+							<td><input type="submit" class="button junseok5 font_HYNAML"
+								id="button1" value=" 로그인  " /></td>
 						</tr>
 						<tr>
-							<td id="button1"><input type="submit"
-								class="button junseok5" value="  Sign  in  " /></td>
-							<td id="button2"><input type="button"
-								class="button junseok5" value="  Sign  up "
+							<td colspan="4"><span style="color: rgb(184, 138, 120);"
+								class="font_HYNAML">MyPI가 처음이신가요? </span> <input type="button"
+								class="button junseok5 font_HYNAML" id="button2" value=" 회원 가입 "
 								onclick="location.href='signup.jsp' " /></td>
 						</tr>
 						<tr>
-							<td colspan="2">
-								<p style="color: white;">Lost your ID or Password??</p> <input
-								type="button" class="button junseok5" value="  Find Info  "
-								onclick="location.href='main.jsp' " />
-							</td>
+							<td colspan="4" style="padding-bottom: 4%;"><span
+								style="color: rgb(184, 138, 120);" class="font_HYNAML">비밀번호를 잊으셨나요?</span> <input
+								type="button" class="button junseok5 font_HYNAML" id="button3"
+								value=" 비밀번호 찾기  " onclick="location.href='main.jsp' " /></td>
 						</tr>
 					</table>
 				</form>

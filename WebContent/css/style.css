@@ -402,7 +402,7 @@
 	/* Buttons */
 		
 		.button {
-			background-color: #0F86AC;
+			background-color: #8BB1BD;
 			border: 0;
 			color: #fff;
 			cursor: pointer;
@@ -455,7 +455,7 @@
 			}
 			
 			.button:hover {
-				background-color: #a8d5a3;
+				background-color: #82C4B7;
 			}
 			
 			.button:active {
@@ -1252,11 +1252,11 @@
 
     #login { 
         background-color: #1376E9;
-        background-image: url('../images/junseok/header.svg'), -moz-linear-gradient(162deg, #5ECE5E 40%, #316CB1 80%);
-        background-image: url('../images/junseok/header.svg'), -webkit-linear-gradient(162deg, #5ECE5E 40%, #316CB1 80%);
-        background-image: url('../images/junseok/header.svg'), -o-linear-gradient(162deg, #5ECE5E 40%, #316CB1 80%);
-        background-image: url('../images/junseok/header.svg'), -ms-linear-gradient(162deg, #5ECE5E 40%, #316CB1 80%);
-        background-image: url('../images/junseok/header.svg'), linear-gradient(162deg, #5ECE5E 40%, #316CB1 80%);
+        background-image: url('../images/junseok/header.svg'), -moz-linear-gradient(162deg, #D7CBB5 20%, #D7E6E5 60%, #784137 120%);
+        background-image: url('../images/junseok/header.svg'), -webkit-linear-gradient(162deg, #D7CBB5 20%, #D7E6E5 60%, #784137 120%);
+        background-image: url('../images/junseok/header.svg'), -o-linear-gradient(162deg, #D7CBB5 20%, #D7E6E5 60%, #784137 120%);
+        background-image: url('../images/junseok/header.svg'), -ms-linear-gradient(162deg, #D7CBB5 20%, #D7E6E5 60%, #784137 120%);
+        background-image: url('../images/junseok/header.svg'), linear-gradient(162deg, #DFD1A4 20%, #D7E6E5 60%, #784137 120%);
         background-size: 100% 100%, cover;
         background-attachment: fixed, fixed;
         background-position: top right, center right;
@@ -1286,7 +1286,7 @@
 				color: #bbb;
 				color: rgba(185,186,187,1.0);
 			}
-	
+	/*
 		#footer .actions {
 			position: absolute;
 			left: 1em;
@@ -1304,10 +1304,10 @@
 				#footer .actions li a {
 					padding: 0.5em;
 				}
-		
+	*/	
 		#footer .menu {
-			position: absolute;
-			right: 2em;
+			text-align: center;
+			position: relative;
 			top: 0;
 			height: 5em;
 			line-height: 5em;
@@ -1521,9 +1521,9 @@
 /*input size*/
 input#fid, input#fpass{
     width: 80%;
-    margin: auto;
+    margin: 6% auto 6% auto;
     border: 1px solid white;
-    color: white;
+    color: rgb(184, 138, 120);
 }
 /******/
 .row.half {
@@ -1547,13 +1547,20 @@ table, tr, th, td, input {
 }
 /*Sign in, Sing up control*/
 #button1 {
-    padding-left: 27px;
+    width: 80%;
+    height: 57%;
 }
 #button2 {
-    padding-right: 27px;
+    margin: 1% 0 1% 0;
+	left: 0.4%;
+}
+#button3{
+    margin: 1% 0 1% 3%;
+	right: 0.8%;
 }
 .button.junseok5 {
-    width: 7.3em;
+    width: 70%;
+    min-width: 5em;
     border-radius: 0.5em;
     height: 2.3em;
     line-height: 0;
@@ -1561,16 +1568,16 @@ table, tr, th, td, input {
 }
 /*Input-placeholder Color*/
 input.color::-webkit-input-placeholder { /* WebKit browsers */
-    color: white;
+    color: rgb(184, 138, 120);
 }
 input.color:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: white;
+    color: rgb(184, 138, 120);
 }
 input.color::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: white;
+    color: rgb(184, 138, 120);
 }
 input.color:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: white;
+    color: rgb(184, 138, 120);
 }
 /*********************************************************************************/
 /* junseok_add_2                                                                */
@@ -1582,32 +1589,37 @@ input.color:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 /*table text color + size*/
 .junseok7 {
-	color: white;
-	font-size: 2em;
-	height: 2.5em;
+	color: rgb(184, 138, 120);
+	font-size: 140%;
+	height: 3em;
 	width: 5%;
+	padding: 5% 0 5% 0;
 }
 /*input size + align 1*/
-input#email,input#password,input#password2 {
-    width: 97%;
+input#email,input#certkey,input#password,input#password2 {
+    width: 90%;
     margin: auto;
     margin-right: 11.3%;
     border: 1px solid white;
-    color: white;
+    color: rgb(184, 138, 120);
     display: inline;
 }
 /*input size + align 2*/
 .junseok8 {
+	color: rgb(184, 138, 120);
 	text-align: center;
-	padding-left: 0.4em;
+	padding-left: 1em;
+	font-size: 100%;
 }
+/*
 .button.junseok9 {
-    width: 8.5em;
+    width: 70%;
     border-radius: 0.5em;
     height: 2.3em;
     line-height: 0;
     padding: 0;
 }
+*/
 #reset {
 	width: 6%;
 }

@@ -33,11 +33,11 @@
 						<%
 							}
 						%>
-						<li class="active"><a href="main.jsp">Home</a></li>
-						<li><a href="changeInfo.jsp">Change Info</a></li>
-						<li><a href="how.jsp">How To</a></li>
-						<li><a href="play.jsp">Play With</a></li>
-						<li><a href="contact.jsp">Contact</a></li>
+						<li class="active"><a href="main.jsp">홈</a></li>
+						<li><a href="changeInfo.jsp">정보수정</a></li>
+						<li><a href="how.jsp">이용방법</a></li>
+						<li><a href="search.jsp">검색</a></li>
+						<li><a href="contact.jsp">문의</a></li>
 					</ul>
 				</div>
 			</div>
