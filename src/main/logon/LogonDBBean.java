@@ -159,15 +159,13 @@ public class LogonDBBean {
 				member.setEmail(rs.getString("email"));
 				member.setPassword(rs.getString("password"));
 				// 추가되는 부분
-				member.setExp_grade(rs.getInt("exp_grade"));
+				member.setExp_grade(rs.getInt("current_grade"));
 				member.setName(rs.getString("name"));
 				member.setCellphone(rs.getString("cellphone"));
-				member.setSex(rs.getString("sex"));
 				member.setBirthday(rs.getString("birthday"));
 				member.setHomephone(rs.getString("homephone"));
 				member.setOccupation(rs.getString("occupation"));
 				member.setSchool(rs.getString("school"));
-				member.setExtraInfo(rs.getString("extraInfo"));
 
 			}
 		} catch (Exception ex) {

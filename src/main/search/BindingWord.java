@@ -19,7 +19,7 @@ public class BindingWord {
 
 		HashMap<String, String> keywordMap = null;
 		keywordMap = new HashMap<String, String>();
-		LogonDataBean dataBean;
+		LogonDataBean dataBean;	
 		String memberId = memberEmail.split("@")[0];
 
 		// searchWord = "\"" + memberId + "\"" + "_"; // _는 구분자 역할
@@ -51,10 +51,7 @@ public class BindingWord {
 			if (!dataBean.getSchool().equals("null")) {
 				keywordMap.put("school", dataBean.getSchool());
 			}
-			if (!dataBean.getSex().equals("null")) {
-				keywordMap.put("sex", dataBean.getSex());
-			}
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
