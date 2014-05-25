@@ -29,6 +29,27 @@ public class SearchDic {
 
 	// 검색어 사전을 만드는 모듈
 	public void bindingWord(HashMap<String, String> map) {
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		eliminateNull();
 
