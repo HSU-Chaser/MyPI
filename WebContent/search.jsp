@@ -8,13 +8,7 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-<!--bootstrap-->
-<link rel="stylesheet" href="css/bootstrap.css" type="text/css"
-	media="screen" title="no title" charset="utf-8" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
-
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.poptrox.min.js"></script>
 <script src="js/skel.min.js"></script>
@@ -45,6 +39,10 @@
 	<link rel="stylesheet" href="css/skel-noscript.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </noscript>
+<!-- effecter_start -->
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/effecter/modernizr.custom.js"></script>
+<!-- effecter_end -->
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 
@@ -57,7 +55,7 @@
 		<div class="content container">
 
 			<div id="loading" style="display: none">
-				<img src="css/images/ajax-loader.gif"> <br>
+				<img src="./css/images/ajax-loader.gif"> <br>
 				로딩중입니다...<br> <br>
 			</div>
 			<div id="information">
