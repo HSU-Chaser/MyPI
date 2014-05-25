@@ -75,10 +75,6 @@
     margin-top: -2%;
 }
 /*button*/
-a.btn.btn-navbar.junseok10 {
-	margin-top: 1.6em;
-}
-	/*menubar*/
 /*Sign in, Sing up control*/
 #button1 {
     width: 80%;
@@ -88,8 +84,4 @@ a.btn.btn-navbar.junseok10 {
 /*.container.small {
 	width: 80%;
 }*/
-@media (max-width: 980px) {
-	div.nav-collapse.collapse.junseok11 > ul {
-		margin-top: 1.6em;
-	}
-}
+

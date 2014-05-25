@@ -24,7 +24,10 @@
 	<link rel="stylesheet" href="css/skel-noscript.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </noscript>
-
+<!-- effecter_start -->
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/effecter/modernizr.custom.js"></script>
+<!-- effecter_end -->
 <style type="text/css" media="screen">
 /*index Page button remove*/
 .navbar .btn.btn-navbar {
