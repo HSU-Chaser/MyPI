@@ -33,7 +33,6 @@ td {
 	}
 </script>
 
-
 <body>
 	<%
 		String memberEmail = null;
@@ -50,6 +49,8 @@ td {
 	%>
 
 	<section id="contact">
+		회원님의 이메일로만 검색한 결과입니다. 더 자세한 검색 결과를 원하시면 회원정보를 수정하세요<br>
+		<button>회원정보수정</button>
 		<div class="resultObject">
 			<table>
 				<tr>
@@ -103,12 +104,9 @@ td {
 		<div class="resultObject">
 			<table>
 				<tr>
-					<td width="4%" align="center">번호</td>
-					<td width="54%" align="center">제목</td>
-					<td width="6%" align="center">엔진</td>
-					<td width="6%" align="center">링크</td>
+					<td width="5%" align="center">번호</td>
+					<td width="75%" align="center">제목</td>
 					<td width="10%" align="center">노출도</td>
-					<td width="10%" align="center">신뢰도</td>
 					<td width="10%" align="center">더 보기</td>
 				</tr>
 				<%
@@ -125,12 +123,9 @@ td {
 
 				<tr>
 					<td align="center"><%=i + 1%></td>
-					<td align="center"><%=result.get(i).getTitle()%></td>
-					<td align="center"><%=result.get(i).getEngine()%></td>
 					<td align="center"><a href="<%=result.get(i).getURL()%>"
-						target="_blank">링크</a></td>
+						target="_blank"  style="text-decoration: none"><%=result.get(i).getTitle()%></a></td>
 					<td align="center"><%=result.get(i).getExposure()%></td>
-					<td align="center"><%=result.get(i).getResultNumber()%></td>
 					<td><button onclick="open(n)">클릭</button></td>
 				</tr>
 
