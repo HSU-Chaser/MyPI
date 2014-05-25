@@ -33,8 +33,9 @@ public class MakeObject {
 		StringBuffer orBinding = new StringBuffer("");
 
 		while (itBind.hasNext()) {
-			String data = keywordMap.get(itBind.next());
-			System.out.println("현재 들어온 데이터 : " + data);
+			String key = itBind.next();
+			String data = keywordMap.get(key);
+			System.out.println("키  : " + key  + " 데이터 : " + data);
 
 			orBinding.append("OR+");
 			orBinding.append(data);

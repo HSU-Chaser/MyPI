@@ -11,7 +11,7 @@ import main.extending.form.ExtendedStorage;
 
 public class Cyworld extends Search {
 	public Cyworld() {
-		setBasicForm("http://search.cyworld.com/search/all.html?thr=sbus&ssn=043&asn=004300673&q=");
+		setBasicForm("http://search.cyworld.com/search/all.html?thr=sbus&ssn=043&q=");
 	}
 
 	// cyworld는 매우 중요한 정보를 다룸, 특히 coreMaterial은 이메일을 쪼갠 id를 받지만, 싸이월드는 이메일을 받아야됨
@@ -19,17 +19,15 @@ public class Cyworld extends Search {
 	public void searchMaterials(String coreMaterial) {
 
 		String buffer = "";
-			
+
 		setUrl(getBasicForm() + coreMaterial.split("@")[0] + "%40"
 				+ coreMaterial.split("@")[1]);
 		ArrayList<String> list = new ArrayList<String>();
 		BufferedReader br = null;
 		int i = 0;
 		String tid = ""; // uid에 대한 tid
-
-		String realName = ""; // 본명
-		String email = ""; // 이메일
-		String birthday = ""; // 생년월일(양, 음력)
+		
+		System.out.println("ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ : " + getUrl());
 
 		try {
 			InputStream inputURL = new URL(getUrl()).openStream();
@@ -39,10 +37,14 @@ public class Cyworld extends Search {
 			while ((buffer = br.readLine()) != null) {
 
 				list.add(buffer);
+				System.out.println("ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ : " + tid);
+
 				if (list.get(i).contains("nameUIOpen")) {
+					
+					
 					tid = list.get(i).split("'")[1].split("'")[0];
-					setUrl("http://minihp.cyworld.com/svcs/MiniHp.cy/index/"
-							+ tid + "?tid=60202405&urlstr=&f=&gate=_top");
+					System.out.println("ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ : " + tid);
+					
 					break;
 				}
 				i++;
@@ -50,36 +52,60 @@ public class Cyworld extends Search {
 			br.close();
 			rd.close();
 			inputURL.close();
-			inputURL = new URL(getUrl()).openStream();
-			rd = new InputStreamReader(inputURL, "euc-kr");
+
+		} catch (Exception e) {
+
+			System.out.println(e);
+		}
+
+		try {
+			// http://search.cyworld.com/search/all.html?thr=sbus&ssn=043&asn=004300673&q=yangsy0714%40naver.com
+			setUrl("http://minihp.cyworld.com/svcs/MiniHp.cy/index/" + tid	+ "?tid=" + tid + "&urlstr=&f=&gate=_top");
+			InputStream inputURL = new URL(getUrl()).openStream();
+			System.out.println("안녕하세요 tid  : " + tid);
+			InputStreamReader rd = new InputStreamReader(inputURL, "euc-kr");
 			br = new BufferedReader(rd);
 
 			while ((buffer = br.readLine()) != null) {
 
 				list.add(buffer);
+				System.out.println("돌아감 : " + buffer);
 
 				if (list.get(i).contains("검색결과가 없습니다")) {
 					System.out.println("싸이월드가 없습니다");
 					break;
 				}
 				if (list.get(i).contains("tName")) {
-									
-					realName = list.get(i).replace('"', '!').split("!")[5];
+
+					String name = list.get(i).replace('"', '!').split("!")[5];
 					storage.exposureUrlList
 							.add("http://minihp.cyworld.com/pims/main/pims_main.asp?tid="
 									+ tid);
-					ExtendedStorage.realName = realName;
+					if (name != null && name.length() != 0) {
 
+						System.out.println("여기 싸이월드 이름이 있다고 " + name);
+						ExtendedStorage.realName = name;
+
+					}
 				}
+
 				if (list.get(i).contains("mailto")) {
-					email = list.get(i).split(":")[1].replace('"', '!').split(
-							"!")[0];
-					ExtendedStorage.realEmail = email;
+					String email2 = list.get(i).split(":")[1].replace('"', '!')
+							.split("!")[0];
+					if (email2 != null && email2.length() != 0) {
+
+						ExtendedStorage.realName = email2;
+
+					}
 				}
 
 				if (list.get(i).contains("생년월일")) {
-					birthday = list.get(i).split(">")[4].split("<")[0];
-					ExtendedStorage.realBirthday = birthday;
+					String birthday2 = list.get(i).split(">")[4].split("<")[0];
+					if (birthday2 != null && birthday2.length() != 0) {
+
+						ExtendedStorage.realName = birthday2;
+
+					}
 				}
 
 				if (list.get(i).contains("미니홈피 주소")) { // 주소 뒷부분에 코어한 정보가 많아서
@@ -94,9 +120,6 @@ public class Cyworld extends Search {
 				}
 				i++;
 			}
-			
-			
-			
 
 			br.close();
 			rd.close();

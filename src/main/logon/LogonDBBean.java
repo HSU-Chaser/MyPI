@@ -155,18 +155,20 @@ public class LogonDBBean {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
+				
 				member = new LogonDataBean();
 				member.setEmail(rs.getString("email"));
 				member.setPassword(rs.getString("password"));
-				// 추가되는 부분
-				member.setExp_grade(rs.getInt("current_grade"));
 				member.setName(rs.getString("name"));
 				member.setCellphone(rs.getString("cellphone"));
-				member.setBirthday(rs.getString("birthday"));
 				member.setHomephone(rs.getString("homephone"));
-				member.setOccupation(rs.getString("occupation"));
+				member.setBirthday(rs.getString("birthday"));
+				member.setAddress(rs.getString("address"));
 				member.setSchool(rs.getString("school"));
-
+				member.setWorkplace(rs.getString("workplace"));
+				member.setOccupation(rs.getString("occupation"));
+				member.setCurrent_grade(rs.getInt("current_grade"));
+				
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

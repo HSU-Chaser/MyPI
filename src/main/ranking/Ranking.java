@@ -12,7 +12,9 @@ import main.search.SearchResult;
 public class Ranking {
 	static ArrayList<SearchResult> result;
 
-	public ArrayList<SearchResult> getResult(HashMap<String, String> keywordMap) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
+	public ArrayList<SearchResult> getResult(HashMap<String, String> keywordMap)
+			throws IllegalAccessException, InvocationTargetException,
+			NoSuchMethodException, IOException {
 
 		CalculateExp calExp = null;
 
@@ -26,13 +28,13 @@ public class Ranking {
 			SearchResult sr = result.get(i);
 			int exposure = 0;
 			OpenURL openUrl = new OpenURL(sr.getURL());
-			
+
 			try {
 				openUrl.urlRead();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+
 			calExp = new CalculateExp(keywordMap);
 			// 계산을 해서, exposure를 리턴해줘서 받으면 됨
 			exposure = calExp.getExposure();
@@ -41,13 +43,11 @@ public class Ranking {
 			result.set(i, sr);
 		}
 
-			
-
 		sortResult();
 		System.out.println("퀵소트 직후의 result 사이즈 : " + result.size());
 		checkDupUrl();
 		System.out.println("중복체크 직후의 result 사이즈 : " + result.size());
-		
+
 		return result;
 	}
 

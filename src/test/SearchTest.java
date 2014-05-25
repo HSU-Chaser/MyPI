@@ -13,17 +13,16 @@ public class SearchTest {
 
 	public static void main(String[] args) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
 
-		SearchDic binding;
+		SearchDic searchDic;
 		Ranking ranking = new Ranking();
 
 		
 		
 		//jsp 에서는 세션값으로 이메일을 받아서 넣으면 됩니다.
-		binding = new SearchDic("tera16@naver.com"); // binding 에 전달
+		searchDic = new SearchDic("yangsy0714@naver.com"); // binding 에 전달
 
 		
-		ArrayList<SearchResult> result = ranking.getResult(binding
-				.getKeywordMap());
+		ArrayList<SearchResult> result = ranking.getResult(searchDic.getKeywordMap());
 
 		for(int i=0; i<ImageStorage.getImgUrlList().size(); i++){
 			System.out.println("Test : " + ImageStorage.getImgUrlList().get(i));

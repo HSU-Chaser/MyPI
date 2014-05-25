@@ -1,9 +1,7 @@
 package main.logon;
 
 public class LogonDataBean {
-	private String email;
-	private String password;
-	private boolean certStatus;
+
 
 	public boolean getCertStatus() {
 		return certStatus;
@@ -14,22 +12,49 @@ public class LogonDataBean {
 	}
 
 	// 이하 추가된 부분
-	private int exp_grade;
+
+	private int client_num;
+	private String email;
+	private String password;
 	private String name;
 	private String cellphone;
-	private String sex;
-	private String birthday;
 	private String homephone;
-	private String occupation;
+	private String birthday;
+	private String address;
 	private String school;
-	private String extraInfo;
-
-	public int getExp_grade() {
-		return exp_grade;
+	private String workplace;
+	private String occupation;
+	private int current_grade;
+	private boolean certStatus;
+	
+	
+	public int getClient_num(){
+		return client_num;
+	}
+	
+	public String getAddress() {
+		return address;
 	}
 
-	public void setExp_grade(int exp_grade) {
-		this.exp_grade = exp_grade;
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getWorkplace() {
+		return workplace;
+	}
+
+	public void setWorkplace(String workplace) {
+		this.workplace = workplace;
+	}
+
+
+	public int getCurrent_grade() {
+		return current_grade;
+	}
+
+	public void setCurrent_grade(int exp_grade) {
+		this.current_grade = exp_grade;
 	}
 
 	public String getName() {
@@ -46,14 +71,6 @@ public class LogonDataBean {
 
 	public void setCellphone(String cellphone) {
 		this.cellphone = cellphone;
-	}
-
-	public String getSex() {
-		return sex;
-	}
-
-	public void setSex(String sex) {
-		this.sex = sex;
 	}
 
 	public String getBirthday() {
@@ -105,11 +122,4 @@ public class LogonDataBean {
 		this.password = Encryptor.encryptSHA(password);
 	}
 
-	public String getExtraInfo() {
-		return extraInfo;
-	}
-
-	public void setExtraInfo(String extraInfo) {
-		this.extraInfo = extraInfo;
-	}
 }
