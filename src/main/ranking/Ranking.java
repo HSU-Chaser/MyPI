@@ -51,7 +51,7 @@ public class Ranking {
 		return result;
 	}
 
-	// URL duplication check after sort
+	// URL duplication check after sort(바로 옆에 있는 것만 체크)
 	public void checkDupUrl() {
 
 		int currentSize = result.size();

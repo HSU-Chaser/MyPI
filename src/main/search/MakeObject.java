@@ -40,7 +40,7 @@ public class MakeObject {
 			orBinding.append(data);
 
 		}
-		String testImageSearch = "황기태";
+		String testImageSearch = "\"" + "tera16" + "\""  + "+서영덕" + "+한성대" ;
 
 		// System.out.println(orBinding);
 		// googleSearch = new GoogleSearch(orBinding.toString(), 5);
@@ -108,9 +108,7 @@ public class MakeObject {
 			}
 
 		}
-		
-		
-		
+				
 	/*	
 	 * imageSearch.setImageSearchResult();
 	 * 
