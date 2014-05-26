@@ -7,24 +7,17 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-<!--bootstrap-->
-<link rel="stylesheet" href="css/bootstrap.css" type="text/css"
-	media="screen" title="no title" />
+<link rel="stylesheet" href="css/jquery-ui.css" type="text/css" />
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
 
 <script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <script src="js/jquery.poptrox.min.js"></script>
 <script src="js/skel.min.js"></script>
 <script src="js/init.js"></script>
 <script type="text/javascript">
-	/* 	$(function() {
-	 $('progress').progressbar({
-	 value : 37
-	 });
-	 });
-	 */
 	var _onLoadData = function() {
 		$.ajax({
 			type : "POST",
@@ -56,6 +49,32 @@
 			$('#extendButton').attr('src', './images/icon/plus.png');
 		}
 	};
+
+	$(function() {
+		var progressbar = $("#progressbar"), progressLabel = $(".progress-label");
+
+		progressbar.progressbar({
+			value : false,
+			change : function() {
+				progressLabel.text(progressbar.progressbar("value") + "%");
+			},
+			complete : function() {
+				progressLabel.text("Complete!");
+			}
+		});
+
+		function progress() {
+			var val = progressbar.progressbar("value") || 0;
+
+			progressbar.progressbar("value", val + 1);
+
+			if (val < 99) {
+				setTimeout(progress, 100);
+			}
+		}
+
+		setTimeout(progress, 3000);
+	});
 </script>
 
 <noscript>
@@ -68,6 +87,8 @@
 <body>
 	<!-- Header -->
 	<jsp:include page="/common/header.jsp" />
+
+
 
 	<!-- Search Bar -->
 	<div id="searchBar"
@@ -104,16 +125,23 @@
 	</div>
 
 	<!-- Progress Bar -->
-	<div id="progress" align="center">
-		<progress value="30" max="100"></progress>
-	</div>
-	<div id="loading" align="center" style="display: none">
-		<img src="./css/images/ajax-loader.gif"> <br> 로딩중입니다...<br>
-		<br>
-	</div>
+	<!-- 	<div id="progressbar"
+		class="ui-progressbar ui-widget ui-widget-content ui-corner-all">
+		<div class="ui-progressbar-value ui-widget-header ui-corner-left"
+			style="width: 20%;"></div>
+	</div> -->
+	<!-- Contact -->
+	<section id="contact" class="main style3 secondary">
+		<div class="content container">
+			<div id="loading" align="center" style="display: none">
+				<img src="./css/images/ajax-loader.gif"> <br> 로딩중입니다...<br>
+				<br>
+			</div>
 
-	<!-- Result -->
-	<div id="result" class="junseok07" style="display: none"></div>
+			<!-- Result -->
+			<div id="result" class="junseok07" style="display: none"></div>
+		</div>
+	</section>
 
 	<!-- Footer -->
 	<jsp:include page="/common/footer.jsp" />
