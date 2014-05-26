@@ -89,9 +89,10 @@ public class GoogleSearch {
 		request.append("&num=" + limit); // 검색 제한 수 조정
 		request.append(key); // API Key
 		request.append(cx); // Custom Search Engine ID
-		request.append("&as_q=&as_epq=" + query); // Query
+//		request.append("&as_q=&as_epq=" + query); // Query
+//		request.append("&as_oq=");
 		
-		request.append("&as_oq=");
+		request.append("&q=" + query);
 		
 		request.append("&client=google-csbe"); // Search Engine Type
 		request.append("&output=xml_no_dtd"); // Output to XML

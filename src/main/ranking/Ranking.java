@@ -3,16 +3,16 @@ package main.ranking;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import main.patternanalysis.OpenURL;
 import main.search.MakeObject;
+import main.search.SearchDic;
 import main.search.SearchResult;
 
 public class Ranking {
 	static ArrayList<SearchResult> result;
 
-	public ArrayList<SearchResult> getResult(HashMap<String, String> keywordMap)
+	public ArrayList<SearchResult> getResult(ArrayList<String> searchWordList)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, IOException {
 
@@ -21,7 +21,7 @@ public class Ranking {
 		MakeObject makeObject = new MakeObject();
 
 		// 먼저, 구글, 네이버, 다음 검색하게 하고
-		result = makeObject.getResult(keywordMap);
+		result = makeObject.getResult(searchWordList);
 
 		for (int i = 0; i < result.size(); i++) {
 
@@ -30,12 +30,13 @@ public class Ranking {
 			OpenURL openUrl = new OpenURL(sr.getURL());
 
 			try {
+				// 패턴 및 counting 작업 시작
 				openUrl.urlRead();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 
-			calExp = new CalculateExp(keywordMap);
+			calExp = new CalculateExp(ExtendedInfo.getKeywordMap());
 			// 계산을 해서, exposure를 리턴해줘서 받으면 됨
 			exposure = calExp.getExposure();
 			System.out.println("이 url의 노출도는 : " + exposure);
@@ -49,6 +50,7 @@ public class Ranking {
 		System.out.println("중복체크 직후의 result 사이즈 : " + result.size());
 
 		return result;
+		
 	}
 
 	// URL duplication check after sort(바로 옆에 있는 것만 체크)

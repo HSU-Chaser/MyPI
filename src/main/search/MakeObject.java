@@ -15,112 +15,36 @@ public class MakeObject {
 	NaverSearch naverSearch = null;
 	DaumSearch daumSearch = null;
 
-	public ArrayList<SearchResult> getResult(HashMap<String, String> keywordMap) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
+	public ArrayList<SearchResult> getResult(ArrayList<String> searchWordList)
+			throws IllegalAccessException, InvocationTargetException,
+			NoSuchMethodException, IOException {
 		ImageSearch imageSearch = new ImageSearch();
-		
-		result = null;
 
-		Set<String> keySet = keywordMap.keySet();
-		Iterator<String> itBind = keySet.iterator();
-		Iterator<String> itCase = keySet.iterator();
+		result = null;
 
 		String naverCategory[] = { "blog", "news", "cafearticle", "kin",
 				"webkr", "doc" };
 		String daumCategory[] = { "board", "web", "knowledge" /* , "cafe", "blog" */};
-
-		System.out.println("Test : 현재 키 리스트 개수 : " + keySet.size());
-
-		StringBuffer orBinding = new StringBuffer("");
-
-		while (itBind.hasNext()) {
-			String key = itBind.next();
-			String data = keywordMap.get(key);
-			System.out.println("키  : " + key  + " 데이터 : " + data);
-
-			orBinding.append("OR+");
-			orBinding.append(data);
-
-		}
-		String testImageSearch = "\"" + "tera16" + "\""  + "+서영덕" + "+한성대" ;
-
-		// System.out.println(orBinding);
-		// googleSearch = new GoogleSearch(orBinding.toString(), 5);
-
-		googleSearch = new GoogleSearch(testImageSearch, 5);
-
-		result = googleSearch.getResult();
-
-		while (itCase.hasNext()) {
-			String key = itCase.next();
-			System.out.println("현재 들어온 키값 : " + key);
-
-			switch (key) {
-
-			// memberid, email, birthday, cellphone, homephone, name,
-			// occupation, school, sex, email2
-
-			case "cellphone":
-
-				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
-				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
-						naverCategory);
-				// addingDaum("\"" + keywordMap.get(key) + "\"", 10,
-				// daumCategory);
-
-				break;
-			case "email":
-
-				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
-				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
-						naverCategory);
-				// addingDaum("\"" + keywordMap.get(key) + "\"", 10,
-				// daumCategory);
-
-				break;
-			case "email2":
-
-				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
-				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
-						naverCategory);
-				// addingDaum("\"" + keywordMap.get(key) + "\"", 10,
-				// daumCategory);
-
-				break;
-			case "homephone":
-
-				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
-				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
-						naverCategory);
-				// addingDaum("\"" + keywordMap.get(key) + "\"", 10,
-				// daumCategory);
-
-				break;
-			case "memberid":
-
-				// memberid의 복잡도 계산 가능한지 체크
-				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
-				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
-						naverCategory);
-				// addingDaum("\"" + keywordMap.get(key) + "\"", 3,
-				// daumCategory);
-
-				break;
-
-			}
-
-		}
-				
-	/*	
-	 * imageSearch.setImageSearchResult();
-	 * 
-	 * setImageSearchResult(검색어, 이미지 갯수제한)
-	 */
 		
+	
+
+		
+
+		
+		
+		
+		
+		
+		
+//		String testImageSearch = "\"" + "tera16" + "\"" + "+서영덕" + "+한성대";
+//		googleSearch = new GoogleSearch(testImageSearch, 5);
+//		result = googleSearch.getResult();
+
 		return result;
 	}
 
 	public static boolean properID(String id) {
-		
+
 		boolean flag = false;
 
 		Pattern proper = Pattern

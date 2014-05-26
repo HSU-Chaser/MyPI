@@ -27,8 +27,6 @@ public class Cyworld extends Search {
 		int i = 0;
 		String tid = ""; // uid에 대한 tid
 		
-		System.out.println("ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ : " + getUrl());
-
 		try {
 			InputStream inputURL = new URL(getUrl()).openStream();
 			InputStreamReader rd = new InputStreamReader(inputURL, "euc-kr");
@@ -37,8 +35,6 @@ public class Cyworld extends Search {
 			while ((buffer = br.readLine()) != null) {
 
 				list.add(buffer);
-				System.out.println("ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ : " + tid);
-
 				if (list.get(i).contains("nameUIOpen")) {
 					
 					
@@ -62,19 +58,20 @@ public class Cyworld extends Search {
 			// http://search.cyworld.com/search/all.html?thr=sbus&ssn=043&asn=004300673&q=yangsy0714%40naver.com
 			setUrl("http://minihp.cyworld.com/svcs/MiniHp.cy/index/" + tid	+ "?tid=" + tid + "&urlstr=&f=&gate=_top");
 			InputStream inputURL = new URL(getUrl()).openStream();
-			System.out.println("안녕하세요 tid  : " + tid);
+
+			
 			InputStreamReader rd = new InputStreamReader(inputURL, "euc-kr");
 			br = new BufferedReader(rd);
 
 			while ((buffer = br.readLine()) != null) {
 
 				list.add(buffer);
-				System.out.println("돌아감 : " + buffer);
-
+				
 				if (list.get(i).contains("검색결과가 없습니다")) {
 					System.out.println("싸이월드가 없습니다");
 					break;
 				}
+				
 				if (list.get(i).contains("tName")) {
 
 					String name = list.get(i).replace('"', '!').split("!")[5];
@@ -83,7 +80,6 @@ public class Cyworld extends Search {
 									+ tid);
 					if (name != null && name.length() != 0) {
 
-						System.out.println("여기 싸이월드 이름이 있다고 " + name);
 						ExtendedStorage.realName = name;
 
 					}
@@ -94,7 +90,7 @@ public class Cyworld extends Search {
 							.split("!")[0];
 					if (email2 != null && email2.length() != 0) {
 
-						ExtendedStorage.realName = email2;
+						ExtendedStorage.realEmail = email2;
 
 					}
 				}
@@ -103,7 +99,7 @@ public class Cyworld extends Search {
 					String birthday2 = list.get(i).split(">")[4].split("<")[0];
 					if (birthday2 != null && birthday2.length() != 0) {
 
-						ExtendedStorage.realName = birthday2;
+						ExtendedStorage.realBirthday = birthday2;
 
 					}
 				}
