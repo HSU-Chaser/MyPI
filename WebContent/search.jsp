@@ -8,7 +8,8 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.poptrox.min.js"></script>
 <script src="js/skel.min.js"></script>
@@ -41,7 +42,7 @@
 </noscript>
 <!-- effecter_start -->
 <link rel="stylesheet" type="text/css" href="css/component.css" />
-		<script src="js/effecter/modernizr.custom.js"></script>
+<script src="js/effecter/modernizr.custom.js"></script>
 <!-- effecter_end -->
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
@@ -53,19 +54,7 @@
 	<!-- Contact -->
 	<section id="contact" class="main style3 secondary">
 		<div class="content container">
-
-			<div id="loading" style="display: none">
-				<img src="./css/images/ajax-loader.gif"> <br>
-				로딩중입니다...<br> <br>
-			</div>
-			<div id="information">
-				회원정보를 추가하시면 검색결과 정확도가 높아집니다.
-				<form name="search">
-					<input class="button" type="button" value="검색" onclick="LoadData()"><br>
-				</form>
-			</div>
-			<div id="result" style="display: none"></div>
-
+			<input class="button" type="button" value="검색" onclick="LoadData()"><br>
 
 		</div>
 	</section>

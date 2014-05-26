@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Team Chaser</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 <!--bootstrap-->
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css"
-	media="screen" title="no title" charset="utf-8" />
+	media="screen" title="no title" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
@@ -19,117 +18,104 @@
 <script src="js/jquery.poptrox.min.js"></script>
 <script src="js/skel.min.js"></script>
 <script src="js/init.js"></script>
+<script type="text/javascript">
+	/* 	$(function() {
+	 $('progress').progressbar({
+	 value : 37
+	 });
+	 });
+	 */
+	var _onLoadData = function() {
+		$.ajax({
+			type : "POST",
+			url : "./searchProcess.jsp",
+			success : function(result) {
+				$('#result').html(result);
+			},
+			error : function() {
+				$('#result').html("서버 오류입니다.");
+			},
+			beforeSend : function() {
+				$('#information').hide();
+				$('#loading').fadeIn(1000);
+			},
+			complete : function() {
+				$('#loading').hide();
+				$('#result').fadeIn(1000);
+			}
+		});
+	};
+
+	var moreFilter = function() {
+		var status = $('#moreFilter').css('display');
+		if (status == 'none') {
+			$('#moreFilter').toggle(500);
+			$('#extendButton').attr('src', './images/icon/minus.png');
+		} else {
+			$('#moreFilter').toggle(500);
+			$('#extendButton').attr('src', './images/icon/plus.png');
+		}
+	};
+</script>
+
 <noscript>
 	<link rel="stylesheet" href="css/skel-noscript.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </noscript>
 
-
-
-
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 <body>
+	<!-- Header -->
 	<jsp:include page="/common/header.jsp" />
 
-	<!-- Intro -->
-	<section id="intro" class="main style1 dark fullscreen">
-		<div class="content container small">
-			<header>
-				<h2>Hey.</h2>
-			</header>
-			<p>
-				Welcome to <strong>Big Picture</strong> a responsive site template
-				designed by, built on skelJS, and released for free under the
-				Creative Commons Attribution 3.0 license.
-			</p>
-			<footer>
-				<a href="#one" class="button style2 down">More</a>
-			</footer>
+	<!-- Search Bar -->
+	<div id="searchBar"
+		style="display: block; margin-bottom: 80px; background: aqua;">
+		<!-- Basic Filter -->
+		<div id="searchFilter" style="float: left; margin-left: 20px">
+			<!-- Default Filter -->
+			<img id="email" src="./images/icon/email.png"> <img id="name"
+				src="./images/icon/name.png">
 		</div>
-	</section>
-
-	<!-- One -->
-	<section id="one" class="main style2 right dark fullscreen">
-		<div class="content box style2">
-			<header>
-				<h2>What I Do</h2>
-			</header>
-			<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas
-				dolore condimentum. Fusce blandit ultrices sapien, in accumsan orci
-				rhoncus eu. Sed sodales venenatis arcu, id varius justo euismod in.
-				Curabitur egestas consectetur magna urna.</p>
+		<!-- Extended Filter -->
+		<div id="moreFilter"
+			style="display: none; float: left; margin-left: 5px">
+			<img id="cellphone" src="./images/icon/cellphone.png"> <img
+				id="homephone" src="./images/icon/homephone.png"> <img
+				id="birthday" src="./images/icon/birthday.png"> <img
+				id="address" src="./images/icon/address.png"> <img id="school"
+				src="./images/icon/school.png"> <img id="workplace"
+				src="./images/icon/workplace.png"> <img id="occupation"
+				src="./images/icon/occupation.png">
 		</div>
-		<a href="#two" class="button style2 down anchored">Next</a>
-	</section>
-
-	<!-- Two -->
-	<section id="two" class="main style2 left dark fullscreen">
-		<div class="content box style2">
-			<header>
-				<h2>Who I Am</h2>
-			</header>
-			<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas
-				dolore condimentum. Fusce blandit ultrices sapien, in accumsan orci
-				rhoncus eu. Sed sodales venenatis arcu, id varius justo euismod in.
-				Curabitur egestas consectetur magna urna.</p>
+		<!-- Filter Toggle -->
+		<div id="toggleFilter" style="float: left; margin-left: 5px">
+			<img id="extendButton" src="./images/icon/plus.png"
+				onclick="moreFilter()">
 		</div>
-		<a href="#work" class="button style2 down anchored">Next</a>
-	</section>
 
-	<!-- Work -->
-	<section id="work" class="main style3 primary">
-		<div class="content container">
-			<header>
-				<h2>My Work</h2>
-				<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas
-					dolore condimentum. Fusce blandit ultrices sapien, in accumsan orci
-					rhoncus eu. Sed sodales venenatis arcu, id varius justo euismod in.
-					Curabitur egestas consectetur magna vitae urna.</p>
-			</header>
-
-			<!--
-						 Lightbox Gallery
-						 
-						 Powered by poptrox. Full docs here: https://github.com/n33/jquery.poptrox
-					-->
-			<div class="container small gallery">
-				<div class="row flush images">
-					<div class="6u">
-						<a href="images/fulls/01.jpg" class="image full l"><img
-							src="images/thumbs/01.jpg" title="The Anonymous Red" alt="" /></a>
-					</div>
-					<div class="6u">
-						<a href="images/fulls/02.jpg" class="image full r"><img
-							src="images/thumbs/02.jpg" title="Airchitecture II" alt="" /></a>
-					</div>
-				</div>
-				<div class="row flush images">
-					<div class="6u">
-						<a href="images/fulls/03.jpg" class="image full l"><img
-							src="images/thumbs/03.jpg" title="Air Lounge" alt="" /></a>
-					</div>
-					<div class="6u">
-						<a href="images/fulls/04.jpg" class="image full r"><img
-							src="images/thumbs/04.jpg" title="Carry on" alt="" /></a>
-					</div>
-				</div>
-				<div class="row flush images">
-					<div class="6u">
-						<a href="images/fulls/05.jpg" class="image full l"><img
-							src="images/thumbs/05.jpg" title="The sparkling shell" alt="" /></a>
-					</div>
-					<div class="6u">
-						<a href="images/fulls/06.jpg" class="image full r"><img
-							src="images/thumbs/06.jpg" title="Bent IX" alt="" /></a>
-					</div>
-				</div>
-			</div>
+		<!-- Search Button -->
+		<div id="searchbutton" style="float: right; margin-right: 20px">
+			<img alt="search" id="search" src="./images/icon/search.png"
+				onclick="_onLoadData()">
 		</div>
-	</section>
-	<!-- Contact -->
-	<section id="contact" class="main style3 secondary"></section>
 
+	</div>
+
+	<!-- Progress Bar -->
+	<div id="progress" align="center">
+		<progress value="30" max="100"></progress>
+	</div>
+	<div id="loading" align="center" style="display: none">
+		<img src="./css/images/ajax-loader.gif"> <br> 로딩중입니다...<br>
+		<br>
+	</div>
+
+	<!-- Result -->
+	<div id="result" class="junseok07" style="display: none"></div>
+
+	<!-- Footer -->
 	<jsp:include page="/common/footer.jsp" />
 </body>
 </html>

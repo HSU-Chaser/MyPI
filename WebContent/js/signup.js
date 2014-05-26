@@ -1,7 +1,7 @@
 /**
  * Sign Up Script
  */
-var checkEmail = function(userinput) {
+var _onCheckEmail = function(userinput) {
 	var emailRegex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 	// 이메일을 입력했는지 검사
 	if (userinput.email.value == "") {
@@ -38,7 +38,8 @@ var checkEmail = function(userinput) {
 		});
 	}
 };
-var sendCertKey = function(userinput) {
+
+var _onSendCertKey = function(userinput) {
 	$.ajax({
 		type : "GET",
 		url : "sendKey.jsp?email=" + userinput.email.value,
@@ -55,7 +56,7 @@ var sendCertKey = function(userinput) {
 	});
 };
 
-var confirmCertKey = function(userinput) {
+var _onConfirmCertKey = function(userinput) {
 	if (userinput.certkey.value == "") {
 		alert("인증키를 입력하세요.");
 		$('#keyMsg').css('color', 'red');
@@ -82,7 +83,7 @@ var confirmCertKey = function(userinput) {
 	}
 };
 
-var checkPass1 = function(userinput) {
+var _onCheckPassword1 = function(userinput) {
 	var passwdRegex = /^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,16}/;
 	// 입력이 아예 없을 경우
 	if (userinput.password.value == "") {
@@ -120,7 +121,7 @@ var checkPass1 = function(userinput) {
 	}
 };
 
-var checkPass2 = function(userinput) {
+var _onCheckPassword2 = function(userinput) {
 	var checkpasswd = /^(?=([a-zA-Z]+[0-9]+[a-zA-Z0-9]*|[0-9]+[a-zA-Z]+[a-zA-Z0-9]*)$).{6,16}/;
 	// 입력이 아예 없을 경우
 	if (userinput.password2.value == "") {
@@ -158,6 +159,6 @@ var checkPass2 = function(userinput) {
 	}
 };
 
-var checkIt = function() {
-	
+var _onCheckIt = function() {
+
 };
