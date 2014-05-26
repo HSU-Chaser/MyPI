@@ -49,32 +49,6 @@
 			$('#extendButton').attr('src', './images/icon/plus.png');
 		}
 	};
-
-	$(function() {
-		var progressbar = $("#progressbar"), progressLabel = $(".progress-label");
-
-		progressbar.progressbar({
-			value : false,
-			change : function() {
-				progressLabel.text(progressbar.progressbar("value") + "%");
-			},
-			complete : function() {
-				progressLabel.text("Complete!");
-			}
-		});
-
-		function progress() {
-			var val = progressbar.progressbar("value") || 0;
-
-			progressbar.progressbar("value", val + 1);
-
-			if (val < 99) {
-				setTimeout(progress, 100);
-			}
-		}
-
-		setTimeout(progress, 3000);
-	});
 </script>
 
 <noscript>
@@ -92,7 +66,7 @@
 
 	<!-- Search Bar -->
 	<div id="searchBar"
-		style="display: block; margin-bottom: 80px; background: aqua;">
+		style="margin-top: 100px; position: fixed;">
 		<!-- Basic Filter -->
 		<div id="searchFilter" style="float: left; margin-left: 20px">
 			<!-- Default Filter -->
@@ -121,25 +95,34 @@
 			<img alt="search" id="search" src="./images/icon/search.png"
 				onclick="_onLoadData()">
 		</div>
-
 	</div>
 
-	<!-- Progress Bar -->
-	<!-- 	<div id="progressbar"
-		class="ui-progressbar ui-widget ui-widget-content ui-corner-all">
-		<div class="ui-progressbar-value ui-widget-header ui-corner-left"
-			style="width: 20%;"></div>
-	</div> -->
-	<!-- Contact -->
-	<section id="contact" class="main style3 secondary">
+	<!-- Intro -->
+	<section id="intro" class="main style1 dark fullscreen">
 		<div class="content container">
-			<div id="loading" align="center" style="display: none">
-				<img src="./css/images/ajax-loader.gif"> <br> 로딩중입니다...<br>
-				<br>
+			<!-- Information -->
+			<header>
+				<h2>마이파이</h2>
+			</header>
+			<p>마이파이 내용</p>
+			<footer>마이파이 끝</footer>
+
+
+			<!-- Progress Bar -->
+			<div id="progressbar"
+				class="ui-progressbar ui-widget ui-widget-content ui-corner-all"
+				style="display: none;">
+				<div class="ui-progressbar-value ui-widget-header ui-corner-left"
+					style="width: 20%; display: none"></div>
+				<div id="loading" align="center" style="display: none">
+					<img src="./css/images/ajax-loader.gif"> <br> 로딩중입니다...<br>
+					<br>
+				</div>
+
+				<!-- Result -->
+				<div id="result" class="junseok07" style="display: none"></div>
 			</div>
 
-			<!-- Result -->
-			<div id="result" class="junseok07" style="display: none"></div>
 		</div>
 	</section>
 
