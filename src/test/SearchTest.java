@@ -17,8 +17,6 @@ public class SearchTest {
 		SearchDic searchDic;
 		Ranking ranking = new Ranking();
 		ExtendedInfo extend;
-
-		
 		
 		//jsp 에서는 세션값으로 이메일을 받아서 넣으면 됩니다.
 		extend = new ExtendedInfo("tera16@naver.com");

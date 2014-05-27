@@ -100,7 +100,7 @@ public class GoogleSearch {
 		request.append("&oe=utf-8"); // Output Encoding
 		request.append("&lr=lang_ko");	
 	
-		System.out.println("구글API XML주소 : " + request);
+		System.out.println("구글API XML주소 : " + request.toString());
 		return request.toString();
 	}
 
