@@ -30,34 +30,66 @@ public class SearchDic {
 	// 검색어 사전을 만드는 모듈
 	public void bindingWord(HashMap<String, String> map) {
 
-		//먼저 2개로 시작해보겠다.
-		String[] binding = { map.get("id"), map.get("email"), map.get("name"), map.get("cellphone"), map.get("homephone")
-				, map.get("birthday"), map.get("address"), map.get("school"), map.get("workplace"), map.get("occupation"),
-				map.get("email2"), map.get("birthday2"), map.get("nickname"), map.get("nickname2")};
+		ArrayList<String> oneWord = new ArrayList<String>();
+		ArrayList<String> twoWord = new ArrayList<String>();
+
+		//단일 항목 검색
+		String[] oneBinding = { map.get("id"), map.get("email"),
+				map.get("name"), map.get("cellphone"), map.get("homephone"),
+				map.get("birthday"), map.get("address"), map.get("school"),
+				map.get("workplace"), map.get("occupation"), map.get("email2"),
+				map.get("birthday2"), map.get("nickname"), map.get("nickname2") };
 		
-		int grammarNum = binding.length;
-		
-		
-		
+		// 복합 항목 검색
+//		String[] twoBinding = {
+
+		int grammarNum = oneBinding.length;
+
 		for (int i = 0; i < grammarNum; i++) {
-
-			getSearchWordList().add(binding[i]);
-
+			oneWord.add(oneBinding[i]);
 		}
+		clearNullOne(oneWord);
+		
+		// 처음엔 이렇게 넣어버리고, 그 뒤부턴 addAll
+		for(int i=0; i<oneWord.size(); i++){
+			getSearchWordList().add(oneWord.get(i));
+		}
+		
+		
+		
+		
+		
+	
+	}
+	
+	// null일경우 해당 항목 삭제하면서 갑니다.
+	public ArrayList<String> clearNullOne(ArrayList<String> list) {
+		
+		int size = list.size();
 
-		eliminateNull();
+		for (int i = 0; i < size; i++) {
 
+			if (list.get(i).contains("null")) {
+
+				System.out.println("clearNullOne 들어왔습니다 : " + list.get(i));
+				list.remove(i);
+				i--; size--;
+				
+			}
+		}
+		return list;
 	}
 
-	public void eliminateNull() {
+	public ArrayList<String> clearNullTwo(ArrayList<String> list) {
 
 		for (int i = 0; i < getSearchWordList().size(); i++) {
 
 			if (getSearchWordList().get(i).contains("null")) {
 
 				System.out.println("들어왔습니다 : " + getSearchWordList().get(i));
-				String replaceString = getSearchWordList().get(i).replace("null", "d");
-				
+				String replaceString = getSearchWordList().get(i).replace(
+						"null", "+");
+
 				getSearchWordList().set(i, replaceString);
 
 			}
@@ -77,11 +109,13 @@ public class SearchDic {
 			}
 
 		}
-		
-		for(int i = 0; i<getSearchWordList().size(); i++){
-			System.out.println(getSearchWordList().get(i));
-		
-		}
+
+		// for(int i = 0; i<getSearchWordList().size(); i++){
+		// System.out.println(getSearchWordList().get(i));
+		//
+		// }
+
+		return list;
 
 	}
 
