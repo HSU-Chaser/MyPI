@@ -29,12 +29,18 @@ public class SearchDic {
 
 	// 검색어 사전을 만드는 모듈
 	public void bindingWord(HashMap<String, String> map) {
-		
-		
-		
 
-	
+		//먼저 2개로 시작해보겠다.
+		String[] binding = { map.get("id"), map.get("email") };
 		
+		int grammarNum = binding.length;
+		
+		
+		for (int i = 0; i < grammarNum; i++) {
+
+			getSearchWordList().add(binding[i]);
+
+		}
 
 		eliminateNull();
 
