@@ -29,46 +29,84 @@
 		}
 	%>
 	<%
-		//if(request.getRequestURL().toString()
-		//		.equals("http://mypi.co.kr/main.jsp")) {
-		if (request.getRequestURL().toString()
-				.equals("http://localhost:8080/MyPI/main.jsp")) {
+		String path = request.getRequestURI();
+		int start = path.lastIndexOf("/");
+		int end = path.length();
+		if (path.substring(start + 1, end).equals("main.jsp")) {
 	%>
 
 	<!-- Search Bar -->
 	<div id="searchBar">
-				<!-- Search Button -->
-		<button id="search"><img src="./images/icon/search.png"></button>
+		<!-- Search Button -->
+		<button id="search" class="ui-button">
+			<img src="images/icon/search.png">
+		</button>
 		<!-- Basic Filter -->
-		<button id="email" class="basic-filter"><img src="./images/icon/email.png"></button>
-		<!-- Extended Filter -->
-		<button id="name" class="filter"><img src="images/icon/name.png"></button>
-		<button id="cellphone" class="filter"><img  src="images/icon/cellphone.png"></button>
-		<button id="homephone" class="filter"><img src="images/icon/homephone.png"></button>
-		<button id="birthday"class="filter"><img src="images/icon/birthday.png"></button>
-		<button id="address" class="filter"><img src="images/icon/address.png"></button>
-		<button id="school" class="filter"><img src="images/icon/school.png"></button>
-		<button id="workplace" class="filter"><img src="images/icon/workplace.png"></button>
-		<button id="occupation" class="filter"><img src="images/icon/occupation.png"></button>
-		<!-- Filter Toggle -->
-		<button id="open-filter" class="toggle-filter"><img src="./images/icon/plus.png"></button>
-		<button id="close-filter" class="toggle-filter" style="display: none"><img src="./images/icon/minus.png"></button>
-
-
+		<div style="float: left;">
+			<button id="email" class="basic-filter ui-button">
+				<img src="images/icon/email.png">
+			</button>
+			<!-- Extended Filter -->
+			<button id="name" class="filter ui-button md-trigger"
+				data-modal="modal-12">
+				<img src="images/icon/name.png">
+			</button>
+			<button id="cellphone" class="filter ui-button md-trigger"
+				data-modal="modal-12">
+				<img src="images/icon/cellphone.png">
+			</button>
+			<button id="homephone" class="filter ui-button md-trigger"
+				data-modal="modal-12">
+				<img src="images/icon/homephone.png">
+			</button>
+			<button id="birthday" class="filter ui-button md-trigger"
+				data-modal="modal-12">
+				<img src="images/icon/birthday.png">
+			</button>
+		</div>
+		<div style="float: left;">
+			<button id="address" class="filter ui-button md-trigger"
+				data-modal="modal-12">
+				<img src="images/icon/address.png">
+			</button>
+			<button id="school" class="filter ui-button md-trigger"
+				data-modal="modal-12">
+				<img src="images/icon/school.png">
+			</button>
+			<button id="workplace" class="filter ui-button md-trigger"
+				data-modal="modal-12">
+				<img src="images/icon/workplace.png">
+			</button>
+			<button id="occupation" class="filter ui-button md-trigger"
+				data-modal="modal-12">
+				<img src="images/icon/occupation.png">
+			</button>
+			<!-- Filter Toggle -->
+			<button id="open-filter" class="toggle-filter ui-button">
+				<img src="images/icon/plus.png">
+			</button>
+			<button id="close-filter" class="toggle-filter ui-button">
+				<img src="images/icon/minus.png">
+			</button>
+		</div>
 	</div>
-
 
 	<!-- Modal Dialog -->
-	<div id="dialog-form" title="Change Information" style="display: none">
-		<p class="validateTips">Change Information.</p>
-
-		<form>
-			<fieldset>
-				<label for="name">Name</label> <input type="text" name="name"
-					id="name" class="text ui-widget-content ui-corner-all">
-			</fieldset>
-		</form>
+	<div class="md-modal md-effect-12" id="modal-12">
+		<div class="md-content">
+			<h3 class="fond_GODOM">회원정보 수정</h3>
+			<button>닫기</button>
+		</div>
 	</div>
+	<div class="md-overlay"></div>
+	<script src="js/effecter/classie.js"></script>
+	<script src="js/effecter/modalEffects.js"></script>
+	<script>
+		// this is important for IEs
+		var polyfilter_scriptpath = '/js/';
+	</script>
+	<script src="js/effecter/cssParser.js"></script>
+	<script src="js/effecter/css-filters-polyfill.js"></script>
 	<%
 		}
 	%>

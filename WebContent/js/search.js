@@ -51,7 +51,7 @@ $(document).ready(function() {
 				}
 			},
 			close : function() {
-				allFields.val("").removeClass("ui-state-error");
+				;
 			}
 		});
 	});
@@ -85,7 +85,7 @@ $(document).ajaxStart(function() {
 });
 
 var _onFilp = function(n) {
-	$('#content' + n).slide('slow');
+	$('#content' + n).toggle('slow');
 };
 
 var _onEditInfo = function(info) {
@@ -103,7 +103,7 @@ var _onEditInfo = function(info) {
 			}
 		},
 		close : function() {
-			allFields.val("").removeClass("ui-state-error");
+			;
 		}
 	});
 
