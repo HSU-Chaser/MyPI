@@ -71,7 +71,24 @@
 	});
 
 	var _onEditInfo = function(info) {
+		$("#changeForm").dialog("open");
 
+		$('#changeForm').dialog({
+			width : 350,
+			height : 300,
+			modal : true,
+			buttons : {
+				"수정" : function() {
+
+				},
+				Cancel : function() {
+					$(this).dialog("close");
+				}
+			},
+			close : function() {
+				allFields.val("").removeClass("ui-state-error");
+			}
+		});
 	};
 
 	var _onFilterExtend = function() {
