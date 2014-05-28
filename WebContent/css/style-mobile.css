@@ -71,20 +71,17 @@
 /*********************************************************************************/
 
 	#header {
-		height: 2.5em;
+		height: 4.5em;
 		line-height: 2.5em;
 	}
 
 	body {
-		padding-top: 2.5em;
+		/*padding-top: 2.5em;*/
 	}
 
 	#logo {
-		text-align: center;
-		position: relative;
-		left: 0;
+		left: 2.5%;
 		top: 0;
-		height: 2.5em;
 		line-height: 2.5em;
 	}
 	
@@ -155,40 +152,32 @@
 /*********************************************************************************/
 /* junseok_add                                                                */
 /*********************************************************************************/
-
-.junseok1 {
+span {
+	font-size: 65%;
+}
+.logo {
      font-family: FontAwesome; 
     font-size: 2.5em;
     margin-top: 2%;
 }
 /*delete_picture 1*/
-.test_img {
+.Mypi {
     visibility: hidden;
     border-radius: 0.7em;
 }
 /*delete_picture 2*/ 
-.MyPI_destribute {
+.login_img {
 width: 1%;
 vertical-align: middle;
 }
-a.btn.btn-navbar.junseok10 {
-	margin-top: 1.6em;
-}
-div.nav-collapse.collapse.junseok11 > ul {
-	margin-top: 1.6em;
-}
-/*Sign in, Sing up control*/
-.button.junseok5 {
+/*Sign in, Sign up control*/
+.button.addButton {
 	font-size: 11px;
 }
-#button1 {
-    width: 80%;
-    height: 72%;
-}
-.junseok7 {
+.signup_text {
 	font-size: 67%;
 }
-.junseok8 {
+.signup_form {
 	font-size: 70%;
 	width: 15%;
 }
@@ -197,23 +186,30 @@ div.nav-collapse.collapse.junseok11 > ul {
 }
 /*placeholder control*/
 form .formerize-placeholder {
-    font-size: 8px;
+    font-size: 11px;
 }
 
 ::-webkit-input-placeholder {
-    font-size: 8px;
+    font-size: 11px;
 }
 
 ::-moz-placeholder {
-    font-size: 8px;
+    font-size: 11px;
 }
 
 ::-moz-placeholder {
-    font-size: 8px;
+    font-size: 11px;
 }
 
 :-ms-input-placeholder {
-    font-size: 8px;
+    font-size: 11px;
 }
 form ::-moz-focus-inner {
+}
+#logo {
+	left: 2em;
+}
+#logo > img {
+	height: 3em;
+	margin-top: 0.7em;
 }

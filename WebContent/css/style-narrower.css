@@ -66,22 +66,7 @@
 			line-height: inherit;
 		}
 /*********************************************************************************/
-/* junseok_add                                                                */
+/*add                                                                */
 /*********************************************************************************/
 
-.junseok1 {
-    font-family: FontAwesome; 
-    font-size: 2.5em;
-    margin-top: -2%;
-}
-/*button*/
-/*Sign in, Sing up control*/
-#button1 {
-    width: 80%;
-    height: 48%;
-}
-/*Signup table*/
-/*.container.small {
-	width: 80%;
-}*/
 

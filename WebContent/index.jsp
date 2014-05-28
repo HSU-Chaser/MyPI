@@ -9,17 +9,13 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-<!--bootstrap-->
-<link rel="stylesheet" href="css/bootstrap.css" type="text/css"
-	media="screen" title="no title" charset="utf-8" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
-
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.poptrox.min.js"></script>
 <script src="js/skel.min.js"></script>
 <script src="js/init.js"></script>
+<link rel="stylesheet" href="css/index.css"/>
 <noscript>
 	<link rel="stylesheet" href="css/skel-noscript.css" />
 	<link rel="stylesheet" href="css/style.css" />
@@ -37,73 +33,43 @@
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 <body>
+	<%
+		if (session.getAttribute("memEmail") != null) {
+	%>
+	<script type="text/javascript">
+		alert("이미 로그인 되어있습니다..");
+		location.replace("main.jsp");
+	</script>
+	<%
+		}
+	%>
 	<!-- Header -->
-	<header id="header">
-		<%
-			if (session.getAttribute("memEmail") != null) {
-		%>
-		<script type="text/javascript">
-			alert("이미 로그인되어있습니다.");
-			location.replace("main.jsp");
-		</script>
-		<%
-			}
-		%>
-		<!-- Nav -->
-
-		<div class="navbar">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="btn btn-navbar" data-toggle="collapse"
-						data-target=".nav-collapse"> <span class="icon-bar"> </span> <span
-						class="icon-bar"> </span> <span class="icon-bar"> </span>
-					</a> <a id="logo" class="brand" href="index.jsp"><h1
-							class="junseok1">∑ π</h1></a>
-					<div class="nav-collapse collapse">
-						<ul class="nav pull-right">
-							<li><a style="visibility: hidden">1</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+	<jsp:include page="/common/header.jsp" />
 
 	<!--  Login -->
-	<section id="login" class="main style4 primary junseok2">
+	<section id="login" class="main style4 primary loginForm">
 		<div class="content container">
-			<div class="box container small junseok4">
-				<!--
-                      Contact Form
-                      
-                      To get this working, place a script on your server to receive the form data, then
-                      point the "action" attribute to it (eg. action="http://mydomain.tld/mail.php").
-                      More on how it all works here: http://www.1stwebdesigner.com/tutorials/custom-php-contact-forms/
-                  -->
-
-
+			<div class="box container small form_background">
 				<form action="signinProcess.jsp" method="post">
-					<table cellspacing="5" cellpadding="5">
+					<table>
 						<tr>
-							<td rowspan="3" class="MyPI_destribute"><img
-								class="test_img" src="images/fulls/02.jpg"></td>
-							<td colspan="3" class="junseok9"><input type="text" id="fid" name="fid"
+							<td rowspan="3" class="login_img"><img
+								class="Mypi" src="images/fulls/02.jpg"></td>
+							<td colspan="3" class="login_session"><input type="text" id="fid" name="fid"
 								class="color font_GODOM" placeholder="이메일" /> <input
 								type="password" id="fpass" name="fpass"
 								class="color font_GODOM" placeholder="비밀번호" /></td>
-							<td><input type="submit" class="button junseok5 font_GODOM"
-								id="button1" value=" 로그인  " /></td>
+							<td><input type="submit" class="button addButton font_GODOM"
+								id="login_button" value=" 로그인  " /></td>
 						</tr>
 						<tr>
-							<td colspan="4"><p style="color: rgb(184, 138, 120);"
-								class="font_GODOM junseok10">MyPI가 처음이신가요? </p> <input type="button"
-								class="button junseok5 font_GODOM" id="button2" value=" 회원 가입 "
+							<td colspan="4"><p class="font_GODOM login_text">MyPI가 처음이신가요? </p> <input type="button"
+								class="button addButton font_GODOM" id="signup_button" value=" 회원 가입 "
 								onclick="location.href='signup.jsp' " /></td>
 						</tr>
 						<tr>
-							<td colspan="4" style="padding-bottom: 4%;"><p
-								style="color: rgb(184, 138, 120);" class="font_GODOM junseok10">비밀번호를 잊으셨나요?</p> <input
-								type="button" class="button junseok5 font_GODOM" id="button3"
+							<td colspan="4" style="padding-bottom: 4%;"><p class="font_GODOM login_text">비밀번호를 잊으셨나요?</p> <input
+								type="button" class="button addButton font_GODOM" id="findinfo_button"
 								value=" 비밀번호 찾기  " onclick="location.href='main.jsp' " /></td>
 						</tr>
 					</table>

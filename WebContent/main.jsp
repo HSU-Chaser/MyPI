@@ -110,7 +110,11 @@
 	<link rel="stylesheet" href="css/skel-noscript.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </noscript>
-
+<link rel="stylesheet" href="css/main.css"/>
+<!-- effecter_start -->
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/effecter/modernizr.custom.js"></script>
+<!-- effecter_end -->
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 <body>

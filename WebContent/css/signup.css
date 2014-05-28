@@ -1,0 +1,29 @@
+/* signup.html > sction > */
+.main.style4.primary.signupForm {
+	padding: 3.75em 0 3.75em 0;
+	padding-top: 150px;
+}
+#signup_form {
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.2);
+}
+/*input size + align 2*/
+.signup_form {
+	color: rgb(184, 138, 120);
+	text-align: center;
+	padding: 0 1em 0 1em;
+	font-size: 100%;
+}
+
+/*input size + align 1*/
+input#email, input#certkey, input#password, input#password2 {
+	width: 100%;
+	margin: auto;
+	margin-right: 11.3%;
+	border: 1px solid white;
+	color: rgb(184, 138, 120);
+	display: inline;
+}
+#reset {
+	width: 6%;
+}
