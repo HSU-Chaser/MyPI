@@ -37,6 +37,8 @@
 
 	<!-- Search Bar -->
 	<div id="searchBar">
+				<!-- Search Button -->
+		<button id="search"><img src="./images/icon/search.png"></button>
 		<!-- Basic Filter -->
 		<button id="email" class="basic-filter"><img src="./images/icon/email.png"></button>
 		<!-- Extended Filter -->
@@ -52,8 +54,7 @@
 		<button id="open-filter" class="toggle-filter"><img src="./images/icon/plus.png"></button>
 		<button id="close-filter" class="toggle-filter" style="display: none"><img src="./images/icon/minus.png"></button>
 
-		<!-- Search Button -->
-		<button id="search"><img src="./images/icon/search.png"></button>
+
 	</div>
 
 
