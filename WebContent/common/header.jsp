@@ -4,10 +4,16 @@
 
 <header id="header">
 	<!-- Logo -->
-	<% if(session.getAttribute("memEmail") == null) { %>
-		<a id="logo" class="brand" href="index.jsp"><img src="./images/logo.png"></a>
-	<% } else {%>
-		<a id="logo" class="brand" href="main.jsp"><img src="./images/logo.png"></a>
+	<%
+		if (session.getAttribute("memEmail") == null) {
+	%>
+	<a id="logo" class="brand" href="index.jsp"><img
+		src="./images/logo.png"></a>
+	<%
+		} else {
+	%>
+	<a id="logo" class="brand" href="main.jsp"><img
+		src="./images/logo.png"></a>
 	<!-- Nav -->
 	<div class="navbar">
 		<div class="junseok11" style="float: right;">
@@ -19,7 +25,9 @@
 			</ul>
 		</div>
 	</div>
-	<% } %>
+	<%
+		}
+	%>
 	<%
 		//if(request.getRequestURL().toString()
 		//		.equals("http://mypi.co.kr/main.jsp")) {
@@ -36,8 +44,7 @@
 				onclick="_onEditInfo(email)">
 		</div>
 		<!-- Extended Filter -->
-		<div id="moreFilter"
-			style="display: none; float: left">
+		<div id="moreFilter" style="display: none; float: left">
 			<img id="name" src="./images/icon/name.png"
 				onclick="_onEditInfo(name)"> <img id="cellphone"
 				src="./images/icon/cellphone.png" onclick="_onEditInfo(cellphone)">
@@ -59,14 +66,13 @@
 
 		<!-- Search Button -->
 		<div id="searchbutton" style="float: right">
-			<button id="search" class="button small font_GODOM"
-				onclick="_onLoadData()">검색</button>
+			<img id="search" src="./images/icon/search.png" onclick="_onLoadData()">
 		</div>
 	</div>
 
 	<!-- Modal Dialog -->
 	<div id="changeForm" class="ui-widget" title="정보수정"
-		style="width: 350px; margin: 20px 0; display: none;">
+		style="width: 350px; margin: 20px 0">
 		<form>
 			<fieldset style="padding: 0; border: 0; margin-top: 25px;">
 				<label for="inputInfo" style="display: block;">정보입력</label> <input

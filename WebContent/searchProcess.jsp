@@ -17,23 +17,32 @@
 }
 
 .resultObject table {
+	width: 100%;
+	border: 0;
+	cellspacing: 0;
+	cellpadding: 0;
 	border: thin solid white;
+	cellpadding: 0;
+}
+
+.resultObject tr {
+	
 }
 
 .resultObject td {
 	background-color: rgba(255, 255, 255, .5);
 	border: thin solid white;
-	text-align: center;
 	height: 3em;
+	text-align: center;
 }
 </style>
 
 <body>
 	<%
 		String memberEmail = null;
-			memberEmail = (String) session.getAttribute("memEmail");
+		memberEmail = (String) session.getAttribute("memEmail");
 
-			if (memberEmail == null) {
+		if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
