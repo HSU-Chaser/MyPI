@@ -66,7 +66,7 @@ public class ExtendedStorage {
 		webSite[webSite.length - 1].searchMaterials(getClientEmail()); // Cyworld
 
 		checkDupNick();
-		
+
 		// 프로필 이미지 저장
 		ImageStorage.getImgUrlList().addAll(imgUrlList);
 
@@ -94,18 +94,22 @@ public class ExtendedStorage {
 
 	}
 
+	// 중복 배제 
 	public void checkDupNick() {
 
 		int currentSize = nickNameList.size();
 
 		for (int i = 0; i < currentSize - 1; i++) {
 
-			if (nickNameList.get(i).equals(nickNameList.get(i + 1))) {
-				System.out.println("비교 : " + nickNameList.get(i) + " 와 " + nickNameList.get(i+1) + "가 같은지 비교");
-				nickNameList.remove(i);
-				System.out.println("삭제 : " + i + "번째 항목이 삭제되었습니다");
-				i--;
-				currentSize--;
+			for (int j = i + 1; j < currentSize; j++) {
+
+				if (nickNameList.get(i).equals(nickNameList.get(j))) {
+
+					nickNameList.remove(j);
+					j--;
+					currentSize--;
+
+				}
 			}
 		}
 	}

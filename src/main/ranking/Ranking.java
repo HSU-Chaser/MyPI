@@ -3,37 +3,43 @@ package main.ranking;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import main.patternanalysis.OpenURL;
 import main.search.MakeObject;
+import main.search.SearchDic;
 import main.search.SearchResult;
 
 public class Ranking {
 	static ArrayList<SearchResult> result;
 
-	public ArrayList<SearchResult> getResult(HashMap<String, String> keywordMap) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
+	public ArrayList<SearchResult> getResult(ArrayList<String> searchWordList)
+			throws IllegalAccessException, InvocationTargetException,
+			NoSuchMethodException, IOException {
 
-		CalculateExp calExp = null;
-
+		CalculateExp calExp = null;		
 		MakeObject makeObject = new MakeObject();
 
+		int googleCount = 0;
+		int naverCount = 0;
+		int daumCount = 0;
+		
 		// 먼저, 구글, 네이버, 다음 검색하게 하고
-		result = makeObject.getResult(keywordMap);
-
+		result = makeObject.getResult(searchWordList);
+		
 		for (int i = 0; i < result.size(); i++) {
 
 			SearchResult sr = result.get(i);
 			int exposure = 0;
 			OpenURL openUrl = new OpenURL(sr.getURL());
-			
+
 			try {
+				// 패턴 및 counting 작업 시작
 				openUrl.urlRead();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
-			calExp = new CalculateExp(keywordMap);
+
+			calExp = new CalculateExp(ExtendedInfo.getKeywordMap());
 			// 계산을 해서, exposure를 리턴해줘서 받으면 됨
 			exposure = calExp.getExposure();
 			System.out.println("이 url의 노출도는 : " + exposure);
@@ -41,17 +47,55 @@ public class Ranking {
 			result.set(i, sr);
 		}
 
-			
-
 		sortResult();
 		System.out.println("퀵소트 직후의 result 사이즈 : " + result.size());
 		checkDupUrl();
 		System.out.println("중복체크 직후의 result 사이즈 : " + result.size());
+		pruningAlgorithm();
+		System.out
+				.println("pruningAlgorithm 직후의 result 사이즈 : " + result.size());
 		
+		
+		for(int i = 0; i<result.size(); i++){
+			
+			if(result.get(i).getEngine().equals("Google")){
+				googleCount++;
+			}
+			else if(result.get(i).getEngine().equals("Naver")){
+				naverCount++;
+			}
+			else if(result.get(i).getEngine().equals("Daum")){
+				daumCount++;
+			}
+		}
+		
+		EngineGraph engineGraph = new EngineGraph(googleCount, naverCount, daumCount);
+		System.out.println("카운트가 어떻게 되는데 그래요? : " + googleCount +"   " + naverCount + "    " + daumCount);
+		engineGraph.computeEngineRate();
+
 		return result;
+
 	}
 
-	// URL duplication check after sort
+	public void pruningAlgorithm() {
+
+		int resultSize = result.size();
+		
+		// exposure 0, -1인 객체 삭제
+		for (int i = 0; i < resultSize; i++) {
+
+			if ((result.get(i).getExposure() == 0) || (result.get(i).getExposure() == -1)) {
+
+				result.remove(i);
+				i--;
+				resultSize--;
+
+			}
+
+		}
+	}
+
+	// URL duplication check after sort(바로 옆에 있는 것만 체크)
 	public void checkDupUrl() {
 
 		int currentSize = result.size();

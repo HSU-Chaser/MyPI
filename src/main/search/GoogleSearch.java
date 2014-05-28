@@ -89,9 +89,10 @@ public class GoogleSearch {
 		request.append("&num=" + limit); // 검색 제한 수 조정
 		request.append(key); // API Key
 		request.append(cx); // Custom Search Engine ID
-		request.append("&as_q=&as_epq=" + query); // Query
+//		request.append("&as_q=&as_epq=" + query); // Query
+//		request.append("&as_oq=");
 		
-		request.append("&as_oq=");
+		request.append("&q=" + query);
 		
 		request.append("&client=google-csbe"); // Search Engine Type
 		request.append("&output=xml_no_dtd"); // Output to XML
@@ -99,7 +100,7 @@ public class GoogleSearch {
 		request.append("&oe=utf-8"); // Output Encoding
 		request.append("&lr=lang_ko");	
 	
-		System.out.println("구글API XML주소 : " + request);
+		System.out.println("구글API XML주소 : " + request.toString());
 		return request.toString();
 	}
 

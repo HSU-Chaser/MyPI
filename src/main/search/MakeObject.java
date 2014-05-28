@@ -10,118 +10,50 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MakeObject {
-	static ArrayList<SearchResult> result;
+	private static ArrayList<SearchResult> result;
+
 	GoogleSearch googleSearch = null;
 	NaverSearch naverSearch = null;
 	DaumSearch daumSearch = null;
 
-	public ArrayList<SearchResult> getResult(HashMap<String, String> keywordMap) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
+	// 구글 기준의 검색어를 입력받는다.
+	public ArrayList<SearchResult> getResult(ArrayList<String> searchWordList)
+			throws IllegalAccessException, InvocationTargetException,
+			NoSuchMethodException, IOException {
 		ImageSearch imageSearch = new ImageSearch();
-		
-		result = null;
+		ArrayList<String> naverSearchWordList = new ArrayList<String>();
 
-		Set<String> keySet = keywordMap.keySet();
-		Iterator<String> itBind = keySet.iterator();
-		Iterator<String> itCase = keySet.iterator();
+		result = null;
 
 		String naverCategory[] = { "blog", "news", "cafearticle", "kin",
 				"webkr", "doc" };
 		String daumCategory[] = { "board", "web", "knowledge" /* , "cafe", "blog" */};
 
-		System.out.println("Test : 현재 키 리스트 개수 : " + keySet.size());
-
-		StringBuffer orBinding = new StringBuffer("");
-
-		while (itBind.hasNext()) {
-			String data = keywordMap.get(itBind.next());
-			System.out.println("현재 들어온 데이터 : " + data);
-
-			orBinding.append("OR+");
-			orBinding.append(data);
-
-		}
-		String testImageSearch = "황기태";
-
-		// System.out.println(orBinding);
-		// googleSearch = new GoogleSearch(orBinding.toString(), 5);
-
-		googleSearch = new GoogleSearch(testImageSearch, 5);
-
+		// null이 들어오지않게 하는 검색으로, 여기서 이미지 검색어를 넣어주면 될 것 같다.
+		googleSearch = new GoogleSearch(searchWordList.get(0), 5);
 		result = googleSearch.getResult();
 
-		while (itCase.hasNext()) {
-			String key = itCase.next();
-			System.out.println("현재 들어온 키값 : " + key);
-
-			switch (key) {
-
-			// memberid, email, birthday, cellphone, homephone, name,
-			// occupation, school, sex, email2
-
-			case "cellphone":
-
-				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
-				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
-						naverCategory);
-				// addingDaum("\"" + keywordMap.get(key) + "\"", 10,
-				// daumCategory);
-
-				break;
-			case "email":
-
-				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
-				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
-						naverCategory);
-				// addingDaum("\"" + keywordMap.get(key) + "\"", 10,
-				// daumCategory);
-
-				break;
-			case "email2":
-
-				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
-				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
-						naverCategory);
-				// addingDaum("\"" + keywordMap.get(key) + "\"", 10,
-				// daumCategory);
-
-				break;
-			case "homephone":
-
-				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
-				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
-						naverCategory);
-				// addingDaum("\"" + keywordMap.get(key) + "\"", 10,
-				// daumCategory);
-
-				break;
-			case "memberid":
-
-				// memberid의 복잡도 계산 가능한지 체크
-				addingGoogle("\"" + keywordMap.get(key) + "\"", 10);
-				addingNaver("\"" + keywordMap.get(key) + "\"", 10,
-						naverCategory);
-				// addingDaum("\"" + keywordMap.get(key) + "\"", 3,
-				// daumCategory);
-
-				break;
-
-			}
-
+		// Google 검색 실시
+		for (int i = 1; i < searchWordList.size(); i++) {
+			addingGoogle(searchWordList.get(i), 10);
 		}
-		
-		
-		
-	/*	
-	 * imageSearch.setImageSearchResult();
-	 * 
-	 * setImageSearchResult(검색어, 이미지 갯수제한)
-	 */
-		
+
+		// Naver 검색 실시- searchWordList를 Naver식으로 변형하는 한 어레이 리스트
+		for (int i = 0; i < searchWordList.size(); i++) {
+			if (searchWordList.get(i).contains("+AND+")) {
+				searchWordList.get(i).replace("+AND+", "+");
+			}
+			naverSearchWordList.add(searchWordList.get(i));
+			addingNaver(naverSearchWordList.get(i), 5, naverCategory);
+		}
+
 		return result;
 	}
 
+
+
 	public static boolean properID(String id) {
-		
+
 		boolean flag = false;
 
 		Pattern proper = Pattern
