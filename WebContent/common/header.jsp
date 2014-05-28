@@ -38,50 +38,36 @@
 	<!-- Search Bar -->
 	<div id="searchBar">
 		<!-- Basic Filter -->
-		<div id="searchFilter" style="float: left">
-			<!-- Default Filter -->
-			<img id="email" src="./images/icon/email.png"
-				onclick="_onEditInfo(email)">
-		</div>
+		<button id="email" class="basic-filter"><img src="./images/icon/email.png"></button>
 		<!-- Extended Filter -->
-		<div id="moreFilter" style="display: none; float: left">
-			<img id="name" src="./images/icon/name.png"
-				onclick="_onEditInfo(name)"> <img id="cellphone"
-				src="./images/icon/cellphone.png" onclick="_onEditInfo(cellphone)">
-			<img id="homephone" src="./images/icon/homephone.png"
-				onclick="_onEditInfo(homephone)"> <img id="birthday"
-				src="./images/icon/birthday.png" onclick="_onEditInfo(birthday)">
-			<img id="address" src="./images/icon/address.png"
-				onclick="_onEditInfo(address)"> <img id="school"
-				src="./images/icon/school.png" onclick="_onEditInfo(school)">
-			<img id="workplace" src="./images/icon/workplace.png"
-				onclick="_onEditInfo(workplace)"> <img id="occupation"
-				src="./images/icon/occupation.png" onclick="_onEditInfo(occupation)">
-		</div>
+		<button id="name" class="filter"><img src="images/icon/name.png"></button>
+		<button id="cellphone" class="filter"><img  src="images/icon/cellphone.png"></button>
+		<button id="homephone" class="filter"><img src="images/icon/homephone.png"></button>
+		<button id="birthday"class="filter"><img src="images/icon/birthday.png"></button>
+		<button id="address" class="filter"><img src="images/icon/address.png"></button>
+		<button id="school" class="filter"><img src="images/icon/school.png"></button>
+		<button id="workplace" class="filter"><img src="images/icon/workplace.png"></button>
+		<button id="occupation" class="filter"><img src="images/icon/occupation.png"></button>
 		<!-- Filter Toggle -->
-		<div id="toggleFilter" style="float: left">
-			<img id="extendButton" src="./images/icon/plus.png"
-				onclick="_onFilterExtend()">
-		</div>
+		<button id="open-filter" class="toggle-filter"><img src="./images/icon/plus.png"></button>
+		<button id="close-filter" class="toggle-filter" style="display: none"><img src="./images/icon/minus.png"></button>
 
 		<!-- Search Button -->
-		<div id="searchbutton" style="float: right">
-			<img id="search" src="./images/icon/search.png" onclick="_onLoadData()">
-		</div>
+		<button id="search"><img src="./images/icon/search.png"></button>
 	</div>
 
+
 	<!-- Modal Dialog -->
-	<div id="changeForm" class="ui-widget" title="정보수정"
-		style="width: 350px; margin: 20px 0">
+	<div id="dialog-form" title="Change Information" style="display: none">
+		<p class="validateTips">Change Information.</p>
+
 		<form>
-			<fieldset style="padding: 0; border: 0; margin-top: 25px;">
-				<label for="inputInfo" style="display: block;">정보입력</label> <input
-					type="text" value="" class="text ui-widget-content ui-corner-all"
-					style="display: block;">
+			<fieldset>
+				<label for="name">Name</label> <input type="text" name="name"
+					id="name" class="text ui-widget-content ui-corner-all">
 			</fieldset>
 		</form>
 	</div>
-
 	<%
 		}
 	%>

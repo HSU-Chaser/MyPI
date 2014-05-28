@@ -1141,17 +1141,17 @@ input.color:-ms-input-placeholder {/* Internet Explorer 10+ */
 }
 
 /* header > logout img
-.junseok11 > ul > li > button {
-	width: 3%;
-	background: url(../images/signout.png) no-repeat;
-	background-size: contain;
-	border: 1px solid #777777;
-	border-radius: 4px;
-	width: 25px;
-	height: 27px;
-	cursor: pointer;
-}
-*/
+ .junseok11 > ul > li > button {
+ width: 3%;
+ background: url(../images/signout.png) no-repeat;
+ background-size: contain;
+ border: 1px solid #777777;
+ border-radius: 4px;
+ width: 25px;
+ height: 27px;
+ cursor: pointer;
+ }
+ */
 #searchBar {
 	margin-top: 3.5em;
 	left: 0px;
@@ -1163,4 +1163,17 @@ input.color:-ms-input-placeholder {/* Internet Explorer 10+ */
 }
 div#searchBar img {
 	vertical-align: middle;
+}
+#searchBar .basic-filter {
+	float: left;
+}
+#searchBar .filter {
+	display: none;
+	float: left;
+}
+#searchBar .toggle-filter {
+	float: left;
+}
+#search {
+	float: right;
 }
