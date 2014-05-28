@@ -157,6 +157,7 @@ public class LogonDBBean {
 			if (rs.next()) {
 				
 				member = new LogonDataBean();
+				member.setClient_num(rs.getInt("client_num"));
 				member.setEmail(rs.getString("email"));
 				member.setPassword(rs.getString("password"));
 				member.setName(rs.getString("name"));

@@ -16,13 +16,16 @@ public class Ranking {
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, IOException {
 
-		CalculateExp calExp = null;
-
+		CalculateExp calExp = null;		
 		MakeObject makeObject = new MakeObject();
 
+		int googleCount = 0;
+		int naverCount = 0;
+		int daumCount = 0;
+		
 		// 먼저, 구글, 네이버, 다음 검색하게 하고
 		result = makeObject.getResult(searchWordList);
-
+		
 		for (int i = 0; i < result.size(); i++) {
 
 			SearchResult sr = result.get(i);
@@ -48,9 +51,48 @@ public class Ranking {
 		System.out.println("퀵소트 직후의 result 사이즈 : " + result.size());
 		checkDupUrl();
 		System.out.println("중복체크 직후의 result 사이즈 : " + result.size());
+		pruningAlgorithm();
+		System.out
+				.println("pruningAlgorithm 직후의 result 사이즈 : " + result.size());
+		
+		
+		for(int i = 0; i<result.size(); i++){
+			
+			if(result.get(i).getEngine().equals("Google")){
+				googleCount++;
+			}
+			else if(result.get(i).getEngine().equals("Naver")){
+				naverCount++;
+			}
+			else if(result.get(i).getEngine().equals("Daum")){
+				daumCount++;
+			}
+		}
+		
+		EngineGraph engineGraph = new EngineGraph(googleCount, naverCount, daumCount);
+		System.out.println("카운트가 어떻게 되는데 그래요? : " + googleCount +"   " + naverCount + "    " + daumCount);
+		engineGraph.computeEngineRate();
 
 		return result;
+
+	}
+
+	public void pruningAlgorithm() {
+
+		int resultSize = result.size();
 		
+		// exposure 0, -1인 객체 삭제
+		for (int i = 0; i < resultSize; i++) {
+
+			if ((result.get(i).getExposure() == 0) || (result.get(i).getExposure() == -1)) {
+
+				result.remove(i);
+				i--;
+				resultSize--;
+
+			}
+
+		}
 	}
 
 	// URL duplication check after sort(바로 옆에 있는 것만 체크)

@@ -2,7 +2,6 @@ package main.logon;
 
 public class LogonDataBean {
 
-
 	public boolean getCertStatus() {
 		return certStatus;
 	}
@@ -15,6 +14,11 @@ public class LogonDataBean {
 
 	private int client_num;
 	private String email;
+
+	public void setClient_num(int client_num) {
+		this.client_num = client_num;
+	}
+
 	private String password;
 	private String name;
 	private String cellphone;
@@ -26,12 +30,11 @@ public class LogonDataBean {
 	private String occupation;
 	private int current_grade;
 	private boolean certStatus;
-	
-	
-	public int getClient_num(){
+
+	public int getClient_num() {
 		return client_num;
 	}
-	
+
 	public String getAddress() {
 		return address;
 	}
@@ -47,7 +50,6 @@ public class LogonDataBean {
 	public void setWorkplace(String workplace) {
 		this.workplace = workplace;
 	}
-
 
 	public int getCurrent_grade() {
 		return current_grade;

@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -23,6 +24,7 @@ public class NaverSearch {
 	private String query;
 	private int limit;
 	private String category;
+
 	public NaverSearch(String query, int limit, String category) {
 		this.query = query;
 		this.limit = limit;
@@ -71,13 +73,28 @@ public class NaverSearch {
 			}
 			int resultNumber = i + 1;
 
-			SearchResult searchResult = new SearchResult("Naver", title, url,
+			SearchResult searchResult = new SearchResult("Naver", title, urlConversion(url),
 					snippet, resultNumber);
 			result.add(searchResult);
 		}
 
 		return result;
 	}
+	
+	//url 변환
+	public String urlConversion(String originURL) {
+		URL url = null;
+		try {
+			URLConnection con = new URL(originURL).openConnection();
+			InputStream is = con.getInputStream();
+			url = con.getURL();
+			is.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return url.toString();
+	}
+
 
 	private String buildSearchUrl() {
 		// Required parameters
@@ -85,14 +102,14 @@ public class NaverSearch {
 		request.append(key);
 		request.append("&query=" + query.split("_")[0]);
 		request.append("&ie=utf8");
-		
+
 		request.append("&target=" + category); // category 조정
 		request.append("&display=" + limit); // 결과값 제한 조정
 
-		
 		System.out.println("네이버API XML 주소 : " + request);
 		return request.toString();
 	}
+
 
 	private String getXMLResult() {
 		HttpURLConnection conn = null;

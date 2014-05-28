@@ -10,15 +10,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MakeObject {
-	static ArrayList<SearchResult> result;
+	private static ArrayList<SearchResult> result;
+
 	GoogleSearch googleSearch = null;
 	NaverSearch naverSearch = null;
 	DaumSearch daumSearch = null;
 
+	// 구글 기준의 검색어를 입력받는다.
 	public ArrayList<SearchResult> getResult(ArrayList<String> searchWordList)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, IOException {
 		ImageSearch imageSearch = new ImageSearch();
+		ArrayList<String> naverSearchWordList = new ArrayList<String>();
 
 		result = null;
 
@@ -26,25 +29,28 @@ public class MakeObject {
 				"webkr", "doc" };
 		String daumCategory[] = { "board", "web", "knowledge" /* , "cafe", "blog" */};
 
-		// 여기서 구글, 네이버에 걸어줘야되는데 일단 구글만 생각하면, 숫자를 다 스테틱하게 저장해야되는데
-		// 1번 그래마 2번 그래마 이런식으로 다 해줘야된다..
-		// 일단 5개로 고정해서 받아보도록 하겠다.
-
-		// 그냥 add만 했다간 처음에 붙일게 없어서 null포인트가 날 것이지만, 일단 놔두고 진행
-		// id, email은 반드시받는 정보이므로, 정보가 없을 경우는, id, email로 최대한 지랄한 결과를 내보내면 될듯
-
-		
+		// null이 들어오지않게 하는 검색으로, 여기서 이미지 검색어를 넣어주면 될 것 같다.
 		googleSearch = new GoogleSearch(searchWordList.get(0), 5);
 		result = googleSearch.getResult();
 
+		// Google 검색 실시
 		for (int i = 1; i < searchWordList.size(); i++) {
+			addingGoogle(searchWordList.get(i), 10);
+		}
 
-			addingGoogle(searchWordList.get(i), 5);
-
+		// Naver 검색 실시- searchWordList를 Naver식으로 변형하는 한 어레이 리스트
+		for (int i = 0; i < searchWordList.size(); i++) {
+			if (searchWordList.get(i).contains("+AND+")) {
+				searchWordList.get(i).replace("+AND+", "+");
+			}
+			naverSearchWordList.add(searchWordList.get(i));
+			addingNaver(naverSearchWordList.get(i), 5, naverCategory);
 		}
 
 		return result;
 	}
+
+
 
 	public static boolean properID(String id) {
 

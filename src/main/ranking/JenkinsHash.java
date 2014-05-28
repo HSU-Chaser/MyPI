@@ -1,4 +1,4 @@
-package test;
+package main.ranking;
 
 /**
  * Hash algorithm by Bob Jenkins, 1996.
