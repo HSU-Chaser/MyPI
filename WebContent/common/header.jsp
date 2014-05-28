@@ -42,7 +42,7 @@
 			<img src="images/icon/search.png">
 		</button>
 		<!-- Basic Filter -->
-		<div style="float: left;">
+		<div class="mobileCut">
 			<button id="email" class="basic-filter ui-button">
 				<img src="images/icon/email.png">
 			</button>
@@ -64,7 +64,7 @@
 				<img src="images/icon/birthday.png">
 			</button>
 		</div>
-		<div style="float: left;">
+		<div class="mobileCut">
 			<button id="address" class="filter ui-button md-trigger"
 				data-modal="modal-12">
 				<img src="images/icon/address.png">

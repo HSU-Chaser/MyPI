@@ -223,3 +223,7 @@ div#searchBar img {
 	width: 25px;
 	height: 25px;
 }
+.mobileCut {
+	float: left;
+	width: 178px;
+}
