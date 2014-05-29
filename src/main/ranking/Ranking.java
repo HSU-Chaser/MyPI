@@ -29,7 +29,7 @@ public class Ranking {
 		for (int i = 0; i < result.size(); i++) {
 
 			SearchResult sr = result.get(i);
-			int exposure = 0;
+			double exposure = 0;
 			OpenURL openUrl = new OpenURL(sr.getURL());
 
 			try {
@@ -39,9 +39,9 @@ public class Ranking {
 				e.printStackTrace();
 			}
 
-			calExp = new CalculateExp(ExtendedInfo.getKeywordMap());
+			calExp = new CalculateExp();
 			// 계산을 해서, exposure를 리턴해줘서 받으면 됨
-			exposure = calExp.getExposure();
+			exposure = calExp.getExposure(sr.getURL());
 			System.out.println("이 url의 노출도는 : " + exposure);
 			sr.setExposure(exposure);
 			result.set(i, sr);

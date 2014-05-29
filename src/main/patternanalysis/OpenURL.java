@@ -9,6 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OpenURL {
+	
+	
+	private static ArrayList<String> document;
+	
+	public ArrayList<String> getUrlDocument(){
+		
+		if(document == null){
+			document = new ArrayList<String>();
+		}	
+		return document;
+	}
+	
 	private String url, buffer = "";
 	FindPattern findpattern;
 
@@ -17,7 +29,7 @@ public class OpenURL {
 	}
 
 	public void urlRead() throws IOException {
-		List<String> list = new ArrayList<String>();
+		
 		BufferedReader br = null;
 		String blogFrame = null;
 		boolean naverBlogCheck = false;
@@ -28,7 +40,7 @@ public class OpenURL {
 			br = new BufferedReader(rd);
 
 			while ((buffer = br.readLine()) != null) {
-				list.add(buffer);
+				getUrlDocument().add(buffer);
 				
 				if (buffer.contains("var eventCnt = ''")) {
 					naverBlogCheck = true;
@@ -43,7 +55,7 @@ public class OpenURL {
 			br.close();
 
 			if (naverBlogCheck == true) {
-				list.clear();
+				getUrlDocument().clear();
 				BufferedReader brBlog = null;
 				InputStream inputBlogURL = new URL(blogFrame).openStream();
 				InputStreamReader rdBlog = new InputStreamReader(inputBlogURL,
@@ -52,7 +64,7 @@ public class OpenURL {
 
 				while ((buffer = brBlog.readLine()) != null) {
 
-					list.add(buffer);
+					getUrlDocument().add(buffer);
 				}
 
 				brBlog.close();
@@ -63,9 +75,9 @@ public class OpenURL {
 			System.err.println(e);
 		}
 
-		findpattern = new FindPattern(list);
+		findpattern = new FindPattern(getUrlDocument());
 
-		findpattern.find(); // find()로, 해당 리스트들의 각 메소드를 실행시켜 리스트를 다 만든다.
+		findpattern.countingProcess(); // find()로, 해당 리스트들의 각 메소드를 실행시켜 리스트를 다 만든다.
 
 	}
 

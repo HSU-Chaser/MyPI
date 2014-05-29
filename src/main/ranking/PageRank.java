@@ -11,7 +11,7 @@ public class PageRank {
 
 		PageRank obj = new PageRank();
 		System.out.println(obj.getPR("naver.com"));
-
+		
 	}
 
 	public int getPR(String domain) {

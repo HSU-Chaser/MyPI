@@ -22,6 +22,7 @@ public class MakeObject {
 			NoSuchMethodException, IOException {
 		ImageSearch imageSearch = new ImageSearch();
 		ArrayList<String> naverSearchWordList = new ArrayList<String>();
+		
 
 		result = null;
 
@@ -33,6 +34,7 @@ public class MakeObject {
 		googleSearch = new GoogleSearch(searchWordList.get(0), 5);
 		result = googleSearch.getResult();
 
+		
 		// Google 검색 실시
 		for (int i = 1; i < searchWordList.size(); i++) {
 			addingGoogle(searchWordList.get(i), 10);
@@ -40,13 +42,16 @@ public class MakeObject {
 
 		// Naver 검색 실시- searchWordList를 Naver식으로 변형하는 한 어레이 리스트
 		for (int i = 0; i < searchWordList.size(); i++) {
-			if (searchWordList.get(i).contains("+AND+")) {
-				searchWordList.get(i).replace("+AND+", "+");
+			if (searchWordList.get(i).contains("AND")) {
+				searchWordList.set(i, searchWordList.get(i).replace("AND", "+"));
 			}
 			naverSearchWordList.add(searchWordList.get(i));
 			addingNaver(naverSearchWordList.get(i), 5, naverCategory);
 		}
 
+		// Google 이미지 검색 실시  limit 8이 한계		
+		imageSearch.setImageSearchResult(SearchDic.getImgSearchWord(), 8);
+		
 		return result;
 	}
 

@@ -15,7 +15,7 @@ public class Address {
 
 		while (m.find()) {
 
-			RankingCount.addressList.add(m.group());// System.out.println(m.group());
+//			RankingCount.addressList.add(m.group());// System.out.println(m.group());
 
 		}
 

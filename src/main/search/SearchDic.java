@@ -26,10 +26,22 @@ public class SearchDic {
 
 		return searchWordList;
 	}
+	
+	private static String imgSearchWord;
 
+	public static String getImgSearchWord(){
+		
+		return imgSearchWord;
+	}
+	public void setImgSearchWord(String imgSearchWord){
+		this.imgSearchWord = imgSearchWord;
+	}
+	
 	// 검색어 사전을 만드는 모듈
 	public void bindingWord(HashMap<String, String> map) {
 
+		imgSearchWord = "";
+		
 		ArrayList<String> singleWord = new ArrayList<String>();
 		ArrayList<String> complexWord = new ArrayList<String>();
 		int singleGrammar;
@@ -67,12 +79,17 @@ public class SearchDic {
 						+ map.get("nickname4") + "\"",
 				"\"" + map.get("id") + "\"" + "+AND+" + "\""
 						+ map.get("nickname5") + "\"" };
-
-		// String[] oneBinding = { map.get("id"), map.get("email"),
-		// map.get("name"), map.get("cellphone"), map.get("homephone"),
-		// map.get("birthday"), map.get("address"), map.get("school"),
-		// map.get("workplace"), map.get("occupation"), map.get("email2"),
-		// map.get("birthday2"), map.get("nickname"), map.get("nickname2") };
+		
+		
+		
+		if((!map.get("name").equals("null")) && (!map.get("occupation").equals("null"))){
+			setImgSearchWord("\"" + map.get("name") + "\"" + "+" + map.get("occupation") + "+OR+" + map.get("school"));
+		}
+		
+		else{
+			setImgSearchWord("\"" + map.get("email") + "\"");
+		}
+		
 
 		singleGrammar = singleBinding.length;
 		for (int i = 0; i < singleGrammar; i++) {

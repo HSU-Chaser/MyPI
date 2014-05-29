@@ -18,13 +18,13 @@ import net.sf.json.JSONObject;
 public class ImageSearch {
  
     
-	public static ArrayList<String> imageSearchResult = new ArrayList<String>();
+	public static ArrayList<String> imageSearchList = new ArrayList<String>();
 
 
-    public void setImageSearchResult(String SearchWord, int limit) throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    public void setImageSearchResult(String searchWord, int limit) throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
      	  	
  
-        String query = SearchWord;
+        String query = searchWord;
         URL url = new URL("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="+URLEncoder.encode(query, "UTF-8")+
                 "&userip=192.168.0.7&rsz=" + limit);
         URLConnection connection = url.openConnection();
@@ -38,6 +38,8 @@ public class ImageSearch {
         }
          
         System.out.println( builder );
+        
+        System.out.println("검색어 : " + query);
                  
         Map<String, Object> classMap = new HashMap<String, Object>();  
         JSONObject jsonObject = JSONObject.fromObject(builder.toString());
@@ -50,10 +52,10 @@ public class ImageSearch {
         for (int i = 0; i < image_data.size(); i++) {
             //System.out.println( image_data.get(i) );
             JSONArray img_url = JSONArray.fromObject(image_data.get(i));        
-            imageSearchResult.add((JSONObject.fromObject(img_url.get(0)).get("url")).toString());
+            imageSearchList.add((JSONObject.fromObject(img_url.get(0)).get("url")).toString());
         }
         
-    	ImageStorage.getImgUrlList().addAll(imageSearchResult);
+    	ImageStorage.getImgUrlList().addAll(imageSearchList);
         
     }
     
