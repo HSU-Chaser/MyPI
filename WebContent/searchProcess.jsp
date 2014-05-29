@@ -68,7 +68,7 @@
 	<div id="engineGraph" class="resultObject">
 		<table>
 			<tr>
-				<%-- <td><jsp:include page="Chart_Pie.jsp"></jsp:include></td> --%>
+				<td><jsp:include page="engineGraph.jsp" flush="false"></jsp:include></td>
 			</tr>
 		</table>
 	</div>
@@ -77,7 +77,7 @@
 	<div id="exposureGraph" class="resultObject">
 		<table>
 			<tr>
-				<%-- <td><jsp:include page="Chart_Line.jsp"></jsp:include></td> --%>
+				<td></td>
 			</tr>
 		</table>
 	</div>

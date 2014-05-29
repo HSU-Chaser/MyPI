@@ -15,20 +15,20 @@
 <script src="js/jquery.poptrox.min.js"></script>
 <script src="js/skel.min.js"></script>
 <script src="js/init.js"></script>
-<link rel="stylesheet" href="css/index.css"/>
+<link rel="stylesheet" href="css/index.css" />
 <noscript>
 	<link rel="stylesheet" href="css/skel-noscript.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </noscript>
 <!-- effecter_start -->
 <link rel="stylesheet" type="text/css" href="css/component.css" />
-		<script src="js/effecter/modernizr.custom.js"></script>
+<script src="js/effecter/modernizr.custom.js"></script>
 <!-- effecter_end -->
 <style type="text/css" media="screen">
 /*index Page button remove*/
-	.navbar .btn.btn-navbar {
-		display: none;
-		}
+.navbar .btn.btn-navbar {
+	display: none;
+}
 </style>
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
@@ -53,24 +53,27 @@
 				<form action="signinProcess.jsp" method="post">
 					<table>
 						<tr>
-							<td rowspan="3" class="login_img"><img
-								class="Mypi" src="images/fulls/02.jpg"></td>
-							<td colspan="3" class="login_session"><input type="text" id="fid" name="fid"
-								class="color font_GODOM" placeholder="이메일" /> <input
-								type="password" id="fpass" name="fpass"
+							<td rowspan="3" class="login_img"><img class="Mypi"
+								src="images/fulls/02.jpg"></td>
+							<td colspan="3" class="login_session"><input type="text"
+								id="fid" name="fid" class="color font_GODOM" placeholder="이메일" />
+								<input type="password" id="fpass" name="fpass"
 								class="color font_GODOM" placeholder="비밀번호" /></td>
 							<td><input type="submit" class="button addButton font_GODOM"
 								id="login_button" value=" 로그인  " /></td>
 						</tr>
 						<tr>
-							<td colspan="4"><p class="font_GODOM login_text">MyPI가 처음이신가요? </p> <input type="button"
-								class="button addButton font_GODOM" id="signup_button" value=" 회원 가입 "
-								onclick="location.href='signup.jsp' " /></td>
+							<td colspan="4"><p class="font_GODOM login_text">MyPI가
+									처음이신가요?</p> <input type="button"
+								class="button addButton font_GODOM" id="signup_button"
+								value=" 회원 가입 " onclick="location.href='signup.jsp' " /></td>
 						</tr>
 						<tr>
-							<td colspan="4" style="padding-bottom: 4%;"><p class="font_GODOM login_text">비밀번호를 잊으셨나요?</p> <input
-								type="button" class="button addButton font_GODOM" id="findinfo_button"
-								value=" 비밀번호 찾기  " onclick="location.href='main.jsp' " /></td>
+							<td colspan="4" style="padding-bottom: 4%;"><p
+									class="font_GODOM login_text">비밀번호를 잊으셨나요?</p> <input
+								type="button" class="button addButton font_GODOM"
+								id="findinfo_button" value=" 비밀번호 찾기  "
+								onclick="location.href='main.jsp' " /></td>
 						</tr>
 					</table>
 				</form>

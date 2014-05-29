@@ -1,9 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.globfx.swiffchart.SwiffChart"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%
-	String installation_dir = "C:\\Program Files (x86)\\GlobFX\\Swiff Chart Generator 3";
-
+	String rootPath = application.getRealPath("/");
+	String installation_dir = null;
+	if(rootPath.equals("/home/hosting_users/debind/tomcat/webapps/ROOT/")) {
+		// Server Path
+		installation_dir = rootPath + "SwiffChart";
+	} else {
+		// Local Path
+		installation_dir = "C:\\Program Files\\GlobFX\\Swiff Chart Generator 3";
+	}
+	
+	//Create a new Swiff Chart object
 	SwiffChart chart = new SwiffChart(installation_dir);
 
 	// Required: Initialisation of the chart object
