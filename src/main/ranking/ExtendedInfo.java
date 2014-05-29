@@ -88,14 +88,12 @@ public class ExtendedInfo {
 
 					keywordMap.put("nickname5", "null");
 					break;
-					
-				default :
-					if(nickNameCount < 5) {
-						for(int j=0; j<5-nickNameCount; j++){
-							keywordMap.put("nickname" + 5-nickNameCount, value)5 - nickNameCount
-						}
-						
-					}
+				}
+			}
+			
+			if(nickNameCount < 5) {
+				for(int i=0; i<5-nickNameCount; i++){
+					keywordMap.put("nickname" + (nickNameCount+i+1), "null");
 				}
 				
 			}

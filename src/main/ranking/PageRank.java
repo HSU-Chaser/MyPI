@@ -28,7 +28,7 @@ public class PageRank {
 				+ "&ie=UTF-8&oe=UTF-8&features=Rank&q=info:"
 				+ domain;
 
-		System.out.println("Sending request to : " + url);
+//		System.out.println("Sending request to : " + url);
 
 		try {
 			URLConnection conn = new URL(url).openConnection();

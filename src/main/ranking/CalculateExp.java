@@ -29,9 +29,19 @@ public class CalculateExp implements Constant {
 				* 4.913 + rankingCount.occupationCount * 4.891
 				+ rankingCount.nicknameCount * 6.087 * 1 / 2;
 
-		urlExposure = (KF_WT / totalKeyword) * pageRank.getPR(URL);
+		System.out.println(rankingCount.residentCount + " "
+				+ rankingCount.cellphoneCount + " "
+				+ rankingCount.homephoneCount + " " + rankingCount.idCount
+				+ " " + rankingCount.emailCount + " " + rankingCount.nameCount
+				+ " " + rankingCount.addressCount + " "
+				+ rankingCount.workplaceCount + " "
+				+ rankingCount.birthdayCount + " " + rankingCount.schoolCount
+				+ " " + rankingCount.occupationCount + " "
+				+ rankingCount.nicknameCount);
 
-		return urlExposure;
+		urlExposure = (KF_WT / totalKeyword);
+
+		return Math.round(urlExposure);
 
 	}
 }

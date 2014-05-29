@@ -25,69 +25,87 @@ public class FindPattern {
 
 		for (int i = 0; i < document.size(); i++) {
 
-			if (document.contains(userMap.get("cellphone"))) {
-				RankingCount.cellphoneCount++;
+			if (!(userMap.get("cellphone").equals("null"))) {
+				if (document.get(i).contains(userMap.get("cellphone"))) {
+					RankingCount.cellphoneCount++;
+				}
 			}
-			if (document.contains(userMap.get("homephone"))) {
-				RankingCount.homephoneCount++;
+			if (!(userMap.get("homephone").equals("null"))) {
+				if (document.get(i).contains(userMap.get("homephone"))) {
+					RankingCount.homephoneCount++;
+				}
 			}
-			if (document.contains(userMap.get("id"))) {
+			if (document.get(i).contains(userMap.get("id"))) {
 				RankingCount.idCount++;
 			}
-			if (document.contains(userMap.get("email"))) {
+			if (document.get(i).contains(userMap.get("email"))) {
 				RankingCount.emailCount++;
 			}
-			if (document.contains(userMap.get("name"))) {
-				RankingCount.nameCount++;
+
+			if (!(userMap.get("name").equals("null"))) {
+				if (document.get(i).contains(userMap.get("name"))) {
+					RankingCount.nameCount++;
+				}
 			}
-			if (document.contains(userMap.get("address"))) {
-				RankingCount.addressCount++;
+			if (!(userMap.get("address").equals("null"))) {
+				if (document.get(i).contains(userMap.get("address"))) {
+					RankingCount.addressCount++;
+				}
 			}
-			if (document.contains(userMap.get("workplace"))) {
-				RankingCount.workplaceCount++;
+			if (!(userMap.get("workplace").equals("null"))) {
+				if (document.get(i).contains(userMap.get("workplace"))) {
+					RankingCount.workplaceCount++;
+				}
 			}
-			if (document.contains(userMap.get("birthday"))) {
-				RankingCount.birthdayCount++;
+			if (!(userMap.get("birthday").equals("null"))) {
+				if (document.get(i).contains(userMap.get("birthday"))) {
+					RankingCount.birthdayCount++;
+				}
 			}
-			if (document.contains(userMap.get("school"))) {
-				RankingCount.schoolCount++;
+			if (!(userMap.get("school").equals("null"))) {
+				if (document.get(i).contains(userMap.get("school"))) {
+					RankingCount.schoolCount++;
+				}
 			}
-			if (document.contains(userMap.get("occupation"))) {
-				RankingCount.occupationCount++;
+			if (!(userMap.get("occupation").equals("null"))) {
+				if (document.get(i).contains(userMap.get("occupation"))) {
+					RankingCount.occupationCount++;
+				}
 			}
 
 			// nickname 검사
 			if (!(userMap.get("nickname").equals("null"))) {
-				if (document.contains(userMap.get("nickname"))) {
+				if (document.get(i).contains(userMap.get("nickname"))) {
 					RankingCount.nicknameCount++;
 				}
 			}
 			if (!(userMap.get("nickname2").equals("null"))) {
-				if (document.contains(userMap.get("nickname2"))) {
+				if (document.get(i).contains(userMap.get("nickname2"))) {
 					RankingCount.nicknameCount++;
 				}
 			}
 			if (!(userMap.get("nickname3").equals("null"))) {
-				if (document.contains(userMap.get("nickname3"))) {
+				if (document.get(i).contains(userMap.get("nickname3"))) {
 					RankingCount.nicknameCount++;
 				}
 			}
 			if (!(userMap.get("nickname4").equals("null"))) {
-				if (document.contains(userMap.get("nickname4"))) {
+				if (document.get(i).contains(userMap.get("nickname4"))) {
 					RankingCount.nicknameCount++;
 				}
 			}
 			if (!(userMap.get("nickname5").equals("null"))) {
-				if (document.contains(userMap.get("nickname5"))) {
+				if (document.get(i).contains(userMap.get("nickname5"))) {
 					RankingCount.nicknameCount++;
 				}
 			}
 
 		}
 
+		document.clear();
+
 	}
 
-	
 	public void initCount() {
 
 		RankingCount.emailCount = 0;

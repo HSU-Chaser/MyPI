@@ -16,16 +16,17 @@ public class Ranking {
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, IOException {
 
-		CalculateExp calExp = null;		
+		CalculateExp calExp = null;
 		MakeObject makeObject = new MakeObject();
+		PageRank pageRank = new PageRank();
 
 		int googleCount = 0;
 		int naverCount = 0;
 		int daumCount = 0;
-		
+
 		// 먼저, 구글, 네이버, 다음 검색하게 하고
 		result = makeObject.getResult(searchWordList);
-		
+
 		for (int i = 0; i < result.size(); i++) {
 
 			SearchResult sr = result.get(i);
@@ -54,23 +55,32 @@ public class Ranking {
 		pruningAlgorithm();
 		System.out
 				.println("pruningAlgorithm 직후의 result 사이즈 : " + result.size());
+
+		
+//		//pageRank 합산
+//		for (int i = 0; i < result.size(); i++) {
+//			result.get(i).setExposure(
+//					result.get(i).getExposure()
+//							* pageRank.getPR(result.get(i).getURL()));
+//		}
 		
 		
-		for(int i = 0; i<result.size(); i++){
-			
-			if(result.get(i).getEngine().equals("Google")){
+
+		for (int i = 0; i < result.size(); i++) {
+
+			if (result.get(i).getEngine().equals("Google")) {
 				googleCount++;
-			}
-			else if(result.get(i).getEngine().equals("Naver")){
+			} else if (result.get(i).getEngine().equals("Naver")) {
 				naverCount++;
-			}
-			else if(result.get(i).getEngine().equals("Daum")){
+			} else if (result.get(i).getEngine().equals("Daum")) {
 				daumCount++;
 			}
 		}
-		
-		EngineGraph engineGraph = new EngineGraph(googleCount, naverCount, daumCount);
-		System.out.println("카운트가 어떻게 되는데 그래요? : " + googleCount +"   " + naverCount + "    " + daumCount);
+
+		EngineGraph engineGraph = new EngineGraph(googleCount, naverCount,
+				daumCount);
+		System.out.println("카운트가 어떻게 되는데 그래요? : " + googleCount + "   "
+				+ naverCount + "    " + daumCount);
 		engineGraph.computeEngineRate();
 
 		return result;
@@ -80,11 +90,12 @@ public class Ranking {
 	public void pruningAlgorithm() {
 
 		int resultSize = result.size();
-		
+
 		// exposure 0, -1인 객체 삭제
 		for (int i = 0; i < resultSize; i++) {
 
-			if ((result.get(i).getExposure() == 0) || (result.get(i).getExposure() == -1)) {
+			if ((result.get(i).getExposure() == 0)
+					|| (result.get(i).getExposure() == -1)) {
 
 				result.remove(i);
 				i--;
@@ -102,11 +113,15 @@ public class Ranking {
 
 		for (int i = 0; i < currentSize - 1; i++) {
 
-			if (result.get(i).getURL().equals(result.get(i + 1).getURL())) {
+			for (int j = i + 1; j < currentSize; j++) {
 
-				result.remove(i);
-				i--;
-				currentSize--;
+				if (result.get(i).getURL().equals(result.get(j).getURL())) {
+
+					result.remove(j);
+					j--;
+					currentSize--;
+					
+				}
 			}
 		}
 	}
