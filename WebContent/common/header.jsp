@@ -32,7 +32,9 @@
 		int end = path.length();
 		if (path.substring(start + 1, end).equals("main.jsp")) {
 	%>
-
+	
+	<jsp:include page="/common/modal_content.jsp" />
+	
 	<!-- Search Bar -->
 	<div id="searchBar">
 		<!-- Search Button -->
@@ -46,37 +48,37 @@
 			</button>
 			<!-- Extended Filter -->
 			<button id="name" class="filter ui-button md-trigger"
-				data-modal="modal-12">
+				data-modal="name">
 				<img src="images/icon/name.png">
 			</button>
 			<button id="cellphone" class="filter ui-button md-trigger"
-				data-modal="modal-12">
+				data-modal="cellphone">
 				<img src="images/icon/cellphone.png">
 			</button>
 			<button id="homephone" class="filter ui-button md-trigger"
-				data-modal="modal-12">
+				data-modal="homephone">
 				<img src="images/icon/homephone.png">
 			</button>
 			<button id="birthday" class="filter ui-button md-trigger"
-				data-modal="modal-12">
+				data-modal="birthday">
 				<img src="images/icon/birthday.png">
 			</button>
 		</div>
 		<div class="mobileCut">
 			<button id="address" class="filter ui-button md-trigger"
-				data-modal="modal-12">
+				data-modal="address">
 				<img src="images/icon/address.png">
 			</button>
 			<button id="school" class="filter ui-button md-trigger"
-				data-modal="modal-12">
+				data-modal="school">
 				<img src="images/icon/school.png">
 			</button>
 			<button id="workplace" class="filter ui-button md-trigger"
-				data-modal="modal-12">
+				data-modal="workplace">
 				<img src="images/icon/workplace.png">
 			</button>
 			<button id="occupation" class="filter ui-button md-trigger"
-				data-modal="modal-12">
+				data-modal="occupation">
 				<img src="images/icon/occupation.png">
 			</button>
 			<!-- Filter Toggle -->
@@ -88,14 +90,7 @@
 			</button>
 		</div>
 	</div>
-
-	<!-- Modal Dialog -->
-	<div class="md-modal md-effect-12" id="modal-12">
-		<div class="md-content">
-			<h3 class="fond_GODOM">회원정보 수정</h3>
-			<button class="button addButton font_GODOM md-close">닫기</button>
-		</div>
-	</div>
+	
 	<div class="md-overlay"></div>
 	
 	<%
