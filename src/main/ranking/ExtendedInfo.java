@@ -1,6 +1,5 @@
 package main.ranking;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import main.extending.form.ExtendedStorage;
@@ -8,13 +7,12 @@ import main.logon.LogonDBBean;
 import main.logon.LogonDataBean;
 
 public class ExtendedInfo {
-
-	
 	String memberEmail = "";
+	ExtendedStorage storage;
+	
 	public ExtendedInfo(String memberEmail){
 		this.memberEmail = memberEmail;
 	}
-	ExtendedStorage storage;
 	
 	private static HashMap<String, String> keywordMap;
 
@@ -29,7 +27,6 @@ public class ExtendedInfo {
 	
 	// 확장된 키워드에 대한 헤쉬맵 생성
 	public void makeKeywordMap() {
-
 		keywordMap = new HashMap<String, String>();
 		LogonDataBean dataBean;
 		String memberId = memberEmail.split("@")[0];
@@ -63,9 +60,7 @@ public class ExtendedInfo {
 			keywordMap.put("birthday2", storage.realBirthday);
 
 			for (int i = 0; i < nickNameCount; i++) {
-
 				switch (i) {
-
 				// MAXIMUM of NickNameList = 5
 				case 0:
 					keywordMap.put("nickname", storage.nickNameList.get(i));
@@ -82,9 +77,7 @@ public class ExtendedInfo {
 				case 4:
 					keywordMap.put("nickname5", storage.nickNameList.get(i));
 					break;
-
 				}
-
 			}
 
 		} catch (Exception e) {

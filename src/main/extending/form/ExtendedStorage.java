@@ -16,7 +16,6 @@ import main.extending.Twitter;
 import main.ranking.ImageStorage;
 
 public class ExtendedStorage {
-
 	public static ArrayList<String> nickNameList = null;
 	public static ArrayList<String> imgUrlList = null;
 	public static ArrayList<String> exposureUrlList = null;

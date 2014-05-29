@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -73,19 +72,25 @@ public class NaverSearch {
 			}
 			int resultNumber = i + 1;
 
-			SearchResult searchResult = new SearchResult("Naver", title, urlConversion(url),
-					snippet, resultNumber);
+			SearchResult searchResult = new SearchResult("Naver", title,
+					urlConversion(url), snippet, resultNumber);
 			result.add(searchResult);
 		}
 
 		return result;
 	}
-	
-	//url 변환
+
+	// url 변환
 	public String urlConversion(String originURL) {
 		URL url = null;
 		try {
-			URLConnection con = new URL(originURL).openConnection();
+			url = new URL(originURL);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			
+			con.addRequestProperty("User-Agent", "Mozilla/4.0");
+			con.setConnectTimeout(1000);
+			con.setReadTimeout(3000);
+			
 			InputStream is = con.getInputStream();
 			url = con.getURL();
 			is.close();
@@ -94,7 +99,6 @@ public class NaverSearch {
 		}
 		return url.toString();
 	}
-
 
 	private String buildSearchUrl() {
 		// Required parameters
@@ -109,7 +113,6 @@ public class NaverSearch {
 		System.out.println("네이버API XML 주소 : " + request);
 		return request.toString();
 	}
-
 
 	private String getXMLResult() {
 		HttpURLConnection conn = null;
