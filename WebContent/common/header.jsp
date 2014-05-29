@@ -10,14 +10,6 @@
 	%>
 	<a id="logo" class="brand" href="index.jsp"><img
 		src="./images/logo.png"></a>
-		<!-- Nav -->
-	<div class="navbar">
-		<span class="comment font_GODOM">&lt; <%=session.getAttribute("memEmail")%>님
-					환영합니다. &gt;
-		</span>
-		<a class="font_GODOM" href="signout.jsp"><img src="./images/signout1.png"
-		style="width: 35px;"></a>
-	</div>
 	<%
 		} else {
 	%>
@@ -28,7 +20,8 @@
 		<span class="comment font_GODOM">&lt; <%=session.getAttribute("memEmail")%>님
 					환영합니다. &gt;
 		</span>
-		<a class="font_GODOM" href="signout.jsp">로그아웃</a>
+		<a class="font_GODOM" href="signout.jsp"><img src="./images/signout1.png"
+		style="width: 35px;"></a>
 	</div>
 	<%
 		}
@@ -100,18 +93,11 @@
 	<div class="md-modal md-effect-12" id="modal-12">
 		<div class="md-content">
 			<h3 class="fond_GODOM">회원정보 수정</h3>
-			<button>닫기</button>
+			<button class="button addButton font_GODOM md-close">닫기</button>
 		</div>
 	</div>
 	<div class="md-overlay"></div>
-	<script src="js/effecter/classie.js"></script>
-	<script src="js/effecter/modalEffects.js"></script>
-	<script>
-		// this is important for IEs
-		var polyfilter_scriptpath = '/js/';
-	</script>
-	<script src="js/effecter/cssParser.js"></script>
-	<script src="js/effecter/css-filters-polyfill.js"></script>
+	
 	<%
 		}
 	%>
