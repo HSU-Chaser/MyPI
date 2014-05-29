@@ -220,10 +220,13 @@ div#searchBar img {
 	width: 25px;
 	height: 25px;
 }
-
-@media screen and (max-width: 470px) {
+/*real width => 514px*/
+@media screen and (max-width: 468px) {
 	#logo {
 		left: 2em;
+	}
+	.comment {
+		display : none;
 	}
 	.mobileCut {
 		float: left;

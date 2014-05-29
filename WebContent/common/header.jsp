@@ -4,11 +4,20 @@
 
 <header id="header">
 	<!-- Logo -->
+	
 	<%
 		if (session.getAttribute("memEmail") == null) {
 	%>
 	<a id="logo" class="brand" href="index.jsp"><img
 		src="./images/logo.png"></a>
+		<!-- Nav -->
+	<div class="navbar">
+		<span class="comment font_GODOM">&lt; <%=session.getAttribute("memEmail")%>님
+					환영합니다. &gt;
+		</span>
+		<a class="font_GODOM" href="signout.jsp"><img src="./images/signout1.png"
+		style="width: 35px;"></a>
+	</div>
 	<%
 		} else {
 	%>
@@ -16,14 +25,10 @@
 		src="./images/logo.png"></a>
 	<!-- Nav -->
 	<div class="navbar">
-		<div class="junseok11" style="float: right;">
-			<ul>
-				<li><span class="font_GODOM">&lt; <%=session.getAttribute("memEmail")%>님
-						환영합니다. &gt;
-				</span></li>
-				<li><a class="font_GODOM" href="signout.jsp">로그아웃</a></li>
-			</ul>
-		</div>
+		<span class="comment font_GODOM">&lt; <%=session.getAttribute("memEmail")%>님
+					환영합니다. &gt;
+		</span>
+		<a class="font_GODOM" href="signout.jsp">로그아웃</a>
 	</div>
 	<%
 		}
