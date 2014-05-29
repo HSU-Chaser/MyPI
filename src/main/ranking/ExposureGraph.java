@@ -42,19 +42,22 @@ public class ExposureGraph {
 
 					pstmt = conn
 							.prepareStatement("delete from exprecord where data_index = 1");
-					rs = pstmt.executeQuery();
+					pstmt.executeUpdate();
+
 					pstmt = conn
 							.prepareStatement("update exprecord set data_index = data_index - 1");
-					rs = pstmt.executeQuery();
+					pstmt.executeUpdate();
 
 				}
 				// 데이터 입력
 
 				int count = rs.getInt(1);
-				
 				System.out.println(count);
-				expData.setData_index(count + 1);
-
+				if (count < 10) {
+					expData.setData_index(count + 1);
+				} else if (count == 10) {
+					expData.setData_index(count);
+				}
 				pstmt = conn
 						.prepareStatement("insert into exprecord values(?,?,?,?)");
 
@@ -69,6 +72,11 @@ public class ExposureGraph {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
 			if (pstmt != null)
 				try {
 					pstmt.close();
@@ -115,10 +123,6 @@ public class ExposureGraph {
 
 				expData = new ExpDataBean();
 
-				String date = null;
-				int exposure = 0;
-				Reader reader = null;
-
 				expData.setExposure(rs.getInt("exposure"));
 				expData.setDate(rs.getString("search_date"));
 				expDataList.add(expData);
@@ -148,25 +152,25 @@ public class ExposureGraph {
 		return expDataList;
 
 	}
-	
-	public static void main(String[] args){
-		
+
+	public static void main(String[] args) {
+
 		ExpDataBean expData = null;
-		try{
+		try {
 			expData = new ExpDataBean();
-			
+
 			expData.setClient_num(8);
-			expData.setDate("14.05.29");
+			expData.setDate("14.05.31");
 			expData.setExposure(80);
-			
+
 			insertExprecord(expData);
-			
-			
-		} catch(Exception e ){
+
+		} catch (Exception e) {
 			System.out.println(e);
 		}
-		
-		
+
 	}
 
 }
+
+
