@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<p>다음 검색 API</p>
 <a href="http://cs.daum.net/mail/form/15.html" target="_blank">다음 검색엔진 정보 삭제<a> - 다음 삭제 요청
 
 <p>결과가 내가아닌 타인에 의해 개인의 금융정보 유출이나 심각한 개인정보 피해를 야기할 수 있게 되었다면,</p> 
