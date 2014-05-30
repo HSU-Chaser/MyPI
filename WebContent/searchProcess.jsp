@@ -5,7 +5,7 @@
 <%@page import="main.search.SearchDic"%>
 <%@page import="main.ranking.ExtendedInfo"%>
 <%@page import="main.ranking.Ranking"%>
-<%@page import="main.extending.form.ExtendedStorage" %>
+<%@page import="main.extending.form.ExtendedStorage"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
@@ -70,7 +70,7 @@
 			searchDic.bindingWord(extend.getKeywordMap());
 
 			ArrayList<SearchResult> result = ranking.getResult(searchDic
-					.getSearchWordList()); 
+					.getSearchWordList());
 			/* MakeObject object = new MakeObject();
 			ArrayList<SearchResult> result = object.getResult(searchDic
 					.getSearchWordList()); */
@@ -88,11 +88,11 @@
 	<br>
 	<br>
 
-	<h2 class="font_GODOM">그래프</h2>
+	<h2 class="resultObject font_GODOM">그래프</h2>
 	<div id="graph" class="resultObject">
 		<div class="div-th">
-			<div class="div-td font_GODOM" style="width: 50%; float: left">노출도</div>
-			<div class="div-td font_GODOM" style="width: 50%; float: left">통계</div>
+			<div class="div-td font_GODOM" style="width: 50%; float: left">검색 엔진 비율</div>
+			<div class="div-td font_GODOM" style="width: 50%; float: left">검색 통계</div>
 		</div>
 		<div style="clear: both;"></div>
 		<div class="div-tr">
@@ -108,7 +108,7 @@
 		<div style="clear: both;"></div>
 	</div>
 
-	<h2 class="font_GODOM">이미지</h2>
+	<h2 class="resultObject font_GODOM">이미지</h2>
 	<div id="image" class="resultObject">
 		<div class="div-tr">
 			<%
@@ -116,7 +116,7 @@
 			%>
 			<div class="div-td" align="center" style="width: 20%; float: left">
 				<img src="<%=ImageStorage.getImgUrlList().get(i)%>" width="100%"
-					align="middle">
+					align="middle" alt="Image">
 			</div>
 			<%
 				}
@@ -125,20 +125,25 @@
 		<div style="clear: both;"></div>
 	</div>
 
-	<h2 class="font_GODOM">Static Search</h2>
-	<div class="resultObject font_GODOM"></div>
-	
-	<div class="div-tr">
-	<%	
-		for(int i=0;i<ExtendedStorage.imgList.size();i++){
-	%>
-		<div class="div-td">
-		<a href="<%=ExtendedStorage.exposureUrlList.get(i)%>" target="_blank"><img src="<%=ExtendedStorage.imgList.get(i)%>"></a>
+	<h2 class="resultObject font_GODOM">Static Search</h2>
+	<div class="resultObject font_GODOM">
+		<div class="div-tr">
+			<%
+				for (int i = 0; i < ExtendedStorage.imgList.size(); i++) {
+			%>
+			<div class="div-td" style="float: left; width: 12.5%">
+				<a href="<%=ExtendedStorage.exposureUrlList.get(i)%>"
+					target="_blank"><img src="<%=ExtendedStorage.imgList.get(i)%>"
+					width="100%" align="middle" alt="Image"></a>
+			</div>
+			<%
+				}
+			%>
 		</div>
-	<%} %>
+		<div style="clear: both"></div>
 	</div>
-	
-	<h2>Dynamic Search</h2>
+
+	<h2 class="resultObject font_GODOM">Dynamic Search</h2>
 	<div class="resultObject font_GODOM">
 		<!-- TH	 -->
 		<div class="div-th">
