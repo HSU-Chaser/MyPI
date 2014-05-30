@@ -21,7 +21,7 @@
 <script src="js/init.js"></script>
 <script src="js/search.js"></script>
 <script src="js/effecter/modernizr.custom.js"></script>
-
+<script src="js/modal_content.js"></script>
 <noscript>
 	<link rel="stylesheet" href="css/skel-noscript.css" />
 	<link rel="stylesheet" href="css/style.css" />

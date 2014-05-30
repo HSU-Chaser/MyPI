@@ -1115,16 +1115,16 @@ table, tr, th, td, input {
 }
 /*Input-placeholder Color*/
 input.color::-webkit-input-placeholder {/* WebKit browsers */
-	color: rgb(255, 255, 255);
+	color: rgba(255, 255, 255, 0.5);
 }
 input.color:-moz-placeholder {/* Mozilla Firefox 4 to 18 */
-	color: rgb(255, 255, 255);
+	color: rgba(255, 255, 255, 0.5);
 }
 input.color::-moz-placeholder {/* Mozilla Firefox 19+ */
-	color: rgb(255, 255, 255);
+	color: rgba(255, 255, 255, 0.5);
 }
 input.color:-ms-input-placeholder {/* Internet Explorer 10+ */
-	color: rgb(255, 255, 255);
+	color: rgba(255, 255, 255, 0.5);
 }
 
 #logo > img {
@@ -1189,5 +1189,12 @@ div#searchBar img {
 }
 
 .inputSize {
-	width: 30% !important;
+	font-size: 70%;
+	padding: 0.6em !important;
+	display: inline !important;
+	width: 25% !important;
+}
+/*modal Error message*/
+.errMsg {
+	margin: -0.6em;
 }
