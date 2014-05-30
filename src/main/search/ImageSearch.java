@@ -48,7 +48,7 @@ public class ImageSearch {
 			builder.append(line);
 		}
 
-//		System.out.println(builder);
+		// System.out.println(builder);
 
 		System.out.println("검색어 : " + query);
 
@@ -65,10 +65,11 @@ public class ImageSearch {
 		for (int i = 0; i < image_data.size(); i++) {
 			// System.out.println( image_data.get(i) );
 			JSONArray img_url = JSONArray.fromObject(image_data.get(i));
-			getImageSearchList().add((JSONObject.fromObject(img_url.get(0))
-					.get("url")).toString());
+			getImageSearchList().add(
+					(JSONObject.fromObject(img_url.get(0)).get("url"))
+							.toString());
 		}
-
+		imageSearchList = null;
 		ImageStorage.getImgUrlList().addAll(getImageSearchList());
 
 	}

@@ -4,16 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import main.extending.form.ExtendedStorage;
-import main.logon.LogonDBBean;
-import main.logon.LogonDataBean;
 
 public class SearchDic {
-
 	String memberEmail = "";
 	ExtendedStorage storage;
 
 	public SearchDic(String memberEmail) {
 		this.memberEmail = memberEmail;
+		storage = null;
 	}
 
 	private static ArrayList<String> searchWordList;
@@ -39,7 +37,7 @@ public class SearchDic {
 	
 	// 검색어 사전을 만드는 모듈
 	public void bindingWord(HashMap<String, String> map) {
-
+		searchWordList = null;
 		imgSearchWord = "";
 		
 		ArrayList<String> singleWord = new ArrayList<String>();
@@ -82,7 +80,7 @@ public class SearchDic {
 		
 		
 		
-		if((!map.get("name").equals("null")) && (!map.get("occupation").equals("null"))){
+		if ((!map.get("name").equals("null")) && (!map.get("occupation").equals("null"))){
 			setImgSearchWord("\"" + map.get("name") + "\"" + "+" + map.get("occupation") + "+OR+" + map.get("school"));
 		}
 		

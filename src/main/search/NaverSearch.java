@@ -73,7 +73,7 @@ public class NaverSearch {
 			int resultNumber = i + 1;
 
 			SearchResult searchResult = new SearchResult("Naver", title,
-					urlConversion(url), snippet, resultNumber);
+					url, snippet, resultNumber);
 			result.add(searchResult);
 		}
 

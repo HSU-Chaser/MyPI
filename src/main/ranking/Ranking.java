@@ -19,6 +19,12 @@ public class Ranking {
 		this.client_num = client_num;		
 	}
 	
+	class urlReadRun implements Runnable {
+		@Override
+		public void run() {
+			
+		}
+	}
 	
 	public ArrayList<SearchResult> getResult(ArrayList<String> searchWordList)
 			throws IllegalAccessException, InvocationTargetException,
@@ -38,7 +44,6 @@ public class Ranking {
 		result = makeObject.getResult(searchWordList);
 
 		for (int i = 0; i < result.size(); i++) {
-
 			SearchResult sr = result.get(i);
 			double exposure = 0;
 			OpenURL openUrl = new OpenURL(sr.getURL());

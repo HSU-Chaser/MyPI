@@ -50,7 +50,7 @@
 	<%
 		String memberEmail = (String) session.getAttribute("memEmail");
 
-			if (memberEmail == null) {
+		if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -61,10 +61,9 @@
 
 			String client_str = (String) session.getAttribute("client_num");
 			int client_num = Integer.parseInt(client_str);
-			SearchDic searchDic;
 			Ranking ranking = new Ranking(client_num);
 			ExtendedInfo extend = new ExtendedInfo(memberEmail);
-			searchDic = new SearchDic(memberEmail); // binding 에 전달
+			SearchDic searchDic = new SearchDic(memberEmail); // binding 에 전달
 			extend.makeKeywordMap();
 
 			searchDic.bindingWord(extend.getKeywordMap());
@@ -91,8 +90,10 @@
 	<h2 class="resultObject font_GODOM">그래프</h2>
 	<div id="graph" class="resultObject">
 		<div class="div-th">
-			<div class="div-td font_GODOM" style="width: 50%; float: left">검색 엔진 비율</div>
-			<div class="div-td font_GODOM" style="width: 50%; float: left">검색 통계</div>
+			<div class="div-td font_GODOM" style="width: 50%; float: left">검색
+				엔진 비율</div>
+			<div class="div-td font_GODOM" style="width: 50%; float: left">검색
+				통계</div>
 		</div>
 		<div style="clear: both;"></div>
 		<div class="div-tr">
