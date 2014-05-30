@@ -7,12 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<p>구글 검색 API</p>
 <a href="https://support.google.com/websearch/troubleshooter/3111061?hl=ko&ref_topic=3285072#ts=2889054,2889099,2889104"
 target="_blank">
 구글 검색엔진 정보 삭제</a> - 구글 삭제요청
 
 <p>결과가 개인의 금융정보 유출이나 심각한 개인정보 침해를 야기할 수 있다면, 위 링크를 통해 삭제 요청을 할 수 있습니다.</p>
-<p>검색 결과 삭제 요청을 통해 결과 삭제를 진행하세요. 사이트의 URL과 해당 검색 결과를 보여주는 페이지의 URL이 필요합니다.</p>
+<p>검색 결과 삭제 요청을 통해 결과 삭제를 진행하세요.</p>
 
 </body>
 </html>

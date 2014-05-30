@@ -39,7 +39,7 @@
 	<%
 		String memberEmail = (String) session.getAttribute("memEmail");
 
-		if (memberEmail == null) {
+			if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -150,8 +150,77 @@
 			<div style="clear: both"></div>
 			<div class="div-tr">
 				<div class="div-td" align="center">
-					<!-- Solution -->
-
+					<!-- Engine Solution -->
+					<%
+						if (result.get(i).getEngine().matches(".*Naver.*") == true) {
+					%>
+					<jsp:include page="/Solution/Naver.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getEngine().matches(".*Daum.*") == true) {
+					%>
+					<jsp:include page="/Solution/Daum.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getEngine().matches(".*Google.*") == true) {
+					%>
+					<jsp:include page="/Solution/Google.jsp" flush="false" />
+					<%
+						}
+					%>
+				</div>
+				<div calss="div-td" align="center">
+					<!-- Static Solution -->
+					<%
+						if (result.get(i).getURL().matches(".*blog.naver.*") == true) {
+					%>
+					<jsp:include page="/Solution/NaverBlog.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getURL().matches(".*kin.naver.*") == true) {
+					%>
+					<jsp:include page="/Solution/NaverKin.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getURL()
+										.matches(".*blog.cyworld.*") == true) {
+					%>
+					<jsp:include page="/Solution/CyworldBlog.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getURL().matches(".*cyworld.*") == true) {
+					%>
+					<jsp:include page="/Solution/Cyworld.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getURL().matches(".*blog.daum.*") == true) {
+					%>
+					<jsp:include page="/Solution/DaumBlog.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getURL().matches(".*dreamwiz.*") == true) {
+					%>
+					<jsp:include page="/Solution/Dreamwiz.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getURL().matches(".*egloos.*") == true) {
+					%>
+					<jsp:include page="/Solution/Egloos.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getURL().matches(".*gallog.*") == true) {
+					%>
+					<jsp:include page="/Solution/Gallog.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getURL().matches(".*me2day.*") == true) {
+					%>
+					<jsp:include page="/Solution/NaverMe2day.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getURL().matches(".*tistory.*") == true) {
+					%>
+					<jsp:include page="/Solution/Tistory.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getURL().matches(".*todayhumor.*") == true) {
+					%>
+					<jsp:include page="/Solution/TodayHumor.jsp" flush="false" />
+					<%
+						} else if (result.get(i).getURL().matches(".*twitter.*") == true) {
+					%>
+					<jsp:include page="/Solution/Twitter.jsp" flush="false" />
+					<%
+						}
+					%>
 				</div>
 			</div>
 			<div style="clear: both"></div>
