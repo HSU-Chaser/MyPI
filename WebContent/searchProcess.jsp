@@ -17,16 +17,17 @@
 	margin-bottom: 2%;
 }
 
-.resultObject div-tr {
+.resultObject .div-tr {
 	width: 100%;
 	border: 0;
 	cellspacing: 0;
 	cellpadding: 0;
-	border: thin solid white;
+	border: .1 solid white;
 	cellpadding: 0;
+	text-align: center;
 }
 
-.resultObject div-td {
+.resultObject .div-td {
 	background-color: rgba(255, 255, 255, .5);
 	border: thin solid white;
 	height: 3em;
@@ -38,7 +39,7 @@
 	<%
 		String memberEmail = (String) session.getAttribute("memEmail");
 
-			if (memberEmail == null) {
+		if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -51,14 +52,16 @@
 			int client_num = Integer.parseInt(client_str);
 			SearchDic searchDic;
 			Ranking ranking = new Ranking(client_num);
-			MakeObject object = new MakeObject();
 			ExtendedInfo extend = new ExtendedInfo(memberEmail);
 			searchDic = new SearchDic(memberEmail); // binding 에 전달
 			extend.makeKeywordMap();
 
 			searchDic.bindingWord(extend.getKeywordMap());
 
-			ArrayList<SearchResult> result = ranking.getResult(searchDic
+			/* ArrayList<SearchResult> result = ranking.getResult(searchDic
+					.getSearchWordList()); */
+			MakeObject object = new MakeObject();
+			ArrayList<SearchResult> result = object.getResult(searchDic
 					.getSearchWordList());
 	%>
 
@@ -98,43 +101,44 @@
 	<h3>이미지</h3>
 	<div id="image" class="resultObject">
 		<table>
-
-			<%
-				for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
-			%>
 			<tr>
+				<%
+					for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
+				%>
+
 				<td align="center"><img
 					src="<%=ImageStorage.getImgUrlList().get(i)%>" width="100px"></td>
-			</tr>
-			<%
-				}
-			%>
 
+				<%
+					}
+				%>
+			</tr>
 		</table>
 	</div>
 
 	<h3>Static Search</h3>
+	<div class="resultObject font_GODOM"></div>
 
 	<h3>Dynamic Search</h3>
 	<div class="resultObject font_GODOM">
 		<div class="div-tr">
-			<div style="width: 5%; float: left">번호</div>
-			<div style="width: 82%; float: left">제목</div>
-			<div style="width: 10%; float: left">노출도</div>
-			<div style="width: 3%; clear: both;"></div>
+			<div class="div-td" style="width: 5%; float: left">번호</div>
+			<div class="div-td" style="width: 82%; float: left">제목</div>
+			<div class="div-td" style="width: 10%; float: left">노출도</div>
+			<div class="div-td" style="width: 3%; float: left"></div>
+			<div style="clear: both;"></div>
 		</div>
 		<%
 			for (int i = 0; i < result.size(); i++) {
 		%>
-
-
 		<div class="div-tr" onclick="_onFilp(<%=i + 1%>)">
-			<div class="div-td" style="float: left;"><%=i + 1%></div>
-			<div class="div-td" style="float: left;">
+			<div class="div-td" style="width: 5%; float: left;"><%=i + 1%></div>
+			<div class="div-td" style="width: 82%; float: left;">
 				<a href="<%=result.get(i).getURL()%>" target="_blank"><%=result.get(i).getTitle()%></a>
 			</div>
-			<div class="div-td" style="float: left;"><%=result.get(i).getExposure()%></div>
-			<div class="div-td" style="clear: both;">▼</div>
+			<div class="div-td" style="width: 10%; float: left;"><%=result.get(i).getExposure()%></div>
+			<div class="div-td" style="width: 3%; float: left">▼</div>
+			<div style="clear: both"></div>
 		</div>
 
 		<div id="content<%=i + 1%>" class="div-tr" style="display: none"
@@ -143,11 +147,14 @@
 				<div class="div-td" align="center"><%=result.get(i).getSnippet()%>
 				</div>
 			</div>
+			<div style="clear: both"></div>
 			<div class="div-tr">
 				<div class="div-td" align="center">
 					<!-- Solution -->
+
 				</div>
 			</div>
+			<div style="clear: both"></div>
 		</div>
 		<%
 			}
