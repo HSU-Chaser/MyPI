@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
+import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 
 public class DaumBlog extends Search {
@@ -61,6 +62,7 @@ public class DaumBlog extends Search {
 			rd.close();
 			inputURL.close();
 			storage.exposureUrlList.add(getUrl());
+			ExtendedStorage.imgList.add("http://m1.daumcdn.net/svc/image/U03/common_icon/50B477DF063B790002");
 
 		} catch (Exception e) {
 			if (e.toString().contains("FileNotFoundException")) {

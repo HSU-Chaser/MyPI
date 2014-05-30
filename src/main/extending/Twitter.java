@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
+import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 
 public class Twitter extends Search{
@@ -36,6 +37,7 @@ public class Twitter extends Search{
 					setNickName(list.get(i).substring(18).split(" ")[0]);
 					storage.nickNameList.add(getNickName());
 					storage.exposureUrlList.add(getUrl());
+					ExtendedStorage.imgList.add("https://lh3.ggpht.com/lSLM0xhCA1RZOwaQcjhlwmsvaIQYaP3c5qbDKCgLALhydrgExnaSKZdGa8S3YtRuVA=w300-rw");
 				}
 				else if(list.get(i).contains("profile_images")){
 					setImgUrl(list.get(i).substring(15).replace('"', '!').split("!")[0]);

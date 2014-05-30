@@ -5,9 +5,11 @@
 <%@page import="main.search.SearchDic"%>
 <%@page import="main.ranking.ExtendedInfo"%>
 <%@page import="main.ranking.Ranking"%>
+<%@page import="main.extending.form.ExtendedStorage" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+
 
 <style type="text/css">
 .resultObject {
@@ -55,11 +57,12 @@
 			ExtendedInfo extend = new ExtendedInfo(memberEmail);
 			searchDic = new SearchDic(memberEmail); // binding 에 전달
 			extend.makeKeywordMap();
-
+			
 			searchDic.bindingWord(extend.getKeywordMap());
 
 			ArrayList<SearchResult> result = ranking.getResult(searchDic
 					.getSearchWordList());
+			
 	%>
 
 
@@ -81,7 +84,7 @@
 	<br>
 	<br>
 
-
+<!--  
 	<h3>그래프</h3>
 	<div id="graph" class="resultObject"></div>
 	<table border='0' align='left' width='100%' height=500px">
@@ -94,7 +97,7 @@
 					name="exposureGraph" width='100%' height="100%" scrolling='auto'></iframe></td>
 		</tr>
 	</table>
-
+-->
 	<h3>이미지</h3>
 	<div id="image" class="resultObject">
 		<table>
@@ -114,11 +117,15 @@
 	</div>
 
 	<h3>Static Search</h3>
-	<div class ="div-tr">
-		<div class ="div_td">
+	
+	<div class="div-tr">
+	<%	
+		for(int i=0;i<ExtendedStorage.imgList.size();i++){
+	%>
+		<div class="div-td">
+		<a href="<%=ExtendedStorage.exposureUrlList.get(i)%>" target="_blank"><img src="<%=ExtendedStorage.imgList.get(i)%>"></a>
 		</div>
-		<div class ="div_td">
-		</div>
+	<%} %>
 	</div>
 	<h3>Dynamic Search</h3>
 	<div class="resultObject font_GODOM">

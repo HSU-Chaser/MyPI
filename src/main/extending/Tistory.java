@@ -1,5 +1,6 @@
 package main.extending;
 
+import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 
 import org.jsoup.Jsoup;
@@ -21,6 +22,7 @@ public class Tistory extends Search {
 			doc = Jsoup.connect(getUrl()).get();
 
 			storage.exposureUrlList.add(getUrl());
+			ExtendedStorage.imgList.add("https://lh3.ggpht.com/XJv1v_rHNeMXCBmTauDbepxVgIOhArGVZMCBt0UoC3QJLm3YpQ-gLRRmc0wRlFQXyN0=w300-rw");
 
 			Elements text = doc.select("div.author");
 			Elements img = doc.select("div.wrapBottomM div.profileImageWrap");

@@ -1,5 +1,6 @@
 package main.extending;
 
+import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 
 import org.jsoup.Jsoup;
@@ -21,6 +22,7 @@ public class NaverMe2day extends Search {
 			doc = Jsoup.connect(getBasicForm() + coreMaterial).get();
 			
 			storage.exposureUrlList.add(getUrl());
+			ExtendedStorage.imgList.add("https://lh4.ggpht.com/4K2e9Bt6m-0a4u8p4bdajlfLuLwsETATpfzySZvg9VykkxhaKeCWUiEvtrU8hOKPCA=w300-rw");
 			
 			Elements text = doc.select("html title");
 			Elements img = doc.select("div.image_box");

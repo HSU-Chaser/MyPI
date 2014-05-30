@@ -78,6 +78,7 @@ public class Cyworld extends Search {
 					storage.exposureUrlList
 							.add("http://minihp.cyworld.com/pims/main/pims_main.asp?tid="
 									+ tid);
+					ExtendedStorage.imgList.add("https://lh4.ggpht.com/2o1VGcBQshLa5JWsHfPdC2dhtHLe0FoMWML0UCuumcpysj7L2kJNGm8vLkDMxg38fw=w300-rw");
 					if (name != null && name.length() != 0) {
 
 						ExtendedStorage.realName = name;

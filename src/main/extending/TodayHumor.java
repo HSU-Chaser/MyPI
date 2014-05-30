@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
+import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 
 public class TodayHumor extends Search {
@@ -32,6 +33,7 @@ public class TodayHumor extends Search {
 				list.add(buffer);
 				if (list.get(i).contains("DEF2FF")) { // 게시글에 쓰는 백그라운드 색상 #DEF2FF
 					storage.exposureUrlList.add(getUrl());
+					ExtendedStorage.imgList.add("https://lh6.ggpht.com/cycHBk33W7Ul_BQnn3a85C0Ej33J_W1c1gdU0ENCsIlQdxa853C8e8SUm1FamHIANHM=w300-rw");
 					check = 1;
 					break;
 				}

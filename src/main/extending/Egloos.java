@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
+import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 
 public class Egloos extends Search {
@@ -33,6 +34,7 @@ public class Egloos extends Search {
 					System.out.println("이글루가 없습니다.");
 					break;
 				}
+				
 
 				if (i == 5 && list.get(i).contains("author")) { //author가 5번째에 나오는것을 쓴다고 확정지어버림
 
@@ -40,6 +42,7 @@ public class Egloos extends Search {
 							.split("!")[1]));
 					storage.nickNameList.add(getNickName());
 					storage.exposureUrlList.add(getUrl());
+					ExtendedStorage.imgList.add("https://lh4.ggpht.com/aqtv6-0J9Aoczc1T663jms8fngcFG0BFl7oEZHQYIgFUxbp3INij-Mzlkl2wiK-QxZAi=w300-rw");
 				} 
 				if (list.get(i).contains("img src")) {
 					setImgUrl((list.get(i).split("<")[2].replace('"', '!')

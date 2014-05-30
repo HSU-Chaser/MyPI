@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
+import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 
 public class NaverBlog extends Search {
@@ -43,6 +44,7 @@ public class NaverBlog extends Search {
 			}
 			br.close();
 			storage.exposureUrlList.add(getUrl());
+			ExtendedStorage.imgList.add("https://lh4.ggpht.com/LgVIzIKFwA6PqUq3p6FJoS41c0ZC0z0Xvu6O_pMNnNIUNjnUh1Bld3A4V2FSw8QChpE=w300-rw");
 			
 		} catch (Exception e) {
 			if(e.toString().contains("FileNotFoundException")){

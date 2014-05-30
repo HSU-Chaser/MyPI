@@ -10,6 +10,7 @@ abstract public class Search {
 	private String imgUrl;
 	private String url;
 	
+	
 	public String getBasicForm() {
 		return basicForm;
 	}

@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
+import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 
 public class Gallog extends Search {
@@ -34,6 +35,7 @@ public class Gallog extends Search {
 					System.out.println("갤로그가 없습니다.");
 					break;
 				}
+				
 				if (list.get(i).contains("pfNickView")) {
 					if (list.get(i).split(">")[1].contains("<U"))
 						setNickName(list.get(i).split(">")[2].split("<")[0]);	
@@ -41,6 +43,7 @@ public class Gallog extends Search {
 						setNickName(list.get(i).split(">")[1].split("<")[0]);
 					storage.nickNameList.add(getNickName());
 					storage.exposureUrlList.add(getUrl());
+					ExtendedStorage.imgList.add("https://lh6.ggpht.com/NRyDtq-pg84zE188hTkcVj8gzo3KYfXWrOm1VuO1HBHsIJQs44AM_mIxMsXbE7BQp34=w300-rw");
 
 				}
 				i++;

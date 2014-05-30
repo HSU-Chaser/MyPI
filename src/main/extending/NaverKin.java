@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
+import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 
 public class NaverKin extends Search {
@@ -40,6 +41,7 @@ public class NaverKin extends Search {
 						storage.nickNameList.add(getNickName());
 					}
 					storage.exposureUrlList.add(getUrl());
+					ExtendedStorage.imgList.add("https://lh5.ggpht.com/mNkYMueGE34aH1vRv2zs13NOv6gHyK39Gcj7mz-M2WTIYTxyUVnC5QtFxrSE6OD_ZQM=w300-rw");
 					break;
 				}
 				i++;

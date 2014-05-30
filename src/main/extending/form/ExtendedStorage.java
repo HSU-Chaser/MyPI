@@ -19,6 +19,7 @@ public class ExtendedStorage {
 	public static ArrayList<String> nickNameList = null;
 	public static ArrayList<String> imgUrlList = null;
 	public static ArrayList<String> exposureUrlList = null;
+	public static ArrayList<String> imgList = null;
 	public static String realName = "null";
 	public static String realBirthday = "null";
 	public static String realEmail = "null";
@@ -39,6 +40,8 @@ public class ExtendedStorage {
 		imgUrlList = new ArrayList<String>();
 		exposureUrlList = null;
 		exposureUrlList = new ArrayList<String>();
+		imgList = null;
+		imgList = new ArrayList<String>();
 	}
 
 	public void execute() {

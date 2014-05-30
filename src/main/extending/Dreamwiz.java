@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
+import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 
 public class Dreamwiz extends Search {
@@ -35,6 +36,7 @@ public class Dreamwiz extends Search {
 				}
 				if (list.get(i).contains("blog.dreamwiz.com")) {
 					storage.exposureUrlList.add(getUrl());
+					ExtendedStorage.imgList.add("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTWu03i2ipHNBvsQb5aOUdo2YOry4Bkx1EfL6Zm8VuKu_WwVXtS");
 					break;
 				}
 				i++;
