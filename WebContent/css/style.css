@@ -388,6 +388,7 @@ form ::-moz-focus-inner {
 
 table {
 	width: 100%;
+	text-align: center;
 }
 
 table.default {
@@ -1114,16 +1115,16 @@ table, tr, th, td, input {
 }
 /*Input-placeholder Color*/
 input.color::-webkit-input-placeholder {/* WebKit browsers */
-	color: rgb(184, 138, 120);
+	color: rgb(255, 255, 255);
 }
 input.color:-moz-placeholder {/* Mozilla Firefox 4 to 18 */
-	color: rgb(184, 138, 120);
+	color: rgb(255, 255, 255);
 }
 input.color::-moz-placeholder {/* Mozilla Firefox 19+ */
-	color: rgb(184, 138, 120);
+	color: rgb(255, 255, 255);
 }
 input.color:-ms-input-placeholder {/* Internet Explorer 10+ */
-	color: rgb(184, 138, 120);
+	color: rgb(255, 255, 255);
 }
 
 #logo > img {
@@ -1133,7 +1134,7 @@ input.color:-ms-input-placeholder {/* Internet Explorer 10+ */
 
 /*table text color + size*/
 .signup_text {
-	color: rgb(184, 138, 120);
+	color: rgb(255, 255, 255);
 	font-size: 140%;
 	height: 3em;
 	width: 5%;
@@ -1185,4 +1186,8 @@ div#searchBar img {
 	display : inline-block;
 	vertical-align: super;
 	
+}
+
+.inputSize {
+	width: 30% !important;
 }

@@ -39,9 +39,9 @@
 	<!-- effecter1_end -->
 	<ul class="menu">
 		<li>&copy; Copyright Team Chaser</li>
-		<li>Cooperation:<a href="https://www.facebook.com/ihateflyingbugs"
-			style="text-decoration: blink;">I Hate Flying Bugs</a></li>
 		<li>Design: J, Develop: s, s, y, o</li>
+		<li>Support	:<a href="https://www.facebook.com/ihateflyingbugs"
+			style="text-decoration: blink;">I Hate Flying Bugs</a></li>
 		<li>Contact: <a class="md-trigger" data-modal="mailMd">hsuteamchaser@gmail.com</a></li>
 	</ul>
 	<!-- effecter2_start -->
