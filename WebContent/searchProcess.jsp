@@ -1,3 +1,4 @@
+<%@page import="main.search.MakeObject"%>
 <%@page import="main.ranking.ImageStorage"%>
 <%@page import="main.search.SearchResult"%>
 <%@page import="java.util.ArrayList"%>
@@ -51,6 +52,7 @@
 	<%
 		} else {
 			Ranking ranking = new Ranking();
+			MakeObject object = new MakeObject();
 			ExtendedInfo extend = new ExtendedInfo(memberEmail);
 			SearchDic searchDic = new SearchDic(memberEmail); // binding 에 전달
 			extend.makeKeywordMap();
@@ -58,79 +60,62 @@
 
 			ArrayList<SearchResult> result = ranking.getResult(searchDic
 					.getSearchWordList());
-
-			for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
-				System.out.println("Test : "
-						+ ImageStorage.getImgUrlList().get(i));
-			}
 	%>
 
-	<div id="engineGraph" class="resultObject">
-		<table>
-			<tr>
-				<td><jsp:include page="engineGraph.jsp" flush="false"></jsp:include></td>
-			</tr>
-		</table>
-	</div>
+	<div id="engineGraph" class="resultObject"></div>
 
 
-	<div id="exposureGraph" class="resultObject">
-		<table>
-			<tr>
-				<td></td>
-			</tr>
-		</table>
-	</div>
+	<div id="exposureGraph" class="resultObject"></div>
 
 	<div id="image" class="resultObject">
 		<table>
 			<tr>
-				<td width="20%" align="center"><img src=""></td>
-				<td width="20%" align="center"><img src=""></td>
-				<td width="20%" align="center"><img src=""></td>
-				<td width="20%" align="center"><img src=""></td>
-				<td width="20%" align="center"><img src=""></td>
-			</tr>
-			<tr>
-				<td width="20%" align="center"><img src=""></td>
-				<td width="20%" align="center"><img src=""></td>
-				<td width="20%" align="center"><img src=""></td>
-				<td width="20%" align="center"><img src=""></td>
-				<td width="20%" align="center"><img src=""></td>
+				<%
+					for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
+				%>
+				<td width="20%" align="center"><img
+					src="<%=ImageStorage.getImgUrlList().get(i)%>"></td>
+				<%
+					}
+				%>
 			</tr>
 		</table>
 	</div>
 
 	<div class="resultObject font_GODOM">
-		<table>
-			<tr>
-				<td width="5%">번호</td>
-				<td width="82%">제목</td>
-				<td width="10%">노출도</td>
-				<td width="3%"></td>
-			</tr>
-			<%
-				for (int i = 0; i < result.size(); i++) {
-			%>
+
+		<div>
+			<div style="width: 5%">번호</div>
+			<div style="width: 82%">제목</div>
+			<div style="width: 10%">노출도</div>
+			<div style="width: 3%"></div>
+		</div>
+		<%
+			for (int i = 0; i < result.size(); i++) {
+		%>
 
 
-			<tr onclick="_onFilp(<%=i + 1%>)">
-				<td><%=i + 1%></td>
-				<td><a href="<%=result.get(i).getURL()%>" target="_blank"><%=result.get(i).getTitle()%></a></td>
-				<td><%=result.get(i).getExposure()%></td>
-				<td>▼</td>
-			</tr>
+		<div onclick="_onFilp(<%=i + 1%>)">
+			<div style="float: left;"><%=i + 1%></div>
+			<div style="float: left;">
+				<a href="<%=result.get(i).getURL()%>" target="_blank"><%=result.get(i).getTitle()%></a>
+			</div>
+			<div style="float: left;"><%=result.get(i).getExposure()%></div>
+			<div style="float: left;">▼</div>
+		</div>
 
-			<tr id="content<%=i + 1%>" style="display: none"
-				onclick="_onFilp(<%=i + 1%>)">
-				<td align="center" colspan="7"><%=result.get(i).getSnippet()%></td>
-			</tr>
+		<div id="content<%=i + 1%>" style="display: none"
+			onclick="_onFilp(<%=i + 1%>)">
+			<div align="center"><%=result.get(i).getSnippet()%>
+			</div>
+		</div>
 
-			<%
-				}
-				}
-			%>
-		</table>
+		<%
+			}
+			}
+		%>
+
 	</div>
+
 </body>
 </html>

@@ -50,8 +50,6 @@ public class MakeObject {
 		return result;
 	}
 
-
-
 	public static boolean properID(String id) {
 
 		boolean flag = false;
