@@ -85,7 +85,7 @@ $(document).ajaxStart(function() {
 });
 
 var _onFilp = function(n) {
-	$('#content' + n).toggle('slow');
+	$('#content' + n).slideToggle('slow');
 };
 
 var _onEditInfo = function(info) {
