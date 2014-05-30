@@ -14,9 +14,6 @@
 	password = Encryptor.encryptSHA(password);
 	LogonDBBean manager = LogonDBBean.getInstance();
 
-	System.out.println(email);
-	System.out.println(password);
-	
 	String emailcheck = request.getParameter("saveEmail");
 
 	if (emailcheck != null && emailcheck.equals("on")) {
@@ -29,9 +26,11 @@
 	}
 
 	int check = manager.userCheck(email, password);
-
+	
+	
 	if (check == 1) {
 		session.setAttribute("memEmail", email);
+		session.setAttribute("client_num", manager.getMember(email).getClient_num());
 		response.sendRedirect("main.jsp");
 	} else if (check == 0) {
 %>

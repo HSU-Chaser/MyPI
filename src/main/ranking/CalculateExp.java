@@ -39,7 +39,7 @@ public class CalculateExp implements Constant {
 				+ " " + rankingCount.occupationCount + " "
 				+ rankingCount.nicknameCount);
 
-		urlExposure = (KF_WT / totalKeyword);
+		urlExposure = (KF_WT / totalKeyword); //   
 
 		return Math.round(urlExposure);
 

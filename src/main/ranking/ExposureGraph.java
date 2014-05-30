@@ -63,7 +63,7 @@ public class ExposureGraph {
 
 				pstmt.setInt(1, expData.getData_index());
 				pstmt.setInt(2, expData.getClient_num());
-				pstmt.setInt(3, expData.getExposure());
+				pstmt.setDouble(3, expData.getExposure());
 				pstmt.setString(4, expData.getDate());
 
 			}
@@ -91,7 +91,7 @@ public class ExposureGraph {
 	}
 
 	// 해당그래프에서 전체를 긁어서 리스트를 가져옵니다.
-	public ArrayList<ExpDataBean> getExprecord(String email) throws Exception {
+	public static ArrayList<ExpDataBean> getExprecord(String email) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -149,6 +149,11 @@ public class ExposureGraph {
 				}
 
 		}
+		
+		for(int i = 0; i<expDataList.size(); i++){
+			System.out.println("날짜 : " + expDataList.get(i).getDate() + " 노출도 : " + expDataList.get(i).getExposure());
+		}
+		
 		return expDataList;
 
 	}
@@ -159,11 +164,14 @@ public class ExposureGraph {
 		try {
 			expData = new ExpDataBean();
 
-			expData.setClient_num(8);
-			expData.setDate("14.05.31");
-			expData.setExposure(80);
+			expData.setClient_num(13);
+			expData.setDate("14.06.01");
+			expData.setExposure(120);
 
 			insertExprecord(expData);
+			
+			
+			
 
 		} catch (Exception e) {
 			System.out.println(e);
