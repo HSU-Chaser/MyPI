@@ -17,6 +17,17 @@
 	margin-bottom: 2%;
 }
 
+.resultObject .div-th {
+	width: 100%;
+	height: 3em;
+	border: 0;
+	cellspacing: 0;
+	cellpadding: 0;
+	border: .1 solid white;
+	cellpadding: 0;
+	text-align: center;
+}
+
 .resultObject .div-tr {
 	width: 100%;
 	border: 0;
@@ -30,7 +41,6 @@
 .resultObject .div-td {
 	background-color: rgba(255, 255, 255, .5);
 	border: thin solid white;
-	height: 3em;
 	text-align: center;
 }
 </style>
@@ -65,72 +75,72 @@
 					.getSearchWordList());
 	%>
 
-
-
-	<br>
 	<br>
 	<br>
 	<br>
 	<br>
 
-
-	<p>
+	<h2 class="font_GODOM" align="center">
 		<%=memberEmail%>
 		님의 MyPI 솔루션 검색 결과
-	</p>
-
-
-	<br>
+	</h2>
 	<br>
 	<br>
 
-
-	<h3>그래프</h3>
-	<div id="graph" class="resultObject"></div>
-	<table border='0' align='left' width='100%' height=500px">
-		<tr valign="top">
-			<td align='left' width='55%' height="15%"><iframe
-					src='engineGraph.jsp' align="top" frameborder='0'
-					name="engineGraph" width='100%' height="100%" scrolling='no'></iframe></td>
-			<td align='left' valign="top" width='55%' height="85%"><iframe
-					src='exposureGraph.jsp' align="top" frameborder='0'
-					name="exposureGraph" width='100%' height="100%" scrolling='auto'></iframe></td>
-		</tr>
-	</table>
-
-	<h3>이미지</h3>
-	<div id="image" class="resultObject">
-		<table>
-			<tr>
-				<%
-					for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
-				%>
-
-				<td align="center"><img
-					src="<%=ImageStorage.getImgUrlList().get(i)%>" width="100px"></td>
-
-				<%
-					}
-				%>
-			</tr>
-		</table>
+	<h2 class="font_GODOM">그래프</h2>
+	<div id="graph" class="resultObject">
+		<div class="div-th">
+			<div class="div-td font_GODOM" style="width: 50%; float: left">노출도</div>
+			<div class="div-td font_GODOM" style="width: 50%; float: left">통계</div>
+		</div>
+		<div style="clear: both;"></div>
+		<div class="div-tr">
+			<div class="div-td" style="width: 50%; float: left">
+				<iframe src="engineGraph.jsp" frameborder="0" name="engineGraph"
+					align="center" width="100%" height="300px" scrolling='no'></iframe>
+			</div>
+			<div class="div-td" style="width: 50%; float: left">
+				<iframe src="exposureGraph.jsp" frameborder="0" name="exposureGraph"
+					align="center" width="100%" height="300px" scrolling='auto'></iframe>
+			</div>
+		</div>
+		<div style="clear: both;"></div>
 	</div>
 
-	<h3>Static Search</h3>
+	<h2 class="font_GODOM">이미지</h2>
+	<div id="image" class="resultObject">
+		<div class="div-tr">
+			<%
+				for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
+			%>
+			<div class="div-td" align="center" style="width: 20%; float: left">
+				<img src="<%=ImageStorage.getImgUrlList().get(i)%>" width="100%"
+					align="middle">
+			</div>
+			<%
+				}
+			%>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+
+	<h2 class="font_GODOM">Static Search</h2>
 	<div class="resultObject font_GODOM"></div>
 
-	<h3>Dynamic Search</h3>
+	<h2 class="font_GODOM">Dynamic Search</h2>
 	<div class="resultObject font_GODOM">
-		<div class="div-tr">
+		<!-- TH	 -->
+		<div class="div-th">
 			<div class="div-td" style="width: 5%; float: left">번호</div>
 			<div class="div-td" style="width: 82%; float: left">제목</div>
 			<div class="div-td" style="width: 10%; float: left">노출도</div>
-			<div class="div-td" style="width: 3%; float: left"></div>
+			<div class="div-td" style="width: 3%; float: left">-</div>
 			<div style="clear: both;"></div>
 		</div>
 		<%
 			for (int i = 0; i < result.size(); i++) {
 		%>
+		<!-- TR -->
 		<div class="div-tr" onclick="_onFilp(<%=i + 1%>)">
 			<div class="div-td" style="width: 5%; float: left;"><%=i + 1%></div>
 			<div class="div-td" style="width: 82%; float: left;">
@@ -141,13 +151,16 @@
 			<div style="clear: both"></div>
 		</div>
 
-		<div id="content<%=i + 1%>" class="div-tr" style="display: none"
+		<div id="content<%=i + 1%>" style="display: none"
 			onclick="_onFilp(<%=i + 1%>)">
+			<!-- TR -->
 			<div class="div-tr">
 				<div class="div-td" align="center"><%=result.get(i).getSnippet()%>
 				</div>
 			</div>
 			<div style="clear: both"></div>
+
+			<!-- TR -->
 			<div class="div-tr">
 				<div class="div-td" align="center">
 					<!-- Engine Solution -->
@@ -167,7 +180,11 @@
 						}
 					%>
 				</div>
-				<div calss="div-td" align="center">
+			</div>
+			<div style="clear: both"></div>
+			<!-- TR -->
+			<div class="div-tr">
+				<div class="div-td" align="center">
 					<!-- Static Solution -->
 					<%
 						if (result.get(i).getURL().matches(".*blog.naver.*") == true) {
@@ -229,9 +246,6 @@
 			}
 			}
 		%>
-
-
 	</div>
-
 </body>
 </html>
