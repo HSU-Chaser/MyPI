@@ -16,7 +16,7 @@ public class Email{
 		
 		
 		while(m.find()) {
-			RankingCount.emailList.add(m.group());//System.out.println(m.group());
+//			RankingCount.emailList.add(m.group());//System.out.println(m.group());
 		}
 	}
 }

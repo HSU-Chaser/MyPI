@@ -59,25 +59,43 @@ public class ExtendedInfo {
 			keywordMap.put("email2", storage.realEmail);
 			keywordMap.put("birthday2", storage.realBirthday);
 
+			
 			for (int i = 0; i < nickNameCount; i++) {
 				switch (i) {
 				// MAXIMUM of NickNameList = 5
 				case 0:
 					keywordMap.put("nickname", storage.nickNameList.get(i));
+					
+					keywordMap.put("nickname", "null");
 					break;
 				case 1:
 					keywordMap.put("nickname2", storage.nickNameList.get(i));
+
+					keywordMap.put("nickname2", "null");
 					break;
 				case 2:
 					keywordMap.put("nickname3", storage.nickNameList.get(i));
+
+					keywordMap.put("nickname3", "null");
 					break;
 				case 3:
 					keywordMap.put("nickname4", storage.nickNameList.get(i));
+
+					keywordMap.put("nickname4", "null");
 					break;
 				case 4:
 					keywordMap.put("nickname5", storage.nickNameList.get(i));
+
+					keywordMap.put("nickname5", "null");
 					break;
 				}
+			}
+			
+			if(nickNameCount < 5) {
+				for(int i=0; i<5-nickNameCount; i++){
+					keywordMap.put("nickname" + (nickNameCount+i+1), "null");
+				}
+				
 			}
 
 		} catch (Exception e) {

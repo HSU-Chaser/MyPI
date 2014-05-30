@@ -31,7 +31,7 @@ public class Cellphone{
 		
 		while(m.find()) {
 			
-			RankingCount.cellphoneList.add(m.group()); //System.out.println(m.group());		
+//			RankingCount.cellphoneList.add(m.group()); //System.out.println(m.group());		
 		
 		}
 	}

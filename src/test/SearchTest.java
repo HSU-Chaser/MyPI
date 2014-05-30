@@ -15,7 +15,8 @@ public class SearchTest {
 	public static void main(String[] args) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
 
 		SearchDic searchDic;
-		Ranking ranking = new Ranking();
+		//세션 client_num 값 넣어야됨
+		Ranking ranking = new Ranking(8);
 		ExtendedInfo extend;
 		
 		//jsp 에서는 세션값으로 이메일을 받아서 넣으면 됩니다.
@@ -39,6 +40,7 @@ public class SearchTest {
 					+ result.get(i).getURL());
 		}
 
+		
 		
 		
 	}

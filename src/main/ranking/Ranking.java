@@ -3,33 +3,44 @@ package main.ranking;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import main.patternanalysis.OpenURL;
 import main.search.MakeObject;
-import main.search.SearchDic;
 import main.search.SearchResult;
 
 public class Ranking {
 	static ArrayList<SearchResult> result;
-
+	
+	private int client_num;
+	
+	public Ranking(int client_num){
+		this.client_num = client_num;		
+	}
+	
+	
 	public ArrayList<SearchResult> getResult(ArrayList<String> searchWordList)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, IOException {
-
-		CalculateExp calExp = null;		
+		ExpDataBean expData = null;
+		CalculateExp calExp = null;
 		MakeObject makeObject = new MakeObject();
+		PageRank pageRank = new PageRank();
 
 		int googleCount = 0;
 		int naverCount = 0;
 		int daumCount = 0;
 		
+		double finalExp = 0;
+
 		// 먼저, 구글, 네이버, 다음 검색하게 하고
 		result = makeObject.getResult(searchWordList);
-		
+
 		for (int i = 0; i < result.size(); i++) {
 
 			SearchResult sr = result.get(i);
-			int exposure = 0;
+			double exposure = 0;
 			OpenURL openUrl = new OpenURL(sr.getURL());
 
 			try {
@@ -39,9 +50,9 @@ public class Ranking {
 				e.printStackTrace();
 			}
 
-			calExp = new CalculateExp(ExtendedInfo.getKeywordMap());
+			calExp = new CalculateExp();
 			// 계산을 해서, exposure를 리턴해줘서 받으면 됨
-			exposure = calExp.getExposure();
+			exposure = calExp.getExposure(sr.getURL());
 			System.out.println("이 url의 노출도는 : " + exposure);
 			sr.setExposure(exposure);
 			result.set(i, sr);
@@ -54,37 +65,66 @@ public class Ranking {
 		pruningAlgorithm();
 		System.out
 				.println("pruningAlgorithm 직후의 result 사이즈 : " + result.size());
-		
-		
-		for(int i = 0; i<result.size(); i++){
-			
-			if(result.get(i).getEngine().equals("Google")){
+
+		// //pageRank 합산
+		// for (int i = 0; i < result.size(); i++) {
+		// result.get(i).setExposure(
+		// result.get(i).getExposure()
+		// * pageRank.getPR(result.get(i).getURL()));
+		// }
+
+		for (int i = 0; i < result.size(); i++) {
+
+			if (result.get(i).getEngine().equals("Google")) {
 				googleCount++;
-			}
-			else if(result.get(i).getEngine().equals("Naver")){
+			} else if (result.get(i).getEngine().equals("Naver")) {
 				naverCount++;
-			}
-			else if(result.get(i).getEngine().equals("Daum")){
+			} else if (result.get(i).getEngine().equals("Daum")) {
 				daumCount++;
 			}
 		}
-		
-		EngineGraph engineGraph = new EngineGraph(googleCount, naverCount, daumCount);
-		System.out.println("카운트가 어떻게 되는데 그래요? : " + googleCount +"   " + naverCount + "    " + daumCount);
+
+		EngineGraph engineGraph = new EngineGraph(googleCount, naverCount,
+				daumCount);
+		System.out.println("카운트가 어떻게 되는데 그래요? : " + googleCount + "   "
+				+ naverCount + "    " + daumCount);
+
 		engineGraph.computeEngineRate();
+
+		expData = new ExpDataBean();
+		expData = getExpData(client_num, finalExp);
 
 		return result;
 
 	}
 
+	public ExpDataBean getExpData(int client_num, double finalExp) {
+		
+		ExpDataBean expData = null;
+		expData = new ExpDataBean();
+		
+		GregorianCalendar cal = new GregorianCalendar();
+
+		String year = Integer.toString(cal.get(Calendar.YEAR));
+		String month = Integer.toString(cal.get(Calendar.MONTH)+1);
+		String day = Integer.toString(cal.get(Calendar.DATE));
+		
+		expData.setClient_num(client_num);
+		expData.setDate(year + "." +  month + "." + day);
+		expData.setExposure(finalExp);
+		
+		return expData;
+	}
+
 	public void pruningAlgorithm() {
 
 		int resultSize = result.size();
-		
+
 		// exposure 0, -1인 객체 삭제
 		for (int i = 0; i < resultSize; i++) {
 
-			if ((result.get(i).getExposure() == 0) || (result.get(i).getExposure() == -1)) {
+			if ((result.get(i).getExposure() == 0)
+					|| (result.get(i).getExposure() == -1)) {
 
 				result.remove(i);
 				i--;
@@ -102,11 +142,15 @@ public class Ranking {
 
 		for (int i = 0; i < currentSize - 1; i++) {
 
-			if (result.get(i).getURL().equals(result.get(i + 1).getURL())) {
+			for (int j = i + 1; j < currentSize; j++) {
 
-				result.remove(i);
-				i--;
-				currentSize--;
+				if (result.get(i).getURL().equals(result.get(j).getURL())) {
+
+					result.remove(j);
+					j--;
+					currentSize--;
+
+				}
 			}
 		}
 	}

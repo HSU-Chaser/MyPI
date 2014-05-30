@@ -10,6 +10,7 @@
 <%
 	String email = request.getParameter("fid");
 	String password = request.getParameter("fpass");
+	System.out.println(password);
 	password = Encryptor.encryptSHA(password);
 	LogonDBBean manager = LogonDBBean.getInstance();
 
@@ -25,9 +26,11 @@
 	}
 
 	int check = manager.userCheck(email, password);
-
+	
+	
 	if (check == 1) {
 		session.setAttribute("memEmail", email);
+		session.setAttribute("client_num", manager.getMember(email).getClient_num());
 		response.sendRedirect("main.jsp");
 	} else if (check == 0) {
 %>

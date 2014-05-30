@@ -1,59 +1,47 @@
 package main.ranking;
 
-import java.util.HashMap;
-
+import main.patternanalysis.Constant;
 import main.patternanalysis.RankingCount;
-import main.patternanalysis.Reliability;
 
-public class CalculateExp implements Reliability {
+public class CalculateExp implements Constant {
 
 	RankingCount rankingCount;
-	private HashMap<String, String> keywordMap;
-	private int urlExposure = 0;
 
-	public CalculateExp(HashMap<String, String> keywordMap) {
-		this.keywordMap = keywordMap;
-	}
+	public double getExposure(String URL) {
 
-	public int getExposure() {
+		PageRank pageRank = new PageRank();
 
-		rankingCount = new RankingCount(keywordMap);
-		rankingCount.countProcess();
-		// rankingCount.get~ 해서 카운트를 불러와서 랭킹 알고리즘 설계하면 끝
+		rankingCount = new RankingCount();
 
-		rankingCount.getCellphoneCount();
-		rankingCount.getEmailCount();
+		double urlExposure = 0;
 
-		int array[] = rankingCount.getCellphoneCount();
-		int cellphoneExp = array[ORIGIN] * 10 + array[EXTEND] * 5
-				+ array[PATTERN] * 1;
+		int totalKeyword = TOTALKEYWORD;
 
-		array = rankingCount.getEmailCount();
-		int emailExp = array[ORIGIN] * 8 + array[EXTEND] * 4 + array[PATTERN]
-				* 1;
+		// 가중치 먹이고
 
-		array = rankingCount.getBirthdayCount();
-		int birthdayExp = array[ORIGIN] * 12 + array[EXTEND] * 6
-				+ array[PATTERN] * 1;
+		double KF_WT = rankingCount.residentCount * 7.174
+				+ rankingCount.cellphoneCount * 6.087
+				+ rankingCount.homephoneCount * 5.283 + rankingCount.idCount
+				* 6.087 + rankingCount.emailCount * 5.696
+				+ rankingCount.nameCount * 5.370 + rankingCount.addressCount
+				* 6.891 + rankingCount.workplaceCount * 5.717
+				+ rankingCount.birthdayCount * 5.717 + rankingCount.schoolCount
+				* 4.913 + rankingCount.occupationCount * 4.891
+				+ rankingCount.nicknameCount * 6.087 * 1 / 2;
 
-		array = rankingCount.getResidentCount();
-		int residentExp = array[ORIGIN] * 12 + array[EXTEND] * 6
-				+ array[PATTERN] * 1;
+		System.out.println(rankingCount.residentCount + " "
+				+ rankingCount.cellphoneCount + " "
+				+ rankingCount.homephoneCount + " " + rankingCount.idCount
+				+ " " + rankingCount.emailCount + " " + rankingCount.nameCount
+				+ " " + rankingCount.addressCount + " "
+				+ rankingCount.workplaceCount + " "
+				+ rankingCount.birthdayCount + " " + rankingCount.schoolCount
+				+ " " + rankingCount.occupationCount + " "
+				+ rankingCount.nicknameCount);
 
-		array = rankingCount.getAddressCount();
+		urlExposure = (KF_WT / totalKeyword); //   
 
-		int addressExp = array[ORIGIN] * 12 + array[EXTEND] * 6
-				+ array[PATTERN] * 1;
-
-		System.out.println("TEST : " + "cellphoneExp : " + cellphoneExp
-				+ "   emailExp : " + emailExp + "   birthdayExp : "
-				+ birthdayExp + "   residentExp : " + residentExp
-				+ "   addressExp : " + addressExp);
-		
-		urlExposure = cellphoneExp + emailExp + birthdayExp + residentExp
-				+ addressExp;
-
-		return urlExposure;
+		return Math.round(urlExposure);
 
 	}
 }

@@ -3,15 +3,15 @@ package main.ranking;
 public class ExpDataBean {
 
 	private String date;
-	private int exposure;
+	private double exposure;
 	private int client_num;
 	private int data_index;
 
-	public int getExposure() {
+	public double getExposure() {
 		return exposure;
 	}
 
-	public void setExposure(int exposure) {
+	public void setExposure(double exposure) {
 		this.exposure = exposure;
 	}
 

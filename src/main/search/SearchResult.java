@@ -10,7 +10,7 @@ public class SearchResult implements Serializable {
 	String snippet = null;
 
 	int resultNumber = 0; //결과 번호
-	int exposure = 0; //노출도
+	double exposure = 0; //노출도
 
 	public SearchResult(String engine, String title, String url,
 			String snippet, int resultNumber) {
@@ -21,12 +21,12 @@ public class SearchResult implements Serializable {
 		this.resultNumber = resultNumber;
 	}
 
-	public int getExposure() {
+	public double getExposure() {
 		return exposure;
 	}
 
-	public void setExposure(int exposure) {
-		this.exposure = exposure;
+	public void setExposure(double exposure2) {
+		this.exposure = exposure2;
 	}
 
 	public String getTitle() {
