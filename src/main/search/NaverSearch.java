@@ -74,6 +74,9 @@ public class NaverSearch {
 
 			SearchResult searchResult = new SearchResult("Naver", title,
 					urlConversion(url), snippet, resultNumber);
+			
+			//urlConversion(url)
+			
 			result.add(searchResult);
 		}
 

@@ -10,7 +10,7 @@ public class PageRank {
 	public static void main(String[] args) {
 
 		PageRank obj = new PageRank();
-		System.out.println(obj.getPR("naver.com"));
+		System.out.println(obj.getPR("http://www.youtube.com/watch?v=OwEtaa7b9lc"));
 		
 	}
 
