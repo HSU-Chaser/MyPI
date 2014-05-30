@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "GetSeriesValue Method";
+var page_title_ID= "fcomthgetseriesvalue";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,"JSP");
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Returns the specified value of a series in the chart object.</P>
+
+<!-- Profile -->
+<PRE class="syntax">double object<b>.GetSeriesValue(</B> int index, int valueindex <B>)</B> </PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</dd>
+
+  <DT><I>index</I></DT>
+  <DD>Required. An integer value that specifies the zero-based index of the series in the chart object.</DD>
+
+  <DT><I>valueindex</I></DT>
+  <DD>Required. An integer value that specifies the zero-based index of the value in the series specified by <i>index</i>.</DD>
+</DL>
+
+<!-- Return Value -->
+<H4 class="dtH4">Return Value</H4>
+
+<DL>
+  <DT>A floating-point number containing the data value spedified by <i>valueindex</i> in the data series specified by <i>index</i>.</DT>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<P>If the <i>index</i> argument refers to a series that does not exist in the chart object, the <b>GetSeriesValue</b> 
+method raises an <b>invalid series index error</b>.</P>
+
+<P>If the <i>valueindex</i> argument refers to a data value that does not exist in the specified series, the <b>GetSeriesValue</b> 
+method raises an <b>out of bounds error</b>.</P>
+
+<UL>
+  <LI><i>index</i> must be superior or equal to 0.</LI>
+  <LI><i>index</i> must refer to an existing series.</LI>
+  <LI><i>valueindex</i> must be superior or equal to 0.</LI>
+  <LI><i>valueindex</i> must be strictly inferior to <a href="fcomthgetvaluescount.htm">GetValuesCount()</a>.</LI>
+</UL>
+
+<!-- Code Sample -->
+<H4 class="dtH4">JSP Code Sample</H4>
+<P>The following JSP code illustrates use of the <B>GetSeriesValue</B> method. </P>
+<PRE class="code">
+chart.SetDataFromTxtFile("C:\\myData.txt");
+
+<font color="#007700">// Retrieves the number of series stored in the chart object</font> 
+int n_series= chart.GetSeriesCount();
+int n_categories= chart.GetValuesCount();
+
+if( n_series == 0 )
+  out.println("No series available&lt;br&gt;");
+else
+  {
+  <font color="#007700">// Enumerate the series stored in the chart object</font> 
+  for( int i= 0; i &lt; n_series; ++i )
+    for( int j= 0; j &lt; n_series; ++j )
+      out.println("Series[" + i + "][" + j + "]=" + chart.<b>GetSeriesValue</b>(i,j) + "&lt;br&gt;");
+  }
+</PRE>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthgetseriescount.htm">GetSeriesCount Method</A> |
+   <A HREF="fcomthsetseriesvaluesfromstring.htm">SetSeriesValuesFromString Method</A> |
+   <A HREF="fcomthsetseriesvaluesfromarray.htm">SetSeriesValuesFromArray Method</A></P>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

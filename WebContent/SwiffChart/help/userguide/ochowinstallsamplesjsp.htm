@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "Installing Swiff Chart Generator JSP Samples";
+var page_title_ID= "ochowinstallsamplesjsp";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,"JSP");
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+<br>
+<H4 class="dtH4">Contents</H4>
+<a href="#introduction">Introduction</a><br>
+<a href="#installation">Samples Installation</a><br>
+<a href="#testing">Testing Swiff Chart Generator</a><br>
+<br><br>
+
+<a name="#introduction"></a><H2 class="dtH2">Introduction</H2>
+<p>To run the Swiff Chart Generator JSP samples on your Web Application Server you need to have the 
+<b>SwiffChart.jar</b> archive installed on your Web Application Server and accessible for the JSP sample pages.
+In some cases the <b>SwiffChart.jar</b> archive must be installed in the <font STYLE="font-family: Monospace, Courier New, Courier;">WEB-INF/lib</font> 
+folder of the JSP page servlet folder. You must also edit the JSP code samples to specify the Swiff Chart
+Generator installation directory as well as the Web Application Server document root.</p>
+
+<br>
+<a name="#installation"></a><H2 class="dtH2">Samples Installation</H2>
+<ol>
+  <li>Publish the JSP sample pages on your Web Application Server. To do so copy the folders located in
+  <pre class="code">&lt;install_dir&gt;/samples/JSP/</pre>
+  Where &lt;install_dir&gt; is Swiff Chart Generator installation directory. 
+  These folders contain the JSP sample pages.</li>
+
+  <li>Edit each published JSP sample page and modify the 2 variables 
+  <font STYLE="font-family: Monospace, Courier New, Courier;">installation_dir</font>
+  and <font STYLE="font-family: Monospace, Courier New, Courier;">web_root</font>.
+  <br>
+  <br>
+  <ul style="list-style-type:none">
+    <li>- The <b><font STYLE="font-family: Monospace, Courier New, Courier;">installation_dir</font> variable</b>
+    must contain the exact absolute pathname of the Swiff Chart Generator installation directory 
+    on your Web Application Server.
+    <br>
+    <br>
+    For example, <b>for JSP Windows</b>
+    <pre class="code">String installation_dir= "C:\\Program Files\\GlobFX\\Swiff Chart Generator 3";</pre>
+    For example, <b>for JSP Unix</b>
+    <pre class="code">String installation_dir= "/usr/local/SwiffChart";</pre>
+    <br>
+    <li>- The <b><font STYLE="font-family: Monospace, Courier New, Courier;">web_root</font> variable</b> 
+    must contain the exact absolute pathname of your web server root directory.
+    <br>
+    <br>
+    For example, <b>for JSP running with Tomcat on Windows</b>
+    <pre class="code">String web_root= "C:\\tomcat\\webapps\\ROOT";</pre>
+    <br>
+  </ul>
+
+  <li>Publish the SwiffChart.jar archive in your Web Application Server. Make sure that SwiffChart.jar 
+  is accessible for the JSP code samples. The SwiffChart.jar file is located in
+  <pre class="code">&lt;install_dir&gt;/samples/JSP/lib/</pre>
+  Where &lt;install_dir&gt; is Swiff Chart Generator installation directory.</li>
+
+  <li>Restart your Web Application Server.</li>
+</ol>
+
+<a name="#testing"></a><H2 class="dtH2">Testing Swiff Chart Generator</H2>
+<p>To test the Swiff Chart Generator installation, open your web browser (you must have the Flash 
+plug-in installed), type the following URL in and browse in the available directories to view the samples:</p>
+
+<PRE class="code">http://<b>your_server_name</b>/<b>your_directory</b>/</PRE>
+
+<p>where <b>your_server_name</b> is the machine name of your Web Application Server (possibly 127.0.0.1:8080 - the localhost machine)
+and <b>your_directory</b> is the servlet folder where your JSP samples have been published.</P>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

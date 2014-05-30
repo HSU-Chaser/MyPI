@@ -1,0 +1,73 @@
+SWIFF CHART GENERATOR 3.x SOFTWARE LICENSE AGREEMENT
+
+This License Agreement is a legal agreement between you ("LICENSEE") (either an individual or a single entity) and GlobFX Technologies SARL ("GLOBFX") for the software product Swiff Chart Generator 3.x which includes computer software and electronic documentation (collectively the "SOFTWARE"). Read it carefully before completing the installation process and using the SOFTWARE. If you did not obtain this copy of the SOFTWARE legally, please destroy the copy immediately.
+
+By installing, copying, or otherwise using the SOFTWARE, you agree to be bound by the terms of this License Agreement.
+
+If you do not agree to the terms of this License Agreement, GLOBFX is unwilling to license the SOFTWARE. In such event, you may not install, copy or otherwise use the SOFTWARE.
+
+YOU AGREE THAT YOUR USE OF THE SOFTWARE ACKNOWLEDGES THAT YOU HAVE READ THIS LICENSE, UNDERSTAND IT, AND AGREE TO BE BOUND BY ITS TERMS AND CONDITIONS.
+
+Versions of the SOFTWARE
+
+The SOFTWARE is available in two versions: (a) the Evaluation Version and (b) the Enterprise Edition Version. Each of the above versions of the SOFTWARE is subject to the terms and conditions of this Agreement and may be used only in accordance with the terms and conditions of this Agreement.
+
+
+1. License
+
+(a) Evaluation Version
+
+If you have licensed the Evaluation Version of the SOFTWARE, subject to the terms and conditions of this Agreement, GLOBFX grants you, LICENSEE, a limited, non-exclusive, non-transferable, non-sublicenseable license to install one (1) copy of the Evaluation Version of the SOFTWARE only on a single physical workstation or server and use that copy of the SOFTWARE only in binary object code form and only in accordance with this Agreement solely for internal evaluation use for a period of thirty (30) days from the date of your first installation of the SOFTWARE (the "Evaluation Period"). Upon the expiration of the Evaluation Period you must stop using the SOFTWARE. The Evaluation Version of the SOFTWARE may not be used for any commercial development or for any deployment or ultimate production purposes.
+
+(b) Enterprise Edition Version
+
+If you have purchased a license for the Enterprise Edition Version of the SOFTWARE, subject to the terms and conditions of this Agreement, GLOBFX grants you, LICENSEE, a limited, non-exclusive, non-transferable, non-sublicenseable license to install one (1) copy of the Enterprise Edition Version of the SOFTWARE only on a single physical workstation or server and use that copy of the SOFTWARE only in binary object code form and only in accordance with this Agreement.
+
+LICENSEE may use the Enterprise Edition Version of the SOFTWARE to develop and run web applications and product(s) that are designed to operate in conjunction with the SOFTWARE.
+
+If the SOFTWARE is to be installed on multiple physical servers (for development, testing, production or other purposes), a separate SOFTWARE license must be acquired for each individual physical server.
+
+This Agreement imposes no restriction on the number of web applications that may be developed or run on a server on which a licensed copy of the Enterprise Edition SOFTWARE is installed, and no limit to the number of end users who may access such web applications.
+
+LICENSEE may make one (1) copy of the SOFTWARE solely for backup or archival purposes, provided that LICENSEE reproduces and includes all copyright and other proprietary notice(s) on the copy.
+
+2. Restrictions
+
+LICENSEE may not:
+(i)   Decompile, reverse engineer, disassemble or otherwise reduce the SOFTWARE to a human perceivable form.
+(ii)  Rent, lease, lend, transfer or otherwise transfer rights to the SOFTWARE.
+(iii) Translate, adapt, modify the SOFTWARE or create derivative works based upon the SOFTWARE or any part thereof.
+(iv)  Distribute copies of the SOFTWARE.
+(v)   Electronically transfer the SOFTWARE over a network, a telephone circuit or the Internet.
+(vi)  Remove any proprietary notices or labels on the SOFTWARE.
+(vii) Use the SOFTWARE to encode, reproduce or copy any material or intellectual property you do not have the right to encode, reproduce or copy.
+
+3. Termination
+
+This License Agreement is effective until terminated. GLOBFX may terminate this License Agreement if LICENSEE fails to comply with the terms and conditions of this License Agreement. In such event, LICENSEE must destroy all copies of the SOFTWARE and all of its component parts. All provisions relating the ownership, disclaimer of warranties, limitation of liability and the general provisions shall survive the termination of this License Agreement.
+
+4. Ownership
+
+The SOFTWARE is licensed, NOT sold. The foregoing License Agreement gives LICENSEE limited rights to use the SOFTWARE. All rights, title and interest, including all copyrights, in and to the SOFTWARE and any copies LICENSEE is permitted to make herein are exclusively owned by GLOBFX and/or its suppliers and are protected by copyright, trademark and trade secret law and international treaties. GLOBFX retains all rights not expressly granted to LICENSEE in this License Agreement.
+
+5. Limited Warranties
+
+This limited warranty and any implied warranties are effective for a period of ninety (90) days from the date of delivery ("the LIMITED WARRANTY PERIOD") as evidenced by a copy of your receipt. GLOBFX warrants to you that when used with the recommended hardware configuration, the SOFTWARE will perform substantially in accordance with the documentation during the LIMITED WARRANTY PERIOD. You must report all defects and return the SOFTWARE to the location where you obtained it with a copy of your receipt within such period to be eligible for warranty service.
+
+If the SOFTWARE does not perform substantially in accordance with the documentation during the LIMITED WARRANTY PERIOD, the entire and exclusive liability and remedy shall be limited to either, at GLOBFX option, the replacement of the SOFTWARE or the refund of the License fee you paid for the SOFTWARE.
+
+EXCEPT AS SET FORTH IN THE FOREGOING LIMITED WARRANTY, GLOBFX DISCLAIMS ALL OTHER WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF PERFORMANCE OR MERCHANDABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT WITH REGARD TO THE SOFTWARE. ANY OTHER SOFTWARE, ANY OTHER HARDWARE, AND ANY OTHER WRITTEN MATERIAL FURNISHED WITH OR ACCOMPANYING THE SOFTWARE IS NOT WARRANTED BY GLOBFX. IF APPLICABLE LAW IMPLIES ANY WARRANTIES WITH RESPECT TO THE SOFTWARE, ALL SUCH WARRANTIES ARE LIMITED IN DURATION TO NINETY (90) DAYS FROM THE DATE OF DELIVERY.
+
+GLOBFX DO NOT WARRANT THAT THE SOFTWARE WILL MEET LICENSEE REQUIREMENTS, OPERATE WITHOUT INTERRUPTION OR BE ERROR-FREE.
+
+6. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL GLOBFX AND ITS SUPPLIERS BE LIABLE FOR ANY CONSEQUENTIAL, INCIDENTAL, DIRECT, INDIRECT, SPECIAL, PUNITIVE OR OTHER DAMAGES WATHSOEVER (INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION OR OTHER PECUNIARY LOSS) ARISING OUT OF THIS AGREEMENT OR CAUSED BY THE USE OR INABILITY TO USE THE SOFTWARE, EVEN IF GLOBFX HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. BECAUSE SOME JURIDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL, INCIDENTAL OR SPECIAL DAMAGES, THE ABOVE LIMITATION MAY NOT APPLY TO YOU.
+
+7. Entire Agreement
+
+This License Agreement constitutes the entire agreement between LICENSEE and GLOBFX and supersedes any other prior agreements or understandings, whether oral or written, regarding the SOFTWARE. If a provision of this agreement is deemed null and void, invalid or without effect, the remainder of this agreement shall remain in effect.
+
+8. Governing Law
+
+This License Agreement is governed and construed in accordance with French law. You agree that any dispute shall be submitted to the jurisdiction of Paris, France.

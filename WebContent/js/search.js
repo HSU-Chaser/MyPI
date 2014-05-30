@@ -77,7 +77,7 @@ $(document).ajaxStart(function() {
 		progressbar.progressbar("value", val + 1);
 
 		if (val < 99) {
-			setTimeout(progress, 100);
+			setTimeout(progress, 1000);
 		}
 	}
 

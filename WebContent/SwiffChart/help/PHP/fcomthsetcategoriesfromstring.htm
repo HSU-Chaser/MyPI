@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "SetCategoriesFromString Method";
+var page_title_ID= "fcomthsetcategoriesfromstring";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,"PHP");
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Set categories names from data encoded in a separator-delimited string.</P>
+
+<!-- Profile -->
+<PRE class="syntax">void object<B>->SetCategoriesFromString(</B>&nbsp;string categories&nbsp;<B>)</B></PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+
+  <DT><I>categories</I></DT>
+  <DD>Required. A string that specifies the categories names (see <a href="fcomthsetseparators.htm">SetSeparators</a>).</dd>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<P>You can set the categories in a chart with categories names encoded in a string (i.e. the <i>categories</i> argument). The string must be 
+formatted as a list of names, two consecutive names must be separated by a separator
+character that can be specified with the <a href="fcomthsetseparators.htm">SetSeparators method</a>.
+
+<P>Here is an example of categories names encoded in a string with the character ";" as separator.</P>
+<PRE class="code">myEncodedString= "North&nbsp;America<font color="#FF0000">;</font>South&nbsp;America<font color="#FF0000">;</font>Europe<font color="#FF0000">;</font>Middle&nbsp;East<font color="#FF0000">;</font>Asia"
+</PRE>
+
+<P>The string argument <i>categories</i> is parsed by the chart object according to the separator characters specified
+to the chart object (see the <a href="fcomthsetseparators.htm">SetSeparators method</a> for specifying separator characters and rules). 
+
+<P>The ";" character is the default separator character.</P>
+
+<!-- Sample Code -->
+<H4 class="dtH4">PHP Sample Code</H4>
+<P>The following PHP code shows how to store the series and categories of the table below using the <B>SetCategoriesFromString</B> method. 
+This table has two series named "Year 2006" and "Year 2007". The categories are "North America", "South America", "Europe", "Middle East" and "Asia".</P>
+
+<div class="tablediv">
+<table border="0" cellpadding="0" cellspacing="0" class="dtTable2" style="border-style:none;"><tr><td style="border-style:none;">
+<table cellspacing="0" class="dtTable2">
+    <tr>
+      <td>&nbsp;</td>
+      <th>North&nbsp;America</th>
+      <th>South&nbsp;America</th>
+      <th>Europe</th>
+      <th>Middle&nbsp;East</th>
+      <th>Asia</th>
+    </tr>
+    <tr>
+      <td><b>Year 2006</b></td>
+      <td>12</td>
+      <td>7.5</td>
+      <td>11.3</td>
+      <td>9.2</td>
+      <td>5.3</td>
+    </tr>
+    <tr>
+      <td><b>Year 2007</b></td>
+      <td>14</td>
+      <td>9.9</td>
+      <td>13.1</td>
+      <td>11.5</td>
+      <td>4.9</td>
+    </tr>
+  </table>
+</td>
+</tr>
+<tr>
+<td style="border-style:none;">
+<div align="center"><img src="../images/salesperyear-bar.jpg"></div>
+</td>
+</tr></table>
+</div>
+<br>
+
+
+<PRE class="code">
+<font color="#007700">// Let's build the categories string with ";" as separator</font>
+$sep= ";";
+$ignoremultseparators= true;
+
+<font color="#007700">// Before setting the series and categories, we must specify the separators</font>
+$chart->SetSeparators($sep, $ignoremultseparators);
+
+$myString= "North&nbsp;America" . $sep . "South&nbsp;America" . $sep . "Europe" . $sep . "Middle&nbsp;East" . $sep . "Asia";
+
+<font color="#007700">// Fill the chart with the categories stored in the myString variable</font>
+$chart-><b>SetCategoriesFromString</b>($myString);
+
+<font color="#007700">// Add the first series "Year 2006"</font>
+$myString= "12" . $sep . "7.5" . $sep . "11.3" . $sep . "9.2" . $sep . "5.3";
+
+<font color="#007700">// Fill the first series with the data stored in the myString variable</font>
+$chart->SetSeriesCaption(0, "Year 2006");
+$chart->SetSeriesValuesFromString(0, $myString);
+
+<font color="#007700">// Do the same way for the second series "Year 2007"</font>
+</PRE>
+
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthgetcategory.htm">GetCategory Method</A> | 
+   <A HREF="fcomthgetvaluescount.htm">GetValuesCount Method</A> | 
+   <A HREF="fcomthsetcategoriesfromarray.htm">SetCategoriesFromArray Method</A> |
+   <A HREF="fcomthsetseparators.htm">SetSeparators Method</A></P>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

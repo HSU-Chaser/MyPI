@@ -25,6 +25,7 @@ public class MakeObject {
 		
 
 		result = null;
+		result = new ArrayList<SearchResult>();
 
 		String naverCategory[] = { "blog", "news", "cafearticle", "kin",
 				"webkr", "doc" };

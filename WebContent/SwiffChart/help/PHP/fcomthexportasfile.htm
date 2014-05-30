@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "ExportAsFile Method";
+var page_title_ID= "fcomthexportasfile";
+var page_lang= "PHP";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Saves the chart as a Flash movie file or an image file.</P>
+
+<!-- Profile -->
+<PRE class="syntax">void object<B>->ExportAsFile(</B> string filename <b>)</B></PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+
+  <DT><I>filename</I></DT>
+  <DD>Required. A string that specifies the name of the saved file.</DD>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<p>If the system fails to create or generate the output file, the <b>ExportAsFile</b>
+method raises an error.</p>
+
+<p>The format of the generated file (SWF, PNG, JPG, SVG or PDF file)
+can be specified by the method <a href="fcomthsetoutputformat.htm">SetOutputFormat</a>.</p>
+
+<!-- Sample Code -->
+<H4 class="dtH4">PHP Sample Code</H4>
+<P>The following PHP code illustrates use of the <B>ExportAsFile</B> method. </P>
+<PRE class="code"><font color="#007700">// Create the chart series</font>
+$values_1= array();
+$values_2= array();
+
+$values_1[0] = 10;
+$values_1[1] = 20;
+$values_1[2] = 30;
+
+$values_2[0] = 100;
+$values_2[1] = 200;
+$values_2[2] = 300;
+
+$chart->SetSeriesValuesFromArray(0, $values_1);
+$chart->SetSeriesValuesFromArray(1, $values_2);
+
+<font color="#007700">// Set the graphics settings from a style file</font>
+$chart->LoadStyle("C:\\myStyle.scs");
+
+<font color="#007700">// The chart is complete, we can now generate the movie</font>
+$chart-><b>ExportAsFile</b>("C:\\myFlashMovie.swf");</PRE>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthexportasresponse.htm">ExportAsResponse Method</A> |
+   <A HREF="fcomthexportasbinary.htm">ExportAsBinary Method</A> |
+   <A HREF="fcomthsetoutputformat.htm">SetOutputFormat Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

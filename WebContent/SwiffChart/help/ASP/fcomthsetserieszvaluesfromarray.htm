@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "SetSeriesZValuesFromArray Method";
+var page_title_ID= "fcomthsetserieszvaluesfromarray";
+var page_lang= "VBScript";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Set series Z values (bubble sizes) from data stored in a single-dimension array (for Bubble charts).</P>
+
+<!-- Profile -->
+<PRE class="syntax">object<B>.SetSeriesZValuesFromArray</B>&nbsp;index,&nbsp;values </PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+
+  <DT><I>index</I></DT>
+  <DD>Required. An integer value that specifies the zero-based index of the series in the chart object.</DD>
+
+  <DT><I>values</I></DT>
+  <DD>Required. A single-dimension array containing the series Z values (or bubble sizes) as elements.</DD>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<P><font color=#ff0000><b>Note:</b></font> This method is available when 
+manipulating Bubble data series required for displaying Bubble charts. 
+Note that the Chart type (bubble, bar, column, line, etc) is defined in the 
+Swiff Chart style file (.scs) which 
+must be loaded via the <a href="fcomthloadstyle.htm">LoadStyle</a> method.</P>
+
+<P>The data stored in the array must be numerical values.</P>
+
+<P>If the <i>index</i> argument refers to a series that does not exist in the chart object, the series is created.</P>
+<UL>
+  <LI><i>index</i> must be superior or equal to 0.</LI>
+</UL>
+
+<!-- Sample Code -->
+<H4 class="dtH4">VBScript Sample Code</H4>
+<P>The following VBScript code shows how to store the XY and Sizes values of the table below 
+using the <B>SetSeriesZValuesFromArray</B> method. 
+This table has one series named "Production". This series
+contains independant XY and Sizes values.</P>
+
+<div class="tablediv">
+<table border="0" cellpadding="0" cellspacing="0" class="dtTable2" style="border-style:none;"><tr><td style="border-style:none;">
+<table cellspacing="0" class="dtTable2">
+    <tr>
+      <th colspan=3>Production</th>
+    </tr>
+    <tr>
+      <td><div align=center><b>X</b></div></td>
+      <td><div align=center><b>Y</b></div></td>
+      <td><div align=center><b>Bubble Size (Z)</b></div></td>
+    </tr>
+    <tr>
+      <td><div align=center>4.5</div></td>
+      <td><div align=center>12</div></td>
+      <td><div align=center>456</div></td>
+    </tr>
+    <tr>
+      <td><div align=center>1.2</div></td>
+      <td><div align=center>7.5</div></td>
+      <td><div align=center>478</div></td>
+    </tr>
+    <tr>
+      <td><div align=center>2.5</div></td>
+      <td><div align=center>11.3</div></td>
+      <td><div align=center>314</div></td>
+    </tr>
+    <tr>
+      <td><div align=center>2.9</div></td>
+      <td><div align=center>9.2</div></td>
+      <td><div align=center>125</div></td>
+    </tr>
+    <tr>
+      <td><div align=center>1.8</div></td>
+      <td><div align=center>5.3</div></td>
+      <td><div align=center>265</div></td>
+    </tr>
+</table>
+</td>
+<td style="border-style:none;">
+&nbsp;&nbsp;<img src="../images/bubbles.png">
+</td>
+</tr></table>
+</div>
+<br>
+
+<PRE class="code">
+Dim array_x(4)
+Dim array_y(4)
+Dim array_z(4)
+
+array_x(0)= 1
+array_x(1)= 2
+array_x(2)= 3
+array_x(3)= 4
+array_x(4)= 5
+
+array_y(0)= 12
+array_y(1)= 7.5
+array_y(2)= 11.3
+array_y(3)= 9.2
+array_y(4)= 5.3
+
+array_z(0)= 456
+array_z(1)= 478
+array_z(2)= 314
+array_z(3)= 125
+array_z(4)= 265
+
+<font color="#007700">'Add the first series "Production"</font>
+chart.SetSeriesCaption 0, "Production"
+
+<font color="#007700">'Fill the first series with XY values stored in the array variables</font>
+chart.SetSeriesXValuesFromArray 0, array_x
+chart.SetSeriesYValuesFromArray 0, array_y
+
+<font color="#007700">// Fill the first series with Bubble Size values stored in the array_z variable</font>
+chart.<b>SetSeriesZValuesFromArray</b> 0, array_z
+</PRE>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthsetseriesxvaluesfromarray.htm">SetSeriesXValuesFromArray Method</A> |
+   <A HREF="fcomthsetseriesyvaluesfromarray.htm">SetSeriesYValuesFromArray Method</A> |
+   <A HREF="fcomthsetseriesxvaluesfromstring.htm">SetSeriesXValuesFromString Method</A> |
+   <A HREF="fcomthsetseriesyvaluesfromstring.htm">SetSeriesYValuesFromString Method</A> |
+   <A HREF="fcomthgetseriesxvalue.htm">GetSeriesXValue Method</A> |
+   <A HREF="fcomthgetseriesyvalue.htm">GetSeriesYValue Method</A> |
+   <A HREF="fcomthsetseriescaption.htm">SetSeriesCaption Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

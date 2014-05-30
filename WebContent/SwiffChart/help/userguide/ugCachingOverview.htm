@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "Caching in Swiff Chart Generator";
+var page_title_ID= "ugCachingOverview";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,"");
+</SCRIPT>
+
+
+<DIV id="scrtext" valign="bottom">
+<br>
+<H4 class="dtH4">Contents</H4>
+<a href="#work">How does the caching work in Swiff Chart Generator?</a><br>
+<a href="#whenuse">When to use the caching?</a><br>
+<a href="#cachingparams">The caching parameters</a><br>
+<a href="#enablecachingwin">How to enable the caching on Windows?</a><br>
+<a href="#enablecachingunix">How to enable the caching on UNIX?</a><br>
+<a href="#cachingapi">The caching API</a><br>
+<a href="#examples">Examples</a><br>
+<a href="#controlpanel">The Swiff Chart Generator Control Panel</a><br>
+<br>
+<br>
+<a name="#work"></a><H4 class="dtH4">How does the caching work in Swiff Chart Generator?</H4>
+
+<p>Swiff Chart Generator has a built-in caching support.</p>
+
+<p>When caching is enabled, Swiff Chart Generator stores the data, the layout parameters as well as 
+the corresponding generated Flash movies, JPEG or PNG images in a cache directory on the hard disk.</p>
+
+<p>Each time a client requests the same chart (same data series, same chart style and parameters),
+the server simply sends back the previously generated Flash movie or image 
+without having to re-generate it, thus considerably improving the performance. Once a chart is stored in the
+cache, the server does not consume CPU for movie or image regeneration.</p>
+
+<p>The cache is automatically managed by Swiff Chart Generator so that it never allocates 
+more than the maximum amount of disk memory specified by the configuration.</p>
+<br>
+<br>
+
+<a name="#whenuse"></a><H4 class="dtH4">When to use the caching?</H4>
+
+<p>If tha data being graphed is often the same, using the cache is recommended. Enabling the cache is such
+cases will highly improve the performance. On the contrary, if the data being graphed is never, or 
+rarely the same, using the cache is not recommended.</p>
+<br>
+<br>
+
+
+<a name="#cachingparams"></a><H4 class="dtH4">The Caching parameters</H4>
+<p>In Swiff Chart Generator, the caching has 3 different parameters:</p>
+
+<UL>
+  <LI><b>The Cache Name</b>. The <i>Cache Name</i> specifies the location on the web server of the generated flash movies, 
+JPG and PNG images which have been stored for caching. This location is called <i>"the public cache"</i> since it is 
+accessible by web users. By default the cache name is "/charts_cache", relative to the web server root. Swiff Chart Generator always interprets the <i>Cache Name</i> as a 
+location on the web server, never as a path on the file system.</LI>
+
+  <LI><b>The Cache Size</b>. The <i>Cache Size</i> specifies the maximum size of the cache in KB. By default 
+the <i>Cache Size</i> is 4096KB (4 MB). Each time the cache reaches its maximum capacity, the last generated charts 
+stored in the cache are removed.</LI>
+
+  <LI><b>The Private Cache Directory (Optional)</b>. The <i>Private Cache Directory</i> is mainly a security 
+option. By default the public cache records the index files necessary for charts caching. 
+For security reasons, you may want to store these index files (which record private parameters) in a directory 
+which is not accessible by web users. Contrary to the <i>Cache Name</i>, the <i>Private Cache Directory</i> 
+specifies an absolute pathname on the file system. By default the <i>Private Cache Directory</i> 
+is not used and private index files are stored in the public cache.</LI>
+</UL>
+<br>
+<br>
+<a name="#enablecachingwin"></a><H4 class="dtH4">How to enable the caching on Windows?</H4>
+
+<p>There are 2 methods to activate the caching in Swiff Chart Generator <b>on Windows</b>:</p>
+
+<UL>
+  <LI>Programmatically by calling the caching API. This method enables you to individually 
+  select the scripts for which you need to use the caching system. See paragraph <a href="#cachingapi">The Caching API</a> for more information.</LI>
+  <LI>From the <b>Swiff Chart Generator Control Panel</b>. This method enables you to setup the caching system for all the 
+  charts. Read <a href="#controlpanel">The Swiff Chart Generator Control Panel</a> for more information.</LI>
+</UL>
+<br>
+<br>
+
+<a name="#enablecachingunix"></a><H4 class="dtH4">How to enable the caching on UNIX?</H4>
+
+<p>There are 2 methods to activate the caching in Swiff Chart Generator <b>on UNIX systems</b>:</p>
+
+<UL>
+  <LI>Programmatically by calling the caching API. This method enables you to individually 
+  select the scripts for which you need to use the caching system. See paragraph <a href="#cachingapi">The Caching API</a> for more information.</LI>
+  <LI>From the <b>configuration file</b> <a href="ugUNIXVersion.htm">swfchart.ini</a>. This method enables you to setup the caching system for all the 
+  charts by simply editing a single file. Read <a href="ugUNIXVersion.htm">Running Swiff Chart Generator on UNIX systems</a> for more information.</LI>
+</UL>
+<br>
+<br>
+
+<a name="#cachingapi"></a><H4 class="dtH4">The Caching API</H4>
+
+<p>The list below enumerates all the methods provided to manage the cache within your ASP/PHP/ColdFusion 
+source code:</p>
+
+<div class="tablediv"><table cellspacing="0" class="dtTable">
+    <tr>
+      <th>Method</th>
+      <th>Definition</th>
+    </tr>
+    <tr>
+      <td><a href="../ASP/fcomthusecache.htm">UseCache</a></td>
+      <td>Enables or disables the caching system.</td>
+    </tr>
+    <tr>
+      <td><a href="../ASP/fcomthsetmaxcachesize.htm">SetMaxCacheSize</a></td>
+      <td>If caching is enabled, specifies the maximum size of the cache in KB.</td>
+    </tr>
+    <tr>
+      <td><a href="../ASP/fcomthsetcachename.htm">SetCacheName</a></td>
+      <td>If caching is enabled, specifies the name of the public cache relative to the web server root.</td>
+    </tr>
+    <tr>
+      <td><a href="../ASP/fcomthsetprivatecachedir.htm">SetPrivateCacheDir</a></td>
+      <td>If caching is enabled, specifies the path of the private cache directory. 
+      This path is absolute, it is not relative to the web server. (optional)</td>
+    </tr>
+    <tr>
+      <td><a href="../ASP/fcomthclearcache.htm">ClearCache</a></td>
+      <td>If caching is enabled, this method forces the cache to be cleared.</td>
+    </tr>
+</table></div>
+<br>
+
+<b>IMPORTANT:</b> Among the various methods provided by Swiff Chart Generator to generate a chart, some of them do
+not use the cache by default, others always require the use of the cache. The table below gives you the 
+list of all the methods available to generate a chart and specifies for each of them if the cache is automatically
+used by Swiff Chart Generator or not.
+
+<p class=pwarn><b>Note:</b> if you call a method which does <b>not require</b> the cache and if, in the same time, you want 
+Swiff Chart Generator to use the cache for better performances, you <b>must</b> call the method 
+<a href="../ASP/fcomthusecache.htm">UseCache</a> to enable the cache or select <b>Force cache</b> in the Control Panel.</p>
+<br>
+<div class="tablediv"><table cellspacing="0" class="dtTable2">
+    <tr><th>Method</th><th>Always Uses cache</th></tr>
+    <tr><td><a href="../ASP/fcomthgethtmltag.htm">GetHTMLTag</a></td><td><div align=center>X</div></td></tr>
+
+    <tr><td><a href="../ASP/fcomthgetoutputlocation.htm">GetOutputLocation</a></td><td><div align=center>X</div></td></tr>
+
+    <tr><td><a href="../ASP/fcomthexportasresponse.htm">ExportAsResponse</a></td><td>&nbsp;</td></tr>
+
+    <tr><td><a href="../ASP/fcomthexportasfile.htm">ExportAsFile</a></td><td>&nbsp;</td></tr>
+
+    <tr><td><a href="../ASP/fcomthexportasbinary.htm">ExportAsBinary</a></td><td>&nbsp;</td></tr>
+</table></div>
+<br>
+<br>
+
+<a name="#examples"></a><H4 class="dtH4">Examples.</H4>
+<br>
+<UL>
+<LI>
+<p>The VBScript code below illustrates the use of the cache when calling the <i>ExportAsResponse</i> method:</p>
+<pre class="code">
+&lt;% @Language=VBScript %&gt;
+&lt;%
+  Dim chart
+  Set chart= Server.CreateObject("SwiffChartObject.ChartObj")
+
+  chart.SetTitle "Movie Revenues"
+  chart.SetCategoriesFromString "January;February;March"
+  chart.SetSeriesValuesFromString 0, "187;110;159"
+
+  chart.LoadStyle "pie\Geneva2"
+
+  chart.<b>SetCacheName</b> "/charts_cache"
+  chart.<b>UseCache</b> True
+  chart.ExportAsResponse
+
+  Set chart= Nothing
+
+  Response.End
+%&gt;
+</pre>
+<br>
+</LI>
+
+<LI>
+<p>However, since the method <i>GetHTMLTag</i> automatically uses the cache, 
+the code below does not require the <i>UseCache</i> method to be called.</p>
+<pre class="code">
+&lt;% @Language=VBScript %&gt;
+&lt;%
+  Dim chart
+  Set chart= Server.CreateObject("SwiffChartObject.ChartObj")
+
+  chart.SetTitle "Movie Revenues"
+  chart.SetCategoriesFromString "January;February;March"
+  chart.SetSeriesValuesFromString 0, "187;110;159"
+
+  chart.LoadStyle "pie\Geneva2"
+
+  Response.Write chart.<b>GetHTMLTag</b>
+
+  Set chart= Nothing
+%&gt;
+</pre>
+</LI>
+</UL>
+<br>
+<br>
+
+<a name="#controlpanel"></a><H4 class="dtH4">The Swiff Chart Generator Control Panel</H4>
+
+<p>The Swiff Chart Generator Control Panel enables you to fully configure the caching system. You can set all
+the required pathnames, the cache size as well as enable the cache for all the chart requests.</p> 
+<p>Read the <a href="ugControlPanel.htm">Swiff Chart Control Panel</a> page for a complete description of 
+the dialog.</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "ClearCache Method";
+var page_title_ID= "fcomthclearcache";
+var page_lang= ".NET";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<p class="title"><script>document.write(page_title);</script></p>
+<p class="subtitle"><b>Namespace:</b> GlobFX.SwiffChartGenerator<br/><b>Assembly:</b> GlobFX.SwiffChartGenerator (in GlobFX.SwiffChartGenerator.dll)</p>
+
+<!-- Main Definition -->
+<P>Forces the cache to be cleared (if caching is used).</P>
+
+<!-- Profile -->
+<div class="syntax"><div class="lang">Visual Basic</div>
+<PRE class="syntax2">Public Sub <b>ClearCache</b></PRE>
+</div>
+<div class="syntax"><div class="lang">C#</div>
+<PRE class="syntax2">public void <B>ClearCache</B>(); </PRE>
+</div>
+
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<p>
+This function should not be called in normal use, since the cache is automatically managed by Swiff Chart Generator.
+<br>
+However, it can be useful for forcing the cache to be cleared.
+</p>
+
+<!-- Sample Code -->
+<H4 class="dtH4">Sample Code</H4>
+<P>The following code illustrates use of the <B>ClearCache</B> method. </P>
+
+<!-- VB Code -->
+<div class="code"><div class="lang">Visual Basic</div>
+<PRE class="code">
+<font color="#007700">' Create the chart series</font>
+chart.SetDataFromTxtFile("C:\\myData.txt")
+chart.LoadStyle("C:\\myStyle.scs")
+
+<font color="#007700">' Force the cache to be cleared</font>
+If is_it_midnight Then
+  chart.<b>ClearCache</b>()
+End If
+</PRE></div>
+
+<!-- C# Code -->
+<div class="code"><div class="lang">C#</div>
+<PRE class="code">
+<font color="#007700">// Create the chart series</font>
+chart.SetDataFromTxtFile("C:\\myData.txt");
+chart.LoadStyle("C:\\myStyle.scs");
+
+<font color="#007700">// Force the cache to be cleared</font>
+if( is_it_midnight )
+  chart.<b>ClearCache</b>();
+</PRE></div>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthsetmaxcachesize.htm">SetMaxCacheSize Method</A> |
+   <A HREF="fcomthsetcachename.htm">SetCacheName Method</A> | 
+   <A HREF="fcomthsetprivatecachedir.htm">SetPrivateCacheDir Method</A> | 
+   <A HREF="fcomthusecache.htm">UseCache Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

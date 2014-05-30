@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "ClearCache Method";
+var page_title_ID= "fcomthclearcache";
+var page_lang= "JSP";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Forces the cache to be cleared (if caching is used).</P>
+
+<!-- Profile -->
+<PRE class="syntax">void object<B>.ClearCache(</B>&nbsp;<B>)</B></PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<p>
+This function should not be called in normal use, since the cache is automatically managed by Swiff Chart Generator.
+<br>
+However, it can be useful for forcing the cache to be cleared.
+</p>
+
+<!-- Sample Code -->
+<H4 class="dtH4">JSP Sample Code</H4>
+<P>The following JSP code illustrates use of the <B>ClearCache</B> method. </P>
+<PRE class="code">
+<font color="#007700">// Create the chart series</font>
+chart.SetDataFromTxtFile("C:\\myData.txt");
+chart.LoadStyle("C:\\myStyle.scs");
+
+<font color="#007700">// Force the cache to be cleared</font>
+if( is_it_midnight )
+  chart.<b>ClearCache</b>();
+
+<font color="#007700">// The chart is complete, we can now generate the movie</font>
+out.println( chart.GetHTMLTag() );
+</PRE>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthsetmaxcachesize.htm">SetMaxCacheSize Method</A> |
+   <A HREF="fcomthsetcachename.htm">SetCacheName Method</A> | 
+   <A HREF="fcomthsetprivatecachedir.htm">SetPrivateCacheDir Method</A> | 
+   <A HREF="fcomthusecache.htm">UseCache Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

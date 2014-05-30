@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "GetVersion Method";
+var page_title_ID= "fcomthgetversion";
+var page_lang= "JSP";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Retrieves the version of a chart object.</P>
+
+<!-- Profile -->
+<PRE class="syntax">String object<b>.GetVersion(</B>&nbsp;<b>)</b> </PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+</DL>
+
+<!-- Return Value -->
+<H4 class="dtH4">Return Value</H4>
+<P>The <b>GetVersion</b> method returns a string value that contains the version of the Swiff Chart Generator.
+<br>
+The string is formatted as "Major.Minor.Level.SubLevel". Example: "3.0.0.1".</P>
+
+<!-- Sample Code -->
+<H4 class="dtH4">JSP Sample Code</H4>
+<P>The following JSP code illustrates use of the <B>GetVersion</B> method. </P>
+<PRE class="code">
+<font color="#007700">// Create a new chart object</font> 
+SwiffChart chart= new SwiffChart(installation_dir);
+
+<font color="#007700">// Display its version in the HTML page</font> 
+out.println( chart.<b>GetVersion</b>() + "&lt;br&gt;" );
+</PRE>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcoobjchart.htm">Chart Object</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

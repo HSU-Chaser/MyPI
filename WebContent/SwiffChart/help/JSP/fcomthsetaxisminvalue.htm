@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "SetAxisMinValue Method";
+var page_title_ID= "fcomthsetaxisminvalue";
+var page_lang= "JSP";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Specifies the lowest value displayed from all data series as the smallest data value on a given axis.</P>
+
+<!-- Profile -->
+<PRE class="syntax">void object<B>.SetAxisMinValue(</B>&nbsp;int axis_number,&nbsp;double min_value&nbsp;<b>)</B></PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+
+  <DT><I>axis_number</I></DT>
+  <DD>Required. An integer value that specifies the axis (see table below).</DD>
+
+  <DT><I>min_value</I></DT>
+  <DD>Required. A data value that specifies the lowest value on the selected axis.</DD>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<P>The <b>SetAxisMinValue</b> method specifies the lowest value displayed from all data series
+as the smallest data value on a given axis.</p>
+<p>The axis is defined by an integer value interpreted as follows:</p>
+
+<table cellspacing="0" class="dtTable2">
+    <tr>
+      <th>Code</th>
+      <th>Definition</th>
+    </tr>
+    <tr>
+      <td><div align=center><b>0</b></div></td>
+      <td>Horizontal Axis</td>
+    </tr>
+    <tr>
+      <td><div align=center><b>1</b></div></td>
+      <td>Vertical Axis</td>
+    </tr>
+    <tr>
+      <td><div align=center><b>2</b></div></td>
+      <td>Secondary Horizontal Axis</td>
+    </tr>
+    <tr>
+      <td><div align=center><b>3</b></div></td>
+      <td>Secondary Vertical Axis</td>
+    </tr>
+</table>
+
+<p>Use the <a href="fcomthresetaxisbounds.htm">ResetAxisBounds</a> method to let
+Swiff Chart Generator automatically determine the Axis Min value.</p>
+
+<!-- Sample Code -->
+<H4 class="dtH4">JSP Sample Code</H4>
+<P>The following JSP code illustrates use of the <B>SetAxisMinValue</B> method in a JSP page.</P>
+
+<PRE class="code"><font color="#007700">// Load the style file first!</font>
+chart.LoadStyle( "C:\\myXYStyle.scs" );
+
+chart.SetSeriesXValuesFromString( 0, "02/2007;05/2007;12/2007" );
+chart.SetSeriesYValuesFromString( 0, "187.8;156.9;121.8" );
+
+<font color="#007700">// Set the min-max displayed dates of the X axis</font>
+chart.<b>SetAxisMinValue</b>( 0, "12/2006" );
+chart.SetAxisMaxValue( 0, "07/2008" );
+
+<font color="#007700">// Set the min-max displayed values of the Y axis</font>
+chart.<b>SetAxisMinValue</b>( 1, 110 );
+chart.SetAxisMaxValue( 1, 200 );
+
+<font color="#007700">// X axis and Y axis cross at (05/2007,110)</font>
+chart.SetAxisCrossValue( 0, "05/2007" );
+chart.SetAxisCrossValue( 1, 110 );
+
+chart.ExportAsResponse();</PRE>
+
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P>
+   <A HREF="fcomthsetaxismaxvalue.htm">SetAxisMaxValue Method</A> |
+   <A HREF="fcomthsetaxiscrossvalue.htm">SetAxisCrossValue Method</A> |
+   <A HREF="fcomthresetaxisbounds.htm">ResetAxisBounds Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

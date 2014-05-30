@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "SetDebugMode Method";
+var page_title_ID= "fcomthSetDebugMode";
+var page_lang= "JSP";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Specifies the debug mode of the chart object.</P>
+
+<!-- Profile -->
+<PRE class="syntax">void object<b>.SetDebugMode(</B>&nbsp;int level&nbsp;<B>)</B></PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+
+  <DT><I>level</I></DT>
+  <DD>Required. An integer value that specifies the debug mode.</DD>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<P>The valid debug modes are:</P>
+
+<table cellspacing="0" class="dtTable2">
+    <tr>
+      <th>Mode</th>
+      <th>Definition</th>      
+    </tr>
+    <tr>
+      <td><div align=center><b>0</b></div></td>
+      <td>
+        No error is raised and no error message is printed.<br>
+        If an error actually occurs, the script is not stopped and
+        an empty chart is generated.
+      </td>
+    </tr>
+    <tr>
+      <td><div align=center><b>1</b></div></td>
+      <td>
+        This is the <b>default</b> behavior.<br>
+        Errors are raised and sent to the web server.<br>
+        The script is stopped and an error message is
+        sent in place of the actual output.<br>
+        This means that an erroneous script could output a text message
+        when it was supposed to output binary Flash data or binary image data.
+      </td>
+    </tr>
+    <tr>
+      <td><div align=center><b>2</b></div></td>
+      <td>
+        Errors can occur but the script is not stopped.<br>
+        The result is correctly generated, in the correct format. (Flash or image)<br>
+        However the resulting output is a blank image containing the error message
+        displayed on a yellow background.
+      </td>
+    </tr>
+</table>
+<br>
+The default debug mode is <b>1</b>.<br>
+Note: There is no performance difference between the various debug modes.
+
+<!-- Sample Code -->
+<H4 class="dtH4">JSP Sample Code</H4>
+<P>The following JSP code illustrates use of the <B>SetDebugMode</B> method. </P>
+<PRE class="code">
+<font color="#007700">// Specify the debug mode</font>
+chart.<b>SetDebugMode</b>(2);
+
+<font color="#007700">// Load a chart style and specify a visibly erroneous style name</font>
+<font color="#007700">// It should be: "column/Honolulu"</font>
+chart.LoadStyle( "column/BUGBUGBUG/Honolulu" );
+
+<font color="#007700">// Set data</font>
+chart.SetSeriesValuesFromString( 0, "34;56;23;76" );
+
+<font color="#007700">// Output the chart</font>
+chart.SetOutputFormat("PNG");
+print chart.GetHTMLTag();
+</PRE>
+
+<br>
+<p>
+This example will output the following result:<br>
+<img src="../images/bug.png" width=300 height=150>
+</p>
+  
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P>
+   <A HREF="fcomthsetoutputformat.htm">SetOutputFormat Method</A> |
+   <A HREF="fcomthexportasresponse.htm">ExportAsResponse Method</A> |
+   <A HREF="fcomthexportasfile.htm">ExportAsFile Method</A> |
+   <A HREF="fcomthexportasbinary.htm">ExportAsBinary Method</A> |
+   <A HREF="fcomthgethtmltag.htm">GetHTMLTag</A> |
+   <A HREF="fcomthgetoutputlocation.htm">GetOutputLocation Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

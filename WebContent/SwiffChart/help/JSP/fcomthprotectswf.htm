@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "ProtectSWF Method";
+var page_title_ID= "fcomthprotectswf";
+var page_lang= "JSP";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Specifies whether the generated Flash file should be protected or not.
+</P>
+
+<!-- Profile -->
+<PRE class="syntax">void object<b>.ProtectSWF(</B> boolean swf_protected <B>)</B> </PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+
+  <DT><I>swf_protected</I></DT>
+  <DD>Required. A boolean value that specifies whether the Flash file is protected or not.</DD>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<P>Default: the generated Flash animation is always protected.</P>
+
+<P>If a Flash movie is marked as <i>protected</i> it cannot be imported into Adobe Flash Editor.</P>
+
+<!-- Sample Code -->
+<H4 class="dtH4">JSP Sample Code</H4>
+<P>The following JSP code illustrates use of the <B>ProtectSWF</B> method. </P>
+<PRE class="code">
+chart.SetDataFromTxtFile("C:\\myData.txt");
+chart.LoadStyle("C:\\myStyle.scs");
+
+<font color="#007700">// Let's display an unprotected SWF movie</font> 
+chart.<b>ProtectSWF</b>(false);
+chart.ExportAsResponse();
+</PRE>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthisswfprotected.htm">IsSWFProtected Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

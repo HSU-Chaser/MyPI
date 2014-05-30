@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "SetSeriesTrendlineColor Method";
+var page_title_ID= "fcomthsetseriestrendlinecolor";
+var page_lang= ".NET";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<p class="title"><script>document.write(page_title);</script></p>
+<p class="subtitle"><b>Namespace:</b> GlobFX.SwiffChartGenerator<br/><b>Assembly:</b> GlobFX.SwiffChartGenerator (in GlobFX.SwiffChartGenerator.dll)</p>
+
+<!-- Main Definition -->
+<P>Specifies the color for the trendline associated with a series defined by its index in a chart.</P>
+
+<!-- Profile -->
+<div class="syntax"><div class="lang">Visual Basic</div>
+<PRE class="syntax2">Public Sub <B>SetSeriesTrendlineColor</B>( index As Integer,&nbsp;color As String )
+Public Sub <B>SetSeriesTrendlineColor</B>( index As Integer,&nbsp;color As System.Drawing.Color )</PRE>
+</div>
+<div class="syntax"><div class="lang">C#</div>
+<PRE class="syntax2">public void <B>SetSeriesTrendlineColor</B>( int index,&nbsp;string color );
+public void <B>SetSeriesTrendlineColor</B>( int index,&nbsp;System.Drawing.Color color );</PRE>
+</div>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>index</I></DT>
+  <DD>An integer value that specifies the zero-based index of the <b>series</b> in the chart object.</DD>
+
+  <DT><I>color</I></DT>
+  <DD>A string that specifies the color or a System.Drawing.Color structure.</DD>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<p>By default, a trendline takes its colors from the chart style.</p>
+<p>
+This method does not add a trendline to a series. The trendline should have
+been previously added to the series with Swiff Chart.
+</p>
+<P>If the <i>index</i> argument refers to a series that does not exist in the chart object,
+the series is created.</P>
+<UL>
+  <LI><i>index</i> must be superior or equal to 0</LI>
+</UL>
+
+<p>
+<br>
+The <i>color</i> string argument can be specified:
+<UL>
+  <LI>
+    <p>
+    As a <i>named</i> color.<br>
+    Example: "orange"<br>
+    </p>
+    <p>
+    For a complete reference of predefined named colors, consult
+    the <A href="../colors.htm">Predefined Colors Reference</A>.<br>
+    Named colors are always opaque.<br>
+    </p>
+  </LI>
+  <LI>
+    <p>
+    As a <i>hexadecimal</i> value "#RRGGBB", where RR, GG and BB represent the
+    hexadecimal values of the red, green and blue components.<br>
+    Example: "#FFA500" represents an orange color.<br>
+    </p>
+    <p>
+    An optional alpha component can be added at the end of the string: "#RRGGBBAA".<br>
+    Example: "#FFA50080" represents a semi-transparent orange color,
+    "#FFA500FF" represents an opaque orange color,
+    "#FFA50000" represents an fully transparent (invisible) orange color.<br>
+    </p>
+  </LI>
+</UL>
+If the <i>color</i> argument is an empty string, the default original color is restored.<br>
+If the <i>color</i> argument cannot be recognized, the black color is used.<br>
+</p>
+
+<p>
+When generating several charts using a single chart object, the 
+<A HREF="fcomthclearall.htm">ClearAll</A> method can be used between each
+generated charts.
+</p>
+
+<!-- Sample Code -->
+<H4 class="dtH4">Sample Code</H4>
+<P>The following code illustrates use of the <B>SetSeriesTrendlineColor</B> method. </P>
+
+<!-- VB Code -->
+<div class="code"><div class="lang">Visual Basic</div>
+<PRE class="code">
+Dim values As Double(2)
+
+<font color="#007700">' Define the series #0</font>
+values(0) = 10.5
+values(1) = 12.4
+values(2) = 15.9
+chart.SetSeriesValuesFromArray(0, values)
+
+<font color="#007700">' Define the series #1</font>
+values(0) = 13.1
+values(1) = 15.6
+values(2) = 19.2
+chart.SetSeriesValuesFromArray(1, values)
+
+chart.LoadStyle("C:\\my-style-with-trendline.scs")
+
+<font color="#007700">' Set the color of trendline associated to series #1</font>
+chart.<b>SetSeriesTrendlineColor</b>(1, "tomato")
+</PRE></div>
+
+<!-- C# Code -->
+<div class="code"><div class="lang">C#</div>
+<PRE class="code">
+double[] values= new double[3];
+
+<font color="#007700">// Define the series #0</font>
+values[0] = 10.5;
+values[1] = 12.4;
+values[2] = 15.9;
+chart.SetSeriesValuesFromArray(0, values);
+
+<font color="#007700">// Define the series #1</font>
+values[0] = 13.1;
+values[1] = 15.6;
+values[2] = 19.2;
+chart.SetSeriesValuesFromArray(1, values);
+
+chart.LoadStyle("C:\\my-style-with-trendline.scs");
+
+<font color="#007700">// Set the color of trendline associated to series #1</font>
+chart.<b>SetSeriesTrendlineColor</b>(1, "tomato");
+</PRE></div>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthsetseriescolor.htm">SetSeriesColor Method</A> | 
+   <A HREF="fcomthsetseriesvaluecolor.htm">SetSeriesValueColor Method</A> | 
+   <A HREF="fcomthclearall.htm">ClearAll Method</A> | 
+   <A HREF="../colors.htm">Predefined Colors Reference</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

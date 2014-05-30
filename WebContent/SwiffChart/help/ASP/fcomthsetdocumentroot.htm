@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "SetDocumentRoot Method";
+var page_title_ID= "fcomthsetdocumentroot";
+var page_lang= "VBScript";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Specifies the Web Server root directory.</P>
+
+<!-- Profile -->
+<PRE class="syntax">object<b>.SetDocumentRoot</B>&nbsp;directory_pathname</PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+
+  <DT><I>directory_pathname</I></DT>
+  <DD>Required. A string specifying the absolute pathname of the web server root directory.</DD>
+  
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<p>Swiff Chart Generator requires the absolute pathname of the root directory in order to
+locate the chart cache folder. The document root directory is the directory on the disk 
+associated with the Web Server root (i.e. the directory corresponding to
+http://&lt;my_server&gt;/)</p>
+
+<p>The document root is usually automatically determined by the Chart object. However, there are some rare situations 
+it needs to be set manually. </p>
+
+<!-- Sample Code -->
+<H4 class="dtH4">VBScript Sample Code</H4>
+<P>The following VBScript code illustrates use of the <B>SetDocumentRoot</B> method. </P>
+<PRE class="code">
+<font color="#007700">' Manually set the Document Root directory</font>
+chart.<b>SetDocumentRoot</b> "C:\inetpub\wwwroot"
+</PRE>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthsetoutputformat.htm">SetOutputFormat Method</A> |
+   <A HREF="fcomthgetoutputlocation.htm">GetOutputLocation Method</A> |
+   <A HREF="fcomthsetcachename.htm">SetCacheName Method</A> |
+   <A HREF="fcomthsetprivatecachedir.htm">SetPrivateCacheDir Method</A> |
+   <A HREF="fcomthsetmaxcachesize.htm">SetMaxCacheSize Method</A> |
+   <A HREF="fcomthclearcache.htm">ClearCache Method</A> |
+   <A HREF="fcomthusecache.htm">UseCache Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

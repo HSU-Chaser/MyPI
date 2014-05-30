@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "SetDataFromQuery Method";
+var page_title_ID= "fcomthsetdatafromquery";
+var page_lang= ".NET";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<p class="title"><script>document.write(page_title);</script></p>
+<p class="subtitle"><b>Namespace:</b> GlobFX.SwiffChartGenerator<br/><b>Assembly:</b> GlobFX.SwiffChartGenerator (in GlobFX.SwiffChartGenerator.dll)</p>
+
+<!-- Main Definition -->
+<P>Specifies the data (i.e. title, series values & captions, categories, etc) directly from the query string
+(i.e. the url arguments of the page) </P>
+
+<!-- Profile -->
+<div class="syntax"><div class="lang">Visual Basic</div>
+<PRE class="syntax2">Public Sub <B>SetDataFromQuery</B></PRE>
+</div>
+<div class="syntax"><div class="lang">C#</div>
+<PRE class="syntax2">public void <B>SetDataFromQuery</B>();</PRE>
+</div>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<P>The chart objet actually parses the query string and interpretes each keys defined in the table below according to
+their respective definition. No key order is required in the query string.</P>
+
+<div class="tablediv"><table cellspacing="0" class="dtTable">
+    <tr>
+      <th>Key</th>
+      <th>Definition</th>
+    </tr>
+    <tr>
+      <td><b>title</b></td>
+      <td>A string that specifies the title of the chart</td>
+    </tr>
+    <tr>
+      <td><b>series1</b><br><b>series2</b><br><b>series3</b><br><b>...</b></td>
+      <td>A character-delimited string that specifies a new series to be added to the chart. The string
+          contains the values of the new series.</td>
+    </tr>
+    <tr>
+      <td><b>seriesxy1</b><br><b>seriesxy2</b><br><b>seriesxy3</b><br><b>...</b></td>
+      <td>A character-delimited string that specifies a new XY series to be added to the chart. The string
+          contains the set of value pairs of the new XY series formatted as follows: <i>x1 y1 x2 y2 ... xn yn</i>
+          <p><font color=#ff0000><b>Note:</b></font> This key is to be used when manipulating XY data series
+          required for displaying XY-Curves and XY-Scatter.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><b>captions</b></td>
+      <td>A character-delimited string that specifies the captions of the series in the chart.</td>
+    </tr>
+    <tr>
+      <td><b>categories</b></td>
+      <td>A character-delimited string that specifies the categories of the chart.</td>
+    </tr>
+    <tr>
+      <td><b>animate</b></td>
+      <td>A boolean value that specifies whether the chart is animated or not. Can be <b>true/1/yes</b> or <b>false/0/no</b>.</td>
+    </tr>
+    <tr>
+      <td><b>width</b></td>
+      <td>An integer value that specifies the width in pixels of the chart.</td>
+    </tr>
+    <tr>
+      <td><b>height</b></td>
+      <td>An integer value that specifies the height in pixels of the chart.</td>
+    </tr>
+    <tr>
+      <td><b>fps</b></td>
+      <td>An integer value that specifies the frame rate in frames per second of the generated Flash movie.</td>
+    </tr>
+  </table></div>
+<br>
+<P>The string arguments <i>categories</i>, <i>captions</i>, <i>series1, series2,</i> ..., <i>seriesxy1, seriesxy2,</i> ... are parsed by the chart
+object according to the separator characters specified to the chart object (see the <a href="fcomthsetseparators.htm">SetSeparators method</a> for specifying separator characters and rules).
+
+<P>The ";" character is the default separator character.</P>
+
+<P><font color=#ff0000><b>Note:</b></font> If you are using the <i>seriesxy1, seriesxy2</i>... keys, the <i>categories</i> key is ignored.</p>
+<br>
+
+<!-- Query Samples -->
+<H4 class="dtH4">Query Samples</H4>
+<P>Here are some samples of a valid query string to be passed as url arguments of a page.</P>
+<br>
+<p><b>Sample 1</b> (with ";" as separator)</p>
+<PRE class="code">
+<font color="#007700">title</font>=My&nbsp;Chart<font color="#FF0000">&</font><font color="#007700">categories</font>=Categ1<font color="#0000FF">;</font>Categ2<font color="#FF0000">&</font><font color="#007700">captions</font>=My First Series<font color="#0000FF">;</font>My Second Series<font color="#FF0000">&</font><font color="#007700">series1</font>=1<font color="#0000FF">;</font>2<font color="#FF0000">&</font><font color="#007700">series2</font>=10<font color="#0000FF">;</font>20</PRE>
+<p>The previous query leads to a chart with the following caracteristics:</p>
+
+<UL>
+  <LI>The chart title is "My Chart".</LI>
+  <LI>The chart has 2 categories.</LI>
+  <LI>The 2 categories names are "Categ1" and "Categ2".</LI>
+  <LI>The chart has 2 series.</LI>
+  <LI>The 2 series captions are "My First Series" and "My Second Series".</LI>
+</UL>
+
+<br>
+<p><b>Sample 2</b> (with "|" as separator)</p>
+<PRE class="code">
+<font color="#007700">animate</font>=false<font color="#FF0000">&</font><font color="#007700">title</font>=My&nbsp;Chart<font color="#FF0000">&</font><font color="#007700">series1</font>=10<font color="#0000FF">|</font>20</PRE>
+<p>The previous query leads to a chart with the following caracteristics:</p>
+
+<UL>
+  <LI>The chart title is "My Chart".</LI>
+  <LI>The chart has a single series with 2 values.</LI>
+  <LI>The single series has no caption.</LI>
+  <LI>The chart is not animated and will be displayed as a static image (Flash movie with a single frame).</LI>
+</UL>
+<br>
+
+<p><b>Sample 3</b> (for XY-Scatter and XY-Curves, with "|" as separator)</p>
+<PRE class="code">
+<font color="#007700">title</font>=My&nbsp;Chart<font color="#FF0000">&</font><font color="#007700">seriesxy1</font>=5<font color="#0000FF">|</font>10<font color="#0000FF">|</font>13<font color="#0000FF">|</font>20</PRE>
+<p>The previous query leads to a chart with the following caracteristics:</p>
+
+<UL>
+  <LI>The chart title is "My Chart".</LI>
+  <LI>The chart has a single series with 2 XY Points (5,10) and (13,20) for being displayed as XY-Scatter or XY-Curves.</LI>
+  <LI>The single series has no caption.</LI>
+</UL>
+<br>
+
+<!-- Sample Code -->
+<H4 class="dtH4">Sample Code</H4>
+<P>This example illustrates how to encode the following table in a query string to be passed as url arguments of a chart object in a page.</P>
+<div class="tablediv"><table cellspacing="0" class="dtTable2">
+    <tr>
+      <th>&nbsp;</th>
+      <th>North&nbsp;America</th>
+      <th>South&nbsp;America</th>
+      <th>Europe</th>
+    </tr>
+    <tr>
+      <td>Year 2006</td>
+      <td>12</td>
+      <td>7.5</td>
+      <td>11.3</td>
+    </tr>
+    <tr>
+      <td>Year 2007</td>
+      <td>33</td>
+      <td>25.5</td>
+      <td>29.3</td>
+    </tr>
+  </table></div>
+
+<PRE class="code">
+http://localhost/myChart.aspx?title=My%20Chart&categories=North%20America;South%20America;Europe&series1=12;7.5;11.3&series2=33;25.5;29.3&animate=true&captions=Year%202006;Year%202007</PRE>
+
+<p>The myChart.aspx page could include the following C# code to display the generated Flash movie corresponding to
+this url.</p>
+
+<!-- VB Code -->
+<div class="code"><div class="lang">Visual Basic</div>
+<PRE class="code">
+chart.LoadStyle( "C:\\myStyle.scs" )
+
+<font color="#007700">' The query string is equal to "title=My&nbsp;Chart&categories=North&nbsp;America;South&nbsp;America;Europe&
+' series1=12;7.5;11.3&series2=33;25.5;29.3&captions=Year 2006;Year 2007&animate=true"</font>
+chart.<b>SetDataFromQuery</b>
+</PRE></div>
+
+<!-- C# Code -->
+<div class="code"><div class="lang">C#</div>
+<PRE class="code">
+chart.LoadStyle( "C:\\myStyle.scs" );
+
+<font color="#007700">// The query string is equal to "title=My&nbsp;Chart&categories=North&nbsp;America;South&nbsp;America;Europe&
+// series1=12;7.5;11.3&series2=33;25.5;29.3&captions=Year 2006;Year 2007&animate=true"</font>
+chart.<b>SetDataFromQuery()</b>;
+</PRE></div>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthsetseriesvaluesfromstring.htm">SetSeriesValuesFromString Method</A> |
+   <A HREF="fcomthsetseriesvaluesfromarray.htm">SetSeriesValuesFromArray Method</A> |
+   <A HREF="fcomthsetcategoriesfromstring.htm">SetCategoriesFromString Method</A> |
+   <A HREF="fcomthsetcategoriesfromarray.htm">SetCategoriesFromArray Method</A> |
+   <A HREF="fcomthtitle.htm">Title Property</A> |
+   <A HREF="fcomthanimated.htm">AnimateChart Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

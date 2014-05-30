@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "GetValuesCount Method";
+var page_title_ID= "fcomthgetvaluescount";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,"PHP");
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Retrieves the number of series values and categories in the chart object.</P>
+
+<!-- Profile -->
+<PRE class="syntax">int object<B>->GetValuesCount(</B>&nbsp;<B>)</B> </PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</dd>
+</DL>
+
+<!-- Return Value -->
+<H4 class="dtH4">Return Value</H4>
+
+<DL>
+  <DT>An integer value containing the number of values per series. This number is also the number of categories.</DT>
+</DL>
+
+<!-- Code Sample -->
+<H4 class="dtH4">PHP Code Sample</H4>
+<P>The following PHP code illustrates use of the <B>GetValuesCount</B> method. </P>
+<PRE class="code">
+$values_1= array();
+$values_2= array();
+
+$values_1[0] = 10;
+$values_1[1] = 20;
+
+$values_2[0] = 100;
+$values_2[1] = 200;
+$values_2[2] = 300;
+
+$chart->SetSeriesValuesFromArray(0, $values_1);
+
+<font color="#007700">// count1 is now equal to 2</font>
+$count1= $chart-><b>GetValuesCount</b>();
+
+$chart->SetSeriesValuesFromArray(1, $values_2);
+
+<font color="#007700">// count2 is now equal to 3</font>
+$count2= $chart-><b>GetValuesCount</b>();
+
+$categories= array();
+
+$categories[0]= "Cat 1";
+$categories[1]= "Cat 2";
+$categories[2]= "Cat 3";
+$categories[3]= "Cat 4";
+
+$chart->SetCategoriesFromArray($categories);
+
+<font color="#007700">// count3 is now equal to 4</font>
+$count3= $chart-><b>GetValuesCount</b>();
+
+print("Count 1= " . $count1 . "&lt;br&gt;");
+print("Count 2= " . $count2 . "&lt;br&gt;");
+print("Count 3= " . $count3 . "&lt;br&gt;");
+</PRE>
+
+<br>
+<p>The result displayed in the Web Browser will be:</p>
+<PRE class="code">Count 1= 2
+Count 2= 3
+Count 3= 4</PRE>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P>
+   <A HREF="fcomthsetseriesvaluesfromstring.htm">SetSeriesValuesFromString Method</A> |
+   <A HREF="fcomthsetseriesvaluesfromarray.htm">SetSeriesValuesFromArray Method</A> |
+   <A HREF="fcomthsetcategoriesfromstring.htm">SetCategoriesFromString Method</A> |
+   <A HREF="fcomthsetcategoriesfromarray.htm">SetCategoriesFromArray Method</A> |
+   <A HREF="fcomthgetseriescount.htm">GetSeriesCount Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "SetPNGCompLevel Method";
+var page_title_ID= "fcomthsetpngcomplevel";
+var page_lang= "PHP";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Specifies the compression level for encoding the chart as a PNG image.</P>
+
+<!-- Profile -->
+<PRE class="syntax">void object<B>->SetPNGCompLevel(</B>&nbsp;int comp_level&nbsp;<B>)</B></PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+
+  <DT><I>comp_level</I></DT>
+  <DD>Required. An integer value that specifies the compression level of the PNG encoding.</DD>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<P>The PNG compression level parameter is an integer between 0 to 9.<br>
+Specify <b>9</b> for <b>high compression</b> (small file, slowest), <b>1</b> for <b>low compression</b> (larger file, faster),
+0 for no compression (largest file, fastest).<br>
+The default compression level is 3.
+
+<!-- Sample Code -->
+<H4 class="dtH4">PHP Sample Code</H4>
+<P>The following PHP code illustrates use of the <B>SetPNGCompLevel</B> method. </P>
+<PRE class="code">
+$chart->SetDataFromQuery();
+$chart->LoadStyle("C:\\myStyle.scs");
+
+<font color="#007700">// Choose the PNG encoding quality</font>
+$chart-><b>SetPNGCompLevel</b>(9);
+
+<font color="#007700">// Outputs the chart as a PNG image</font>
+$chart->SetOutputFormat( "PNG" );
+$chart->ExportAsResponse();
+</PRE>
+
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P>
+   <A HREF="fcomthsetoutputformat.htm">SetOutputFormat Method</A> |
+   <A HREF="fcomthexportasresponse.htm">ExportAsResponse Method</A> |
+   <A HREF="fcomthexportasfile.htm">ExportAsFile Method</A> |
+   <A HREF="fcomthexportasbinary.htm">ExportAsBinary Method</A> |
+   <A HREF="fcomthgethtmltag.htm">GetHTMLTag</A> |
+   <A HREF="fcomthgetoutputlocation.htm">GetOutputLocation Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

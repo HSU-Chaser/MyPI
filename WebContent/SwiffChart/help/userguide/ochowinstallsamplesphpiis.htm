@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "Installing Swiff Chart Generator PHP Samples on IIS";
+var page_title_ID= "ochowinstallsamplesphpiis";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,"PHP");
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+<br>
+<H4 class="dtH4">Contents</H4>
+<a href="#introduction">Introduction</a><br>
+<a href="#installation">Samples Installation</a><br>
+<a href="#testing">Testing Swiff Chart Generator</a><br>
+<br><br>
+
+<a name="#introduction"></a><H2 class="dtH2">Introduction</H2>
+<p><font color=#ff0000>To run the Swiff Chart Generator PHP samples on your Microsoft Internet Information Server (IIS) you need to have the PHP
+module or CGI installed.</font> To make the Swiff Chart Generator PHP samples available on your Microsoft Internet Information Server (IIS) 
+you need to create a Virtual Directory (also known as web-sharing a directory) pointing to the disk location 
+of the Swiff Chart Generator samples, usually <b>C:\Program Files\GlobFX\Swiff Chart Generator 3\samples\</b>.</p>
+<br>
+<a name="#installation"></a><H2 class="dtH2">Samples Installation</H2>
+<p>To web-share the Swiff Chart Generator samples on Microsoft Internet Information Server (IIS), please follow these simple steps:</p>
+<OL>
+  <LI>Click the <b>Start</b> button, point to <b>Programs</b>, point to <b>Administrative Tools</b>, and click <b>Computer Management</b>. 
+  <LI>Under the <b>Server Applications and Services</b> node, expand <b>Internet Information Services</b>. 
+  <LI>In the Internet Information Services snap-in, select the Web site to which you want to add the Swiff Chart Generator samples directory.
+  <LI>Click the <b>Action</b> button, and then point to <b>New</b>, and select <b>Virtual Directory</b>. 
+  <LI>Use the <b>New Virtual Directory Wizard</b> to complete this task.<br>
+  -&nbsp;In the <b>Directory</b> box, enter the your Swiff Chart Generator samples directory, 
+   usually <b>C:\Program Files\GlobFX\Swiff Chart Generator 3\samples\</b><br>
+  -&nbsp;In the <b>Alias</b> box, enter <i>samples</i>
+</OL>
+
+<p>Now, you can use the <b>samples</b> alias to get to the files stored in the Swiff Chart Generator samples directory.</p>
+<br>
+<a name="#testing"></a><H2 class="dtH2">Testing Swiff Chart Generator</H2>
+<p>To test the Swiff Chart Generator installation, open your web browser (you must have the Flash 
+plug-in installed) and type the following URL in:</p>
+<PRE class="code">http://<b>your_server_name</b>/<b>samples</b>/index.html</PRE>
+
+<p>where <b>yourserver</b> is the machine name of your web server (possibly 127.0.0.1 - the localhost machine)</P>
+
+<p>An HTML page should appear, providing you with the list of samples. Select <b>PHP Samples</b>.</p>
+
+<p><i>Note: IIS uses the alias <b>samples</b> to refer to the physical directory [drive letter]:\Program Files\GlobFX\Swiff Chart Generator 3\samples\
+When you run a PHP page, you must type its URL in the browser's address window. You can't load the file into the browser because it won't execute
+the PHP features unless you access it via IIS with PHP installed.</i></p>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

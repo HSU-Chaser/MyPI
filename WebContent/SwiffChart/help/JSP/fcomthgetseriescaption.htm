@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "GetSeriesCaption Method";
+var page_title_ID= "fcomthgetseriescaption";
+var page_lang= "JSP";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Retrieves the caption of a data series from its index.</P>
+
+<!-- Profile -->
+<PRE class="syntax">String object<B>.GetSeriesCaption(</B> int index <b>)</b> </PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+
+  <DT><I>index</I></DT>
+  <DD>Required. An integer value that specifies the zero-based index of the series in the chart object.</DD>
+</DL>
+
+<!-- Return Value -->
+<H4 class="dtH4">Return Value</H4>
+<P>The <b>GetSeriesCaption</b> method returns a string value that contains the caption for the series specified by <i>index</i>.</p>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<P>If the <i>index</i> argument refers to a series that does not exist in the chart object, the <b>GetSeriesCaption</b> 
+method raises an <b>invalid series index error</b>.</P>
+
+<UL>
+  <LI><i>index</i> must be superior or equal to 0.</LI>
+</UL>
+
+<P>The <b>GetSeriesCaption</b> method can return an empty string.
+This happens when the chart object contains series values without any
+corresponding caption, or when the series does not exist.</P>
+
+<!-- Sample Code -->
+<H4 class="dtH4">JSP Sample Code</H4>
+<P>The following JSP code enumerates the series stored in a chart object and displays their caption.</P>
+<PRE class="code">
+<font color="#007700">// Fill the chart object with data and categories stored in the query string</font> 
+chart.SetDataFromTxtFile("C:\\myData.txt");
+
+<font color="#007700">// Retrieve the number of series stored in the chart object</font> 
+int n_series= chart.GetSeriesCount();
+
+if( n_series == 0 )
+  out.println("No series available&lt;br&gt;");
+else
+  {
+  <font color="#007700">// Enumerate the series stored in the chart object</font> 
+  for( int i= 0; i &lt; n_series; ++i )
+    out.println(chart.<b>GetSeriesCaption</b>(i) + " is the Caption for series number " + i + "&lt;br&gt;");
+  }
+</PRE>
+
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthsetseriescaption.htm">SetSeriesCaption Method</A> |
+   <A HREF="fcomthgetseriesvalue.htm">GetSeriesValue Method</A> |
+   <A HREF="fcomthsetseriesvaluesfromstring.htm">SetSeriesValuesFromString Method</A> |
+   <A HREF="fcomthsetseriesvaluesfromarray.htm">SetSeriesValuesFromArray Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

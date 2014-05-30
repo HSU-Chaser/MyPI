@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "Using Swiff Chart Generator in ASP pages";
+var page_title_ID= "ugUsingInASP";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,"");
+</SCRIPT>
+
+
+<DIV id="scrtext" valign="bottom">
+
+<br>
+
+<p>Swiff Chart Generator is implemented as a <b>COM object</b> and offers a 
+variety of methods for managing and creating charts in Flash. Since COM objects are natively supported in ASP, 
+running Swiff Chart Generator in your ASP pages is very simple.</p>
+
+<br>
+<p>To insert a chart in a ASP page you must call the 
+<font STYLE="font-family: Monospace, Courier New, Courier;">CreateObject</font> function available in VScript as
+well as in JScript. By calling this function you will create an instance of the Swiff Chart Generator COM object
+and have full access to its API (Read VBScript and JScript Reference manual of Swiff Chart Generator documentation 
+for complete description of the API).
+</p>
+
+<br>
+<p><b>How does Swiff Chart Generator work in ASP pages?</b></p>
+<br>
+
+<p>Swiff Chart Generator offers you multiple possibilities to dynamically generate a chart. It
+allows you to:
+<UL>
+  <LI>Send the chart directly through the <font STYLE="font-family: Monospace, Courier New, Courier;">Response</font> object</LI>
+  <LI>Export the chart in binary form</LI>
+  <LI>Create a SWF file on disk</LI> 
+  <LI>or even feed your chart with data encoded in the page URL</LI>
+</UL>
+</p>
+
+<br>
+<p>One of the most straight forward strategy for dynamically generating a chart with Swiff Chart Generator
+consists in using 2 pages:<br><br>
+<ul>
+  <li>The first page is an ASP page that generates and outputs a Flash movie containing your chart through the 
+<font STYLE="font-family: Monospace, Courier New, Courier;">Response</font> ASP object. 
+
+  <li>The second page is the one where you want to display your chart. It can be an HTML page or a ASP 
+  generated page and it includes the Flash Player with the <font STYLE="font-family: Monospace, Courier New, Courier;">&lt;OBJECT&gt;</font> HTML tag. 
+  The idea is to simply set the <i>movie</i> parameter of the Flash Player Object to the ASP page filename:
+</ul>
+</font>
+              
+<pre class=code>
+&lt;OBJECT CLASSID="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+        WIDTH="400" 
+        HEIGHT="200"&gt;
+   &lt;PARAM NAME=movie VALUE="gen_chart.asp"&gt;
+&lt;/OBJECT&gt;
+</pre>
+
+<font class="BodyStyle">
+
+<br>
+<p><b>A simple ASP Example</b></p>
+<br>
+
+<p>The following example illustrates how simple it is to dynamically generate charts in Flash in a ASP page. 
+As mentioned in the previous paragraph, the example involves 2 files and an additional Swiff Chart style file 
+(.scs):</p>
+<UL>
+  <LI><a href="#gen_chart.asp">gen_chart.asp</a> - <i>ASP page for generating the chart </i></LI>
+  <LI><a href="#chart.html">chart.html</a> - <i>HTML file for displaying the chart</i></LI>
+</UL>
+
+<br>
+<p>To install and run this example, copy these 2 files on your 
+Web site in the same directory.
+</p>
+
+
+<a name=#gen_chart.asp></a>
+
+<br>
+<p><b>ASP page: gen_chart.asp</b></font></p>
+
+<pre class=code>
+<font color=#770000>&lt;% @Language=VBScript %&gt;</font>
+&lt;%
+  Response.Expires= 0
+
+  <font color=#007700>' Create a Chart Object</font> 
+  Dim chart
+  Set chart= Server.CreateObject("SwiffChartObject.ChartObj")
+
+  <font color=#007700>' Set the heading for the graph</font>
+  chart.SetTitle "My Chart"
+
+  <font color=#007700>' Set chart categories</font>
+  chart.SetCategoriesFromString "Q1;Q2;Q3"
+
+  <font color=#007700>' Fill chart series</font>
+  chart.SetSeriesCaption 0, "First Series"
+  chart.SetSeriesValuesFromString 0, "1.2;3.5;11.3"
+
+  chart.SetSeriesCaption 1, "Second Series"
+  chart.SetSeriesValuesFromString 1, "2.3;4.5;9.3"
+
+  chart.SetSeriesCaption 2, "Third Series"
+  chart.SetSeriesValuesFromString 2, "3.2;5.5;14.3"
+
+  <font color=#007700>' Apply a Column style
+  ' The chart type is stored in the style file (*.scs)
+  ' Here the selected style is the predefined column style "SanFrancisco"</font>
+  chart.LoadStyle "column/SanFrancisco"
+
+  <font color=#007700>' Set the dimensions of the movie</font>
+  chart.SetWidth 400
+  chart.SetHeight 200
+  
+  <font color=#007700> ' Finally generate the Flash chart</font>
+  chart.ExportAsResponse
+
+  <font color="#007700">' Release the chart object</font>
+  Set chart= Nothing
+
+  Response.End
+%&gt;
+</pre>
+
+
+<a name=#chart.html></a>
+<br>
+<p><font class="BodyStyle"><b>HTML file: chart.html</b></font></p>
+
+<pre class=code>
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Swiff Chart Generator - ASP Sample&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY BGCOLOR="#FFFFFF" TEXT="#000000"&gt;
+
+&lt;OBJECT CLASSID="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+        CODEBASE="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0"
+        WIDTH="400" 
+        HEIGHT="200"&gt;
+  &lt;PARAM NAME=movie VALUE="gen_chart.asp"&gt;
+  &lt;PARAM NAME=quality VALUE=high&gt;
+  &lt;EMBED SRC="gen_chart.asp" 
+         QUALITY=high 
+         PLUGINSPAGE="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" 
+         TYPE="application/x-shockwave-flash" 
+         WIDTH="400" 
+         HEIGHT="200"&gt;
+  &lt;/EMBED&gt; 
+&lt;/OBJECT&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre>
+
+<a name=#result></a>
+<br>
+<p><font class="BodyStyle"><b>What you will obtain</b></font></p>
+<img src="../images/result.jpg">
+
+
+
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

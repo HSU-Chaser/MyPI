@@ -64,9 +64,9 @@ public class ExtendedInfo {
 				switch (i) {
 				// MAXIMUM of NickNameList = 5
 				case 0:
-					keywordMap.put("nickname", storage.nickNameList.get(i));
+					keywordMap.put("nickname1", storage.nickNameList.get(i));
 					
-					keywordMap.put("nickname", "null");
+					keywordMap.put("nickname1", "null");
 					break;
 				case 1:
 					keywordMap.put("nickname2", storage.nickNameList.get(i));

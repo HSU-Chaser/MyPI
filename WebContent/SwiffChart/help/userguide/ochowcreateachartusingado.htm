@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "Creating a Chart Using Data From an ADO Recordset";
+var page_title_ID= "ochowcreateachartusingado";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,"VBScript");
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+<p>This example creates a chart using data from an ADO recordset.
+A tab-delimited string is created from the returned recordset data,
+and then this string is used with the
+<a href="../ASP/fcomthsetcategoriesfromstring.htm">SetCategoriesFromString</a> and
+<a href="../ASP/fcomthsetseriesvaluesfromstring.htm">SetSeriesValuesFromString</a>
+ methods to set the chart data.</p>
+
+<p>To run this example, copy the remainder of the text in this topic into an ASP page.</p>
+
+<pre class="code">
+ &lt;%@Language = VBScript %&gt;
+ &lt;%' use this meta tag instead of adovbs.inc%&gt;
+ &lt;!--METADATA TYPE="typelib" uuid="00000205-0000-0010-8000-00AA006D2EA4" --&gt;
+
+ &lt;%
+    Response.Expires= 0
+
+    Dim categories, values
+    Dim Cnxn, strCnxn
+    Dim rs, strSQL
+
+    <font color="#007700">' This example connects to a sample database named db1.mdb
+    ' and charts the table named Info. ADO is used to open a
+    ' connection to the database and return the entire recordset. The query
+    ' contains two columns: Name and Sales.
+    ' The records are then extracted into strings.</font>
+
+    <font color="#007700">' Open connection to the "db1.mdb" Access Data Base</font>
+    strCnxn= "C:\db1.mdb"
+    strCnxn= "DRIVER={Microsoft Access Driver (*.mdb)};DBQ=" & strCnxn
+    Set Cnxn= Server.CreateObject("ADODB.Connection")
+
+    Cnxn.Open strCnxn
+
+    Set Cmd= Server.CreateObject("ADODB.Command")
+    Cmd.ActiveConnection= Cnxn
+
+    strSQL = "SELECT * From Info"
+
+    Cmd.CommandText = strSQL
+    Set rs= Cmd.Execute
+
+    categories = ""
+    values = ""
+
+    <font color="#007700">' Start at the first record and move through the entire recordset.
+    ' Field 0 is the category name, Field 1 is the sales value.
+    ' Create a semicolon-delimited string for the names and one for the values.</font>
+    rs.MoveFirst
+    While Not rs.EOF
+       categories = categories & rs.Fields(0).Value & ";"
+       values = values & rs.Fields(1).Value & ";"
+       rs.MoveNext
+    Wend
+
+    <font color="#007700">' Close and release the DB resources</font>
+    Cnxn.Close
+
+    Set Cmd = Nothing
+    Set rs = Nothing
+    Set Cnxn = Nothing
+
+    <font color="#007700">' Remove the leftover Semicolon character at the end of the strings.</font>
+    categories = Left(categories, Len(categories) - 1)
+    values = Left(values, Len(values) - 1)
+
+    <font color="#007700">' Create a new Swiff Chart object.</font>
+    Dim chart
+    Set chart= Server.CreateObject("SwiffChartObject.ChartObj")
+
+    <font color="#007700">' Create a chart with one series (called "Sales").</font>
+    chart.SetSeriesCaption 0, "Sales"
+
+    <font color="#007700">' Set the series categories and values using the strings created from the recordset.</font>
+    chart.SetSeparators ";", true
+    chart.SetCategoriesFromString categories
+    chart.SetSeriesValuesFromString 0, values
+
+    <font color="#007700">' Set the chart title to "Sales for 1976".</font>
+    chart.SetTitle "Sales for 1976"
+
+    <font color="#007700">' Set the chart graphical layout with a Swiff Chart style file.</font>
+    <font color="#007700">' "C:\myStyle.scs" is a dummy filename, it must be replaced by a correct filename.</font>
+    chart.LoadStyle "C:\myStyle.scs"
+
+    <font color="#007700">' Finally generate the Flash chart into the Response object.</font>
+    chart.ExportAsResponse
+
+    <font color="#007700">' Release the chart object</font>
+    Set chart= Nothing
+
+    Response.End
+%&gt;
+</pre>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="ochowcreateachartusingarrays.htm">Creating a Chart Using Data Specified in Arrays</A><br>
+   <A HREF="ochowcreateachartusingstrings.htm">Creating a Chart Using Data Specified in Strings</A><br>
+   <A HREF="ochowcreateachartusingtxtfile.htm">Creating a Chart Using Data From a Text File</A><br>
+   <A HREF="ochowcreateachartusingquery.htm">Creating a Chart Using Data Specified in URLs</A>
+</P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "Subtitle Property";
+var page_title_ID= "fcomthsubtitle";
+var page_lang= ".NET";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<p class="title"><script>document.write(page_title);</script></p>
+<p class="subtitle"><b>Namespace:</b> GlobFX.SwiffChartGenerator<br/><b>Assembly:</b> GlobFX.SwiffChartGenerator (in GlobFX.SwiffChartGenerator.dll)</p>
+
+<!-- Main Definition -->
+<P>Specifies the subtitle of a chart (displayed on top of a chart, below the title).</P>
+
+<!-- Profile -->
+<div class="syntax"><div class="lang">Visual Basic</div>
+<PRE class="syntax2">Public Property <B>Subtitle</B> As String</PRE>
+</div>
+<div class="syntax"><div class="lang">C#</div>
+<PRE class="syntax2">public string <b>Subtitle</B> { get; set; }</PRE>
+</div>
+
+
+<!-- Property Value -->
+<H4 class="dtH4">Property Value</H4>
+<p>A string that specifies the subtitle.</p>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<p>By default, a new chart has no subtitle.</p>
+
+<!-- Sample Code -->
+<H4 class="dtH4">Sample Code</H4>
+<P>The following code illustrates use of the <B>Subtitle</B> property. </P>
+
+<!-- VB Code -->
+<div class="code"><div class="lang">Visual Basic</div>
+<PRE class="code">
+<font color="#007700">' Create the chart series</font>
+Dim values_1(2) As Integer
+Dim values_2(2) As Integer
+
+values_1(0) = 10
+values_1(1) = 20
+values_1(2) = 30
+
+values_2(0) = 100
+values_2(1) = 200
+values_2(2) = 300
+
+chart.SetSeriesValuesFromArray(0, values_1)
+chart.SetSeriesValuesFromArray(1, values_2)
+
+<font color="#007700">' Set the chart title</font>
+chart.Title = "My Chart"
+
+<font color="#007700">' Set the chart subtitle</font>
+chart.<b>Subtitle</b> = "values in my unit"
+
+<font color="#007700">' Set the graphics settings from a style file</font>
+chart.LoadStyle("C:\\myStyle.scs")
+</PRE></div>
+
+<!-- C# Code -->
+<div class="code"><div class="lang">C#</div>
+<PRE class="code">
+<font color="#007700">// Create the chart series</font>
+int[] values_1= new int[3];
+int[] values_2= new int[3];
+
+values_1[0] = 10;
+values_1[1] = 20;
+values_1[2] = 30;
+
+values_2[0] = 100;
+values_2[1] = 200;
+values_2[2] = 300;
+
+chart.SetSeriesValuesFromArray(0, values_1);
+chart.SetSeriesValuesFromArray(1, values_2);
+
+<font color="#007700">// Set the chart title</font>
+chart.Title= "My Chart";
+
+<font color="#007700">// Set the chart subtitle</font>
+chart.<b>Subtitle</b>= "values in my unit";
+
+<font color="#007700">// Set the graphics settings from a style file</font>
+chart.LoadStyle("C:\\myStyle.scs");
+</PRE></div>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthtitle.htm">Title Property</A> | 
+   <A HREF="fcomthwidth.htm">Width Property</A> | 
+   <A HREF="fcomthheight.htm">Height Property</A> |
+   <A HREF="fcomthframerate.htm">FrameRate Property</A> 
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "Chart Object";
+var page_title_ID= "fcoobjchart";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,"PHP");
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>The Chart object represents a single chart.</P>
+
+<!-- Arguments -->
+<H4 class="dtH4">Using the Chart object</H4>
+
+<p>The chart object is created through the class named <b>SwiffChart</b>.</p>
+
+<p>When a Chart object is first created, it is empty (it does not contain any series, categories, etc). Use
+the methods described in the table below for filling a chart object with data, setting the graphical layout of a chart
+object and generating a Flash movie from a chart object.</p>
+<div class="tablediv"><table cellspacing="0" class="dtTable">
+    <tr>
+      <th>Method</th>
+      <th>Definition</th>
+    </tr>
+    <tr>
+      <td><a href="fcomthsetseriesvaluesfromarray.htm">SetSeriesValuesFromArray</a><br><a href="fcomthsetseriesvaluesfromstring.htm">SetSeriesValuesFromString</a><br></td>
+      <td>Use these methods to fill a series with data values.</td>
+    </tr>
+    <tr>
+      <td><a href="fcomthsetseriesxvaluesfromarray.htm">SetSeriesXValuesFromArray</a><br>
+      <a href="fcomthsetseriesyvaluesfromarray.htm">SetSeriesYValuesFromArray</a><br>
+      <a href="fcomthsetseriesxvaluesfromstring.htm">SetSeriesXValuesFromString</a><br>
+      <a href="fcomthsetseriesyvaluesfromstring.htm">SetSeriesYValuesFromString</a></td>
+      <td>Use these methods to fill a series with XY values.</td>
+    </tr>
+    <tr>
+      <td><a href="fcomthsetseriescaption.htm">SetSeriesCaption</a>
+      <br><a href="fcomthsetseriescaptionsfromarray.htm">SetSeriesCaptionsFromArray</a><br><a href="fcomthsetseriescaptionsfromstring.htm">SetSeriesCaptionsFromString</a></td>
+      <td>Use these methods to specify the series captions.</td>
+    </tr>
+    <tr>
+      <td><a href="fcomthsetcategoriesfromarray.htm">SetCategoriesFromArray</a><br><a href="fcomthsetcategoriesfromstring.htm">SetCategoriesFromString</a></td>
+      <td>Use these methods to set the categories of a chart object.</td>
+    </tr>
+    <tr>
+      <td><a href="fcomthsetdatafromquery.htm">SetDataFromQuery</a><br><a href="fcomthsetdatafromtxtfile.htm">SetDataFromTxtFile</a></td>
+      <td>Use these methods to set the series, categories, title, etc. all together.</td>
+    </tr>
+    <tr>
+      <td><a href="fcomthloadstyle.htm">LoadStyle</a></td>
+      <td>Use this method to set the graphical layout of a chart object. This method takes a Swiff Chart style file as parameter (.scs).</td>
+    </tr>
+    <tr>
+      <td><a href="fcomthsetoutputformat.htm">SetOutputFormat</a></td>
+      <td>Use this method to specify the format of the generated chart (Flash movie, JPG or PNG image, SVG or PDF document).</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="fcomthexportasresponse.htm">ExportAsResponse</a><br>
+        <a href="fcomthexportasfile.htm">ExportAsFile</a><br>
+        <a href="fcomthexportasbinary.htm">ExportAsBinary</a><br>
+        <a href="fcomthgethtmltag.htm">GetHTMLTag</a><br>
+        <a href="fcomthgetoutputlocation.htm">GetOutputLocation</a>
+      </td>
+      <td>Use these methods to generate the chart in Flash format (.swf), in PNG or JPG image format (.png, .jpg), in SVG or PDF document format (.svg, .pdf).</td>
+    </tr>
+  </table></div>
+<bR>
+
+<!-- Code Sample -->
+<H4 class="dtH4">PHP Code Sample</H4>
+<P>The following example creates an object named myChart.
+</p>
+
+<PRE class="code">
+$myChart= new SwiffChart;
+</PRE>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthgetversion.htm">GetVersion Method</A>
+</P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

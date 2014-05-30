@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "SetSeparators Method";
+var page_title_ID= "fcomthsetseparators";
+var page_lang= "PHP";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Specifies the characters to be treated as separators in the string arguments of the <a href="fcomthsetseriesvaluesfromstring.htm">SetSeriesValuesFromString</a>, 
+<a href="fcomthsetcategoriesfromstring.htm">SetCategoriesFromString</a> and <a href="fcomthsetdatafromtxtfile.htm">SetDataFromTxtFile</a> methods.</P>
+
+<!-- Profile -->
+<PRE class="syntax">void object<B>->SetSeparators(</B>&nbsp;string separators,&nbsp;boolean ignoremultseparators&nbsp;<B>)</B></PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+
+  <DT><I>separators</I></DT>
+  <DD>Required. A string that specifies the characters treated as separators.</dd>
+
+  <DT><I>ignoremultseparators</I></DT>
+  <DD>Required. A boolean value.<br>
+  <b>True</b> : consecutive separators are treated as a single separator.<BR>
+  <b>False</b> : two consecutive separators delimit a blank value.</dd>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<p>By default, 
+<A href="fcomthsetseriesvaluesfromstring.htm">SetSeriesValuesFromString</A>,
+<A href="fcomthsetcategoriesfromstring.htm">SetCategoriesFromString</A>
+and <A href="fcomthsetdatafromtxtfile.htm">SetDataFromTxtFile</A> methods treat the character ";"
+as the unique separator and two consecutive ";" characters in a string delimit a blank value.</p>
+
+<!-- Sample Code -->
+<H4 class="dtH4">PHP Sample Code</H4>
+<P>The following PHP code illustrates use of the <B>SetSeparators</B> method. </P>
+
+<PRE class="code">
+<font color="#007700">// Let's set the categories of a chart object with a ";"-delimited string</font>
+$sep= ";";
+$ignoremultseparators= true;
+
+<font color="#007700">// Before setting the categories, we must specify the separators</font>
+$chart-><b>SetSeparators</b>($sep, $ignoremultseparators);
+
+$myString= "North&nbsp;America" . $sep . "South&nbsp;America" . $sep . "Europe" . $sep . "Middle&nbsp;East" . $sep . "Asia";
+
+<font color="#007700">// Fill the chart with the categories stored in the myString variable</font>
+$chart->SetCategoriesFromString($myString);
+</PRE>
+
+<!-- About Multiple Separators  -->
+<H4 class="dtH4">About multiple separators</H4>
+
+<P>You can also specify whether the chart object should <b>ignore multiple separators</b> or not 
+(i.e. the boolean argument <i>ignoremultseparators</i>) while processing the strings or text file passed as arguments of
+the SetSeriesValuesFromString, SetCategoriesFromString or SetDataFromTxtFile methods. The following example 
+shows how it can affect the way data are stored in the chart object.
+</p>
+<PRE class="code">
+<font color="#007700">// Let's set the categories with ";"-delimited string</font>
+$sep= ";";
+
+<font color="#007700">// The myString variable has two consecutive separators</font>
+$myString= "North&nbsp;America" . $sep . $sep . "South&nbsp;America" . $sep . "Europe" . $sep . "Middle&nbsp;East" . $sep . "Asia";
+</PRE>
+
+<br>
+<OL><LI>Ignoring multiple separators and calling the method SetCategoriesFromString...
+
+<PRE class="code">
+$chart-><b>SetSeparators</b>($sep, <b>true</b>);
+$chart->SetCategoriesFromString($myString);
+</PRE>
+<br>
+<p>...leads the following categories stored in the chart object:</p>
+
+<div class="tablediv"><table cellspacing="0" class="dtTable2">
+    <tr>
+      <td><font color="#FF0000"><b>Categories = </b></font></td>
+      <th>North&nbsp;America</th>
+      <th>South&nbsp;America</th>
+      <th>Europe</th>
+      <th>Middle&nbsp;East</th>
+      <th>Asia</th>
+    </tr>
+</table></div>
+
+<br></LI>
+ <LI>However, treating multiple separators as blank values and calling the method SetCategoriesFromString...
+
+<PRE class="code">
+$chart-><b>SetSeparators</b>($sep, <b>false</b>);
+$chart->SetCategoriesFromString($myString);
+</PRE>
+<br>
+<p>...leads to the following categories stored in the chart object (Notice the blank value):</p>
+
+<div class="tablediv"><table cellspacing="0" class="dtTable2">
+    <tr>
+      <td><font color="#FF0000"><b>Categories = </b></font></td>
+      <th>North&nbsp;America</th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+      <th>South&nbsp;America</th>
+      <th>Europe</th>
+      <th>Middle&nbsp;East</th>
+      <th>Asia</th>
+    </tr>
+</table></div>
+<BR></LI>
+</OL>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthgetseparators.htm">GetSeparators Method</A> | 
+   <A HREF="fcomthsetseriesvaluesfromstring.htm">SetSeriesValuesFromString Method</A> | 
+   <A HREF="fcomthsetcategoriesfromstring.htm">SetCategoriesFromString Method</A> |
+   <A HREF="fcomthsetdatafromtxtfile.htm">SetDataFromTxtFile Method</A> |
+   <A HREF="fcomthsetunicode.htm">SetUnicode Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "GetOutputLocation Method";
+var page_title_ID= "fcomthgetoutputlocation";
+var page_lang= "VBScript";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Generates a Flash movie or an image from a chart
+and returns the relative url location of the generated cache file as a string.</P>
+
+<!-- Profile -->
+<PRE class="syntax">object<B>.GetOutputLocation</B>&nbsp;<b></B></PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+</DL>
+
+<!-- Return Value -->
+<H4 class="dtH4">Return Value</H4>
+The string that specifies the relative url location of the generated chart in the public cache.
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+The method actually:
+<UL>
+  <LI>generates the content (SWF, PNG, JPG, SVG or PDF data) from the chart object
+  <LI>writes it as a file into the public cache
+  <LI>returns a the relative url pointing to the generated file in the public cache
+</UL>
+<br>
+<p>The format of the generated content
+can be specified by the method <a href="fcomthsetoutputformat.htm">SetOutputFormat</a>.</p>
+<br>
+
+<b>For an Adobe Flash movie (SWF)</b> the method returns a string like this one:<br>
+<pre>
+  "/charts_cache/9A7DE3D6-CE1E412B.swf"
+</pre>
+<b>For a JPEG image file (JPG)</b> the method returns a string like this one:<br>
+<pre>
+  "/charts_cache/9A7DE3D6-CE1E412B.jpg"
+</pre>
+<b>For a PNG image file (PNG)</b> the method returns a string like this one:<br>
+<pre>
+  "/charts_cache/9A7DE3D6-CE1E412B.png"
+</pre>
+<b>For a SVG document file (SVG)</b> the method returns a string like this one:<br>
+<pre>
+  "/charts_cache/9A7DE3D6-CE1E412B.svg"
+</pre>
+<b>For a PDF document file (PDF)</b> the method returns a string like this one:<br>
+<pre>
+  "/charts_cache/9A7DE3D6-CE1E412B.pdf"
+</pre>
+
+<br>
+<!-- Sample Code -->
+<H4 class="dtH4">VBScript Sample Code</H4>
+<P>The following VBScript code illustrates use of the <B>GetOutputLocation</B> method.</P>
+<PRE class="code">
+&lt;%
+  <font color="#007700">'Create the chart series</font>
+  chart.SetDataFromQuery
+  chart.LoadStyle "C:\myStyle.scs"
+
+  chart.SetWidth 400
+  chart.SetHeight 200
+
+  <font color="#007700">'We can now generate the chart as a JPEG image</font>
+  chart.SetOutputFormat "JPG"
+%&gt;
+
+Here is the chart rendered as an image:&lt;br&gt;
+&lt;img src="&lt;%= chart.<b>GetOutputLocation</b> %&gt;" width=400 height=200&gt;
+</PRE>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthsetoutputformat.htm">SetOutputFormat Method</A> |
+   <A HREF="fcomthgethtmltag.htm">GetHTMLTag Method</A> |
+   <A HREF="fcomthsetcachename.htm">SetCacheName Method</A> |
+   <A HREF="fcomthsetprivatecachedir.htm">SetPrivateCacheDir Method</A> |
+   <A HREF="fcomthsetmaxcachesize.htm">SetMaxCacheSize Method</A> |
+   <A HREF="fcomthclearcache.htm">ClearCache Method</A> |
+   <A HREF="fcomthusecache.htm">UseCache Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

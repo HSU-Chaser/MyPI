@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "ProtectSWF Property";
+var page_title_ID= "fcomthprotectswf";
+var page_lang= ".NET";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<p class="title"><script>document.write(page_title);</script></p>
+<p class="subtitle"><b>Namespace:</b> GlobFX.SwiffChartGenerator<br/><b>Assembly:</b> GlobFX.SwiffChartGenerator (in GlobFX.SwiffChartGenerator.dll)</p>
+
+<!-- Main Definition -->
+<P>Specifies whether the generated Flash file should be protected or not.
+</P>
+
+<!-- Profile -->
+<div class="syntax"><div class="lang">Visual Basic</div>
+<PRE class="syntax2">Public Property <B>ProtectSWF</B> As Boolean</PRE>
+</div>
+<div class="syntax"><div class="lang">C#</div>
+<PRE class="syntax2">public bool <b>ProtectSWF</B> { get; set; }</PRE>
+</div>
+
+<!-- Property Value -->
+<H4 class="dtH4">Property Value</H4>
+<p>A boolean value that specifies whether the Flash file is protected or not.</p>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<P>Default: the generated Flash animation is always protected.</P>
+
+<P>If a Flash movie is marked as <i>protected</i> it cannot be imported into Adobe Flash Editor.</P>
+
+<!-- Sample Code -->
+<H4 class="dtH4">Sample Code</H4>
+<P>The following code illustrates use of the <B>ProtectSWF</B> property.</P>
+
+<!-- VB Code -->
+<div class="code"><div class="lang">Visual Basic</div>
+<PRE class="code">
+chart.SetDataFromTxtFile("C:\\myData.txt")
+chart.LoadStyle("C:\\myStyle.scs")
+
+<font color="#007700">' Let's display an unprotected SWF movie</font> 
+chart.<b>ProtectSWF</b> = False
+</PRE></div>
+
+<!-- C# Code -->
+<div class="code"><div class="lang">C#</div>
+<PRE class="code">
+chart.SetDataFromTxtFile("C:\\myData.txt");
+chart.LoadStyle("C:\\myStyle.scs");
+
+<font color="#007700">// Let's display an unprotected SWF movie</font> 
+chart.<b>ProtectSWF</b>= false;
+</PRE></div>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

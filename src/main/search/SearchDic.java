@@ -98,7 +98,10 @@ public class SearchDic {
 
 		// 처음엔 이렇게 넣어버리고, 그 뒤부턴 addAll
 		for (int i = 0; i < singleWord.size(); i++) {
+			
 			getSearchWordList().add(removeNull(singleWord).get(i));
+			System.out.println(getSearchWordList().size());
+		
 		}
 
 		complexGrammar = complexBinding.length;

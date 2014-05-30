@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "Displaying dynamically generated Swiff Chart animation from an ASP page into a Web Browser";
+var page_title_ID= "ochowdisplayingswfchartanimfromasp";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,"VBScript");
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+<p>Most Internet browsers support the displaying Flash movies (.swf files). 
+To display a Flash movie, the browser requests the movie from a Web server. 
+The server passes the movie to the browser as an HTTP transaction with an HTTP header 
+containing an MIME type of <b>application/x-shockwave-flash</b>. You can simulate this 
+behavior with Active Server Pages.</p>
+
+<p>The following example constructs an HTTP header for a Flash movie 
+and then uses the binary information generated from a Swiff Chart object to provide 
+a Flash movie to the browser.</p> 
+
+<PRE class="code">
+<font color="#FF0000">FILE: ShowSwiffChart.asp</font>
+
+ &lt;%@ LANGUAGE="VBSCRIPT" %&gt;
+
+ &lt;%
+ Set chart= Server.CreateObject("SwiffChartObject.ChartObj")
+
+ Dim myArray(4)
+ myArray(0)= "North&nbsp;America"
+ myArray(1)= "South&nbsp;America"
+ myArray(2)= "Europe"
+ myArray(3)= "Middle&nbsp;East"
+ myArray(4)= "Asia"
+
+ <font color="#007700">' Fill the chart with the categories stored in the myArray variable</font>
+ chart.<b>SetCategoriesFromArray</b> myArray
+
+ <font color="#007700">' Add the first series "Sales"</font>
+ myArray(0)= 12
+ myArray(1)= 7.5
+ myArray(2)= 11.3
+ myArray(3)= 9.2
+ myArray(4)= 5.3
+
+ <font color="#007700">' Fill the first series with the data stored in the myArray variable</font>
+ chart.SetSeriesCaption 0, "Sales"
+ chart.SetSeriesValuesFromArray 0, myArray
+
+ <font color="#007700">' The following load line assumes you have created a Swiff Chart style file named myStyle.scs</font>
+ chart.LoadStyle "C:\myStyle.scs"
+
+ <font color="#007700">' Finally generate the Flash chart and provide the browser with it</font>
+ chart.ExportAsResponse
+
+ <font color="#007700">' Release the chart object</font>
+ Set chart= Nothing
+
+ Response.End
+ %&gt;
+</PRE>
+<br>
+<p>This script only displays a Flash movie on the screen. If you wish to display a 
+Flash movie from an HTML or ASP document you must refer to this script in two tags: the OBJECT tag
+and the EMBED tag. <a href="ochowinsertflashintohtml.htm">See Inserting a Flash movie into a HTML page</a> for 
+more information on how to correctly display a Flash movie in a browser.</p>
+
+<p>For example, if you wished to display this generated Flash movie with a caption describing it, 
+you might use the following HTML page:</p>
+
+<PRE class="code">
+<font color="#FF0000">FILE: ShowSwiffChart.html</font>
+
+ &lt;HTML&gt;
+ &lt;HEAD&gt;&lt;TITLE&gt;Display Swiff Chart animation&lt;/TITLE&gt;&lt;/HEAD&gt;
+ &lt;BODY&gt;
+ This page will display a Swiff Chart animation dynamically generated
+ from an ASP page.&lt;BR&gt;
+
+ &lt;OBJECT ALIGN=CENTER 
+            WIDTH=430 
+            HEIGHT=150 
+            CLASSID="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+            CODEBASE="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=4,0,2,0"&gt;
+   &lt;PARAM NAME=movie VALUE=<b>"ShowSwiffChart.asp"</b>&gt;
+   &lt;PARAM NAME=quality VALUE=high&gt;
+   &lt;EMBED src=<b>"ShowSwiffChart.asp"</b> WIDTH=430 HEIGHT=150 QUALITY=high PLUGINSPAGE="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash"&gt;
+   &lt;/EMBED&gt;
+ &lt;/OBJECT&gt;
+
+ &lt;/BODY&gt;
+ &lt;/HTML&gt;
+</PRE>
+<br>
+<p><i>Note</i>: Since the ASP script sets the Response.ContentType variable as "application/x-shockwave-flash",
+Internet browsers assume that raw SWF data (Flash format) follow the HTTP header. 
+If any extraneous information follow the HTTP header the Flash movie will not display properly. 
+This becomes important when you use the <a href="../ASP/fcomthexportasresponse.htm">ExportAsResponse Method</a> into an ASP script.</p>
+
+<p>The browser needs to know what type of content is being presented. 
+Do this by specifying the proper mime type in the Response.ContentType variable. 
+For example, if you wanted to view a GIF image, you would set the ContentType = "image/gif".</p> 
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="ochowcreateachartusingarrays.htm">Creating a Chart Using Data Specified in Arrays</A><br> 
+   <A HREF="ochowcreateachartusingstrings.htm">Creating a Chart Using Data Specified in Strings</A><br> 
+   <A HREF="ochowcreateachartusingquery.htm">Creating a Chart Using Data From a Query</A><br> 
+   <A HREF="ochowcreateachartusingado.htm">Creating a Chart Using Data From an ADO Recordset</A><br>
+   <A HREF="ochowinsertflashintohtml.htm">Inserting a Flash movie into a HTML page</A><br>
+   <A HREF="../ASP/fcomthexportasresponse.htm">ExportAsResponse Method</A>
+</P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

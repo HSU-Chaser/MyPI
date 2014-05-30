@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "SetJPGQuality Method";
+var page_title_ID= "fcomthsetjpgquality";
+var page_lang= "VBScript";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Specifies the quality for encoding the chart as a JPEG image.</P>
+
+<!-- Profile -->
+<PRE class="syntax">object<B>.SetJPGQuality</B>&nbsp;quality&nbsp;</PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+
+  <DT><I>quality</I></DT>
+  <DD>Required. An integer value that specifies the quality of the JPEG encoding.</DD>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<P>The JPEG quality parameter is an integer between 0 to 100.<br>
+Specify <b>100</b> for <b>high</b> quality, <b>0</b> for <b>low</b> quality.<br>
+The default encoding quality is 75.
+
+<!-- Sample Code -->
+<H4 class="dtH4">VBScript Sample Code</H4>
+<P>The following VBScript code illustrates use of the <B>SetJPGQuality</B> method. </P>
+<PRE class="code">
+chart.SetDataFromQuery
+chart.LoadStyle "C:\myStyle.scs"
+
+<font color="#007700">'Choose the JPEG encoding quality</font>
+chart.<b>SetJPGQuality</b> 90
+
+<font color="#007700">'Outputs the chart as a JPEG image</font>
+chart.SetOutputFormat "JPG"
+chart.ExportAsResponse
+</PRE>
+
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P>
+   <A HREF="fcomthsetoutputformat.htm">SetOutputFormat Method</A> |
+   <A HREF="fcomthexportasresponse.htm">ExportAsResponse Method</A> |
+   <A HREF="fcomthexportasfile.htm">ExportAsFile Method</A> |
+   <A HREF="fcomthexportasbinary.htm">ExportAsBinary Method</A> |
+   <A HREF="fcomthgethtmltag.htm">GetHTMLTag</A> |
+   <A HREF="fcomthgetoutputlocation.htm">GetOutputLocation Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

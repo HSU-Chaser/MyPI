@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "SetAxisTitle Method";
+var page_title_ID= "fcomthsetaxistitle";
+var page_lang= "VBScript";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<!-- Main Definition -->
+<P>Specifies the title of a given axis.</P>
+
+<!-- Profile -->
+<PRE class="syntax">object<B>.SetAxisTitle</B>&nbsp;axis_number,&nbsp;title</PRE>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>object</I></DT>
+  <DD>Required. A <A HREF="fcoobjchart.htm">Chart</A> object.</DD>
+
+  <DT><I>axis_number</I></DT>
+  <DD>Required. An integer value that specifies the axis (see table below).</DD>
+
+  <DT><I>title</I></DT>
+  <DD>Required. A string that specifies the title.</DD>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<p>By default, none of the axis of a new chart has title.</p>
+<p>The axis is defined by an integer value (the <i>axis_number</i> parameter) which is interpreted as follows:</p>
+
+<table cellspacing="0" class="dtTable2">
+    <tr>
+      <th>Code</th>
+      <th>Definition</th>      
+    </tr>
+    <tr>
+      <td><div align=center><b>0</b></div></td>
+      <td>Horizontal Axis</td>
+    </tr>
+    <tr>
+      <td><div align=center><b>1</b></div></td>
+      <td>Vertical Axis</td>
+    </tr>
+    <tr>
+      <td><div align=center><b>2</b></div></td>
+      <td>Secondary Horizontal Axis</td>
+    </tr>
+    <tr>
+      <td><div align=center><b>3</b></div></td>
+      <td>Secondary Vertical Axis</td>
+    </tr>
+</table>
+
+<!-- Sample Code -->
+<H4 class="dtH4">VBScript Sample Code</H4>
+<P>The following VBScript code illustrates use of the <B>SetAxisTitle</B> method. </P>
+<PRE class="code"><font color="#007700">'Create the chart series</font>
+Dim categories(2)
+Dim values(2)
+
+categories(0) = "Jan"
+categories(1) = "Feb"
+categories(2) = "Mar"
+
+values(0) = 10
+values(1) = 20
+values(2) = 30
+
+chart.SetCategoriesFromArray categories
+
+chart.SetSeriesValuesFromArray 0, values
+
+<font color="#007700">'Set the chart title</font>
+chart.SetTitle "My Chart"
+
+<font color="#007700">'Set the horizontal axis title</font>
+chart.<b>SetAxisTitle</b> 0, "Months"
+
+<font color="#007700">'Set the vertical axis title</font>
+chart.<b>SetAxisTitle</b> 1, "Values in million"
+
+<font color="#007700">'Set the graphics settings from a style file</font>
+chart.LoadStyle "C:\myStyle.scs"
+
+<font color="#007700">'The chart is complete, we can now generate the movie</font>
+chart.ExportAsResponse</PRE>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthgetaxistitle.htm">GetAxisTitle Method</A>
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

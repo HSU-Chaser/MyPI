@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "Creating a Chart Using Data From a Text File";
+var page_title_ID= "ochowcreateachartusingtxtfile";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,"VBScript");
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<br>
+<H4 class="dtH4">Contents</H4>
+<a href="#introduction">Introduction</a><br>
+<a href="#txtfile">Text File Sample</a><br>
+<a href="#screenshot">Sample Screenshot</a><br>
+<a href="#asppage">ASP Page Sample</a><br>
+<a href="#asppage">HTML Page Sample</a><br>
+<br><br>
+<a name="#introduction"></a><H2 class="dtH2">Introduction</H2>
+<p>The Swiff Chart Generator provides you with an efficient way to specify data to a chart directly from
+a text file. To create a chart using data specified in a text file, you must call the SetDataFromTxtFile method
+with the text file name as argument. The items in your text file must be separated by tabs, columns,
+semicolons or any other character. See the SetDataFromTxtFile method for more information about the method profile.
+</p>
+<br>
+<a name="#txtfile"></a><H2 class="dtH2">Text File Sample</H2>
+<p>The following text file contains three series and four categories, showing the first 4 weeks revenues in
+million $ of 3 movies "Harry Potter", "Monsters, Inc." and "Lord of the Rings". The data are delimited with
+a semicolon character. The table below corresponds to the data formatted in the text file named "movies.txt".
+</p>
+<br>
+<PRE class="code">
+<font color="#FF0000">FILE: movies.txt</font>
+
+ Movie Revenues per Week<font color="#ff0000">;</font>Week 1<font color="#ff0000">;</font>Week 2<font color="#ff0000">;</font>Week 3<font color="#ff0000">;</font>Week 4
+ Harry Potter<font color="#ff0000">;</font>93.5<font color="#ff0000">;</font>58.5<font color="#ff0000">;</font>21.0<font color="#ff0000">;</font>14.8
+ Monsters, Inc.<font color="#ff0000">;</font>63.4<font color="#ff0000">;</font>46.2<font color="#ff0000">;</font>23.0<font color="#ff0000">;</font>24.3
+ Lord of the Rings<font color="#ff0000">;</font>45.3<font color="#ff0000">;</font>37.3<font color="#ff0000">;</font>23.0<font color="#ff0000">;</font>16.2
+</pre>
+<div class="tablediv"><table cellspacing="0" class="dtTable2">
+    <tr>
+      <th>&nbsp;</th>
+      <th>Week 1</th>
+      <th>Week 2</th>
+      <th>Week 3</th>
+      <th>Week 4</th>
+    </tr>
+    <tr>
+      <td>Harry Potter</td>
+      <td>93.5</td>
+      <td>58.5</td>
+      <td>21.0</td>
+      <td>14.8</td>
+    </tr>
+    <tr>
+      <td>Monsters, Inc.</td>
+      <td>63.4</td>
+      <td>46.2</td>
+      <td>23.0</td>
+      <td>24.3</td>
+    </tr>
+      <td>Lord of the Rings</td>
+      <td>45.3</td>
+      <td>37.3</td>
+      <td>23.0</td>
+      <td>16.2</td>
+  </table></div>
+<br>
+<p>To run this example, copy the text block into a text file named "movies.txt".</p>
+<br>
+<a name="#screenshot"></a><H2 class="dtH2">Sample Screenshot</H2>
+<p>The following image is a screenshot of the resulting chart generated in this sample.</p>
+<center><img src="../images/moviesrevenues-bar.jpg" width=377 height=188></center>
+<br>
+<a name="#asppage"></a><H2 class="dtH2">ASP Page Sample</H2>
+<p>The following ASP page named "movies.asp" runs in conjunction with the
+corresponding text file page named <a href="#txtfile">"movies.txt"</a>. To run this
+example, copy the ASP code into an ASP page named "movies.asp".</p>
+
+<pre class="code">
+<font color="#FF0000">FILE: movies.asp</font>
+
+ &lt;%@ LANGUAGE="VBSCRIPT" %&gt;
+
+ &lt;%
+    Dim chart
+
+    <font color="#007700">' Create a chart with three series and four categories, showing the
+    ' first 4 weeks revenues in million $ of 3 movies "Harry Potter",
+    ' "Monsters, Inc." and "Lord of the Rings".</font>
+
+    <font color="#007700">' Create a new Swiff Chart object.</font>
+    Set chart= Server.CreateObject("SwiffChartObject.ChartObj")
+
+    <font color="#007700">' Specify the separator characters used in the "movie.txt" text file.</font>
+    chart.SetSeparators ";", true
+
+    <font color="#007700">' The series and categories are in rows.</font>
+    seriesincolumn= false
+
+    <font color="#007700">' The first line of the text file are the categories.</font>
+    titlesinfirstrow= true
+
+    <font color="#007700">' The first column of the text file are the series caption.</font>
+    titlesinfirstcolumn= true
+
+    <font color="#007700">' Set the series, categories and title from the text file "movie.txt".</font>
+    chart.SetDataFromTxtFile "C:\movies.txt", seriesincolumn, titlesinfirstrow, titlesinfirstcolumn
+
+    <font color="#007700">' Set the chart graphical layout with a Swiff Chart style file.</font>
+    chart.LoadStyle "C:\Program Files\GlobFX\Swiff Chart Generator 3\styles\column\SanFrancisco.scs"
+
+    <font color="#007700">' Finally generate the Flash chart into the Response object.</font>
+    chart.ExportAsResponse
+
+    <font color="#007700">' Release the chart object</font>
+    Set chart= Nothing
+
+    Response.End
+ %&gt;
+</pre>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="ochowcreateachartusingarrays.htm">Creating a Chart Using Data Specified in Arrays</A><br>
+   <A HREF="ochowcreateachartusingstrings.htm">Creating a Chart Using Data Specified in Strings</A><br>
+   <A HREF="ochowcreateachartusingquery.htm">Creating a Chart Using Data Specified in URLs</A><br>
+   <A HREF="ochowcreateachartusingado.htm">Creating a Chart Using Data From an ADO Recordset</A>
+</P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

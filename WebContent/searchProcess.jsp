@@ -17,7 +17,7 @@
 	margin-bottom: 2%;
 }
 
-.resultObject table {
+.resultObject div-tr {
 	width: 100%;
 	border: 0;
 	cellspacing: 0;
@@ -26,11 +26,7 @@
 	cellpadding: 0;
 }
 
-.resultObject tr {
-	
-}
-
-.resultObject td {
+.resultObject div-td {
 	background-color: rgba(255, 255, 255, .5);
 	border: thin solid white;
 	height: 3em;
@@ -40,10 +36,9 @@
 
 <body>
 	<%
-		String memberEmail = null;
-		memberEmail = (String) session.getAttribute("memEmail");
+		String memberEmail = (String) session.getAttribute("memEmail");
 
-		if (memberEmail == null) {
+			if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -51,69 +46,114 @@
 	</script>
 	<%
 		} else {
-			Ranking ranking = new Ranking();
+
+			String client_str = (String) session.getAttribute("client_num");
+			int client_num = Integer.parseInt(client_str);
+			SearchDic searchDic;
+			Ranking ranking = new Ranking(client_num);
 			MakeObject object = new MakeObject();
 			ExtendedInfo extend = new ExtendedInfo(memberEmail);
-			SearchDic searchDic = new SearchDic(memberEmail); // binding 에 전달
+			searchDic = new SearchDic(memberEmail); // binding 에 전달
 			extend.makeKeywordMap();
+
 			searchDic.bindingWord(extend.getKeywordMap());
 
 			ArrayList<SearchResult> result = ranking.getResult(searchDic
 					.getSearchWordList());
 	%>
 
-	<div id="engineGraph" class="resultObject"></div>
 
 
-	<div id="exposureGraph" class="resultObject"></div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
+
+	<p>
+		<%=memberEmail%>
+		님의 MyPI 솔루션 검색 결과
+	</p>
+
+
+	<br>
+	<br>
+	<br>
+
+
+	<h3>그래프</h3>
+	<div id="graph" class="resultObject"></div>
+	<table border='0' align='left' width='100%' height=500px">
+		<tr valign="top">
+			<td align='left' width='55%' height="15%"><iframe
+					src='engineGraph.jsp' align="top" frameborder='0'
+					name="engineGraph" width='100%' height="100%" scrolling='no'></iframe></td>
+			<td align='left' valign="top" width='55%' height="85%"><iframe
+					src='exposureGraph.jsp' align="top" frameborder='0'
+					name="exposureGraph" width='100%' height="100%" scrolling='auto'></iframe></td>
+		</tr>
+	</table>
+
+	<h3>이미지</h3>
 	<div id="image" class="resultObject">
 		<table>
+
+			<%
+				for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
+			%>
 			<tr>
-				<%
-					for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
-				%>
-				<td width="20%" align="center"><img
-					src="<%=ImageStorage.getImgUrlList().get(i)%>"></td>
-				<%
-					}
-				%>
+				<td align="center"><img
+					src="<%=ImageStorage.getImgUrlList().get(i)%>" width="100px"></td>
 			</tr>
+			<%
+				}
+			%>
+
 		</table>
 	</div>
 
-	<div class="resultObject font_GODOM">
+	<h3>Static Search</h3>
 
-		<div>
-			<div style="width: 5%">번호</div>
-			<div style="width: 82%">제목</div>
-			<div style="width: 10%">노출도</div>
-			<div style="width: 3%"></div>
+	<h3>Dynamic Search</h3>
+	<div class="resultObject font_GODOM">
+		<div class="div-tr">
+			<div style="width: 5%; float: left">번호</div>
+			<div style="width: 82%; float: left">제목</div>
+			<div style="width: 10%; float: left">노출도</div>
+			<div style="width: 3%; clear: both;"></div>
 		</div>
 		<%
 			for (int i = 0; i < result.size(); i++) {
 		%>
 
 
-		<div onclick="_onFilp(<%=i + 1%>)">
-			<div style="float: left;"><%=i + 1%></div>
-			<div style="float: left;">
+		<div class="div-tr" onclick="_onFilp(<%=i + 1%>)">
+			<div class="div-td" style="float: left;"><%=i + 1%></div>
+			<div class="div-td" style="float: left;">
 				<a href="<%=result.get(i).getURL()%>" target="_blank"><%=result.get(i).getTitle()%></a>
 			</div>
-			<div style="float: left;"><%=result.get(i).getExposure()%></div>
-			<div style="float: left;">▼</div>
+			<div class="div-td" style="float: left;"><%=result.get(i).getExposure()%></div>
+			<div class="div-td" style="clear: both;">▼</div>
 		</div>
 
-		<div id="content<%=i + 1%>" style="display: none"
+		<div id="content<%=i + 1%>" class="div-tr" style="display: none"
 			onclick="_onFilp(<%=i + 1%>)">
-			<div align="center"><%=result.get(i).getSnippet()%>
+			<div class="div-tr">
+				<div class="div-td" align="center"><%=result.get(i).getSnippet()%>
+				</div>
+			</div>
+			<div class="div-tr">
+				<div class="div-td" align="center">
+					<!-- Solution -->
+				</div>
 			</div>
 		</div>
-
 		<%
 			}
 			}
 		%>
+
 
 	</div>
 

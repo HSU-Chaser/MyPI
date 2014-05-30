@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "Creating a Chart Using Data Specified in Strings";
+var page_title_ID= "ochowcreateachartusingstrings";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,"VBScript");
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<p>This example creates a chart using data specified in strings.
+Tab-delimited strings are set to the category and value data, and then these strings are used with the
+<a href="../ASP/fcomthsetcategoriesfromstring.htm">SetCategoriesFromString</a> and 
+<a href="../ASP/fcomthsetseriesvaluesfromstring.htm">SetSeriesValuesFromString</a>
+methods to set the chart data. The image below is a snapshot of the resulting chart.</p>
+
+<center><img src="../images/moviesrevenues-bar.jpg" width=377 height=188></center><br>
+
+<p>To run this example, copy the remainder of the text in this topic into an ASP page.</p>
+
+<pre class="code">
+ &lt;%@ LANGUAGE="VBSCRIPT" %&gt;
+
+ &lt;%
+    Dim categories, values, chart
+
+    <font color="#007700">' Create a column chart with three series and four categories, showing the 
+    ' first 4 weeks revenues in million $ of 3 movies "Harry Potter",
+    ' "Monsters, Inc." and "Lord of the Rings".
+    
+    ' Set a tab-delimited string to the category data
+    ' The categories will be the same for all three series.</font>
+    categories= "Week 1" & Chr(9) & "Week 2" & Chr(9) & "Week 3" & Chr(9) & "Week 4"
+
+    <font color="#007700">' Create a new Swiff Chart object.</font>
+    Set chart= Server.CreateObject("SwiffChartObject.ChartObj")
+
+    <font color="#007700">' Specify that the tab character is the separator.</font>
+    chart.SetSeparators Chr(9), true
+
+    <font color="#007700">' Set the categories for all the series</font> 
+    chart.SetCategoriesFromString categories 
+
+    <font color="#007700">' Series one contains revenues data for "Harry Potter".
+    ' Set the series caption (the text that appears in the legend).</font>
+
+    values= "93.5" & Chr(9) & "58.5" & Chr(9) & "21.0" & Chr(9) & "14.8"
+   
+    chart.SetSeriesCaption 0, "Harry Potter"
+    chart.SetSeriesValuesFromStrings 0, values
+
+    <font color="#007700">' Series two contains revenues data for "Monsters, Inc.".
+    ' Set the series caption (the text that appears in the legend).</font>
+
+    values= "63.4" & Chr(9) & "46.2" & Chr(9) & "23.0" & Chr(9) & "24.3"
+
+    chart.SetSeriesCaption 1, "Monsters, Inc."
+    chart.SetSeriesValuesFromString 1, values
+
+    <font color="#007700">' Series three contains revenues data for "Lord of the Rings".
+    ' Set the series caption (the text that appears in the legend).</font>
+
+    values= "45.3" & Chr(9) & "37.3" & Chr(9) & "23.0" & Chr(9) & "16.2"
+
+    chart.SetSeriesCaption 2, "Lord of the Rings"
+    chart.SetSeriesValuesFromString 2, values
+
+    <font color="#007700">' Set the chart title to "Movie Revenues per Week".</font>
+    chart.SetTitle "Movie Revenues per Week"
+
+    <font color="#007700">' Set the chart graphical layout with a Swiff Chart style file.</font>
+    chart.LoadStyle "C:\Program Files\GlobFX\Swiff Chart Generator 3\styles\column\SanFrancisco.scs"
+
+    <font color="#007700">' Finally generate the Flash chart into the Response object.</font>
+    chart.ExportAsResponse
+
+    <font color="#007700">' Release the chart object</font>
+    Set chart= Nothing
+  
+    Response.End
+ %&gt;
+
+</pre>
+
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="ochowcreateachartusingarrays.htm">Creating a Chart Using Data Specified in Arrays</A><br> 
+   <A HREF="ochowcreateachartusingtxtfile.htm">Creating a Chart Using Data From a Text File</A><br> 
+   <A HREF="ochowcreateachartusingquery.htm">Creating a Chart Using Data Specified in URLs</A><br> 
+   <A HREF="ochowcreateachartusingado.htm">Creating a Chart Using Data From an ADO Recordset</A>
+</P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>

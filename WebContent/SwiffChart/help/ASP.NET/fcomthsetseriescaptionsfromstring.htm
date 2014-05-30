@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+
+<META Name="InChm" Content="True">
+
+<SCRIPT LANGUAGE="JavaScript">
+var page_title= "SetSeriesCaptionsFromString Method";
+var page_title_ID= "fcomthsetseriescaptionsfromstring";
+var page_lang= ".NET";
+</SCRIPT>
+
+<SCRIPT SRC="../scripts/dtuelink2.js"></SCRIPT>
+<SCRIPT SRC="../scripts/main.js"></SCRIPT>
+
+</HEAD>
+
+<body topmargin=0 id="bodyID" class = "dtBODY">
+
+<SCRIPT LANGUAGE="JavaScript">
+write_header(page_title,page_title_ID,page_lang);
+</SCRIPT>
+
+<DIV id="scrtext" valign="bottom">
+
+<p class="title"><script>document.write(page_title);</script></p>
+<p class="subtitle"><b>Namespace:</b> GlobFX.SwiffChartGenerator<br/><b>Assembly:</b> GlobFX.SwiffChartGenerator (in GlobFX.SwiffChartGenerator.dll)</p>
+
+<!-- Main Definition -->
+<P>Specifies all the series captions from data encoded in a separator-delimited string.</P>
+
+<!-- Profile -->
+<div class="syntax"><div class="lang">Visual Basic</div>
+<PRE class="syntax2">Public Sub <B>SetSeriesCaptionsFromString</B>( captions As String )</PRE>
+</div>
+<div class="syntax"><div class="lang">C#</div>
+<PRE class="syntax2">public void <B>SetSeriesCaptionsFromString</B>( string captions );</PRE>
+</div>
+
+<!-- Arguments -->
+<H4 class="dtH4">Arguments</H4>
+
+<DL>
+  <DT><I>captions</I></DT>
+  <DD>A string that specifies the series captions (see <a href="fcomthsetseparators.htm">SetSeparators</a>).</DD>
+</DL>
+
+<!-- Remarks -->
+<H4 class="dtH4">Remarks</H4>
+<p>By default, a new data series added to a chart has no caption.</p>
+<P>If some series do not exist, they are created only if the corresponding caption is not empty.</P>
+
+<P>You can set the series captions in a chart with captions encoded in a string (i.e. the <i>captions</i> argument). The string must be 
+formatted as a list of captions, two consecutive captions must be separated by a separator
+character that can be specified with the <a href="fcomthsetseparators.htm">SetSeparators</a> method.
+
+<P>Here is an example of series captions encoded in a string with the character ";" as separator.</P>
+<PRE class="code">myEncodedString= "Year 2006<font color="#FF0000">;</font>Year 2007"
+</PRE>
+
+<P>The string argument <i>captions</i> is parsed by the chart object according to the separator characters specified
+to the chart object (see the <a href="fcomthsetseparators.htm">SetSeparators</a> method for specifying separator characters and rules). 
+
+<P>The ";" character is the default separator character.</P>
+<br>
+
+<!-- Sample Code -->
+<H4 class="dtH4">Sample Code</H4>
+<P>The following code shows how to specify the series captions corresponding to the table below using the <B>SetSeriesCaptionsFromString</B> method. 
+This table has two series with captions "Year 2006" and "Year 2007". The categories are "North America", "South America", "Europe", "Middle East" and "Asia".</P>
+
+<div class="tablediv">
+<table border="0" cellpadding="0" cellspacing="0" class="dtTable2" style="border-style:none;"><tr><td style="border-style:none;">
+<table cellspacing="0" class="dtTable2">
+    <tr>
+      <td>&nbsp;</td>
+      <th>North&nbsp;America</th>
+      <th>South&nbsp;America</th>
+      <th>Europe</th>
+      <th>Middle&nbsp;East</th>
+      <th>Asia</th>
+    </tr>
+    <tr>
+      <td><b>Year 2006</b></td>
+      <td>12</td>
+      <td>7.5</td>
+      <td>11.3</td>
+      <td>9.2</td>
+      <td>5.3</td>
+    </tr>
+    <tr>
+      <td><b>Year 2007</b></td>
+      <td>14</td>
+      <td>9.9</td>
+      <td>13.1</td>
+      <td>11.5</td>
+      <td>4.9</td>
+    </tr>
+  </table>
+</td>
+</tr>
+<tr>
+<td style="border-style:none;">
+<div align="center"><img src="../images/salesperyear-bar.jpg"></div>
+</td>
+</tr></table>
+</div>
+<br>
+
+<!-- VB Code -->
+<div class="code"><div class="lang">Visual Basic</div>
+<PRE class="code"><font color="#007700">' Let's build the series and categories string with ";" as separator</font>
+Dim sep As String = ";"
+Dim ignore_mult_separators As Boolean = True
+
+<font color="#007700">' Before setting the series and categories, we must specify the separators</font>
+chart.SetSeparators( sep, ignore_mult_separators )
+
+Dim myString As String = "North&nbsp;America" + sep + "South&nbsp;America" + sep + "Europe" + sep + "Middle&nbsp;East" + sep + "Asia"
+
+<font color="#007700">' Fill the chart with the categories stored in the myString variable</font>
+chart.SetCategoriesFromString( myString )
+
+<font color="#007700">' Add the first series "Year 2006"</font>
+myString= "12" + sep + "7.5" + sep + "11.3" + sep + "9.2" + sep + "5.3"
+
+<font color="#007700">' Fill the first series with the data stored in the myString variable</font>
+chart.SetSeriesValuesFromString(0, myString)
+
+<font color="#007700">' Add the second series "Year 2007"</font>
+myString= "14" + sep + "9.9" + sep + "13.1" + sep + "11.5" + sep + "4.9"
+
+<font color="#007700">' Fill the second series with the data stored in the myString variable</font>
+chart.SetSeriesValuesFromString(1, myString)
+
+<font color="#007700">' Specify the 2 series captions</font>
+myString= "Year 2006" + sep + "Year 2007"
+
+<font color="#007700">' Set the series captions with the strings stored in the myString variable</font>
+chart.<b>SetSeriesCaptionsFromString</b>( myString )
+</PRE></div>
+
+<!-- C# Code -->
+<div class="code"><div class="lang">C#</div>
+<PRE class="code"><font color="#007700">// Let's build the series and categories string with ";" as separator</font>
+string sep= ";";
+bool ignore_mult_separators= true;
+
+<font color="#007700">// Before setting the series and categories, we must specify the separators</font>
+chart.SetSeparators( sep, ignore_mult_separators );
+
+string myString= "North&nbsp;America" + sep + "South&nbsp;America" + sep + "Europe" + sep + "Middle&nbsp;East" + sep + "Asia";
+
+<font color="#007700">// Fill the chart with the categories stored in the myString variable</font>
+chart.SetCategoriesFromString( myString );
+
+<font color="#007700">// Add the first series "Year 2006"</font>
+myString= "12" + sep + "7.5" + sep + "11.3" + sep + "9.2" + sep + "5.3";
+
+<font color="#007700">// Fill the first series with the data stored in the myString variable</font>
+chart.SetSeriesValuesFromString(0, myString);
+
+<font color="#007700">// Add the second series "Year 2007"</font>
+myString= "14" + sep + "9.9" + sep + "13.1" + sep + "11.5" + sep + "4.9";
+
+<font color="#007700">// Fill the second series with the data stored in the myString variable</font>
+chart.SetSeriesValuesFromString(1, myString);
+
+<font color="#007700">// Specify the 2 series captions</font>
+myString= "Year 2006" + sep + "Year 2007";
+
+<font color="#007700">// Set the series captions with the strings stored in the myString variable</font>
+chart.<b>SetSeriesCaptionsFromString</b>( myString );
+</PRE></div>
+
+<!-- See Also  -->
+<H4 class="dtH4">See Also</H4>
+
+<P><A HREF="fcomthsetseriescaptionsfromarray.htm">SetSeriesCaptionsFromArray Method</A> | 
+   <A HREF="fcomthgetseriescaption.htm">GetSeriesCaption Method</A> | 
+   <A HREF="fcomthgetseriesvalue.htm">GetSeriesValue Method</A> |
+   <A HREF="fcomthseriescount.htm">SeriesCount Property</A> 
+</P>
+
+<!-- Applies to  -->
+<P>Applies To: <A HREF="fcoobjchart.htm">Chart Object</A></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+write_footer();
+</SCRIPT>
+
+</BODY>
+</HTML>
