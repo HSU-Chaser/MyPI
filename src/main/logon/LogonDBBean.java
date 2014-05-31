@@ -155,7 +155,7 @@ public class LogonDBBean {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				
+
 				member = new LogonDataBean();
 				member.setClient_num(rs.getInt("client_num"));
 				member.setEmail(rs.getString("email"));
@@ -169,7 +169,7 @@ public class LogonDBBean {
 				member.setWorkplace(rs.getString("workplace"));
 				member.setOccupation(rs.getString("occupation"));
 				member.setCurrent_grade(rs.getInt("current_grade"));
-				
+
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -278,6 +278,250 @@ public class LogonDBBean {
 					.prepareStatement("update member set email=?, passwd=?");
 			pstmt.setString(1, member.getEmail());
 			pstmt.setString(2, member.getPassword());
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+	}
+
+	// 각 재료별 수정함수 만들어봄
+	
+	// 비밀번호 수정
+		public void updatePassword(String password) throws Exception {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("update member set password=?");
+				pstmt.setString(1, Encryptor.encryptSHA(password));
+				pstmt.executeUpdate();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if (pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException ex) {
+					}
+				if (conn != null)
+					try {
+						conn.close();
+					} catch (SQLException ex) {
+					}
+			}
+		}
+	// 이름 수정
+	public void updateName(String name) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update member set name=?");
+			pstmt.setString(1, name);
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+	}
+
+	// 핸드폰 번호 변경
+	public void updateCellPhone(String cellphone) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update member set cellphone=?");
+			pstmt.setString(1, cellphone);
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+	}
+
+	// 집번호 변경
+	public void updateHomePhone(String homephone) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update member set homephone=?");
+			pstmt.setString(1, homephone);
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+	}
+
+	// 생일 수정
+	public void updateBirthDay(String birthday) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update member set birthday=?");
+			pstmt.setString(1, birthday);
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+	}
+
+	// 집주소 수정
+	public void updateAddress(String address) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update member set address=?");
+			pstmt.setString(1, address);
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+	}
+
+	// 학교 수정
+	public void updateSchool(String school) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update member set school=?");
+			pstmt.setString(1, school);
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+	}
+
+	// 직장 수정
+	public void updateWorkPlace(String workplace) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update member set workplace=?");
+			pstmt.setString(1, workplace);
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+	}
+
+	// 학업 수정
+	public void updateOccuPation(String occupation) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update member set occupation=?");
+			pstmt.setString(1, occupation);
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
 			ex.printStackTrace();
