@@ -70,7 +70,7 @@ public class SearchDic {
 				"\"" + map.get("id") + "\"" + "+AND+" + "\""
 						+ map.get("email2") + "\"",
 				"\"" + map.get("id") + "\"" + "+AND+" + "\""
-						+ map.get("nickname") + "\"",
+						+ map.get("nickname1") + "\"",
 				"\"" + map.get("id") + "\"" + "+AND+" + "\""
 						+ map.get("nickname2") + "\"",
 				"\"" + map.get("id") + "\"" + "+AND+" + "\""
@@ -83,7 +83,7 @@ public class SearchDic {
 		
 		
 		if((!map.get("name").equals("null")) && (!map.get("occupation").equals("null"))){
-			setImgSearchWord("\"" + map.get("name") + "\"" + "+" + map.get("occupation") + "+OR+" + map.get("school"));
+			setImgSearchWord("\"" + map.get("name") + "\"" + "+" + map.get("workplace") + "+OR+" + map.get("school"));
 		}
 		
 		else{

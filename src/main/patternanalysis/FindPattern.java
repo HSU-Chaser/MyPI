@@ -75,7 +75,7 @@ public class FindPattern {
 
 			// nickname 검사
 			if (!(userMap.get("nickname1").equals("null"))) {
-				if (document.get(i).contains(userMap.get("nickname"))) {
+				if (document.get(i).contains(userMap.get("nickname1"))) {
 					RankingCount.nicknameCount++;
 				}
 			}

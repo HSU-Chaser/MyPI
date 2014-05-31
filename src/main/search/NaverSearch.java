@@ -74,9 +74,9 @@ public class NaverSearch {
 
 			SearchResult searchResult = new SearchResult("Naver", title,
 					urlConversion(url), snippet, resultNumber);
-			
-			//urlConversion(url)
-			
+
+			// urlConversion(url)
+
 			result.add(searchResult);
 		}
 
@@ -89,16 +89,19 @@ public class NaverSearch {
 		try {
 			url = new URL(originURL);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
-			
+
 			con.addRequestProperty("User-Agent", "Mozilla/4.0");
 			con.setConnectTimeout(10000);
 			con.setReadTimeout(3000);
-			
+
 			InputStream is = con.getInputStream();
 			url = con.getURL();
 			is.close();
+
 		} catch (Exception e) {
+
 			e.printStackTrace();
+
 		}
 		return url.toString();
 	}
@@ -108,7 +111,7 @@ public class NaverSearch {
 		StringBuilder request = new StringBuilder(naver);
 		request.append(key);
 		request.append("&query=" + query.split("_")[0]);
-		request.append("&ie=utf8");
+		request.append("&ie=UTF-8");
 
 		request.append("&target=" + category); // category 조정
 		request.append("&display=" + limit); // 결과값 제한 조정

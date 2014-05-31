@@ -66,27 +66,22 @@ public class ExtendedInfo {
 				case 0:
 					keywordMap.put("nickname1", storage.nickNameList.get(i));
 					
-					keywordMap.put("nickname1", "null");
 					break;
 				case 1:
 					keywordMap.put("nickname2", storage.nickNameList.get(i));
 
-					keywordMap.put("nickname2", "null");
 					break;
 				case 2:
 					keywordMap.put("nickname3", storage.nickNameList.get(i));
 
-					keywordMap.put("nickname3", "null");
 					break;
 				case 3:
 					keywordMap.put("nickname4", storage.nickNameList.get(i));
 
-					keywordMap.put("nickname4", "null");
 					break;
 				case 4:
 					keywordMap.put("nickname5", storage.nickNameList.get(i));
 
-					keywordMap.put("nickname5", "null");
 					break;
 				}
 			}
@@ -94,9 +89,13 @@ public class ExtendedInfo {
 			if(nickNameCount < 5) {
 				for(int i=0; i<5-nickNameCount; i++){
 					keywordMap.put("nickname" + (nickNameCount+i+1), "null");
+					
 				}
 				
 			}
+			
+			System.out.println(keywordMap.get("nickname1") + "   " + keywordMap.get("nickname2") + "   " + keywordMap.get("nickname3") + "   " + keywordMap.get("nickname4") + "   " + keywordMap.get("nickname5"));
+		
 
 		} catch (Exception e) {
 			e.printStackTrace();

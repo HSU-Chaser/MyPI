@@ -39,7 +39,6 @@ public class Cyworld extends Search {
 					
 					
 					tid = list.get(i).split("'")[1].split("'")[0];
-					System.out.println("ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ : " + tid);
 					
 					break;
 				}

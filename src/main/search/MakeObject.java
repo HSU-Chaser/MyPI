@@ -27,8 +27,7 @@ public class MakeObject {
 		result = null;
 		result = new ArrayList<SearchResult>();
 
-		String naverCategory[] = { "blog", "news", "cafearticle", "kin",
-				"webkr", "doc" };
+		String naverCategory[] = { "blog", "news", "cafearticle", "webkr", "doc" };
 		String daumCategory[] = { "board", "web", "knowledge" /* , "cafe", "blog" */};
 
 		// null이 들어오지않게 하는 검색으로, 여기서 이미지 검색어를 넣어주면 될 것 같다.

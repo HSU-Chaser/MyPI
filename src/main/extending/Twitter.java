@@ -40,7 +40,7 @@ public class Twitter extends Search{
 					ExtendedStorage.imgList.add("https://lh3.ggpht.com/lSLM0xhCA1RZOwaQcjhlwmsvaIQYaP3c5qbDKCgLALhydrgExnaSKZdGa8S3YtRuVA=w300-rw");
 				}
 				else if(list.get(i).contains("profile_images")){
-					setImgUrl(list.get(i).substring(15).replace('"', '!').split("!")[0]);
+					setImgUrl(list.get(i).replace('"', '@').split("@")[1]);
 					storage.imgUrlList.add(getImgUrl());
 ;					break;
 				}

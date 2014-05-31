@@ -60,6 +60,9 @@
 	<section id="contact" style="display: none">
 		<div id="result" class="content"></div>
 	</section>
+	
+	
+	
 
 	<!-- Footer -->
 	<jsp:include page="/common/footer.jsp" />
