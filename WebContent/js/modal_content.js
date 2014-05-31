@@ -9,6 +9,7 @@ var _onCheckName = function(userinput) {
 		val[i] = userinput.modal_name.value.charAt(i);
 		if(isNaN(val[i]) == false)
 			di = false;
+		console.log(val[i] + ', ' + di);
 	}
 	// 숫자가 있으면 제외
 	if (di == false) {
@@ -254,12 +255,16 @@ var _onCheckBirthday = function(userinput) {
 
 // 5. 집주소 체크
 var _onCheckAddress = function(userinput) {
-	if (userinput.modal_address.value.length > 5) {
+	if (userinput.modal_address.value == '') {
+	//	$('#address_err').css('color', 'red');
+		$('#address_err').html('주소를 입력하세요.');
+		return false;
+	}
+	else if (userinput.modal_address.value.length > 5) {
 	//	$('#address_err').css('color', 'red');
 		$('#address_err').html('5글자 이상 입력하세요.');
 		return false;
-	}
-		
+	}	
 	// ㅇㅋ 통과.
 	else {
 	//	$('#address_err').css('color', 'rgb(184, 138, 120)');
@@ -270,22 +275,34 @@ var _onCheckAddress = function(userinput) {
 
 
 
-//6. 학교 체크
+// 6. 학교 체크
 var _onCheckSchool = function(userinput) {
+
 	var val = new Array();
 	var di = true;
 	for(var i=0; i<userinput.modal_school.value.length; i++) {
 		val[i] = userinput.modal_school.value.charAt(i);
-		if(val[i].equals('대') != true)
+		if(isNaN(val[i]) == false)
 			di = false;
 	}
-	if (userinput.modal_school.value.length != 3) {
-	//	$('#school_err').css('color', 'red');
-		$('#school_err').html('3글자만 입력하세요.');
+		
+	// 숫자 체크
+	if(di == false) {
+		$('#school_err').html('숫자는 제외해주세요.');
 		return false;
 	}
-	else if(userinput.modal_school.value) {
-		
+	else if(userinput.modal_school.value == '') {
+		$('#school_err').html('학교를 입력하세요.');
+		return false;
+	}
+	else if (userinput.modal_school.value.length > 5) {
+	//	$('#school_err').css('color', 'red');
+		$('#school_err').html('5글자 이하 입력하세요.');
+		return false;
+	}
+	else if(val[userinput.modal_school.value.length-1] !="대" &&	val[userinput.modal_school.value.length-1] != "고") {
+		$('#school_err').html('고,대를 구분해주세요.');
+		return false;
 	}
 	// ㅇㅋ 통과.
 	else {
@@ -297,18 +314,61 @@ var _onCheckSchool = function(userinput) {
 
 
 
-// 5. 집주소 체크
-var _onCheckAddress = function(userinput) {
-	if (userinput.modal_address.value.length < 5) {
-	//	$('#address_err').css('color', 'red');
-		$('#address_err').html('5글자 이상 입력하세요.');
+// 7. 직장 체크
+var _onCheckWorkplace = function(userinput) {
+	
+	if(userinput.modal_workplace.value == '') {
+		$('#workplace_err').html('직장을 입력하세요.');
+		return false;
+	}
+	
+	else if (userinput.modal_workplace.value.length < 2) {
+	//	$('#workplace_err').css('color', 'red');
+		$('#workplace_err').html('2글자 이상 입력하세요.');
 		return false;
 	}
 		
 	// ㅇㅋ 통과.
 	else {
-	//	$('#address_err').css('color', 'rgb(184, 138, 120)');
-		$('#address_err').html('');
+	//	$('#workplace_err').css('color', 'rgb(184, 138, 120)');
+		$('#workplace_err').html('');
+		return true;
+	}
+};
+
+
+
+// 8. 직업 체크
+var _onCheckOccupation = function(userinput) {
+	
+	var val = new Array();
+	var di = true;
+	for(var i=0; i<userinput.modal_occupation.value.length; i++) {
+		val[i] = userinput.modal_occupation.value.charAt(i);
+		if(isNaN(val[i]) == false)
+			di = false;
+		console.log(val[i] + ", " + di);
+	}
+	// 숫자 체크
+	if(di == false) {
+		$('#occupation_err').html('숫자는 제외해주세요.');
+		return false;
+	}
+	else if(userinput.modal_occupation.value == '') {
+		$('#occupation_err').html('직업을 입력하세요.');
+		return false;
+	}
+	
+	else if (userinput.modal_occupation.value.length < 2) {
+	//	$('#occupation_err').css('color', 'red');
+		$('#occupation_err').html('2글자 이상 입력하세요.');
+		return false;
+	}
+		
+	// ㅇㅋ 통과.
+	else {
+	//	$('#occupation_err').css('color', 'rgb(184, 138, 120)');
+		$('#occupation_err').html('');
 		return true;
 	}
 };
