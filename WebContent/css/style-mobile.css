@@ -220,6 +220,10 @@ div#searchBar img {
 	width: 25px;
 	height: 25px;
 }
+div#questionBar img {
+	width: 25px;
+	height: 25px;
+}
 /*real width => 514px*/
 @media screen and (max-width: 468px) {
 	#logo {

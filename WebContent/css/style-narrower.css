@@ -78,6 +78,11 @@ div#searchBar img {
 	height: 30px;
 }
 
+div#questionBar img {
+	width: 30px;
+	height: 30px;
+}
+
 .signup_form, .signup_text {
 font-size: 67%;
 }

@@ -9,7 +9,6 @@ var _onCheckName = function(userinput) {
 		val[i] = userinput.modal_name.value.charAt(i);
 		if(isNaN(val[i]) == false)
 			di = false;
-		console.log(val[i] + ', ' + di);
 	}
 	// 숫자가 있으면 제외
 	if (di == false) {
@@ -347,7 +346,6 @@ var _onCheckOccupation = function(userinput) {
 		val[i] = userinput.modal_occupation.value.charAt(i);
 		if(isNaN(val[i]) == false)
 			di = false;
-		console.log(val[i] + ", " + di);
 	}
 	// 숫자 체크
 	if(di == false) {

@@ -26,13 +26,31 @@
 	<link rel="stylesheet" href="css/skel-noscript.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </noscript>
-
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 <body>
 	<!-- Header -->
 	<jsp:include page="/common/header.jsp" />
 
+	<!-- effecter1_start -->
+		<div class="md-modal md-effect-12" id="question">
+			<div class="md-content">
+				<h3>qustion_Modal</h3>
+				<div>
+					<p>This is a modal to question image</p>
+					<!--
+					<ul>
+						<li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
+						<li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
+						<li><strong>Close:</strong> click on the button below to close the modal.</li>
+					</ul>
+					-->
+					<button class="button addButton font_GODOM md-close">Close me!</button>
+				</div>
+			</div>
+		</div>
+	<!-- effecter1_end -->
+	
 	<!-- Intro -->
 	<section id="intro" class="main style1 dark fullscreen">
 		<div class="content container">
@@ -43,7 +61,14 @@
 			<p>마이파이 내용</p>
 		</div>
 	</section>
-
+	<div id="questionBar">
+		<button id="question" class="toggle-filter ui-button md-trigger" data-modal="question" style="display: inline;">
+			<img src="images/icon/search.png">
+		</button>
+		
+	</div>
+	<div class="md-overlay" style="background: rgba(0,0,0,0.5);"></div>
+	
 	<!-- Loading -->
 	<section id="work" class="main style2 fullscreen" style="display: none">
 		<div class="content container">

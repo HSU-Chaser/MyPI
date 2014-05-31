@@ -857,10 +857,10 @@ body {
 
 #footer {
 	position: relative;
-	height: 5em;
+	height: 3em;
 	line-height: 5em;
 	margin: 0;
-	background: #39454b;
+	background: rgb(57,69,75);
 	color: #999;
 	color: rgba(185,186,187,0.5);
 	overflow: hidden;
@@ -895,16 +895,20 @@ body {
  }
  */
 #footer .menu {
+	top: -35%;
 	text-align: center;
 	position: relative;
-	top: 0;
-	height: 5em;
-	line-height: 5em;
+	height: 3em;
+	/*line-height: 5em;*/
 	margin: 0;
 }
 
 #footer .menu li {
-	font-size: 0.9em;
+	font-size: 0.75em;
+	margin: 0 2.5%;
+	padding: 0px;
+	border-left: 0;
+	
 }
 
 /*********************************************************************************/
@@ -1197,4 +1201,16 @@ div#searchBar img {
 /*modal Error message*/
 .errMsg {
 	margin: -0.6em;
+}
+
+/*question bar*/
+#questionBar {  
+    top: 70%;
+    width: 100%;  
+    height: 56px;  position: fixed;    
+    padding: 0.3% 36px;
+}
+#question {
+	float: right;
+	margin-right: 2%;
 }

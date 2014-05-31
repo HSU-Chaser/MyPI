@@ -1,23 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-	<style type="text/css">
-		border, th, td, tr {
-			border: 1px solid white;
-		}
-	</style>
+		
 	<!-- Modal Dialog -->
 	<!-- name -->
 	<div class="md-modal md-effect-7" id="name">
 		<div class="md-content">
 			<div>
 				<h3 class="font_GODOM">정보 수정</h3>
-<<<<<<< Upstream, based on origin/Algorithm
-				<form method="post" action="" name="userinput_name" onSubmit="return checkIt()">
-=======
 				<form method="post" action="changeInfoProcess.jsp" name="userinput_name"
 					onSubmit="return checkIt()">
->>>>>>> 68fd9df changInfoProcess
 					<table>
 						<tr>
 							<td class="signup_text font_GODOM">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</td>
@@ -42,42 +33,23 @@
 		<div class="md-content">
 			<div>
 				<h3 class="font_GODOM">정보 수정</h3>
-<<<<<<< Upstream, based on origin/Algorithm
-				<form method="post" action="" name="userinput_cellphone" onSubmit="return checkIt()">
-=======
 				<form method="post" action="changeInfoProcess.jsp" name="userinput_cellphone"
 					onSubmit="return checkIt()">
->>>>>>> 68fd9df changInfoProcess
 					<table>
 						<tr>
 							<td class="signup_text font_GODOM">전 화 번 호</td>
 							<td class="signup_form font_GODOM">
 							<input type="hidden" name="type" value="cellphone">
 								<input type="text"
-<<<<<<< Upstream, based on origin/Algorithm
 								name="modal_cellphone1" id="modal_cellphone1" class="color font_GODOM inputSize" size="10"
 								maxlength="4" placeholder="010" onblur="_onCheckCellphone(this.form)">
-=======
-								name="modal_cellphone1" id="modal_cellphone" class="color font_GODOM inputSize" size="10"
-								maxlength="35" placeholder="010">
->>>>>>> 68fd9df changInfoProcess
 								<input type="text"
-<<<<<<< Upstream, based on origin/Algorithm
 								name="modal_cellphone2" id="modal_cellphone2" class="color font_GODOM inputSize" size="10"
 								maxlength="4" placeholder="1234" onblur="_onCheckCellphone(this.form)">
-=======
-								name="modal_cellphone2" id="modal_cellphone" class="color font_GODOM inputSize" size="10"
-								maxlength="35" placeholder="1234">
->>>>>>> 68fd9df changInfoProcess
 								<input type="text"
-<<<<<<< Upstream, based on origin/Algorithm
 								name="modal_cellphone3" id="modal_cellphone3" class="color font_GODOM inputSize" size="10"
 								maxlength="4" placeholder="5678" onblur="_onCheckCellphone(this.form)">
 								<div id="cellphone_err" class="errMsg"></div></td>
-=======
-								name="modal_cellphone3" id="modal_cellphone" class="color font_GODOM inputSize" size="10"
-								maxlength="35" placeholder="5678"></td>
->>>>>>> 68fd9df changInfoProcess
 						</tr>
 						<tr>
 							<td class="signup_text" align="center"><input type="submit"
@@ -101,9 +73,8 @@
 					<table>
 						<tr>
 							<td class="signup_text font_GODOM">전 화 번 호</td>
-<<<<<<< Upstream, based on origin/Algorithm
-							<td class="signup_form font_GODOM">
-								<input type="text"
+							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="homephone">
+							<input type="text"
 								name="modal_homephone1" id="modal_homephone1" class="color font_GODOM inputSize" size="10"
 								maxlength="4" placeholder="02" onblur="_onCheckHomephone(this.form)">
 								<input type="text"
@@ -113,11 +84,6 @@
 								name="modal_homephone3" id="modal_homephone3" class="color font_GODOM inputSize" size="10"
 								maxlength="4" placeholder="5678" onblur="_onCheckHomephone(this.form)">
 								<div id="homephone_err" class="errMsg"></div></td>
-=======
-							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="homephone"><input type="text"
-								name="modal_homephone" id="modal_homephone" class="color font_GODOM" size="10"
-								maxlength="35" placeholder="02-1234-5678"></td>
->>>>>>> 68fd9df changInfoProcess
 						</tr>
 						<tr>
 							<td class="signup_text" align="center"><input type="submit"
@@ -141,8 +107,7 @@
 					<table>
 						<tr>
 							<td class="signup_text font_GODOM">생 년 월 일</td>
-<<<<<<< Upstream, based on origin/Algorithm
-							<td class="signup_form font_GODOM">
+							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="birthday">
 								<input type="text"
 								name="modal_birthday1" id="modal_birthday1" class="color font_GODOM inputSize" size="10"
 								maxlength="4" placeholder="1991" onblur="_onCheckBirthday(this.form)">
@@ -153,11 +118,6 @@
 								name="modal_birthday3" id="modal_birthday3" class="color font_GODOM inputSize" size="10"
 								maxlength="2" placeholder="29" onblur="_onCheckBirthday(this.form)">
 								<div id="birthday_err" class="errMsg"></div></td>
-=======
-							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="birthday"><input type="text"
-								name="modal_birthday" id="modal_birthday" class="color font_GODOM" size="10"
-								maxlength="35" placeholder="851212"></td>
->>>>>>> 68fd9df changInfoProcess
 						</tr>
 						<tr>
 							<td class="signup_text" align="center"><input type="submit"
@@ -170,7 +130,6 @@
 			</div>
 		</div>
 	</div>
-	
 	<!-- address -->
 	<div class="md-modal md-effect-7" id="address">
 		<div class="md-content">
