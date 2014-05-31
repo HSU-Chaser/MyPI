@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Vector;
 
 import main.patternanalysis.OpenURL;
 import main.search.MakeObject;
@@ -12,20 +13,37 @@ import main.search.SearchResult;
 
 public class Ranking {
 	static ArrayList<SearchResult> result;
-	
+	static Vector<OpenURL> openURLList;
+
 	private int client_num;
-	
-	public Ranking(int client_num){
-		this.client_num = client_num;		
+
+	public Ranking(int client_num) {
+		this.client_num = client_num;
 	}
-	
-	class urlReadRun implements Runnable {
+
+	class openURLThread implements Runnable {
+		OpenURL openUrl;
+
+		public openURLThread(String url) {
+			openUrl = new OpenURL(url);
+		}
+
+		public OpenURL getOpenUrl() {
+			return openUrl;
+		}
+
 		@Override
 		public void run() {
-			
+			try {
+				openUrl.urlRead();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			openURLList.add(openUrl);
+			return;
 		}
 	}
-	
+
 	public ArrayList<SearchResult> getResult(ArrayList<String> searchWordList)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, IOException {
@@ -37,23 +55,47 @@ public class Ranking {
 		int googleCount = 0;
 		int naverCount = 0;
 		int daumCount = 0;
-		
+
 		double finalExp = 0;
 
 		// 먼저, 구글, 네이버, 다음 검색하게 하고
 		result = makeObject.getResult(searchWordList);
 
+		ArrayList<Thread> openURLThread = new ArrayList<Thread>(result.size());
+		openURLList = new Vector<OpenURL>(result.size());
+		for (int i = 0; i < result.size(); i++) {
+			SearchResult sr = result.get(i);
+			openURLThread.add(new Thread(new openURLThread(sr.getURL())));
+			openURLThread.get(i).start();
+		}
+
+		System.out.println("Thread 대기중...");
+		while (true) {
+			int end = 0;
+			for (int i = 0; i < result.size(); i++) {
+				if (openURLThread.get(i).isAlive()) {
+					continue;
+				} else {
+					end++;
+				}
+			}
+			if (end == result.size()) {
+				System.out.println("Thread 대기 끝");
+				break;
+			}
+			try {
+				Thread.sleep(100);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		for (int i = 0; i < result.size(); i++) {
 			SearchResult sr = result.get(i);
 			double exposure = 0;
-			OpenURL openUrl = new OpenURL(sr.getURL());
 
-			try {
-				// 패턴 및 counting 작업 시작
-				openUrl.urlRead();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			OpenURL openUrl = openURLList.get(i);
+			openUrl.counting();
 
 			calExp = new CalculateExp();
 			// 계산을 해서, exposure를 리턴해줘서 받으면 됨
@@ -79,7 +121,6 @@ public class Ranking {
 		// }
 
 		for (int i = 0; i < result.size(); i++) {
-
 			if (result.get(i).getEngine().equals("Google")) {
 				googleCount++;
 			} else if (result.get(i).getEngine().equals("Naver")) {
@@ -100,24 +141,23 @@ public class Ranking {
 		expData = getExpData(client_num, finalExp);
 
 		return result;
-
 	}
 
 	public ExpDataBean getExpData(int client_num, double finalExp) {
-		
+
 		ExpDataBean expData = null;
 		expData = new ExpDataBean();
-		
+
 		GregorianCalendar cal = new GregorianCalendar();
 
 		String year = Integer.toString(cal.get(Calendar.YEAR));
-		String month = Integer.toString(cal.get(Calendar.MONTH)+1);
+		String month = Integer.toString(cal.get(Calendar.MONTH) + 1);
 		String day = Integer.toString(cal.get(Calendar.DATE));
-		
+
 		expData.setClient_num(client_num);
-		expData.setDate(year + "." +  month + "." + day);
+		expData.setDate(year + "." + month + "." + day);
 		expData.setExposure(finalExp);
-		
+
 		return expData;
 	}
 

@@ -13,7 +13,6 @@ import main.search.SearchResult;
 public class SearchTest {
 
 	public static void main(String[] args) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
-
 		SearchDic searchDic;
 		//세션 client_num 값 넣어야됨
 		Ranking ranking = new Ranking(8);
@@ -40,9 +39,6 @@ public class SearchTest {
 					+ result.get(i).getURL());
 		}
 
-		
-		
-		
 	}
 }
  
