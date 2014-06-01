@@ -48,5 +48,5 @@ public class SearchResult implements Serializable {
 	public String getEngine() {
 		return engine;
 	}
-
+	
 }

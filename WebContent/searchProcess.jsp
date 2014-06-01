@@ -1,7 +1,7 @@
 <%@page import="main.search.MakeObject"%>
 <%@page import="main.ranking.ImageStorage"%>
 <%@page import="main.search.SearchResult"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Vector"%>
 <%@page import="main.search.SearchDic"%>
 <%@page import="main.ranking.ExtendedInfo"%>
 <%@page import="main.ranking.Ranking"%>
@@ -50,7 +50,7 @@
 	<%
 		String memberEmail = (String) session.getAttribute("memEmail");
 
-			if (memberEmail == null) {
+		if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -61,15 +61,14 @@
 
 			String client_str = (String) session.getAttribute("client_num");
 			int client_num = Integer.parseInt(client_str);
-			SearchDic searchDic;
 			Ranking ranking = new Ranking(client_num);
 			ExtendedInfo extend = new ExtendedInfo(memberEmail);
-			searchDic = new SearchDic(memberEmail); // binding 에 전달
+			SearchDic searchDic = new SearchDic(memberEmail); // binding 에 전달
 			extend.makeKeywordMap();
 
 			searchDic.bindingWord(extend.getKeywordMap());
 
-			ArrayList<SearchResult> result = ranking.getResult(searchDic
+			Vector<SearchResult> result = ranking.getResult(searchDic
 					.getSearchWordList());
 			/* MakeObject object = new MakeObject();
 			ArrayList<SearchResult> result = object.getResult(searchDic

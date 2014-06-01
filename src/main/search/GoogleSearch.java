@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,7 +20,7 @@ public class GoogleSearch {
 	private static final String google = "http://www.google.com/search?";
 	private static final String key = "&key=AIzaSyCMGfdDaSfjqv5zYoS0mTJnOT3e9MURWkU";
 	private static final String cx = "&cx=010276989280583185703:8ss-tvlus7w";
-	private ArrayList<SearchResult> result = new ArrayList<SearchResult>();
+	private Vector<SearchResult> result = new Vector<SearchResult>();
 	private String query;
 	private int limit;
 
@@ -29,7 +29,7 @@ public class GoogleSearch {
 		this.limit = limit;
 	}
 
-	public ArrayList<SearchResult> getResult() {
+	public Vector<SearchResult> getResult() {
 		// Initialize
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder;

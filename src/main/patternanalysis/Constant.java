@@ -1,13 +1,9 @@
 package main.patternanalysis;
 
-public interface Constant {
-
-
-	
+public interface Constant {	
 	
 	
 	int RATIO = 2;
-	
-	int TOTALKEYWORD = 12;
 
+	int TOTALKEYWORD = 12;
 }

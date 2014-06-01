@@ -7,15 +7,9 @@ import main.ranking.ExtendedInfo;
 
 public class FindPattern {
 
-	public ArrayList<String> document = new ArrayList<String>();
 	HashMap<String, String> userMap = new HashMap<String, String>();
 
-	public FindPattern(ArrayList<String> document) {
-		this.document = document;
-	}
-
-	public void countingProcess() {
-
+	public void countingProcess(ArrayList<String> document) {
 		userMap.clear();
 		userMap = ExtendedInfo.getKeywordMap();
 
@@ -24,7 +18,6 @@ public class FindPattern {
 		// 패턴 분석 삭제
 
 		for (int i = 0; i < document.size(); i++) {
-
 			if (!(userMap.get("cellphone").equals("null"))) {
 				if (document.get(i).contains(userMap.get("cellphone"))) {
 					RankingCount.cellphoneCount++;

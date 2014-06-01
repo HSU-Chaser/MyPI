@@ -5,13 +5,18 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Vector;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import main.patternanalysis.OpenURL;
 import main.search.MakeObject;
 import main.search.SearchResult;
 
 public class Ranking {
-	public static ArrayList<SearchResult> result;
+
+	static Vector<SearchResult> result;
+	static Vector<OpenURL> openURLList;
 
 	private int client_num;
 
@@ -19,7 +24,30 @@ public class Ranking {
 		this.client_num = client_num;
 	}
 
-	public ArrayList<SearchResult> getResult(ArrayList<String> searchWordList)
+	class openURLThread implements Runnable {
+		OpenURL openUrl;
+
+		public openURLThread(String url) {
+			openUrl = new OpenURL(url);
+		}
+
+		public OpenURL getOpenUrl() {
+			return openUrl;
+		}
+
+		@Override
+		public void run() {
+			try {
+				openUrl.urlRead();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			openURLList.add(openUrl);
+			return;
+		}
+	}
+
+	public Vector<SearchResult> getResult(ArrayList<String> searchWordList)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, IOException {
 		ExpDataBean expData = null;
@@ -36,18 +64,52 @@ public class Ranking {
 		// 먼저, 구글, 네이버, 다음 검색하게 하고
 		result = makeObject.getResult(searchWordList);
 
+		ExecutorService service = Executors.newFixedThreadPool(50);
+		openURLList = new Vector<OpenURL>(result.size());
 		for (int i = 0; i < result.size(); i++) {
-
 			SearchResult sr = result.get(i);
-			double exposure = 0;
-			OpenURL openUrl = new OpenURL(sr.getURL());
+			service.execute(new openURLThread(sr.getURL()));
+		}
 
+		System.out.println("======페이지 분석중...======");
+		service.shutdown();
+		while (true) {
+			if (service.isTerminated()) {
+				System.out.println("======페이지 분석 끝======");
+				break;
+			}
 			try {
-				// 패턴 및 counting 작업 시작
-				openUrl.urlRead();
-			} catch (IOException e) {
+				Thread.sleep(100);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+
+		System.out.println("======위험도 계산중...======");
+
+		System.out.println("result 사이즈 : " + result.size() + " openURLList 사이즈 : " + openURLList.size());
+		
+		for (int i = 0; i < openURLList.size(); i++) {
+
+			SearchResult sr = null;
+			double exposure = 0;
+			OpenURL openUrl = openURLList.get(i);
+
+			for (int j = 0; j < result.size(); j++) {
+				
+				System.out.println(result.get(j).getURL());	
+				System.out.println(openUrl.originUrl);
+				if (result.get(j).getURL().equals(openUrl.originUrl)) {
+					sr = result.get(j);
+				}
+				
+			}
+			
+			if (sr == null) {
+				System.out.println("sr에 객체 안들어감");
+			}
+
+			openUrl.counting();
 
 			calExp = new CalculateExp();
 			// 계산을 해서, exposure를 리턴해줘서 받으면 됨
@@ -56,6 +118,8 @@ public class Ranking {
 			sr.setExposure(exposure);
 			result.set(i, sr);
 		}
+
+		System.out.println("======위험도 계산 끝======");
 
 		sortResult();
 		System.out.println("퀵소트 직후의 result 사이즈 : " + result.size());
@@ -72,24 +136,6 @@ public class Ranking {
 		// * pageRank.getPR(result.get(i).getURL()));
 		// }
 
-		// for (int i = 0; i < result.size(); i++) {
-		//
-		// if (result.get(i).getEngine().equals("Google")) {
-		// googleCount++;
-		// } else if (result.get(i).getEngine().equals("Naver")) {
-		// naverCount++;
-		// } else if (result.get(i).getEngine().equals("Daum")) {
-		// daumCount++;
-		// }
-		// }
-		//
-		// EngineGraph engineGraph = new EngineGraph(googleCount, naverCount,
-		// daumCount);
-		// System.out.println("카운트가 어떻게 되는데 그래요? : " + googleCount + "   "
-		// + naverCount + "    " + daumCount);
-		//
-		// engineGraph.computeEngineRate();
-		//
 		expData = new ExpDataBean();
 		expData = getExpData(client_num, finalExp);
 
@@ -159,7 +205,7 @@ public class Ranking {
 		quicksort(result, 0, result.size() - 1);
 	}
 
-	public int partition(ArrayList<SearchResult> arr, int left, int right,
+	public int partition(Vector<SearchResult> arr, int left, int right,
 			int pivotIndex) {
 		SearchResult pivotValue = arr.get(pivotIndex);
 		SearchResult tmp = arr.get(pivotIndex);
@@ -187,7 +233,7 @@ public class Ranking {
 		return storeIndex;
 	}
 
-	public void quicksort(ArrayList<SearchResult> arr, int left, int right) {
+	public void quicksort(Vector<SearchResult> arr, int left, int right) {
 
 		if (right > left) {
 			int pivotIndex = left + (right - left) / 2;
