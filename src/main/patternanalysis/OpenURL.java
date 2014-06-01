@@ -10,19 +10,19 @@ import java.util.ArrayList;
 
 public class OpenURL {
 
-	ArrayList<String> document = new ArrayList<String>();
+	StringBuffer document = new StringBuffer();
 
 	public String originUrl, buffer = "";
 
-	KeywordCounting findpattern;
+	KeywordCounting keywordCounting;
 
 	public OpenURL(String originUrl) {
 		this.originUrl = originUrl;
 	}
 
 	public RankingCount counting() {
-		findpattern = new KeywordCounting();
-		return findpattern.countingProcess(document);
+		keywordCounting = new KeywordCounting();
+		return keywordCounting.countingProcess(document);
 	}
 
 	public void urlRead() throws IOException {
@@ -89,7 +89,7 @@ public class OpenURL {
 			br = new BufferedReader(rd);
 
 			while ((buffer = br.readLine()) != null) {
-				document.add(buffer);
+				document.append(buffer);
 			}
 
 			
