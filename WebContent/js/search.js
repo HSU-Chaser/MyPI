@@ -7,6 +7,13 @@ $(document).ready(function() {
 		$('.filter').toggle(200);
 		$('.toggle-filter').toggle();
 	});
+	
+	$('#question_button').bind('click', function() {
+		if($('#close-filter').css('display') == 'none'){
+			$('.filter').toggle(200);
+			$('.toggle-filter').toggle();
+		}
+	});
 
 	// Search Event
 	$('#search').bind('click', function() {

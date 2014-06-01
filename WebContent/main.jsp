@@ -62,7 +62,7 @@
 		</div>
 	</section>
 	<div id="questionBar">
-		<button id="question" class="toggle-filter ui-button md-trigger" data-modal="question" style="display: inline;">
+		<button id="question_button" class="ui-button md-trigger" data-modal="question" style="display: inline;">
 			<img src="images/icon/search.png">
 		</button>
 		

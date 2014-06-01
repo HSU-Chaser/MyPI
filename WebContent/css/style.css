@@ -1210,7 +1210,7 @@ div#searchBar img {
     height: 56px;  position: fixed;    
     padding: 0.3% 36px;
 }
-#question {
+#question_button {
 	float: right;
 	margin-right: 2%;
 }
