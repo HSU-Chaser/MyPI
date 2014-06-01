@@ -32,7 +32,7 @@
 <%if(request.getSession().getAttribute("memEmail") ==null){ %>
 <script>
 	alert("로그인을 하셔야 합니다.");
-	history.go(-1);
+	location.replace("index.jsp");
 </script>
 <%}else{ %>
 	<!-- Header -->
