@@ -29,9 +29,14 @@
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 <body>
+<%if(request.getSession().getAttribute("memEmail") ==null){ %>
+<script>
+	alert("로그인을 하셔야 합니다.");
+	history.go(-1);
+</script>
+<%}else{ %>
 	<!-- Header -->
 	<jsp:include page="/common/header.jsp" />
-
 	<!-- effecter1_start -->
 		<div class="md-modal md-effect-12" id="question">
 			<div class="md-content">
@@ -88,5 +93,6 @@
 
 	<!-- Footer -->
 	<jsp:include page="/common/footer.jsp" />
+<%} %>
 </body>
 </html>
