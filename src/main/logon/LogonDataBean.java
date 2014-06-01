@@ -19,16 +19,16 @@ public class LogonDataBean {
 		this.client_num = client_num;
 	}
 
-	private String password;
-	private String name;
-	private String cellphone;
-	private String homephone;
-	private String birthday;
-	private String address;
-	private String school;
-	private String workplace;
-	private String occupation;
-	private int current_grade;
+	private String password="null";
+	private String name="null";
+	private String cellphone="null";
+	private String homephone="null";
+	private String birthday="null";
+	private String address="null";
+	private String school ="null";
+	private String workplace="null";
+	private String occupation="null";
+	private int current_grade=-1;
 	private boolean certStatus;
 	
 	public int getClient_num() {
