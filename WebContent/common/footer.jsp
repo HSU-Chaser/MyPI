@@ -22,26 +22,53 @@
 	<!-- effecter1_start -->
 		<div class="md-modal md-effect-12" id="mailMd">
 			<div class="md-content">
-				<h3>Mail_Modal</h3>
-				<div>
-					<p>This is a modal to mail session</p>
-					<!--
-					<ul>
-						<li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
-						<li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
-						<li><strong>Close:</strong> click on the button below to close the modal.</li>
-					</ul>
-					-->
-					<button class="button addButton font_GODOM md-close">Close me!</button>
-				</div>
+				<!-- Contact -->
+								<div class="content container" style="margin-top: 100px;">
+									<header style="padding: 0; margin: 0;">
+										<h2 style="text-align: center;">Sending &nbsp;&nbsp;Message</h2>
+									</header>
+									<div class="box container small" style="width: 100%; padding-bottom: 0;">
+										<form action="mail.php" method="post">
+											<div class="row half">
+												<div class="6u">
+													<input type="text" id="fname" name="fname" class="font_GODOM" placeholder="이  름" />
+												</div>
+												<div class="6u">
+													<input type="text" id="fmail" name="fmail" class="font_GODOM" placeholder="이메일" />
+												</div>
+											</div>
+											<div class="row half">
+												<div class="12u">
+													<textarea id="message" name="message" class="font_GODOM" placeholder="내용"
+														rows="6"></textarea>
+												</div>
+											</div>
+											<div class="row half">
+												<div class="6u" style="padding: 0 0 0 5%; text-align: center;">
+													<ul class="actions" style="padding: 0;">
+														<li style="display: block;"><input type="button" class="button addButton font_GODOM"
+															value="    전    송    " /></li>
+													</ul>
+												</div>
+												<div class="6u" style="padding: 0 0 0 5%; text-align: center;">
+													<ul class="actions" style="padding: 0;">
+														<li style="display: block;"><input type="button" class="button addButton font_GODOM md-close"
+															value="    취    소    " /></li>
+													</ul>
+												</div>
+											</div>
+										</form>
+						
+									</div>
+								</div>
 			</div>
 		</div>
 	<!-- effecter1_end -->
 	<ul class="menu">
-		<li>&copy; Copyright Team Chaser</li> |
-		<li>Design: J, Develop: s, s, y, o</li> |
+		<li>&copy; Copyright Team Chaser</li>
+		<li>Design: J, Develop: s, s, y, o</li>
 		<li>Support	:<a href="https://www.facebook.com/ihateflyingbugs"
-			style="text-decoration: blink;"> I Hate Flying Bugs</a></li> |
+			style="text-decoration: blink;"> I Hate Flying Bugs</a></li>
 		<li>Contact: <a class="md-trigger" data-modal="mailMd">hsuteamchaser@gmail.com</a></li>
 	</ul>
 	<!-- effecter2_start -->
