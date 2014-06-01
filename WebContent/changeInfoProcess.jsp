@@ -34,10 +34,13 @@
 		manager.updateAddress(address);
 	}else if(type.equals("school")){
 		String school = request.getParameter("modal_school");
+		manager.updateSchool(school);
 	}else if(type.equals("workplace")){
 		String workplace = request.getParameter("modal_workplace");
-	}else if(type.equals("occupaiton")){
+		manager.updateWorkPlace(workplace);
+	}else if(type.equals("occupation")){
 		String occupation = request.getParameter("modal_occupation");
+		manager.updateOccuPation(occupation);
 	}
 	response.sendRedirect("main.jsp");
 %>

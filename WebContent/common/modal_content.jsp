@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-		
+<%@ page import="main.logon.*" %>
+	
+<%
+	String email = (String) session.getAttribute("memEmail");
+	LogonDBBean manager = LogonDBBean.getInstance();
+	LogonDataBean c = manager.getMember(email);
+%>
+	
 	<!-- Modal Dialog -->
 	<!-- name -->
 	<div class="md-modal md-effect-7" id="name">
@@ -11,11 +18,23 @@
 					onSubmit="return checkIt()">
 					<table>
 						<tr>
+					<% if(c.getName().equals("null")){%>
 							<td class="signup_text font_GODOM">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</td>
-							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="name"><input type="text"
+							<td class="signup_form font_GODOM">
+							<input type="hidden" name="type" value="name">
+							<input type="text"
 								name="modal_name" id="modal_name" class="color font_GODOM" size="10"
-								maxlength="10" placeholder="홍 길 동" onblur="_onCheckName(this.form)">
+								maxlength="10" placeholder="홍길동" onblur="_onCheckName(this.form)">
+					<%}else{ %>
+					        <td class="signup_text font_GODOM">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</td>
+							<td class="signup_form font_GODOM">
+							<input type="hidden" name="type" value="name">
+							<input type="text"
+								name="modal_name" id="modal_name" class="color font_GODOM" size="10"
+								maxlength="10" value="<%=c.getName() %>" onblur="_onCheckName(this.form)">
+					<%} %>
 								<div id="name_err" class="errMsg"></div></td>
+								
 						</tr>
 						<tr>
 							<td class="signup_text" align="center"><input type="submit"
@@ -39,8 +58,9 @@
 						<tr>
 							<td class="signup_text font_GODOM">전 화 번 호</td>
 							<td class="signup_form font_GODOM">
+							<%if(c.getCellphone().equals("null")){ %>
 							<input type="hidden" name="type" value="cellphone">
-								<input type="text"
+							<input type="text"
 								name="modal_cellphone1" id="modal_cellphone1" class="color font_GODOM inputSize" size="10"
 								maxlength="4" placeholder="010" onblur="_onCheckCellphone(this.form)">
 								<input type="text"
@@ -49,7 +69,19 @@
 								<input type="text"
 								name="modal_cellphone3" id="modal_cellphone3" class="color font_GODOM inputSize" size="10"
 								maxlength="4" placeholder="5678" onblur="_onCheckCellphone(this.form)">
-								<div id="cellphone_err" class="errMsg"></div></td>
+							<%}else{ %>
+							<input type="hidden" name="type" value="cellphone">
+							<input type="text"
+								name="modal_cellphone1" id="modal_cellphone1" class="color font_GODOM inputSize" size="10"
+								maxlength="4" value="<%=c.getcell1()%>" onblur="_onCheckCellphone(this.form)">
+								<input type="text"
+								name="modal_cellphone2" id="modal_cellphone2" class="color font_GODOM inputSize" size="10"
+								maxlength="4" value="<%=c.getcell2()%>" onblur="_onCheckCellphone(this.form)">
+								<input type="text"
+								name="modal_cellphone3" id="modal_cellphone3" class="color font_GODOM inputSize" size="10"
+								maxlength="4" value="<%=c.getcell3()%>" onblur="_onCheckCellphone(this.form)">
+							<%} %>
+							<div id="cellphone_err" class="errMsg"></div></td>
 						</tr>
 						<tr>
 							<td class="signup_text" align="center"><input type="submit"
@@ -72,18 +104,32 @@
 					onSubmit="return checkIt()">
 					<table>
 						<tr>
+						<%if(c.getHomephone().equals("null")){ %>
 							<td class="signup_text font_GODOM">전 화 번 호</td>
 							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="homephone">
-							<input type="text"
+								<input type="text"
 								name="modal_homephone1" id="modal_homephone1" class="color font_GODOM inputSize" size="10"
-								maxlength="4" placeholder="02" onblur="_onCheckHomephone(this.form)">
+								maxlength="4" placeholder="02"  onblur="_onCheckHomephone(this.form)">
 								<input type="text"
 								name="modal_homephone2" id="modal_homephone2" class="color font_GODOM inputSize" size="10"
 								maxlength="4" placeholder="1234" onblur="_onCheckHomephone(this.form)">
 								<input type="text"
 								name="modal_homephone3" id="modal_homephone3" class="color font_GODOM inputSize" size="10"
 								maxlength="4" placeholder="5678" onblur="_onCheckHomephone(this.form)">
-								<div id="homephone_err" class="errMsg"></div></td>
+						<%}else{ %>
+						    <td class="signup_text font_GODOM">전 화 번 호</td>
+							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="homephone">
+								<input type="text"
+								name="modal_homephone1" id="modal_homephone1" class="color font_GODOM inputSize" size="10"
+								maxlength="4" value="<%=c.gethome1() %>"  onblur="_onCheckHomephone(this.form)">
+								<input type="text"
+								name="modal_homephone2" id="modal_homephone2" class="color font_GODOM inputSize" size="10"
+								maxlength="4" value="<%=c.gethome2() %>" onblur="_onCheckHomephone(this.form)">
+								<input type="text"
+								name="modal_homephone3" id="modal_homephone3" class="color font_GODOM inputSize" size="10"
+								maxlength="4" value="<%=c.gethome3() %>" onblur="_onCheckHomephone(this.form)">
+						<%} %>
+							<div id="homephone_err" class="errMsg"></div></td>
 						</tr>
 						<tr>
 							<td class="signup_text" align="center"><input type="submit"
@@ -106,17 +152,31 @@
 					onSubmit="return checkIt()">
 					<table>
 						<tr>
+						<%if(c.getBirthday().equals("null")){ %>
 							<td class="signup_text font_GODOM">생 년 월 일</td>
 							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="birthday">
-								<input type="text"
+							<input type="text"
 								name="modal_birthday1" id="modal_birthday1" class="color font_GODOM inputSize" size="10"
-								maxlength="4" placeholder="1991" onblur="_onCheckBirthday(this.form)">
+								maxlength="4"  placeholder="1990" onblur="_onCheckBirthday(this.form)">
 								<input type="text"
 								name="modal_birthday2" id="modal_birthday2" class="color font_GODOM inputSize" size="10"
-								maxlength="2" placeholder="04" onblur="_onCheckBirthday(this.form)">
+								maxlength="2"  placeholder="07" onblur="_onCheckBirthday(this.form)">
 								<input type="text"
 								name="modal_birthday3" id="modal_birthday3" class="color font_GODOM inputSize" size="10"
-								maxlength="2" placeholder="29" onblur="_onCheckBirthday(this.form)">
+								maxlength="2"  placeholder="14" onblur="_onCheckBirthday(this.form)">
+						<%}else{ %>
+						    <td class="signup_text font_GODOM">생 년 월 일</td>
+							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="birthday">
+							<input type="text"
+								name="modal_birthday1" id="modal_birthday1" class="color font_GODOM inputSize" size="10"
+								maxlength="4"  value="<%=c.getbirth1() %>" onblur="_onCheckBirthday(this.form)">
+								<input type="text"
+								name="modal_birthday2" id="modal_birthday2" class="color font_GODOM inputSize" size="10"
+								maxlength="2"  value="<%=c.getbirth2() %>" onblur="_onCheckBirthday(this.form)">
+								<input type="text"
+								name="modal_birthday3" id="modal_birthday3" class="color font_GODOM inputSize" size="10"
+								maxlength="2"  value="<%=c.getbirth3() %>" onblur="_onCheckBirthday(this.form)">
+						<% }%>
 								<div id="birthday_err" class="errMsg"></div></td>
 						</tr>
 						<tr>
@@ -139,10 +199,17 @@
 					onSubmit="return checkIt()">
 					<table>
 						<tr>
+						<%if(c.getAddress().equals("null")){ %>
 							<td class="signup_text font_GODOM">집 주 소</td>
 							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="address"><input type="text"
 								name="modal_address" id="modal_address" class="color font_GODOM" size="10"
 								maxlength="35" placeholder="서울 성북구 삼선1동" onblur="_onCheckAddress(this.form)">
+						<% }else{%>
+						    <td class="signup_text font_GODOM">집 주 소</td>
+							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="address"><input type="text"
+								name="modal_address" id="modal_address" class="color font_GODOM" size="10"
+								maxlength="35" value="<%=c.getAddress()%>" onblur="_onCheckAddress(this.form)">
+						<% }%>
 								<div id="address_err" class="errMsg"></div></td>
 						</tr>
 						<tr>
@@ -166,10 +233,17 @@
 					onSubmit="return checkIt()">
 					<table>
 						<tr>
+						<%if(c.getSchool().equals("null")){ %>
 							<td class="signup_text font_GODOM">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;교</td>
 							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="school"><input type="text"
 								name="modal_school" id="modal_school" class="color font_GODOM" size="10"
 								maxlength="10" placeholder="한 성 대" onblur="_onCheckSchool(this.form)">
+						<%}else{ %>
+							<td class="signup_text font_GODOM">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;교</td>
+							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="school"><input type="text"
+								name="modal_school" id="modal_school" class="color font_GODOM" size="10"
+								maxlength="10" value="<%=c.getSchool() %>" onblur="_onCheckSchool(this.form)">
+						<%} %>
 								<div id="school_err" class="errMsg"></div></td>
 						</tr>
 						<tr>
@@ -193,10 +267,17 @@
 					onSubmit="return checkIt()">
 					<table>
 						<tr>
+						<% if(c.getWorkplace().equals("null")){%>
 							<td class="signup_text font_GODOM">직 장 주 소</td>
 							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="workplace"><input type="text"
 								name="modal_workplace" id="modal_workplace" class="color font_GODOM" size="10"
 								maxlength="35" placeholder="한 성 대" onblur="_onCheckWorkplace(this.form)">
+						<%}else{ %>
+						    <td class="signup_text font_GODOM">직 장 주 소</td>
+							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="workplace"><input type="text"
+								name="modal_workplace" id="modal_workplace" class="color font_GODOM" size="10"
+								maxlength="35" value="<%=c.getWorkplace() %>" onblur="_onCheckWorkplace(this.form)">
+						<% }%>
 								<div id="workplace_err" class="errMsg"></div></td>
 						</tr>
 						<tr>
@@ -220,10 +301,17 @@
 					onSubmit="return checkIt()">
 					<table>
 						<tr>
+						<% if(c.getOccupation().equals("null")){%>
 							<td class="signup_text font_GODOM">직&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;업</td>
 							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="occupation"><input type="text"
 								name="modal_occupation" id="modal_occupation" class="color font_GODOM" size="10"
-								maxlength="10" placeholder="학 생" onblur="_onCheckOccupation(this.form)">
+								maxlength="10" placeholder="학 생"  onblur="_onCheckOccupation(this.form)">
+						<% }else{%>
+							<td class="signup_text font_GODOM">직&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;업</td>
+							<td class="signup_form font_GODOM"><input type="hidden" name="type" value="occupation"><input type="text"
+								name="modal_occupation" id="modal_occupation" class="color font_GODOM" size="10"
+								maxlength="10" value="<%=c.getOccupation() %>"  onblur="_onCheckOccupation(this.form)">
+						<% }%>
 								<div id="occupation_err" class="errMsg"></div></td>
 						</tr>
 						<tr>

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LogonDBBean {
+	
 	private static LogonDBBean instance = new LogonDBBean();
 
 	public static LogonDBBean getInstance() {
