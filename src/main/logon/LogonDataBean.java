@@ -25,6 +25,7 @@ public class LogonDataBean {
 	private String occupation;
 	private int current_grade;
 	private boolean certStatus;
+
 	private String cell1;
 	private String cell2;
 	private String cell3;

@@ -4,6 +4,7 @@
 	
 <%
 	String email = (String) session.getAttribute("memEmail");
+
 	LogonDBBean manager = LogonDBBean.getInstance();
 	LogonDataBean c = manager.getMember(email);
 %>
@@ -18,7 +19,7 @@
 					onSubmit="return checkIt()">
 					<table>
 						<tr>
-					<% if(c.getName().equals("null")){%>
+					<% if(c.getName().length() == 0){%>
 							<td class="signup_text font_GODOM">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</td>
 							<td class="signup_form font_GODOM">
 							<input type="hidden" name="type" value="name">

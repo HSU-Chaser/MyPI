@@ -8,8 +8,11 @@
 	<%
 		if (session.getAttribute("memEmail") == null) {
 	%>
-	<a id="logo" class="brand" href="index.jsp"><img
-		src="./images/logo.png"></a>
+		<script>
+//			alert("로그인 정보가 없습니다!");
+//			location.replace("index.jsp");
+			console.log(window.location.href);
+		</script>
 	<%
 		} else {
 	%>
