@@ -32,9 +32,20 @@ public class LogonDBBean {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("insert into member values(?,?)");
-			pstmt.setString(1, member.getEmail());
-			pstmt.setString(2, member.getPassword());
+			pstmt = conn.prepareStatement("insert into member values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			pstmt.setInt(1, member.getClient_num());
+			pstmt.setString(2, member.getEmail());
+			pstmt.setString(3, member.getPassword());
+			pstmt.setString(4, member.getName());
+			pstmt.setString(5, member.getCellphone());
+			pstmt.setString(6, member.getHomephone());
+			pstmt.setString(7, member.getBirthday());
+			pstmt.setString(8, member.getAddress());
+			pstmt.setString(9, member.getSchool());
+			pstmt.setString(10, member.getWorkplace());
+			pstmt.setString(11, member.getOccupation());
+			pstmt.setInt(12, member.getCurrent_grade());
+			pstmt.setBoolean(13, member.getCertStatus());
 
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
