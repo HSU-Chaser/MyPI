@@ -42,11 +42,11 @@ public class CalculateExp implements Constant {
 		double KT_nickname = 2 * (1 - Math.pow(0.5,
 				rankingCount.getNicknameCount()));
 
-		double KF_WT = KT_resident * 7.174 + KT_cellphone * 6.087
-				+ KT_homephone * 5.283 + KT_id * 6.087 + KT_email * 5.696
-				+ KT_name * 5.370 + KT_address * 6.891 + KT_workplace * 5.717
-				+ KT_birthday * 5.717 + KT_school * 4.913 + KT_occupation
-				* 4.891 + KT_nickname * 6.087 * 0.5;
+		double KF_WT = KT_resident * 7.2 + KT_cellphone * 6.1
+				+ KT_homephone * 5.3 + KT_id * 6.1 + KT_email * 5.7
+				+ KT_name * 5.4 + KT_address * 6.9 + KT_workplace * 5.7
+				+ KT_birthday * 5.7 + KT_school * 4.9 + KT_occupation
+				* 4.9 + KT_nickname * 6.1 * 0.5;
 
 		// int pr = pageRank.getPR(URL);
 
