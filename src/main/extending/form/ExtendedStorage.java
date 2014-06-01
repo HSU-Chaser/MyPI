@@ -1,6 +1,8 @@
 package main.extending.form;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import main.extending.Cyworld;
 import main.extending.CyworldBlog;
@@ -27,6 +29,8 @@ public class ExtendedStorage {
 	private String clientId;
 	private String clientEmail;
 
+	Search[] webSite = new Search[11];
+
 	public ExtendedStorage(String clientEmail) {
 		this.clientEmail = clientEmail;
 		clientId = this.clientEmail.split("@")[0];
@@ -44,11 +48,21 @@ public class ExtendedStorage {
 		imgList = new ArrayList<String>();
 	}
 
+	class staticThread implements Runnable {
+		int i;
+
+		public staticThread(int i) {
+			this.i = i;
+		}
+
+		@Override
+		public void run() {
+			webSite[i].searchMaterials(getClientId());
+			return;
+		}
+	}
+
 	public void execute() {
-
-		Search[] webSite;
-		webSite = new Search[11];
-
 		webSite[0] = new NaverBlog();
 		webSite[1] = new Twitter();
 		webSite[2] = new NaverMe2day();
@@ -62,9 +76,25 @@ public class ExtendedStorage {
 		webSite[10] = new Cyworld();
 		// webSite[11] = new Tistory(); // 진행중
 
+		System.out.println("======Static Search 시작======");
+		ExecutorService service = Executors.newFixedThreadPool(webSite.length);
 		for (int i = 0; i < webSite.length - 1; i++) {
-			webSite[i].searchMaterials(getClientId());
+			service.execute(new staticThread(i));
 		}
+
+		service.shutdown();
+		while (true) {
+			if (service.isTerminated()) {
+				System.out.println("======Static Search 종료======");
+				break;
+			}
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
 		webSite[webSite.length - 1].searchMaterials(getClientEmail()); // Cyworld
 
 		checkDupNick();
@@ -96,21 +126,16 @@ public class ExtendedStorage {
 
 	}
 
-	// 중복 배제 
+	// 중복 배제
 	public void checkDupNick() {
-
 		int currentSize = nickNameList.size();
 
 		for (int i = 0; i < currentSize - 1; i++) {
-
 			for (int j = i + 1; j < currentSize; j++) {
-
 				if (nickNameList.get(i).equals(nickNameList.get(j))) {
-
 					nickNameList.remove(j);
 					j--;
 					currentSize--;
-
 				}
 			}
 		}

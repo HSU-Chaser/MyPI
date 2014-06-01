@@ -88,7 +88,7 @@ public class NaverSearch {
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			
 			con.addRequestProperty("User-Agent", "Mozilla/4.0");
-			con.setConnectTimeout(10000);
+			con.setConnectTimeout(5000);
 			con.setReadTimeout(3000);
 			
 			InputStream is = con.getInputStream();

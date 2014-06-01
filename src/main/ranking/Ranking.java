@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Vector;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import main.patternanalysis.OpenURL;
 import main.search.MakeObject;
 import main.search.SearchResult;
 
 public class Ranking {
-	static ArrayList<SearchResult> result;
+	static Vector<SearchResult> result;
 	static Vector<OpenURL> openURLList;
 
 	private int client_num;
@@ -44,7 +46,7 @@ public class Ranking {
 		}
 	}
 
-	public ArrayList<SearchResult> getResult(ArrayList<String> searchWordList)
+	public Vector<SearchResult> getResult(ArrayList<String> searchWordList)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, IOException {
 		ExpDataBean expData = null;
@@ -61,26 +63,18 @@ public class Ranking {
 		// 먼저, 구글, 네이버, 다음 검색하게 하고
 		result = makeObject.getResult(searchWordList);
 
-		ArrayList<Thread> openURLThread = new ArrayList<Thread>(result.size());
+		ExecutorService service = Executors.newFixedThreadPool(50);
 		openURLList = new Vector<OpenURL>(result.size());
 		for (int i = 0; i < result.size(); i++) {
 			SearchResult sr = result.get(i);
-			openURLThread.add(new Thread(new openURLThread(sr.getURL())));
-			openURLThread.get(i).start();
+			service.execute(new openURLThread(sr.getURL()));
 		}
 
-		System.out.println("Thread 대기중...");
+		System.out.println("======페이지 분석중...======");
+		service.shutdown();
 		while (true) {
-			int end = 0;
-			for (int i = 0; i < result.size(); i++) {
-				if (openURLThread.get(i).isAlive()) {
-					continue;
-				} else {
-					end++;
-				}
-			}
-			if (end == result.size()) {
-				System.out.println("Thread 대기 끝");
+			if (service.isTerminated()) {
+				System.out.println("======페이지 분석 끝======");
 				break;
 			}
 			try {
@@ -90,6 +84,7 @@ public class Ranking {
 			}
 		}
 
+		System.out.println("======위험도 계산중...======");
 		for (int i = 0; i < result.size(); i++) {
 			SearchResult sr = result.get(i);
 			double exposure = 0;
@@ -104,6 +99,7 @@ public class Ranking {
 			sr.setExposure(exposure);
 			result.set(i, sr);
 		}
+		System.out.println("======위험도 계산 끝======");
 
 		sortResult();
 		System.out.println("퀵소트 직후의 result 사이즈 : " + result.size());
@@ -182,19 +178,14 @@ public class Ranking {
 
 	// URL duplication check after sort(바로 옆에 있는 것만 체크)
 	public void checkDupUrl() {
-
 		int currentSize = result.size();
 
 		for (int i = 0; i < currentSize - 1; i++) {
-
 			for (int j = i + 1; j < currentSize; j++) {
-
 				if (result.get(i).getURL().equals(result.get(j).getURL())) {
-
 					result.remove(j);
 					j--;
 					currentSize--;
-
 				}
 			}
 		}
@@ -205,7 +196,7 @@ public class Ranking {
 		quicksort(result, 0, result.size() - 1);
 	}
 
-	public int partition(ArrayList<SearchResult> arr, int left, int right,
+	public int partition(Vector<SearchResult> arr, int left, int right,
 			int pivotIndex) {
 		SearchResult pivotValue = arr.get(pivotIndex);
 		SearchResult tmp = arr.get(pivotIndex);
@@ -233,13 +224,12 @@ public class Ranking {
 		return storeIndex;
 	}
 
-	public void quicksort(ArrayList<SearchResult> arr, int left, int right) {
-
+	public void quicksort(Vector<SearchResult> result2, int left, int right) {
 		if (right > left) {
 			int pivotIndex = left + (right - left) / 2;
-			int pivotNewIndex = partition(arr, left, right, pivotIndex);
-			quicksort(arr, left, pivotNewIndex - 1);
-			quicksort(arr, pivotNewIndex + 1, right);
+			int pivotNewIndex = partition(result2, left, right, pivotIndex);
+			quicksort(result2, left, pivotNewIndex - 1);
+			quicksort(result2, pivotNewIndex + 1, right);
 		}
 
 	}
