@@ -30,7 +30,7 @@ public class ExtendedStorage {
 	public ExtendedStorage(String clientEmail) {
 		this.clientEmail = clientEmail;
 		clientId = this.clientEmail.split("@")[0];
-		init();
+
 	}
 
 	public void init() {
@@ -45,7 +45,8 @@ public class ExtendedStorage {
 	}
 
 	public void execute() {
-
+		
+		init();
 		Search[] webSite;
 		webSite = new Search[11];
 
@@ -70,7 +71,13 @@ public class ExtendedStorage {
 		checkDupNick();
 
 		// 프로필 이미지 저장
+
+		System.out.println("static search에서 이미지 개수 : " + imgUrlList.size());
+
 		ImageStorage.getImgUrlList().addAll(imgUrlList);
+
+		System.out.println("이미지 스토리지에 더해진 개수 : "
+				+ ImageStorage.getImgUrlList().size());
 
 		System.out.println("");
 		System.out.println(getClientId() + "님의 닉네임");
@@ -96,7 +103,7 @@ public class ExtendedStorage {
 
 	}
 
-	// 중복 배제 
+	// 중복 배제
 	public void checkDupNick() {
 
 		int currentSize = nickNameList.size();

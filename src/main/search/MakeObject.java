@@ -20,7 +20,7 @@ public class MakeObject {
 	public ArrayList<SearchResult> getResult(ArrayList<String> searchWordList)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, IOException {
-		ImageSearch imageSearch = new ImageSearch();
+
 		ArrayList<String> naverSearchWordList = new ArrayList<String>();
 		
 
@@ -50,7 +50,15 @@ public class MakeObject {
 		}
 
 		// Google 이미지 검색 실시  limit 8이 한계		
-		imageSearch.setImageSearchResult(SearchDic.getImgSearchWord(), 8);
+		
+		try {
+			ImageSearch.setImageSearchResult(SearchDic.getImgSearchWord(), 8);
+		} catch (IllegalAccessException | InvocationTargetException
+				| NoSuchMethodException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		return result;
 	}

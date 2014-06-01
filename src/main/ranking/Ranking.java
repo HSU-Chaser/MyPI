@@ -11,15 +11,14 @@ import main.search.MakeObject;
 import main.search.SearchResult;
 
 public class Ranking {
-	static ArrayList<SearchResult> result;
-	
+	public static ArrayList<SearchResult> result;
+
 	private int client_num;
-	
-	public Ranking(int client_num){
-		this.client_num = client_num;		
+
+	public Ranking(int client_num) {
+		this.client_num = client_num;
 	}
-	
-	
+
 	public ArrayList<SearchResult> getResult(ArrayList<String> searchWordList)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, IOException {
@@ -31,7 +30,7 @@ public class Ranking {
 		int googleCount = 0;
 		int naverCount = 0;
 		int daumCount = 0;
-		
+
 		double finalExp = 0;
 
 		// 먼저, 구글, 네이버, 다음 검색하게 하고
@@ -73,24 +72,24 @@ public class Ranking {
 		// * pageRank.getPR(result.get(i).getURL()));
 		// }
 
-		for (int i = 0; i < result.size(); i++) {
-
-			if (result.get(i).getEngine().equals("Google")) {
-				googleCount++;
-			} else if (result.get(i).getEngine().equals("Naver")) {
-				naverCount++;
-			} else if (result.get(i).getEngine().equals("Daum")) {
-				daumCount++;
-			}
-		}
-
-		EngineGraph engineGraph = new EngineGraph(googleCount, naverCount,
-				daumCount);
-		System.out.println("카운트가 어떻게 되는데 그래요? : " + googleCount + "   "
-				+ naverCount + "    " + daumCount);
-
-		engineGraph.computeEngineRate();
-
+		// for (int i = 0; i < result.size(); i++) {
+		//
+		// if (result.get(i).getEngine().equals("Google")) {
+		// googleCount++;
+		// } else if (result.get(i).getEngine().equals("Naver")) {
+		// naverCount++;
+		// } else if (result.get(i).getEngine().equals("Daum")) {
+		// daumCount++;
+		// }
+		// }
+		//
+		// EngineGraph engineGraph = new EngineGraph(googleCount, naverCount,
+		// daumCount);
+		// System.out.println("카운트가 어떻게 되는데 그래요? : " + googleCount + "   "
+		// + naverCount + "    " + daumCount);
+		//
+		// engineGraph.computeEngineRate();
+		//
 		expData = new ExpDataBean();
 		expData = getExpData(client_num, finalExp);
 
@@ -99,20 +98,20 @@ public class Ranking {
 	}
 
 	public ExpDataBean getExpData(int client_num, double finalExp) {
-		
+
 		ExpDataBean expData = null;
 		expData = new ExpDataBean();
-		
+
 		GregorianCalendar cal = new GregorianCalendar();
 
 		String year = Integer.toString(cal.get(Calendar.YEAR));
-		String month = Integer.toString(cal.get(Calendar.MONTH)+1);
+		String month = Integer.toString(cal.get(Calendar.MONTH) + 1);
 		String day = Integer.toString(cal.get(Calendar.DATE));
-		
+
 		expData.setClient_num(client_num);
-		expData.setDate(year + "." +  month + "." + day);
+		expData.setDate(year + "." + month + "." + day);
 		expData.setExposure(finalExp);
-		
+
 		return expData;
 	}
 

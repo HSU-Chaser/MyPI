@@ -91,8 +91,10 @@
 	<h2 class="resultObject font_GODOM">그래프</h2>
 	<div id="graph" class="resultObject">
 		<div class="div-th">
-			<div class="div-td font_GODOM" style="width: 50%; float: left">검색 엔진 비율</div>
-			<div class="div-td font_GODOM" style="width: 50%; float: left">검색 통계</div>
+			<div class="div-td font_GODOM" style="width: 50%; float: left">검색
+				엔진 비율</div>
+			<div class="div-td font_GODOM" style="width: 50%; float: left">검색
+				통계</div>
 		</div>
 		<div style="clear: both;"></div>
 		<div class="div-tr">
@@ -112,7 +114,8 @@
 	<div id="image" class="resultObject">
 		<div class="div-tr">
 			<%
-				for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
+				System.out.println(ImageStorage.getImgUrlList().size());
+					for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
 			%>
 			<div class="div-td" align="center" style="width: 20%; float: left">
 				<img src="<%=ImageStorage.getImgUrlList().get(i)%>" width="100%"
@@ -260,6 +263,8 @@
 		</div>
 		<%
 			}
+				ImageStorage.getImgUrlList().clear();
+				SearchDic.getSearchWordList().clear();
 			}
 		%>
 	</div>

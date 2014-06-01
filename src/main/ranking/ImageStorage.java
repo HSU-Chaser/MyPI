@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public class ImageStorage {
 
-	
-	
+
 	private static ArrayList<String> imgUrlList;
 	
 	public static ArrayList<String> getImgUrlList(){

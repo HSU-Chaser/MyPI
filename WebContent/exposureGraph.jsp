@@ -10,7 +10,7 @@
 		installation_dir = rootPath + "SwiffChart";
 	} else {
 		// Local Path
-		installation_dir = "C:\\Program Files\\GlobFX\\Swiff Chart Generator 3";
+		installation_dir = "C:\\Program Files (x86)\\GlobFX\\Swiff Chart Generator 3";
 	}
 	
 	//Create a new Swiff Chart object
@@ -57,7 +57,7 @@
 	chart.SetHeight(50);
 	
 	//반복효과
-	chart.SetLooping(false);
+	chart.SetLooping(true);
 
 	chart.SetOutputFormat("SWF");
 	
