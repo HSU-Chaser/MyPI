@@ -50,6 +50,15 @@ public class CalculateExp implements Constant {
 
 		// int pr = pageRank.getPR(URL);
 
+		
+
+		// * (1 + pr); // / totalKeyword
+
+		urlExposure = KF_WT
+				* calCoupling(KT_resident, KT_cellphone, KT_homephone, KT_id,
+						KT_email, KT_name, KT_address, KT_workplace,
+						KT_birthday, KT_school, KT_occupation, KT_nickname);
+		
 		System.out.println("주민" + rankingCount.getResidentCount() + " " + "핸드폰"
 				+ rankingCount.getCellphoneCount() + " " + "집전화"
 				+ rankingCount.getHomephoneCount() + " " + "아이디"
@@ -60,15 +69,7 @@ public class CalculateExp implements Constant {
 				+ rankingCount.getBirthdayCount() + " " + "학교"
 				+ rankingCount.getSchoolCount() + " " + "직업"
 				+ rankingCount.getOccupationCount() + " " + "닉네임"
-				+ rankingCount.getNicknameCount());
-
-		// * (1 + pr); // / totalKeyword
-
-		urlExposure = KF_WT
-				* calCoupling(KT_resident, KT_cellphone, KT_homephone, KT_id,
-						KT_email, KT_name, KT_address, KT_workplace,
-						KT_birthday, KT_school, KT_occupation, KT_nickname);
-		;
+				+ rankingCount.getNicknameCount() + "최종 노출도 : " + Math.round(urlExposure));
 
 		return Math.round(urlExposure);
 

@@ -2,10 +2,12 @@ package main.patternanalysis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 import main.ranking.ExtendedInfo;
 
-public class FindPattern {
+public class KeywordCounting {
 	RankingCount rankingCount = new RankingCount();
 	HashMap<String, String> userMap = new HashMap<String, String>();
 
@@ -15,6 +17,8 @@ public class FindPattern {
 
 		// 패턴 분석 삭제
 		for (int i = 0; i < document.size(); i++) {
+			
+			
 			if (!(userMap.get("cellphone").equals("null"))) {
 				if (document.get(i).contains(userMap.get("cellphone"))) {
 					rankingCount.cellphoneCount++;
@@ -59,7 +63,7 @@ public class FindPattern {
 			if (!(userMap.get("school").equals("null"))) {
 				if (document.get(i).contains(userMap.get("school"))) {
 					rankingCount.schoolCount++;
-		
+
 				}
 			}
 			if (!(userMap.get("occupation").equals("null"))) {
@@ -96,8 +100,12 @@ public class FindPattern {
 			}
 
 		}
+		
+		for(int i=0; i<10; i++){
+			System.out.println(document.get(i));
+		}
 
-		//document.clear();
+		// document.clear();
 		return rankingCount;
 	}
 }
