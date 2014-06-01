@@ -20,9 +20,9 @@ public class OpenURL {
 		this.originUrl = originUrl;
 	}
 	
-	public void counting() {
+	public RankingCount counting() {
 		findpattern = new FindPattern();
-		findpattern.countingProcess(document);
+		return findpattern.countingProcess(document);
 	}
 
 	public void urlRead() throws IOException {

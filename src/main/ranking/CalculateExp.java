@@ -4,14 +4,14 @@ import main.patternanalysis.Constant;
 import main.patternanalysis.RankingCount;
 
 public class CalculateExp implements Constant {
-
 	RankingCount rankingCount;
+	
+	public CalculateExp(RankingCount rankingCount) {
+		this.rankingCount = rankingCount;
+	}
 
-	public double getExposure(String URL) {
-
+	public double getExposure() {
 		PageRank pageRank = new PageRank();
-
-		rankingCount = new RankingCount();
 
 		double urlExposure = 0;
 
@@ -20,21 +20,27 @@ public class CalculateExp implements Constant {
 
 		// 가중치 먹이고
 
-		double KT_resident = 2 * (1 - Math.pow(0.5, rankingCount.residentCount));
+		double KT_resident = 2 * (1 - Math.pow(0.5,
+				rankingCount.getResidentCount()));
 		double KT_cellphone = 2 * (1 - Math.pow(0.5,
 				rankingCount.cellphoneCount));
 		double KT_homephone = 2 * (1 - Math.pow(0.5,
 				rankingCount.homephoneCount));
-		double KT_id = 2 * (1 - Math.pow(0.5, rankingCount.idCount));
-		double KT_email = 2 * (1 - Math.pow(0.5, rankingCount.emailCount));
-		double KT_name = 2 * (1 - Math.pow(0.5, rankingCount.nameCount));
-		double KT_address = 2 * (1 - Math.pow(0.5, rankingCount.addressCount));
-		double KT_workplace = 2 * (1 - Math.pow(0.5, rankingCount.addressCount));
-		double KT_birthday = 2 * (1 - Math.pow(0.5, rankingCount.birthdayCount));
-		double KT_school = 2 * (1 - Math.pow(0.5, rankingCount.schoolCount));
+		double KT_id = 2 * (1 - Math.pow(0.5, rankingCount.getIdCount()));
+		double KT_email = 2 * (1 - Math.pow(0.5, rankingCount.getEmailCount()));
+		double KT_name = 2 * (1 - Math.pow(0.5, rankingCount.getNameCount()));
+		double KT_address = 2 * (1 - Math.pow(0.5,
+				rankingCount.getAddressCount()));
+		double KT_workplace = 2 * (1 - Math.pow(0.5,
+				rankingCount.getWorkplaceCount()));
+		double KT_birthday = 2 * (1 - Math.pow(0.5,
+				rankingCount.getWorkplaceCount()));
+		double KT_school = 2 * (1 - Math
+				.pow(0.5, rankingCount.getSchoolCount()));
 		double KT_occupation = 2 * (1 - Math.pow(0.5,
-				rankingCount.occupationCount));
-		double KT_nickname = 2 * (1 - Math.pow(0.5, rankingCount.nicknameCount));
+				rankingCount.getOccupationCount()));
+		double KT_nickname = 2 * (1 - Math.pow(0.5,
+				rankingCount.getNicknameCount()));
 
 		double KF_WT = KT_resident * 7.174 + KT_cellphone * 6.087
 				+ KT_homephone * 5.283 + KT_id * 6.087 + KT_email * 5.696
@@ -44,17 +50,17 @@ public class CalculateExp implements Constant {
 
 		// int pr = pageRank.getPR(URL);
 
-		System.out.println("주민" + rankingCount.residentCount + " " + "핸드폰"
-				+ rankingCount.cellphoneCount + " " + "집전화"
-				+ rankingCount.homephoneCount + " " + "아이디"
-				+ rankingCount.idCount + " " + "이메일" + rankingCount.emailCount
-				+ " " + "이름" + rankingCount.nameCount + " " + "주소"
-				+ rankingCount.addressCount + " " + "직장"
-				+ rankingCount.workplaceCount + " " + "생일"
-				+ rankingCount.birthdayCount + " " + "학교"
-				+ rankingCount.schoolCount + " " + "직업"
-				+ rankingCount.occupationCount + " " + "닉네임"
-				+ rankingCount.nicknameCount);
+		System.out.println("주민" + rankingCount.getResidentCount() + " " + "핸드폰"
+				+ rankingCount.getCellphoneCount() + " " + "집전화"
+				+ rankingCount.getHomephoneCount() + " " + "아이디"
+				+ rankingCount.getIdCount() + " " + "이메일" + rankingCount.emailCount
+				+ " " + "이름" + rankingCount.getNameCount() + " " + "주소"
+				+ rankingCount.getAddressCount() + " " + "직장"
+				+ rankingCount.getWorkplaceCount() + " " + "생일"
+				+ rankingCount.getBirthdayCount() + " " + "학교"
+				+ rankingCount.getSchoolCount() + " " + "직업"
+				+ rankingCount.getOccupationCount() + " " + "닉네임"
+				+ rankingCount.getNicknameCount());
 
 		// * (1 + pr); // / totalKeyword
 

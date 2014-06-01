@@ -9,40 +9,27 @@ import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import main.patternanalysis.OpenURL;
 import main.search.MakeObject;
 import main.search.SearchResult;
 
 public class Ranking {
-
-	static Vector<SearchResult> result;
-	static Vector<OpenURL> openURLList;
-
+	public static Vector<SearchResult> result;
 	private int client_num;
 
 	public Ranking(int client_num) {
 		this.client_num = client_num;
 	}
 
-	class openURLThread implements Runnable {
-		OpenURL openUrl;
+	class ResultThread implements Runnable {
+		int i;
 
-		public openURLThread(String url) {
-			openUrl = new OpenURL(url);
-		}
-
-		public OpenURL getOpenUrl() {
-			return openUrl;
+		public ResultThread(int i) {
+			this.i = i;
 		}
 
 		@Override
 		public void run() {
-			try {
-				openUrl.urlRead();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			openURLList.add(openUrl);
+			result.get(i).openURL();
 			return;
 		}
 	}
@@ -51,26 +38,26 @@ public class Ranking {
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, IOException {
 		ExpDataBean expData = null;
-		CalculateExp calExp = null;
 		MakeObject makeObject = new MakeObject();
 		PageRank pageRank = new PageRank();
-
-		int googleCount = 0;
-		int naverCount = 0;
-		int daumCount = 0;
+		CalculateExp calExp;
 
 		double finalExp = 0;
 
 		// 먼저, 구글, 네이버, 다음 검색하게 하고
 		result = makeObject.getResult(searchWordList);
+		
+		// 중복 URL 체크
+		System.out.println("중복체크 이전의 result 사이즈 : " + result.size());
+		checkDupUrl();
+		System.out.println("중복체크 직후의 result 사이즈 : " + result.size());
 
+		// 페이지 분석 Threading
 		ExecutorService service = Executors.newFixedThreadPool(50);
-		openURLList = new Vector<OpenURL>(result.size());
+		
 		for (int i = 0; i < result.size(); i++) {
-			SearchResult sr = result.get(i);
-			service.execute(new openURLThread(sr.getURL()));
+			service.execute(new ResultThread(i));
 		}
-
 		System.out.println("======페이지 분석중...======");
 		service.shutdown();
 		while (true) {
@@ -85,46 +72,21 @@ public class Ranking {
 			}
 		}
 
-		System.out.println("======위험도 계산중...======");
-
-		System.out.println("result 사이즈 : " + result.size() + " openURLList 사이즈 : " + openURLList.size());
 		
-		for (int i = 0; i < openURLList.size(); i++) {
-
-			SearchResult sr = null;
-			double exposure = 0;
-			OpenURL openUrl = openURLList.get(i);
-
-			for (int j = 0; j < result.size(); j++) {
-				
-				System.out.println(result.get(j).getURL());	
-				System.out.println(openUrl.originUrl);
-				if (result.get(j).getURL().equals(openUrl.originUrl)) {
-					sr = result.get(j);
-				}
-				
-			}
+		// 페이지 분석 후 위험도 계산
+		System.out.println("======위험도 계산중...======");
+		for (int i = 0; i < result.size(); i++) {
 			
-			if (sr == null) {
-				System.out.println("sr에 객체 안들어감");
-			}
-
-			openUrl.counting();
-
-			calExp = new CalculateExp();
-			// 계산을 해서, exposure를 리턴해줘서 받으면 됨
-			exposure = calExp.getExposure(sr.getURL());
-			System.out.println("이 url의 노출도는 : " + exposure);
-			sr.setExposure(exposure);
-			result.set(i, sr);
+			//result.get(i).calExp();
+			
+			calExp = new CalculateExp(result.get(i).rankingCount);
+			result.get(i).setExposure(calExp.getExposure());
+			
 		}
-
 		System.out.println("======위험도 계산 끝======");
 
+		// 정렬
 		sortResult();
-		System.out.println("퀵소트 직후의 result 사이즈 : " + result.size());
-		checkDupUrl();
-		System.out.println("중복체크 직후의 result 사이즈 : " + result.size());
 		pruningAlgorithm();
 		System.out
 				.println("pruningAlgorithm 직후의 result 사이즈 : " + result.size());
@@ -144,7 +106,6 @@ public class Ranking {
 	}
 
 	public ExpDataBean getExpData(int client_num, double finalExp) {
-
 		ExpDataBean expData = null;
 		expData = new ExpDataBean();
 
@@ -162,7 +123,6 @@ public class Ranking {
 	}
 
 	public void pruningAlgorithm() {
-
 		int resultSize = result.size();
 
 		// exposure 0, -1인 객체 삭제
@@ -180,21 +140,15 @@ public class Ranking {
 		}
 	}
 
-	// URL duplication check after sort(바로 옆에 있는 것만 체크)
 	public void checkDupUrl() {
-
 		int currentSize = result.size();
 
 		for (int i = 0; i < currentSize - 1; i++) {
-
 			for (int j = i + 1; j < currentSize; j++) {
-
 				if (result.get(i).getURL().equals(result.get(j).getURL())) {
-
 					result.remove(j);
 					j--;
 					currentSize--;
-
 				}
 			}
 		}
@@ -241,7 +195,5 @@ public class Ranking {
 			quicksort(arr, left, pivotNewIndex - 1);
 			quicksort(arr, pivotNewIndex + 1, right);
 		}
-
 	}
-
 }
