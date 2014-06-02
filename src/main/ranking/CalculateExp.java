@@ -10,7 +10,7 @@ public class CalculateExp implements Constant {
 		this.rankingCount = rankingCount;
 	}
 
-	public double getExposure() {
+	public double getExposure(String url) {
 		PageRank pageRank = new PageRank();
 
 		double urlExposure = 0;
@@ -58,6 +58,8 @@ public class CalculateExp implements Constant {
 				* calCoupling(KT_resident, KT_cellphone, KT_homephone, KT_id,
 						KT_email, KT_name, KT_address, KT_workplace,
 						KT_birthday, KT_school, KT_occupation, KT_nickname);
+		int pr = pageRank.getPR(url);
+		urlExposure = urlExposure * ((1 + pr )* 1.1 ) ;
 		
 		System.out.println("주민" + rankingCount.getResidentCount() + " " + "핸드폰"
 				+ rankingCount.getCellphoneCount() + " " + "집전화"
@@ -69,7 +71,7 @@ public class CalculateExp implements Constant {
 				+ rankingCount.getBirthdayCount() + " " + "학교"
 				+ rankingCount.getSchoolCount() + " " + "직업"
 				+ rankingCount.getOccupationCount() + " " + "닉네임"
-				+ rankingCount.getNicknameCount() + "최종 노출도 : " + Math.round(urlExposure));
+				+ rankingCount.getNicknameCount() + "페이지랭크 : " + pr + " 최종 노출도 : " + Math.round(urlExposure));
 
 		return Math.round(urlExposure);
 

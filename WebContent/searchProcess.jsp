@@ -113,21 +113,21 @@
 	<div id="image" class="resultObject">
 		<div class="div-tr">
 			<%
-				System.out.println(ImageStorage.getImgUrlList().size());
-					for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
+				for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
 			%>
-			<div class="div-td" align="center" style="width: 20%; float: left">
-				<img src="<%=ImageStorage.getImgUrlList().get(i)%>" width="100%" height="100%'
-					align="middle" alt="Image">
+			<div class="div-td" align="center"
+				style="margin-left: auto; margin-right: auto; width: 20%; height: 20%; float: left">
+				<img src="<%=ImageStorage.getImgUrlList().get(i)%>" alt="Image">
 			</div>
 			<%
-					if(i%5 == 0) {
-						%><div style="clear: both;"></div><%
-					}
+				if (i % 5 == 0) {
+			%><div style="clear: both;"></div>
+			<%
 				}
+					}
 			%>
 		</div>
-		
+
 	</div>
 
 	<h2 class="resultObject font_GODOM">Static Search</h2>

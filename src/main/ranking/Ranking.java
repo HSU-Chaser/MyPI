@@ -47,6 +47,21 @@ public class Ranking {
 		// 먼저, 구글, 네이버, 다음 검색하게 하고
 		result = makeObject.getResult(searchWordList);
 		
+		int googleCount = 0, naverCount = 0, daumCount = 0;
+		for(int i=0; i<result.size(); i++){
+			if(result.get(i).getEngine().equals("Daum")){
+				daumCount++;
+			}
+			else if(result.get(i).getEngine().equals("Naver")){
+				naverCount++;
+			}
+			else if(result.get(i).getEngine().equals("Google")){
+				googleCount++;
+			}
+		}
+		System.out.println(googleCount + "    " + naverCount + "     " +  daumCount);
+		
+		
 		// 중복 URL 체크
 		System.out.println("중복체크 이전의 result 사이즈 : " + result.size());
 		checkDupUrl();
@@ -80,7 +95,7 @@ public class Ranking {
 			//result.get(i).calExp();
 			
 			calExp = new CalculateExp(result.get(i).rankingCount);
-			result.get(i).setExposure(calExp.getExposure());
+			result.get(i).setExposure(calExp.getExposure(result.get(i).getURL()));
 			
 		}
 		System.out.println("======위험도 계산 끝======");
@@ -91,13 +106,17 @@ public class Ranking {
 		System.out
 				.println("pruningAlgorithm 직후의 result 사이즈 : " + result.size());
 
-		// //pageRank 합산
-		// for (int i = 0; i < result.size(); i++) {
-		// result.get(i).setExposure(
-		// result.get(i).getExposure()
-		// * pageRank.getPR(result.get(i).getURL()));
-		// }
-
+		
+		
+		double sumExp = 0;
+		
+		for(int i=0; i<result.size(); i++){
+			sumExp += result.get(i).getExposure();
+		}
+		System.out.println("이게 사용자 특정화 데이터 : " + sumExp);
+		
+		finalExp = sumExp;
+		
 		expData = new ExpDataBean();
 		expData = getExpData(client_num, finalExp);
 

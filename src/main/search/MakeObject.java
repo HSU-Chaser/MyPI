@@ -18,19 +18,19 @@ public class MakeObject {
 
 	String naverCategory[] = { "blog", "news", "cafearticle", "kin", "webkr",
 			"doc" };
-	String daumCategory[] = { "board", "web", "knowledge" /* , "cafe", "blog" */};
+	String daumCategory[] = { "board", "web", "knowledge" ,"cafe", "blog" };
 
 	class searchThread implements Runnable {
 		String engine, query;
 		String category;
 
-		public searchThread(String query) {
-			this.engine = "Google";
+		public searchThread(String engine, String query) {
+			this.engine = engine;
 			this.query = query;
 		}
 
-		public searchThread(String query, String category) {
-			this.engine = "Naver";
+		public searchThread(String engine, String query, String category) {
+			this.engine = engine;
 			this.query = query;
 			this.category = category;
 		}
@@ -41,6 +41,9 @@ public class MakeObject {
 				addingGoogle(query, 10);
 			} else if (engine.equals("Naver")) {
 				addingNaver(query, 5, category);
+			}
+			else if(engine.equals("Daum")){
+				addingDaum(query, 5, category);
 			}
 			return;
 		}
@@ -63,7 +66,7 @@ public class MakeObject {
 		ExecutorService service = Executors.newFixedThreadPool(50);
 		// Google 검색 실시
 		for (int i = 1; i < searchWordList.size(); i++) {
-			service.execute(new searchThread(searchWordList.get(i)));
+			service.execute(new searchThread("Google", searchWordList.get(i)));
 		}
 
 		// Naver 검색 실시- searchWordList를 Naver식으로 변형하는 한 어레이 리스트
@@ -74,10 +77,24 @@ public class MakeObject {
 			}
 			naverSearchWordList.add(searchWordList.get(i));
 			for (int j = 0; j < naverCategory.length; j++) {
-				service.execute(new searchThread(searchWordList.get(i),
+				service.execute(new searchThread("Naver", searchWordList.get(i),
 						naverCategory[j]));
 			}
 		}
+		
+		// Daum 검색 실시- searchWordList를 Naver식으로 변형하는 한 어레이 리스트
+		for (int i = 0; i < searchWordList.size(); i++) {
+			if (searchWordList.get(i).contains("AND")) {
+				searchWordList
+						.set(i, searchWordList.get(i).replace("AND", "+"));
+			}
+			naverSearchWordList.add(searchWordList.get(i));
+			for (int j = 0; j < daumCategory.length; j++) {
+				service.execute(new searchThread("Daum", searchWordList.get(i),
+						daumCategory[j]));
+			}
+		}
+		
 
 		System.out.println("======정보 검색중...======");
 		service.shutdown();
@@ -136,14 +153,10 @@ public class MakeObject {
 		result.addAll(naverSearch.getResult());
 	}
 
-	public void addingDaum(String query, int limit, String[] category) {
+	public void addingDaum(String query, int limit, String category) {
 
-		for (int i = 0; i < category.length; i++) {
-
-			daumSearch = new DaumSearch(query, limit, category[i]);
-			result.addAll(daumSearch.getResult());
-
-		}
+		daumSearch = new DaumSearch(query, limit, category);
+		result.addAll(daumSearch.getResult());
 
 	}
 }

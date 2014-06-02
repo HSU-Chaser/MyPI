@@ -78,8 +78,10 @@ public class SearchResult implements Serializable {
 	}
 
 	public void calExp() {
+		
+		System.out.println("이게 실행되면안되@@@@@@@@@@@@@@@@@@@@");
 		CalculateExp calExp = new CalculateExp(rankingCount);
-		exposure = calExp.getExposure();
+		exposure = calExp.getExposure(url);
 		System.out.println("이 url의 노출도는 : " + exposure);
 	}
 }
