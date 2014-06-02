@@ -15,9 +15,15 @@ import main.search.SearchResult;
 public class Ranking {
 	public static Vector<SearchResult> result;
 	private int client_num;
+	public ProgressObserver observer;
 
-	public Ranking(int client_num) {
+	public void setObserver(ProgressObserver observer) {
+		this.observer = observer;
+	}
+	
+	public Ranking(int client_num, ProgressObserver observer) {
 		this.client_num = client_num;
+		this.setObserver(observer);
 	}
 
 	class ResultThread implements Runnable {

@@ -1,3 +1,4 @@
+<%@page import="main.ranking.ProgressObserver"%>
 <%@page import="main.search.MakeObject"%>
 <%@page import="main.ranking.ImageStorage"%>
 <%@page import="main.search.SearchResult"%>
@@ -44,25 +45,13 @@
 	border: thin solid white;
 	text-align: center;
 }
-
-.resultObject .div-td2 {
-	background-color: rgba(255, 255, 255, .5);
-	border: thin solid white;
-	text-align: left;
-}
-
-#div1{
-	display : inline-block;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
 </style>
+
 <body>
 	<%
 		String memberEmail = (String) session.getAttribute("memEmail");
 
-		if (memberEmail == null) {
+			if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -73,7 +62,8 @@
 
 			String client_str = (String) session.getAttribute("client_num");
 			int client_num = Integer.parseInt(client_str);
-			Ranking ranking = new Ranking(client_num);
+			ProgressObserver observer = new ProgressObserver();
+			Ranking ranking = new Ranking(client_num, observer);
 			ExtendedInfo extend = new ExtendedInfo(memberEmail);
 			SearchDic searchDic = new SearchDic(memberEmail); // binding 에 전달
 			extend.makeKeywordMap();
@@ -125,14 +115,16 @@
 	<div id="image" class="resultObject">
 		<div class="div-tr">
 			<%
-				for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
+				System.out.println(ImageStorage.getImgUrlList().size());
+					for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
 			%>
 			<div class="div-td" align="center"
-				style="margin-left: auto; margin-right: auto; width: 20%; height: 20%; float: left">
-				<img src="<%=ImageStorage.getImgUrlList().get(i)%>" alt="Image">
+				style="position: relative; width: 20%; height: 0; float: left; overflow: hidden; padding-bottom: 20%">
+				<img src="<%=ImageStorage.getImgUrlList().get(i)%>"
+					style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
 			</div>
 			<%
-				if (i % 5 == 0) {
+				if (i + 1 % 5 == 0) {
 			%><div style="clear: both;"></div>
 			<%
 				}
@@ -166,7 +158,7 @@
 		<div class="div-th">
 			<div class="div-td" style="width: 5%; float: left">번호</div>
 			<div class="div-td" style="width: 82%; float: left">제목</div>
-			<div class="div-td" style="width: 10%; float: left">노출도</div>
+			<div class="div-td" style="width: 10%; float: left">위험도</div>
 			<div class="div-td" style="width: 3%; float: left">-</div>
 			<div style="clear: both;"></div>
 		</div>
@@ -176,10 +168,27 @@
 		<!-- TR -->
 		<div class="div-tr" onclick="_onFilp(<%=i + 1%>)">
 			<div class="div-td" style="width: 5%; float: left;"><%=i + 1%></div>
-			<div class="div-td" id="div1" style="width: 82%; float: left;" >
-				<a href="<%=result.get(i).getURL()%>"><%=result.get(i).getTitle()%></a>
+			<div class="div-td" style="width: 82%; float: left;">
+				<a href="<%=result.get(i).getURL()%>" target="_blank"><%=result.get(i).getTitle()%></a>
 			</div>
-			<div class="div-td" style="width: 10%; float: left;"><%=result.get(i).getExposure()%></div>
+			<div class="div-td" style="width: 10%; float: left;">
+				<%
+					double exp = result.get(i).getExposure();
+							if (exp >= 70.0) {
+				%>
+				<img alt="위험" src="images/icon/birthday.png">
+				<%
+					} else if (exp >= 30.0 && exp < 70.0) {
+				%>
+				<img alt="주의" src="images/icon/email.png">
+				<%
+					} else {
+				%>
+				<img alt="안전" src="images/icon/name.png">
+				<%
+					}
+				%>
+			</div>
 			<div class="div-td" style="width: 3%; float: left">▼</div>
 			<div style="clear: both"></div>
 		</div>
@@ -188,25 +197,14 @@
 			onclick="_onFilp(<%=i + 1%>)">
 			<!-- TR -->
 			<div class="div-tr">
-				<div class="div-td" align="center">페이지 내용
+				<div class="div-td" align="center"><%=result.get(i).getSnippet()%>
 				</div>
 			</div>
 			<div style="clear: both"></div>
+
 			<!-- TR -->
 			<div class="div-tr">
-				<div class="div-td" align="center" style="overflow: hidden; text-overflow: ellipsis; width:100%:"><%=result.get(i).getSnippet()%>
-				</div>
-			</div>
-			<div style="clear: both"></div>
-			<!-- TR -->
-			<div class="div-tr">
-				<div class="div-td" align="center">검색엔진 솔루션
-				</div>
-			</div>
-			<div style="clear: both"></div>
-			<!-- TR -->
-			<div class="div-tr">
-				<div class="div-td2" align="left" >
+				<div class="div-td" align="center">
 					<!-- Engine Solution -->
 					<%
 						if (result.get(i).getEngine().matches(".*Naver.*") == true) {
@@ -228,13 +226,7 @@
 			<div style="clear: both"></div>
 			<!-- TR -->
 			<div class="div-tr">
-				<div class="div-td" align="center">고정페이지 솔루션
-				</div>
-			</div>
-			<div style="clear: both"></div>
-			<!-- TR -->
-			<div class="div-tr">
-				<div class="div-td2" align="left">
+				<div class="div-td" align="center">
 					<!-- Static Solution -->
 					<%
 						if (result.get(i).getURL().matches(".*blog.naver.*") == true) {
