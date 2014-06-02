@@ -51,7 +51,7 @@
 	<%
 		String memberEmail = (String) session.getAttribute("memEmail");
 
-		if (memberEmail == null) {
+			if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -118,13 +118,13 @@
 				System.out.println(ImageStorage.getImgUrlList().size());
 					for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
 			%>
-			<div class="div-td" align="center" style="width: 20%; float: left">
-				<img src="<%=ImageStorage.getImgUrlList().get(i)%>" width="100%"
-					height="100%'
-					align="middle" alt="Image">
+			<div class="div-td" align="center"
+				style="position: relative; width: 20%; height: 0; float: left; overflow: hidden; padding-bottom: 20%">
+				<img src="<%=ImageStorage.getImgUrlList().get(i)%>"
+					style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
 			</div>
 			<%
-				if (i % 5 == 0) {
+				if (i + 1 % 5 == 0) {
 			%><div style="clear: both;"></div>
 			<%
 				}
