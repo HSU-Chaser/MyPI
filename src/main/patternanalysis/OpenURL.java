@@ -92,7 +92,6 @@ public class OpenURL {
 				document.append(buffer);
 			}
 
-			
 			rdChar.close();
 			brChar.close();
 			rd.close();

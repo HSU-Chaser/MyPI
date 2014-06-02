@@ -22,6 +22,7 @@ public class DaumSearch {
 	private ArrayList<SearchResult> result = new ArrayList<SearchResult>();
 	private String query;
 	private String category;
+	private String searchPage;
 	private int limit;
 
 	public DaumSearch(String query, int limit, String category) {
@@ -68,7 +69,7 @@ public class DaumSearch {
 			int resultNumber = i + 1;
 
 			SearchResult searchResult = new SearchResult("Daum", title, url,
-					snippet, resultNumber);
+					snippet, searchPage, resultNumber);
 			result.add(searchResult);
 		}
 
@@ -87,6 +88,9 @@ public class DaumSearch {
 
 		
 		System.out.println("다음API XML 주소 : " + request);
+		
+		searchPage = request.toString();
+		
 		return request.toString();
 	}
 

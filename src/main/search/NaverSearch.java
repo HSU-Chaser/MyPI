@@ -21,8 +21,9 @@ public class NaverSearch {
 	private static final String key = "key=e9f2af290088b3d1d298ced9a41c4263";
 	private ArrayList<SearchResult> result = new ArrayList<SearchResult>();
 	private String query;
-	private int limit;
 	private String category;
+	private int limit;
+	private String searchPage;
 
 	public NaverSearch(String query, int limit, String category) {
 		this.query = query;
@@ -73,7 +74,7 @@ public class NaverSearch {
 			int resultNumber = i + 1;
 
 			SearchResult searchResult = new SearchResult("Naver", title,
-					urlConversion(url), snippet, resultNumber);
+					urlConversion(url), snippet, searchPage, resultNumber);
 
 			// urlConversion(url)
 
@@ -117,6 +118,9 @@ public class NaverSearch {
 		request.append("&display=" + limit); // 결과값 제한 조정
 
 		System.out.println("네이버API XML 주소 : " + request);
+		
+		searchPage = request.toString();
+		System.out.println("네이버 searchPage : " + searchPage);
 		return request.toString();
 	}
 

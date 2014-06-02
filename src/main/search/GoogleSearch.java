@@ -22,6 +22,7 @@ public class GoogleSearch {
 	private static final String cx = "&cx=010276989280583185703:8ss-tvlus7w";
 	private Vector<SearchResult> result = new Vector<SearchResult>();
 	private String query;
+	private String searchPage; // 검색된 페이지(xml 페이지가 아님)
 	private int limit;
 
 	public GoogleSearch(String query, int limit) {
@@ -62,6 +63,7 @@ public class GoogleSearch {
 			String title = null; // T - Title
 			String url = null; // U - URL
 			String snippet = null; // S - Snippet
+			
 			if (node.getNodeType() == Node.ELEMENT_NODE) {
 				url = element.getElementsByTagName("U").item(0)
 						.getTextContent();
@@ -73,7 +75,7 @@ public class GoogleSearch {
 			int resultNumber = i + 1;
 
 			SearchResult searchResult = new SearchResult("Google", title, url,
-					snippet, resultNumber);
+					snippet, searchPage, resultNumber);
 			result.add(searchResult);
 		}
 
@@ -84,7 +86,6 @@ public class GoogleSearch {
 	private String buildSearchUrl() {
 		// Required parameters
 		StringBuilder request = new StringBuilder(google);
-		request.append("searchtype=image");
 		request.append("start=0");
 		request.append("&num=" + limit); // 검색 제한 수 조정
 		request.append(key); // API Key
@@ -101,6 +102,8 @@ public class GoogleSearch {
 		request.append("&lr=lang_ko");	
 	
 		System.out.println("구글API XML주소 : " + request.toString());
+		searchPage = request.toString().split("&output=xml_no_dtd")[0] + request.toString().split("&output=xml_no_dtd")[1];
+		System.out.println("구글 searchPage : " + searchPage);
 		return request.toString();
 	}
 
