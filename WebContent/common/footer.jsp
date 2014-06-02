@@ -47,7 +47,7 @@
 												<div class="6u" style="padding: 0 0 0 5%; text-align: center;">
 													<ul class="actions" style="padding: 0;">
 														<li style="display: block;"><input type="button" class="button addButton font_GODOM"
-															value="    전    송    " /></li>
+															value="    전    송    " onclick="_onSendMail(this.form)" /></li>
 													</ul>
 												</div>
 												<div class="6u" style="padding: 0 0 0 5%; text-align: center;">
