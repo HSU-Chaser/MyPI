@@ -6,6 +6,7 @@ import java.util.Vector;
 
 import main.ranking.ExtendedInfo;
 import main.ranking.ImageStorage;
+import main.ranking.ProgressObserver;
 import main.ranking.Ranking;
 import main.search.SearchDic;
 import main.search.SearchResult;
@@ -15,7 +16,8 @@ public class SearchTest {
 	public static void main(String[] args) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
 		SearchDic searchDic;
 		//세션 client_num 값 넣어야됨
-		Ranking ranking = new Ranking(8);
+		ProgressObserver observer = new ProgressObserver();
+		Ranking ranking = new Ranking(8, observer);
 		ExtendedInfo extend;
 		
 		//jsp 에서는 세션값으로 이메일을 받아서 넣으면 됩니다.

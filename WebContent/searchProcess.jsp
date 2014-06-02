@@ -1,3 +1,4 @@
+<%@page import="main.ranking.ProgressObserver"%>
 <%@page import="main.search.MakeObject"%>
 <%@page import="main.ranking.ImageStorage"%>
 <%@page import="main.search.SearchResult"%>
@@ -61,7 +62,8 @@
 
 			String client_str = (String) session.getAttribute("client_num");
 			int client_num = Integer.parseInt(client_str);
-			Ranking ranking = new Ranking(client_num);
+			ProgressObserver observer = new ProgressObserver();
+			Ranking ranking = new Ranking(client_num, observer);
 			ExtendedInfo extend = new ExtendedInfo(memberEmail);
 			SearchDic searchDic = new SearchDic(memberEmail); // binding 에 전달
 			extend.makeKeywordMap();
@@ -117,17 +119,19 @@
 					for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
 			%>
 			<div class="div-td" align="center" style="width: 20%; float: left">
-				<img src="<%=ImageStorage.getImgUrlList().get(i)%>" width="100%" height="100%'
-					align="middle" alt="Image">
+				<img src="<%=ImageStorage.getImgUrlList().get(i)%>" width="100%"
+					height="100%'
+					align=" middle" alt="Image">
 			</div>
 			<%
-					if(i%5 == 0) {
-						%><div style="clear: both;"></div><%
-					}
+				if (i % 5 == 0) {
+			%><div style="clear: both;"></div>
+			<%
 				}
+					}
 			%>
 		</div>
-		
+
 	</div>
 
 	<h2 class="resultObject font_GODOM">Static Search</h2>
@@ -154,7 +158,7 @@
 		<div class="div-th">
 			<div class="div-td" style="width: 5%; float: left">번호</div>
 			<div class="div-td" style="width: 82%; float: left">제목</div>
-			<div class="div-td" style="width: 10%; float: left">노출도</div>
+			<div class="div-td" style="width: 10%; float: left">위험도</div>
 			<div class="div-td" style="width: 3%; float: left">-</div>
 			<div style="clear: both;"></div>
 		</div>
@@ -167,7 +171,24 @@
 			<div class="div-td" style="width: 82%; float: left;">
 				<a href="<%=result.get(i).getURL()%>" target="_blank"><%=result.get(i).getTitle()%></a>
 			</div>
-			<div class="div-td" style="width: 10%; float: left;"><%=result.get(i).getExposure()%></div>
+			<div class="div-td" style="width: 10%; float: left;">
+				<%
+					double exp = result.get(i).getExposure();
+							if (exp >= 70.0) {
+				%>
+				<img alt="위험" src="images/icon/birthday.png">
+				<%
+					} else if (exp >= 30.0 && exp < 70.0) {
+				%>
+				<img alt="주의" src="images/icon/email.png">
+				<%
+					} else {
+				%>
+				<img alt="안전" src="images/icon/name.png">
+				<%
+					}
+				%>
+			</div>
 			<div class="div-td" style="width: 3%; float: left">▼</div>
 			<div style="clear: both"></div>
 		</div>

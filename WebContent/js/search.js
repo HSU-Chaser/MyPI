@@ -71,7 +71,7 @@ $(document).ajaxStart(function() {
 		}
 	});
 
-	function progress() {
+/*	function progress() {
 		var val = progressbar.progressbar("value") || 0;
 
 		progressbar.progressbar("value", val + 1);
@@ -81,7 +81,7 @@ $(document).ajaxStart(function() {
 		}
 	}
 
-	setTimeout(progress, 1000);
+	setTimeout(progress, 1000);*/
 });
 
 var _onFilp = function(n) {
