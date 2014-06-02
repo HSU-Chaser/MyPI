@@ -30,7 +30,16 @@ public class LogonDataBean {
 	private String occupation="null";
 	private int current_grade=-1;
 	private boolean certStatus;
+	private boolean new_client=true;
 	
+	public boolean getNew_client() {
+		return new_client;
+	}
+
+	public void setNew_client(boolean new_client) {
+		this.new_client = new_client;
+	}
+
 	public int getClient_num() {
 		return client_num;
 	}
