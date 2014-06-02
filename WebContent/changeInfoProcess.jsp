@@ -48,5 +48,4 @@
 		String occupation = request.getParameter("modal_occupation");
 		manager.updateOccuPation(c,occupation);
 	}
-	response.sendRedirect("main.jsp");
 %>

@@ -63,12 +63,14 @@ public class GoogleSearch {
 			String title = null; // T - Title
 			String url = null; // U - URL
 			String snippet = null; // S - Snippet
-			
+
 			if (node.getNodeType() == Node.ELEMENT_NODE) {
 				url = element.getElementsByTagName("U").item(0)
 						.getTextContent();
 				title = element.getElementsByTagName("T").item(0)
 						.getTextContent();
+				title = title.replaceAll(
+						"<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
 				snippet = element.getElementsByTagName("S").item(0)
 						.getTextContent();
 			}
@@ -79,7 +81,7 @@ public class GoogleSearch {
 			result.add(searchResult);
 		}
 
-		//최종적으로 만들어진 결과객체 리스트를 전달
+		// 최종적으로 만들어진 결과객체 리스트를 전달
 		return result;
 	}
 
@@ -90,19 +92,20 @@ public class GoogleSearch {
 		request.append("&num=" + limit); // 검색 제한 수 조정
 		request.append(key); // API Key
 		request.append(cx); // Custom Search Engine ID
-//		request.append("&as_q=&as_epq=" + query); // Query
-//		request.append("&as_oq=");
-		
+		// request.append("&as_q=&as_epq=" + query); // Query
+		// request.append("&as_oq=");
+
 		request.append("&q=" + query);
-		
+
 		request.append("&client=google-csbe"); // Search Engine Type
 		request.append("&output=xml_no_dtd"); // Output to XML
 		request.append("&ie=utf-8"); // Input Encoding
 		request.append("&oe=utf-8"); // Output Encoding
-		request.append("&lr=lang_ko");	
-	
+		request.append("&lr=lang_ko");
+
 		System.out.println("구글API XML주소 : " + request.toString());
-		searchPage = request.toString().split("&output=xml_no_dtd")[0] + request.toString().split("&output=xml_no_dtd")[1];
+		searchPage = request.toString().split("&output=xml_no_dtd")[0]
+				+ request.toString().split("&output=xml_no_dtd")[1];
 		System.out.println("구글 searchPage : " + searchPage);
 		return request.toString();
 	}
