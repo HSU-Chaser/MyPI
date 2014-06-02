@@ -1,4 +1,4 @@
-package main.patternanalysis;
+package test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,26 +6,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
-public class OpenURL {
+import main.patternanalysis.KeywordCounting;
+import main.patternanalysis.RankingCount;
 
-	StringBuffer document = new StringBuffer();
+public class OpenURLTest {
 
-	public String originUrl, buffer = "";
+	static StringBuffer document = new StringBuffer();
 
-	KeywordCounting keywordCounting;
+	public static String originUrl = "http://blog.naver.com/PostView.nhn?blogId=tera16&logNo=204543437";
+	public static String buffer = "";
 
-	public OpenURL(String originUrl) {
-		this.originUrl = originUrl;
-	}
-
-	public RankingCount counting() {
-		keywordCounting = new KeywordCounting();
-		return keywordCounting.countingProcess(document);
-	}
-
-	public void urlRead() throws IOException {
+	public static void urlRead() throws IOException {
 		String charset = ""; // charset finding
 		boolean check = false;
 		BufferedReader brChar, br = null;
@@ -53,6 +45,7 @@ public class OpenURL {
 			brChar = new BufferedReader(rdChar);
 
 			while ((buffer = brChar.readLine()) != null) {
+				System.out.println("Test : " + buffer);
 				if (buffer.contains("charset")) {
 					charset = buffer.split("charset=")[1].replace('"', '@')
 							.split("@")[0];
@@ -104,6 +97,10 @@ public class OpenURL {
 
 			while ((buffer = br.readLine()) != null) {
 				document.append(buffer);
+				System.out.println(buffer);
+				if(buffer.contains("테라바이트")){
+					break;
+				}
 			}
 
 			rd.close();
@@ -115,4 +112,16 @@ public class OpenURL {
 
 		System.out.println(originUrl + " 분석 끝.");
 	}
+
+	public static void main(String[] args) {
+
+		try {
+			urlRead();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
 }

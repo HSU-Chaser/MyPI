@@ -13,6 +13,7 @@ public class RankingCount {
 	public int nicknameCount = 0;
 	public int workplaceCount = 0;
 	public int occupationCount = 0;
+	
 	public int getEmailCount() {
 		return emailCount;
 	}
@@ -73,6 +74,10 @@ public class RankingCount {
 	public void setNicknameCount(int nicknameCount) {
 		this.nicknameCount = nicknameCount;
 	}
+	public void addNicknameCount(int nicknameCount){
+		this.nicknameCount += nicknameCount;
+	}
+	
 	public int getWorkplaceCount() {
 		return workplaceCount;
 	}
