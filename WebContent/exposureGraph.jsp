@@ -57,7 +57,7 @@
 	chart.SetHeight(50);
 	
 	//반복효과
-	chart.SetLooping(true);
+	chart.SetLooping(false);
 
 	chart.SetOutputFormat("SWF");
 	

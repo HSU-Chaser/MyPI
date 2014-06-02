@@ -131,7 +131,7 @@
 					}
 			%>
 		</div>
-
+<div style="clear: both;"></div>
 	</div>
 
 	<h2 class="resultObject font_GODOM">Static Search</h2>

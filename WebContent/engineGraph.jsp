@@ -70,7 +70,7 @@
 	chart.SetWidth(100);
 	chart.SetHeight(50);
 
-	chart.SetLooping(true);
+	chart.SetLooping(false);
 
 	// 출력 스트림 중복 사용 배제
 	out.clear();

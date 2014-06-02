@@ -6,6 +6,7 @@ import java.io.Serializable;
 import main.patternanalysis.OpenURL;
 import main.patternanalysis.RankingCount;
 import main.ranking.CalculateExp;
+import main.ranking.PageRank;
 
 public class SearchResult implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -14,6 +15,7 @@ public class SearchResult implements Serializable {
 	String url = null;
 	String snippet = null;
 	String searchPage = null;
+	int pr = 0;
 	public RankingCount rankingCount = new RankingCount();
 
 	int resultNumber = 0; // 결과 번호
@@ -27,6 +29,14 @@ public class SearchResult implements Serializable {
 		this.snippet = snippet;
 		this.searchPage = searchPage;
 		this.resultNumber = resultNumber;
+	}
+
+	public int getPr() {
+		return pr;
+	}
+
+	public void setPr(int pr) {
+		this.pr = pr;
 	}
 
 	public double getExposure() {
@@ -75,13 +85,20 @@ public class SearchResult implements Serializable {
 		}
 		System.out.println("들어간 URL : " + url);
 		this.rankingCount = openUrl.counting();
+		
+		calPR();
 	}
 
-	public void calExp() {
-		
-		System.out.println("이게 실행되면안되@@@@@@@@@@@@@@@@@@@@");
-		CalculateExp calExp = new CalculateExp(rankingCount);
-		exposure = calExp.getExposure(url);
-		System.out.println("이 url의 노출도는 : " + exposure);
+	public void calPR(){
+		PageRank pageRank = new PageRank();
+
+		setPr(pageRank.getPR(url));
 	}
+	
+//	public void calExp() {
+//
+//		CalculateExp calExp = new CalculateExp(rankingCount);
+//		exposure = calExp.getExposure(url);
+//		System.out.println("이 url의 노출도는 : " + exposure);
+//	}
 }

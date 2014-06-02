@@ -36,6 +36,7 @@ public class Ranking {
 		@Override
 		public void run() {
 			result.get(i).openURL();
+			
 			return;
 		}
 	}
@@ -101,7 +102,7 @@ public class Ranking {
 			//result.get(i).calExp();
 			
 			calExp = new CalculateExp(result.get(i).rankingCount);
-			result.get(i).setExposure(calExp.getExposure(result.get(i).getURL()));
+			result.get(i).setExposure(calExp.getExposure(result.get(i).getPr()));
 			
 		}
 		System.out.println("======위험도 계산 끝======");
