@@ -44,8 +44,20 @@
 	border: thin solid white;
 	text-align: center;
 }
-</style>
 
+.resultObject .div-td2 {
+	background-color: rgba(255, 255, 255, .5);
+	border: thin solid white;
+	text-align: left;
+}
+
+#div1{
+	display : inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+</style>
 <body>
 	<%
 		String memberEmail = (String) session.getAttribute("memEmail");
@@ -164,8 +176,8 @@
 		<!-- TR -->
 		<div class="div-tr" onclick="_onFilp(<%=i + 1%>)">
 			<div class="div-td" style="width: 5%; float: left;"><%=i + 1%></div>
-			<div class="div-td" style="width: 82%; float: left;">
-				<a href="<%=result.get(i).getURL()%>" target="_blank"><%=result.get(i).getTitle()%></a>
+			<div class="div-td" id="div1" style="width: 82%; float: left;" >
+				<a href="<%=result.get(i).getURL()%>"><%=result.get(i).getTitle()%></a>
 			</div>
 			<div class="div-td" style="width: 10%; float: left;"><%=result.get(i).getExposure()%></div>
 			<div class="div-td" style="width: 3%; float: left">▼</div>
@@ -176,14 +188,25 @@
 			onclick="_onFilp(<%=i + 1%>)">
 			<!-- TR -->
 			<div class="div-tr">
-				<div class="div-td" align="center"><%=result.get(i).getSnippet()%>
+				<div class="div-td" align="center">페이지 내용
 				</div>
 			</div>
 			<div style="clear: both"></div>
-
 			<!-- TR -->
 			<div class="div-tr">
-				<div class="div-td" align="center">
+				<div class="div-td" align="center" style="overflow: hidden; text-overflow: ellipsis; width:100%:"><%=result.get(i).getSnippet()%>
+				</div>
+			</div>
+			<div style="clear: both"></div>
+			<!-- TR -->
+			<div class="div-tr">
+				<div class="div-td" align="center">검색엔진 솔루션
+				</div>
+			</div>
+			<div style="clear: both"></div>
+			<!-- TR -->
+			<div class="div-tr">
+				<div class="div-td2" align="left" >
 					<!-- Engine Solution -->
 					<%
 						if (result.get(i).getEngine().matches(".*Naver.*") == true) {
@@ -205,7 +228,13 @@
 			<div style="clear: both"></div>
 			<!-- TR -->
 			<div class="div-tr">
-				<div class="div-td" align="center">
+				<div class="div-td" align="center">고정페이지 솔루션
+				</div>
+			</div>
+			<div style="clear: both"></div>
+			<!-- TR -->
+			<div class="div-tr">
+				<div class="div-td2" align="left">
 					<!-- Static Solution -->
 					<%
 						if (result.get(i).getURL().matches(".*blog.naver.*") == true) {
