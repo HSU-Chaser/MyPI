@@ -14,7 +14,7 @@
 		installation_dir = rootPath + "SwiffChart";
 	} else {
 		// Local Path
-		installation_dir = "C:\\Program Files (x86)\\GlobFX\\Swiff Chart Generator 3";
+		installation_dir = "C:\\Program Files\\GlobFX\\Swiff Chart Generator 3";
 	}
 
 	// Create a new Swiff Chart object
@@ -35,7 +35,7 @@
 	int naverCount = 0;
 	int daumCount = 0;
 	double rate[] = { 0 , 0, 0 };
-	for (int i = 0; i < Ranking.result.size(); i++) {
+/* 	for (int i = 0; i < Ranking.result.size(); i++) {
 
 		if (Ranking.result.get(i).getEngine().equals("Google")) {
 			googleCount++;
@@ -44,8 +44,10 @@
 		} else if (Ranking.result.get(i).getEngine().equals("Daum")) {
 			daumCount++;
 		}
-	}
-
+	} */
+	googleCount = 100;
+	naverCount = 70;
+	daumCount = 40;
 	EngineGraph engineGraph = new EngineGraph(googleCount, naverCount,
 			daumCount);
 	System.out.println("카운트가 어떻게 되는데 그래요? : " + googleCount + "   "
@@ -55,7 +57,10 @@
 	
 	
 	String series = rate[0] + sep + rate[1] + sep + rate[2];
-
+	
+	chart.SetSeriesValueColor(0, 30, "black");
+	chart.SetSeriesColor(1, "black");	
+	
 	chart.SetSeriesValuesFromString(0, series);
 
 	// Set the chart title

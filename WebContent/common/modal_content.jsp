@@ -377,8 +377,7 @@
 							name="modal_workplace" id="modal_workplace"
 							class="color font_GODOM" size="10" maxlength="35"
 							value="<%=c.getWorkplace()%>"
-							onblur="_onCheckWorkplace(this.form)"> <%
- 	out.println("<script type=\"text/javascript\">changeIcon('workplace');</script>");
+							onblur="_onCheckWorkplace(this.form)"> <%out.println("<script type=\"text/javascript\">changeIcon('workplace');</script>");
  	}
  %>
 							<div id="workplace_err" class="errMsg"></div></td>
@@ -422,8 +421,7 @@
 							name="modal_occupation" id="modal_occupation"
 							class="color font_GODOM" size="10" maxlength="10"
 							value="<%=c.getOccupation()%>"
-							onblur="_onCheckOccupation(this.form)"> <%
- 	out.println("<script type=\"text/javascript\">changeIcon('occupation');</script>");
+							onblur="_onCheckOccupation(this.form)"> <%out.println("<script type=\"text/javascript\">changeIcon('occupation');</script>");
  	}
  %>
 							<div id="occupation_err" class="errMsg"></div></td>
