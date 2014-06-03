@@ -16,8 +16,7 @@ public class MakeObject {
 	NaverSearch naverSearch = null;
 	DaumSearch daumSearch = null;
 
-	String naverCategory[] = { "blog", "news", "cafearticle", "kin", "webkr",
-			"doc" };
+	String naverCategory[] = { "blog", "news", "cafearticle",  "webkr",	"doc" };
 	String daumCategory[] = { "board", "web", "knowledge" ,"cafe", "blog" };
 
 	class searchThread implements Runnable {
@@ -38,12 +37,12 @@ public class MakeObject {
 		@Override
 		public void run() {
 			if (engine.equals("Google")) {
-				addingGoogle(query, 10);
+				addingGoogle(query, 30);
 			} else if (engine.equals("Naver")) {
-				addingNaver(query, 5, category);
+				addingNaver(query, 10, category);
 			}
 			else if(engine.equals("Daum")){
-				addingDaum(query, 5, category);
+				addingDaum(query, 10, category);
 			}
 			return;
 		}

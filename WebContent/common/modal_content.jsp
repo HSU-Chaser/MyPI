@@ -64,9 +64,8 @@
 						<td class="signup_form font_GODOM">
 							<%
 								if (c.getCellphone().equals("null")) {
-							%> <input type="hidden"
-							name="type" value="cellphone"> <input type="text"
-							name="modal_cellphone1" id="modal_cellphone1"
+							%> <input type="hidden" name="type" value="cellphone"> <input
+							type="text" name="modal_cellphone1" id="modal_cellphone1"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
 							placeholder="010" onblur="_onCheckCellphone(this.form)">
 							<input type="text" name="modal_cellphone2" id="modal_cellphone2"
@@ -84,8 +83,8 @@
 									String cell3="null" ;
 									if(c.getCellphone().length() == 12) cell3 = c.getCellphone().substring(8,12);
 									else if(c.getCellphone().length() == 13) cell3 = c.getCellphone().substring(9,13);
-							%> <input type="hidden" name="type" value="cellphone">
-							<input type="text" name="modal_cellphone1" id="modal_cellphone1"
+							%> <input type="hidden" name="type" value="cellphone"> <input
+							type="text" name="modal_cellphone1" id="modal_cellphone1"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
 							value="<%=cell1%>" onblur="_onCheckCellphone(this.form)">
 							<input type="text" name="modal_cellphone2" id="modal_cellphone2"

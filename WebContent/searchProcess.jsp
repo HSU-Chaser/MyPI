@@ -51,7 +51,7 @@
 	<%
 		String memberEmail = (String) session.getAttribute("memEmail");
 
-			if (memberEmail == null) {
+		if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -75,6 +75,9 @@
 			/* MakeObject object = new MakeObject();
 			ArrayList<SearchResult> result = object.getResult(searchDic
 					.getSearchWordList()); */
+					
+					
+			System.out.println("계산된 고객의 등급 : " + ranking.getClient_grade());
 	%>
 
 	<br>
@@ -131,7 +134,7 @@
 					}
 			%>
 		</div>
-<div style="clear: both;"></div>
+		<div style="clear: both;"></div>
 	</div>
 
 	<h2 class="resultObject font_GODOM">Static Search</h2>
@@ -172,22 +175,7 @@
 				<a href="<%=result.get(i).getURL()%>" target="_blank"><%=result.get(i).getTitle()%></a>
 			</div>
 			<div class="div-td" style="width: 10%; float: left;">
-				<%
-					double exp = result.get(i).getExposure();
-							if (exp >= 70.0) {
-				%>
-				<img alt="위험" src="images/icon/birthday.png">
-				<%
-					} else if (exp >= 30.0 && exp < 70.0) {
-				%>
-				<img alt="주의" src="images/icon/email.png">
-				<%
-					} else {
-				%>
-				<img alt="안전" src="images/icon/name.png">
-				<%
-					}
-				%>
+				<%=result.get(i).getExposure()%>
 			</div>
 			<div class="div-td" style="width: 3%; float: left">▼</div>
 			<div style="clear: both"></div>
