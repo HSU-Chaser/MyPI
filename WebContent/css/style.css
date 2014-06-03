@@ -337,23 +337,23 @@ form textarea {
  }
  */
 form .formerize-placeholder {
-	color: white;
+	color: rgb(139, 143, 158)
 }
 
 form ::-webkit-input-placeholder {
-	color: white;
+	color: wrgb(139, 143, 158)
 }
 
 form :-moz-placeholder {
-	color: white;
+	color: rgb(139, 143, 158)
 }
 
 form ::-moz-placeholder {
-	color: white;
+	color: rgb(139, 143, 158)
 }
 
 form :-ms-input-placeholder {
-	color: white;
+	color: rgb(139, 143, 158);
 }
 form ::-moz-focus-inner {
 	border: 0;
@@ -1062,10 +1062,16 @@ body.touch .poptrox-popup .nav-next, body.touch .poptrox-popup .nav-previous, bo
 table, tr, th, td, input {
 	vertical-align: middle;
 }
-/*MyPI Image+login_session - index.html*/
+/*MyPI Image+login_session - index.jsp*/
 .login_img {
 	padding: 16px 8%;
 	vertical-align: middle;
+}
+/*MyPI image+signup_session - signup.jsp*/
+.signup_img {
+	padding: 16px 8%;
+	vertical-align: middle;
+	float: left;
 }
 /*form background - all*/
 .form_background {

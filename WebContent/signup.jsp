@@ -59,6 +59,7 @@ table,tr,td,th {
 	<section id="login" class="main style4 primary signupForm">
 		<div class="content container">
 			<div class="box container small form_background">
+				<!--
 				<form method="post" action="signupProcess.jsp" name="userinput"
 					onSubmit="return checkIt()">
 					<table id="signup_form">
@@ -116,6 +117,94 @@ table,tr,td,th {
 						</tr>
 					</table>
 				</form>
+				-->
+				<div style="width: 600px; margin: auto; background: rgba(255, 255, 255, 0.6);">
+					<div>
+						<div class="signup_img">
+							<img class="Mypi" src="./images/ihfb/main_logo/pi_200x66.png">
+						</div>
+						<div class="font_GODOB" style="float:right;padding: 5.7% 8%;vertical-align: middle; color:#0c4881; font-size: 1.4em;text-align: right;">
+							회원 가입
+						</div>
+					</div>
+					<div style="clear:both;"></div>	
+					<hr style="margin: 0 8%; border: 2px solid #0c4881;">
+					<form action="signinProcess.jsp" method="post">
+						<div class="font_GODOM sign_number">
+							1. 이메일을 입력하신 후, 발송된 메일을 확인하여 인증해 주세요.
+						</div>
+						<div style="padding: 0 8% 2% 8%;">
+							<div class="marginbottom">
+								<div class="font_GODOM sign_text">메일주소 입력</div>
+								<input type="text"
+								name="email" id="email" class="signup_input color font_GODOM" size="10"
+								maxlength="35" placeholder="이메일"
+								onblur="_onCheckEmail(this.form)"> 
+								<input type="button" id="sendKey" name="sendKey"
+								value=" 인증키 전송 " class="sign_button button addButton font_GODOB"
+								onclick="_onSendCertKey(this.form)">
+								<span id="mailMsg" style="float:center;"></span>
+							</div>
+							<div class="marginbottom">
+								<div class="font_GODOM sign_text">인증번호 입력</div>
+								<input type="text"
+								name="certkey" id="certkey" class="signup_input color font_GODOM" size="10"
+								maxlength="35" placeholder="인증키">
+								<input type="button"
+								name="confirm_email" value=" 인증 확인 "
+								class="sign_button button addButton font_GODOB"
+								onclick="_onConfirmCertKey(this.form)">
+								<span id="keyMsg" style="float:center;"></span>
+							</div>
+						</div>
+						<div style="clear: both;"></div>
+						
+						<hr style="margin: 0 8%; border: 1px solid #0c4881;">
+						
+						<div class="font_GODOM sign_number">
+							2. 비밀번호를 입력하신 후, 정확하게 다시 한 번 입력해 주세요.
+						</div>
+						<div style="padding: 0 8% 2% 8%;">
+							<div class="marginbottom">
+								<div class="font_GODOM sign_text">비밀번호 입력</div>
+								<input type="password"
+								name="password" id="password" class="signup_input color font_GODOM" size="15"
+								maxlength="12" placeholder="비밀번호 입력"
+								onblur="_onCheckPassword1(this.form)">
+								<input type="button" id="sendKey" name="sendKey"
+								value=" 인증키 전송 " class="sign_button button addButton font_GODOM"
+								style="visibility: hidden;">
+								<span id="pass1Msg" style="float:center;"></span>
+							</div>
+							<div class="marginbottom">
+								<div class="font_GODOM sign_text">비밀번호 확인</div>
+								<input type="password"
+								name="password2" id="password2" class="signup_input color font_GODOB"
+								size="15" maxlength="12" placeholder="비밀번호 확인"
+								onblur="_onCheckPassword2(this.form)">
+								<input type="button"
+								name="confirm_email" value=" 인증 확인 "
+								class="sign_button button addButton font_GODOB"
+								style="visibility: hidden;">
+								<span id="pass2Msg" style="float:center;"></span>
+							</div>
+							<div style="clear: both;"></div>
+							
+							<hr style="border: 1px solid #0c4881;">
+							
+							<input type="submit"
+								name="confirm" class="sign_button button addButton font_GODOB" value=" 회원가입 "
+								style="margin:2%;">
+						</div>
+						<div style="clear: both; background-color: rgba(12, 83, 129, 0.6); padding: 3% 0">
+							<input type="reset" id="reset" name="reset" class="button_some sign_button button addButton font_GODOB"
+										value=" 다시 입력 " style="margin-right:1.5%;">
+							<input type="button" class="button_some sign_button button addButton font_GODOB" value=" 가입 취소 "
+									onclick="javascript:window.location='index.jsp'" style="margin-left:1.5%;">
+						</div>
+					</form>
+				</div>
+				
 			</div>
 		</div>
 	</section>

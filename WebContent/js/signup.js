@@ -6,12 +6,16 @@ var _onCheckEmail = function(userinput) {
 	// 이메일을 입력했는지 검사
 	if (userinput.email.value == "") {
 		$('#mailMsg').css('color', 'red');
+		$('#mailMsg').css('font-size', '1em;');
+		$('#mailMsg').attr('class','font_GODOM');
 		$('#mailMsg').html('이메일을 입력하세요');
 		return false;
 	}
 	// 이메일 형식여부 검사
 	else if (!emailRegex.test(userinput.email.value)) {
 		$('#mailMsg').css('color', 'red');
+		$('#mailMsg').css('font-size', '1em;');
+		$('#mailMsg').attr('class','font_GODOM');
 		$('#mailMsg').html('이메일 형식이 맞지 않습니다.');
 		return false;
 	}
@@ -23,11 +27,15 @@ var _onCheckEmail = function(userinput) {
 			url : "mailCheck.jsp?email=" + userinput.email.value,
 			success : function(result) {
 				if (result == "true") {
-					$('#mailMsg').css('color', 'rgb(184, 138, 120)');
+					$('#mailMsg').css('color', '#0c4881');
+					$('#mailMsg').css('font-size', '1em;');
+					$('#mailMsg').attr('class','font_GODOM');
 					$('#mailMsg').html('사용 가능한 이메일입니다.');
 					return true;
 				} else {
 					$('#mailMsg').css('color', 'red');
+					$('#mailMsg').css('font-size', '1em;');
+					$('#mailMsg').attr('class','font_GODOM');
 					$('#mailMsg').html('이메일이 중복됩니다.');
 					return false;
 				}
@@ -68,7 +76,7 @@ var _onConfirmCertKey = function(userinput) {
 			success : function(result) {
 				if (result == "true") {
 					alert("인증을 완료하였습니다.");
-					$('#keyMsg').css('color', 'rgb(184, 138, 120)');
+					$('#keyMsg').css('color', '#0c4881');
 					$('#keyMsg').html('이메일이 인증되었습니다.');
 					return true;
 				} else {
@@ -88,12 +96,16 @@ var _onCheckPassword1 = function(userinput) {
 	// 입력이 아예 없을 경우
 	if (userinput.password.value == "") {
 		$('#pass1Msg').css('color', 'red');
+		$('#pass1Msg').css('font-size', '1em;');
+		$('#pass1Msg').attr('class','font_GODOM');
 		$('#pass1Msg').html('비밀번호를 입력하세요');
 		return false;
 	}
 	// 규칙에 안맞았을 경우.
 	else if (!passwdRegex.test(userinput.password.value)) {
 		$('#pass1Msg').css('color', 'red');
+		$('#pass1Msg').css('font-size', '1em;');
+		$('#pass1Msg').attr('class','font_GODOM');
 		$('#pass1Msg').html('6자에서 16자의 영문과 숫자를 혼합해야합니다.');
 		return false;
 	}
@@ -101,21 +113,31 @@ var _onCheckPassword1 = function(userinput) {
 	else if (userinput.password2.value) {
 		if (userinput.password.value != userinput.password2.value) {
 			$('#pass1Msg').css('color', 'red');
+			$('#pass1Msg').css('font-size', '1em;');
+			$('#pass1Msg').attr('class','font_GODOM');
 			$('#pass1Msg').html('두 값이 다릅니다.');
 			$('#pass2Msg').css('color', 'red');
+			$('#pass2Msg').css('font-size', '1em;');
+			$('#pass2Msg').attr('class','font_GODOM');
 			$('#pass2Msg').html('두 값이 다릅니다.');
 			return false;
 		} else {
-			$('#pass1Msg').css('color', 'rgb(184, 138, 120)');
+			$('#pass1Msg').css('color', '#0c4881');
+			$('#pass1Msg').css('font-size', '1em;');
+			$('#pass1Msg').attr('class','font_GODOM');
 			$('#pass1Msg').html('적합한 비밀번호입니다.');
-			$('#pass2Msg').css('color', 'rgb(184, 138, 120)');
+			$('#pass2Msg').css('color', '#0c4881');
+			$('#pass2Msg').css('font-size', '1em;');
+			$('#pass2Msg').attr('class','font_GODOM');
 			$('#pass2Msg').html('적합한 비밀번호입니다.');
 			return true;
 		}
 	}
 	// ㅇㅋ 통과.
 	else {
-		$('#pass1Msg').css('color', 'rgb(184, 138, 120)');
+		$('#pass1Msg').css('color', '#0c4881');
+		$('#pass1Msg').css('font-size', '1em;');
+		$('#pass1Msg').attr('class','font_GODOM');
 		$('#pass1Msg').html('아래의 비밀번호을 입력하세요.');
 		return true;
 	}
@@ -126,12 +148,16 @@ var _onCheckPassword2 = function(userinput) {
 	// 입력이 아예 없을 경우
 	if (userinput.password2.value == "") {
 		$('#pass2Msg').css('color', 'red');
+		$('#pass2Msg').css('font-size', '1em;');
+		$('#pass2Msg').attr('class','font_GODOM');
 		$('#pass2Msg').html('비밀번호를 입력하세요');
 		return false;
 	}
 	// 규칙에 안맞았을 경우.
 	else if (!checkpasswd.test(userinput.password2.value)) {
 		$('#pass2Msg').css('color', 'red');
+		$('#pass2Msg').css('font-size', '1em;');
+		$('#pass2Msg').attr('class','font_GODOM');
 		$('#pass2Msg').html('6자에서 16자의 영문과 숫자를 혼합해야합니다.');
 		return false;
 	}
@@ -139,24 +165,41 @@ var _onCheckPassword2 = function(userinput) {
 	else if (userinput.password.value) {
 		if (userinput.password.value != userinput.password2.value) {
 			$('#pass1Msg').css('color', 'red');
+			$('#pass1Msg').css('font-size', '1em;');
+			$('#pass1Msg').attr('class','font_GODOM');
 			$('#pass1Msg').html('두 값이 다릅니다.');
 			$('#pass2Msg').css('color', 'red');
+			$('#pass2Msg').css('font-size', '1em;');
+			$('#pass2Msg').attr('class','font_GODOM');
 			$('#pass2Msg').html('두 값이 다릅니다.');
 			return false;
 		} else {
-			$('#pass1Msg').css('color', 'rgb(184, 138, 120)');
+			$('#pass1Msg').css('color', '#0c4881');
+			$('#pass1Msg').css('font-size', '1em;');
+			$('#pass1Msg').attr('class','font_GODOM');
 			$('#pass1Msg').html('적합한 비밀번호입니다.');
-			$('#pass2Msg').css('color', 'rgb(184, 138, 120)');
+			$('#pass2Msg').css('color', '#0c4881');
+			$('#pass2Msg').css('font-size', '1em;');
+			$('#pass2Msg').attr('class','font_GODOM');
 			$('#pass2Msg').html('적합한 비밀번호입니다.');
 			return true;
 		}
 	}
 	// ㅇㅋ 통과.
 	else {
-		$('#pass2Msg').css('color', 'rgb(184, 138, 120)');
+		$('#pass2Msg').css('color', '#0c4881');
+		$('#pass2Msg').css('font-size', '1em;');
+		$('#pass2Msg').attr('class','font_GODOM');
 		$('#pass2Msg').html('위의 비밀번호를 입력하세요.');
 		return true;
 	}
+};
+var onreset = function() {
+	$('#mailMsg').html('');
+	$('#keyMsg').html('');
+	$('#pass1Msg').html('');
+	$('#pass2Msg').html('');
+	return true;
 };
 
 var _onCheckIt = function() {
