@@ -9,38 +9,6 @@
 }
 
 @font-face {
-	font-family: 'NanumGothicttf';
-	src: url('font/NanumGothic.ttf');
-}
-@font-face {
-	font-family: 'NanumGothiceot';
-	src: url('font/NanumGothic.eot');
-}
-@font-face {
-	font-family: 'HancomYounttf';
-	src: url('font/HANYGO.ttf');
-}
-@font-face {
-	font-family: 'HancomYouneot';
-	src: url('font/HANYGO.eot');
-}
-@font-face {
-	font-family: 'HYNAMLttf';
-	src: url('font/HYNAML.ttf');
-}
-@font-face {
-	font-family: 'HYNAMLeot';
-	src: url('font/HYNAML.eot');
-}
-@font-face {
-	font-family: 'HYNAMLwoff';
-	src: url('font/HYNAML.woff');
-}
-@font-face {
-	font-family: 'GODOMttf';
-	src: url('font/GodoM.ttf');
-}
-@font-face {
 	font-family: 'GODOMeot';
 	src: url('font/GodoM.eot');
 }
@@ -48,7 +16,14 @@
 	font-family: 'GODOMwoff';
 	src: url('font/GodoM.woff');
 }
-
+@font-face {
+	font-family: 'GODOBeot';
+	src: url('font/GodoB.eot');
+}
+@font-face {
+	font-family: 'GODOBwoff';
+	src: url('font/GodoB.woff');
+}
 /*********************************************************************************/
 /* Basic                                                                         */
 /*********************************************************************************/
@@ -362,23 +337,23 @@ form textarea {
  }
  */
 form .formerize-placeholder {
-	color: rgba(145,146,147,0.85);
+	color: white;
 }
 
 form ::-webkit-input-placeholder {
-	color: rgba(145,146,147,0.85);
+	color: white;
 }
 
 form :-moz-placeholder {
-	color: rgba(145,146,147,0.85);
+	color: white;
 }
 
 form ::-moz-placeholder {
-	color: rgba(145,146,147,0.85);
+	color: white;
 }
 
 form :-ms-input-placeholder {
-	color: rgba(145,146,147,0.85);
+	color: white;
 }
 form ::-moz-focus-inner {
 	border: 0;
@@ -424,7 +399,7 @@ table.default tbody {
 /* Buttons */
 
 .button {
-	background-color: #8BB1BD;
+	background-color: #0c4881;
 	border: 0;
 	color: #fff;
 	cursor: pointer;
@@ -475,7 +450,7 @@ table.default tbody {
 }
 
 .button:hover {
-	background-color: #82C4B7;
+	background-color: #0c76c7;
 }
 
 .button:active {
@@ -1072,20 +1047,11 @@ body.touch .poptrox-popup .nav-next, body.touch .poptrox-popup .nav-previous, bo
 /* add_1                                                                */
 /*********************************************************************************/
 /* font > Korean */
-.font_Nanum {
-	font-family: NanumGothic, "나눔고딕", NanumGothicttf, NanumGothiceot, sans-serif;
-}
-.font_HANYGO {
-	font-family: HANYGO, "한컴윤고딕", HancomYounttf, HancomYouneot, sans-serif;
-}
-.font_HYNAML {
-	font-family: HYNAML, "HY나무L", HYNAMLttf, HYNAMLeot, HYNAMLwoff, sans-serif;
-}
-.font_HYNAML {
-	font-family: HYNAML, "HY나무L", HYNAMLttf, HYNAMLeot, HYNAMLwoff, sans-serif;
-}
 .font_GODOM {
-	font-family: GODOM, "고도M", GODOMttf, GODOMeof, GODOMwoff, sans-serif;
+	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
+}
+.font_GODOB {
+	font-family: GODOB, "고도B", GODOBeof, GODOBwoff, sans-serif;
 }
 /*logo - header.html*/
 .logo {
@@ -1098,8 +1064,7 @@ table, tr, th, td, input {
 }
 /*MyPI Image+login_session - index.html*/
 .login_img {
-	border-bottom: 2px solid #0c4881;
-	padding: 16px 0;
+	padding: 16px 8%;
 	vertical-align: middle;
 }
 /*form background - all*/
@@ -1119,16 +1084,16 @@ table, tr, th, td, input {
 }
 /*Input-placeholder Color*/
 input.color::-webkit-input-placeholder {/* WebKit browsers */
-	color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255);
 }
 input.color:-moz-placeholder {/* Mozilla Firefox 4 to 18 */
-	color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255);
 }
 input.color::-moz-placeholder {/* Mozilla Firefox 19+ */
-	color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255);
 }
 input.color:-ms-input-placeholder {/* Internet Explorer 10+ */
-	color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255);
 }
 
 #logo > img {

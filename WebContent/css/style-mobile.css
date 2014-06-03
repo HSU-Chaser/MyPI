@@ -162,12 +162,10 @@ span {
 }
 /*delete_picture 1*/
 .Mypi {
-    visibility: hidden;
     border-radius: 0.7em;
 }
 /*delete_picture 2*/ 
 .login_img {
-width: 1%;
 vertical-align: middle;
 }
 /*Sign in, Sign up control*/
