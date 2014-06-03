@@ -20,7 +20,7 @@
 	<!-- Menu -->
 	
 	<!-- effecter1_start -->
-		<div class="md-modal md-effect-12" id="mailMd">
+		<div class="md-modal md-effect-12" id="mailMd" style="z-index:10001">
 			<div class="md-content">
 				<!-- Contact -->
 								<div class="content container" style="margin-top: 100px;">

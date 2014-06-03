@@ -8,7 +8,7 @@
 	<%
 		if (session.getAttribute("memEmail") == null) {
 	%>
-		<a id="logo" class="brand" href="main.jsp"><img
+		<a id="logo" class="brand" href="index.jsp"><img
 		src="./images/ihfb/main_logo/pi_144x44.png"></a>
 	<%
 		} else {

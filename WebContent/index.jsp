@@ -50,7 +50,7 @@
 	<section id="login" class="main style4 primary loginForm">
 		<div class="content container">
 			<div class="box container small form_background">
-				
+
 				<!-- 
 					<table>
 						<tr>
@@ -78,22 +78,34 @@
 						</tr>
 					</table>
 				-->
-				<div style="width: 600px;margin: auto;background: rgba(255, 255, 255, 0.6);">
-					<div class="login_img"><img class="Mypi" src="./images/ihfb/main_logo/pi_200x66.png"></div>
-					<div class="" style="width: 50%">정보의 바다에서 떠도는 당신의 기록,
-					스스로 지켜주세요.</div>
-					<div class="">
-						<form action="signinProcess.jsp" method="post">
-							<input type="text"
-								id="fid" name="fid" class="color font_GODOM" placeholder="이메일" />
-							<input type="password" id="fpass" name="fpass"
-								class="color font_GODOM" placeholder="비밀번호" />
-							<input type="submit" class="button addButton font_GODOM"
-								id="login_button" value=" 로그인  " />
-						</form>
+				<div style="width: 600px; margin: auto; background: rgba(255, 255, 255, 0.6);">
+					<div class="login_img">
+						<img class="Mypi" src="./images/ihfb/main_logo/pi_200x66.png">
 					</div>
-					
-				</div>	
+					<hr style="margin:0 8%; border:2px solid #0c4881;">
+					<div style="width: 100%;">
+						<div class="font_GODOM" style="width: 50%; float: left; padding:8% 3% 8% 8%;
+							font-size: 1.15em; color: #0c4881; line-height: 65px;">정보의 바다에서 떠도는<br/> 당신의 기록,<br/>스스로 지켜주세요.</div>
+						<div class="" style="width: 50%; float: right; padding:8% 8% 8% 3%;">
+							<form action="signinProcess.jsp" method="post">
+								<input type="text" id="fid" name="fid" class="color font_GODOM"
+									placeholder="이메일" /> <input type="password" id="fpass"
+									name="fpass" class="color font_GODOM" placeholder="비밀번호" /> <input
+									type="submit" class="button addButton font_GODOB"
+									id="login_button" value=" 로그인  " />
+							</form>
+						</div>
+					</div>
+					<div style="clear: both; background-color: rgba(12,83,129, 0.6); padding:1% 0">
+						<span class="font_GODOM login_text">MyPI가
+									처음이신가요? </span>
+						<span style="padding: 0 8% 0 1.5%; margin-bottom: 0em;"><input type="button"
+								class="button addButton font_GODOB" id="signup_button"
+								value=" 회원 가입 " onclick="location.href='signup.jsp' " />
+						</span>
+					</div>
+					<div style="clear:both;"></div>
+				</div>
 			</div>
 		</div>
 	</section>
