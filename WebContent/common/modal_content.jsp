@@ -77,13 +77,15 @@
 							placeholder="5678" onblur="_onCheckCellphone(this.form)">
 							<%
 								} else {
-									String cell1 = c.getCellphone().substring(0, 3);
-									String cell2 = "null";
+									String cellphone = c.getCellphone(); 
+									String cell1 = cellphone.split("-")[0];
+									String cell2 = cellphone.split("-")[1];
+									String cell3 = cellphone.split("-")[2];
+									
 									if (c.getCellphone().length() == 12)
 										cell2 = c.getCellphone().substring(4, 7);
 									else if (c.getCellphone().length() == 13)
 										cell2 = c.getCellphone().substring(4, 8);
-									String cell3 = "null";
 									if (c.getCellphone().length() == 12)
 										cell3 = c.getCellphone().substring(8, 12);
 									else if (c.getCellphone().length() == 13)

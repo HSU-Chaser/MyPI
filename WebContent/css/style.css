@@ -1113,20 +1113,20 @@ input.color:-ms-input-placeholder {/* Internet Explorer 10+ */
 .navbar {
 	position: absolute;
 	right: 2em;
-	top: 8px;
+	top: 0px;
 	float: right;
 	height: auto;
 	font-size: 110%;
 }
 
 #searchBar {
-	margin-top: 2em;
+	margin-top: 2.6em;
 	left: 0px;
 	width: 100%;
 	height: 60px;
 	position: fixed;
 	background-color: rgba(12, 118, 199, 0.5);
-	padding: 0.3% 36px;
+	padding: 0 36px;
 }
 
 div#searchBar img {
@@ -1142,6 +1142,7 @@ div#searchBar img {
 	display: none;
 	float: left;
 	vertical-align: middle;
+	padding-right: 14px;
 }
 
 #searchBar .toggle-filter {
@@ -1158,11 +1159,9 @@ div#searchBar img {
 	float: left;
 	vertical-align: middle;
 	width: 1px;
-	height: 40px;
+	height: 2.3em;
 	border-right: 1px solid white;
-	padding-left: 4px;
-	padding-right: 4px;
-	padding-top: 10px;
+	margin-top: 6px;
 }
 
 #search {
