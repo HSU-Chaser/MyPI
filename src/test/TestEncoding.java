@@ -34,11 +34,7 @@ public class TestEncoding {
 			e.printStackTrace();
 		}
 		
-		
-		
-		
 	
-		
 	
 	
 	}

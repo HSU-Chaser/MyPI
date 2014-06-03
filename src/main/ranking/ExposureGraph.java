@@ -27,10 +27,11 @@ public class ExposureGraph {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int client_num = expData.getClient_num();
 		try {
 			conn = getConnection();
 
-			pstmt = conn.prepareStatement("select count(*) from exprecord");
+			pstmt = conn.prepareStatement("select count(*) from exprecord where client_num = " + client_num);
 
 			rs = pstmt.executeQuery();
 
@@ -41,11 +42,11 @@ public class ExposureGraph {
 					// 가장 오래된 데이터 삭제
 
 					pstmt = conn
-							.prepareStatement("delete from exprecord where data_index = 1");
+							.prepareStatement("delete from exprecord where data_index = 1 and client_num = "+ client_num);
 					pstmt.executeUpdate();
 
 					pstmt = conn
-							.prepareStatement("update exprecord set data_index = data_index - 1");
+							.prepareStatement("update exprecord set data_index = data_index - 1 where client_num = " + client_num);
 					pstmt.executeUpdate();
 
 				}
@@ -149,35 +150,31 @@ public class ExposureGraph {
 				}
 
 		}
-		
-		for(int i = 0; i<expDataList.size(); i++){
-			System.out.println("날짜 : " + expDataList.get(i).getDate() + " 노출도 : " + expDataList.get(i).getExposure());
-		}
-		
+	
 		return expDataList;
 
 	}
 
-	public static void main(String[] args) {
-
-		ExpDataBean expData = null;
-		try {
-			expData = new ExpDataBean();
-
-			expData.setClient_num(13);
-			expData.setDate("14.06.01");
-			expData.setExposure(120);
-
-			insertExprecord(expData);
-			
-			
-			
-
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-
-	}
+//	public static void main(String[] args) {
+//
+//		ExpDataBean expData = null;
+//		try {
+//			expData = new ExpDataBean();
+//
+//			expData.setClient_num(13);
+//			expData.setDate("14.06.01");
+//			expData.setExposure(120);
+//
+//			insertExprecord(expData);
+//			
+//			
+//			
+//
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
+//
+//	}
 
 }
 

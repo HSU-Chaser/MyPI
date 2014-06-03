@@ -86,7 +86,7 @@ public class SearchResult implements Serializable {
 		System.out.println("들어간 URL : " + url);
 		this.rankingCount = openUrl.counting();
 		
-		calPR();
+//		calPR();
 	}
 
 	public void calPR(){

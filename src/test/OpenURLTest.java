@@ -14,11 +14,12 @@ public class OpenURLTest {
 
 	static StringBuffer document = new StringBuffer();
 
-	public static String originUrl = "http://blog.naver.com/PostView.nhn?blogId=tera16&logNo=204543437";
+	public static String originUrl = "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0000127430";
 	public static String buffer = "";
 
 	public static void urlRead() throws IOException {
-		String charset = ""; // charset finding
+		String charsetBuffer = ""; // charset finding
+		String charset = "";
 		boolean check = false;
 		BufferedReader brChar, br = null;
 		String charsetArray[] = { "euc-kr", "ksc5601", "iso-8859-1", "8859_1", "ms949",
@@ -47,23 +48,24 @@ public class OpenURLTest {
 			while ((buffer = brChar.readLine()) != null) {
 				System.out.println("Test : " + buffer);
 				if (buffer.contains("charset")) {
-					charset = buffer.split("charset=")[1].replace('"', '@')
-							.split("@")[0];
-					System.out.println("현재 사이트의 케릭터 셋 : " + charset);
+					charsetBuffer = buffer;
+					System.out.println("현재 사이트의 케릭터 셋 포함 문장: " + charsetBuffer);
 					break;
 				}
 			}
 
 			for (int i = 0; i < charsetArray.length; i++) {
 
-				if (charset.equals(charsetArray[i])) {
+				if (charsetBuffer.contains(charsetArray[i])) {
+					charset = charsetArray[i];
 					check = true;
 				}
 
 			}
 			for (int i = 0; i < charsetArrayBig.length; i++) {
 
-				if (charset.equals(charsetArrayBig[i])) {
+				if (charsetBuffer.contains(charsetArrayBig[i])) {
+					charset = charsetArrayBig[i];
 					check = true;
 				}
 			}
@@ -91,16 +93,14 @@ public class OpenURLTest {
 			InputStream inputURL = con.getInputStream();
 			InputStreamReader rd = null;
 
-
+			System.out.println("지금 charset은 뭐니 ? : " + charset);
+			
 			rd = new InputStreamReader(inputURL, charset);
 			br = new BufferedReader(rd);
 
 			while ((buffer = br.readLine()) != null) {
 				document.append(buffer);
-				System.out.println(buffer);
-				if(buffer.contains("테라바이트")){
-					break;
-				}
+
 			}
 
 			rd.close();

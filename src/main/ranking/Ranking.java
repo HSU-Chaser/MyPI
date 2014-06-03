@@ -15,6 +15,7 @@ import main.search.SearchResult;
 public class Ranking {
 	public static Vector<SearchResult> result;
 	private int client_num;
+	private int client_grade;
 	public ProgressObserver observer;
 
 	public void setObserver(ProgressObserver observer) {
@@ -48,6 +49,7 @@ public class Ranking {
 		MakeObject makeObject = new MakeObject();
 		PageRank pageRank = new PageRank();
 		CalculateExp calExp;
+		ExposureGraph expGraph = null;
 
 		double finalExp = 0;
 
@@ -126,6 +128,18 @@ public class Ranking {
 		
 		expData = new ExpDataBean();
 		expData = getExpData(client_num, finalExp);
+		
+		int grade = (int) (Math.round(finalExp) / 1000);
+		
+		setClient_grade(grade);
+		System.out.println("ranking : " + getClient_grade());
+		
+		try {
+			expGraph.insertExprecord(expData);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return result;
 
@@ -221,5 +235,13 @@ public class Ranking {
 			quicksort(arr, left, pivotNewIndex - 1);
 			quicksort(arr, pivotNewIndex + 1, right);
 		}
+	}
+
+	public int getClient_grade() {
+		return client_grade;
+	}
+
+	public void setClient_grade(int client_grade) {
+		this.client_grade = client_grade;
 	}
 }

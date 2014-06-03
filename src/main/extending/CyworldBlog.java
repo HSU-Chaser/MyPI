@@ -42,10 +42,11 @@ public class CyworldBlog extends Search {
 					storage.nickNameList.add(getNickName());
 					storage.exposureUrlList.add(getUrl());
 					ExtendedStorage.imgList.add("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQEMm-PRtTxhqlixw5B9razURdXydJ6rb-RwjsVwKRFR6ZA1Mi5rA");
+			
 				} else if (list.get(i).contains("og:image")) {
 					;
 					setImgUrl(list.get(i).replace('"', '!').split("!")[3]);
-					storage.imgUrlList.add(getImgUrl());
+//					storage.imgUrlList.add(getImgUrl());
 					break;
 				}
 				i++;

@@ -112,7 +112,7 @@ public class Cyworld extends Search {
 
 				if (list.get(i).contains("swfphotoPath")) {
 					setImgUrl(list.get(i).replace('"', '!').split("!")[5]);
-					storage.imgUrlList.add(getImgUrl());
+//					storage.imgUrlList.add(getImgUrl());
 				}
 				i++;
 			}

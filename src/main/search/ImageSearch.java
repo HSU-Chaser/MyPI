@@ -19,8 +19,6 @@ import net.sf.json.JSONObject;
 
 public class ImageSearch {
 
-
-
 	public static void setImageSearchResult(String searchWord, int limit)
 			throws IOException, IllegalAccessException,
 			InvocationTargetException, NoSuchMethodException {
@@ -79,6 +77,8 @@ public class ImageSearch {
 				+ imageSearchList.size());
 		System.out.println("이미지서치 끝, 이미지스토리지 이미지 개수 : "
 				+ ImageStorage.getImgUrlList().size());
+		
+		ImageStorage.deleteBlank();
 
 	}
 

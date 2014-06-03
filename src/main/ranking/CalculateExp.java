@@ -5,13 +5,13 @@ import main.patternanalysis.RankingCount;
 
 public class CalculateExp implements Constant {
 	RankingCount rankingCount;
-	
+
 	public CalculateExp(RankingCount rankingCount) {
 		this.rankingCount = rankingCount;
 	}
 
 	public double getExposure(int pr) {
-		PageRank pageRank = new PageRank();
+//		PageRank pageRank = new PageRank();
 
 		double urlExposure = 0;
 
@@ -42,37 +42,38 @@ public class CalculateExp implements Constant {
 		double KT_nickname = 2 * (1 - Math.pow(0.5,
 				rankingCount.getNicknameCount()));
 
-		double KF_WT = KT_resident * 7.2 + KT_cellphone * 6.1
-				+ KT_homephone * 5.3 + KT_id * 6.1 + KT_email * 5.7
-				+ KT_name * 5.4 + KT_address * 6.9 + KT_workplace * 5.7
-				+ KT_birthday * 5.7 + KT_school * 4.9 + KT_occupation
-				* 4.9 + KT_nickname * 6.1 * 0.5;
+		double KF_WT = KT_resident * 7.2 + KT_cellphone * 6.1 + KT_homephone
+				* 5.3 + KT_id * 6.1 + KT_email * 5.7 + KT_name * 5.4
+				+ KT_address * 6.9 + KT_workplace * 5.7 + KT_birthday * 5.7
+				+ KT_school * 4.9 + KT_occupation * 4.9 + KT_nickname * 6.1
+				* 0.5;
 
 		// int pr = pageRank.getPR(URL);
 
-		
-
 		// * (1 + pr); // / totalKeyword
 
-		urlExposure = KF_WT
-				* calCoupling(KT_resident, KT_cellphone, KT_homephone, KT_id,
-						KT_email, KT_name, KT_address, KT_workplace,
-						KT_birthday, KT_school, KT_occupation, KT_nickname);
+		int KC = calCoupling(KT_resident, KT_cellphone, KT_homephone, KT_id,
+				KT_email, KT_name, KT_address, KT_workplace, KT_birthday,
+				KT_school, KT_occupation, KT_nickname);
 
-		//pr 은 pagerank 값
-		urlExposure = urlExposure * ((1 + pr )* 1.1 ) ;
-		
+		urlExposure = KF_WT * KC;
+
+		// pr 은 pagerank 값
+		// urlExposure = urlExposure * ((1 + pr )* 1.1 ) ;
+
 		System.out.println("주민" + rankingCount.getResidentCount() + " " + "핸드폰"
 				+ rankingCount.getCellphoneCount() + " " + "집전화"
 				+ rankingCount.getHomephoneCount() + " " + "아이디"
-				+ rankingCount.getIdCount() + " " + "이메일" + rankingCount.emailCount
-				+ " " + "이름" + rankingCount.getNameCount() + " " + "주소"
+				+ rankingCount.getIdCount() + " " + "이메일"
+				+ rankingCount.emailCount + " " + "이름"
+				+ rankingCount.getNameCount() + " " + "주소"
 				+ rankingCount.getAddressCount() + " " + "직장"
 				+ rankingCount.getWorkplaceCount() + " " + "생일"
 				+ rankingCount.getBirthdayCount() + " " + "학교"
 				+ rankingCount.getSchoolCount() + " " + "직업"
 				+ rankingCount.getOccupationCount() + " " + "닉네임"
-				+ rankingCount.getNicknameCount() + "페이지랭크 : " + pr + " 최종 노출도 : " + Math.round(urlExposure));
+				+ rankingCount.getNicknameCount() + " KC 값 : " + KC
+				+ " 최종 노출도 : " + Math.round(urlExposure));
 
 		return Math.round(urlExposure);
 
@@ -84,30 +85,60 @@ public class CalculateExp implements Constant {
 			double KT_school, double KT_occupation, double KT_nickname) {
 		int complexWeight = 0;
 
-		if (KT_resident != 0)
+		// 단일
+		if (KT_homephone != 0) {
 			complexWeight++;
-		if (KT_cellphone != 0)
+		}
+		if (KT_cellphone != 0) {
 			complexWeight++;
-		if (KT_homephone != 0)
+		}
+		if (KT_email != 0) {
 			complexWeight++;
-		if (KT_id != 0)
+		}
+
+		// 복합
+		if ((KT_id != 0) && (KT_name != 0)) {
 			complexWeight++;
-		if (KT_email != 0)
+		}
+		if ((KT_email != 0) && (KT_name != 0)) {
 			complexWeight++;
-		if (KT_name != 0)
+		}
+
+		if ((KT_name != 0) && (KT_workplace != 0)) {
 			complexWeight++;
-		if (KT_address != 0)
+		}
+		if ((KT_name != 0) && (KT_school != 0)) {
 			complexWeight++;
-		if (KT_workplace != 0)
+		}
+		if ((KT_name != 0) && (KT_occupation != 0)) {
 			complexWeight++;
-		if (KT_birthday != 0)
+		}
+		
+		if ((KT_name != 0) && (KT_occupation != 0)) {
 			complexWeight++;
-		if (KT_school != 0)
+		}
+
+		if ((KT_nickname != 0) && (KT_id != 0)) {
 			complexWeight++;
-		if (KT_occupation != 0)
+		}
+		
+		if (rankingCount.getIdCount() + rankingCount.getNicknameCount() >= 20){
 			complexWeight++;
-		if (KT_nickname != 0)
 			complexWeight++;
+			complexWeight++;
+		}
+
+		// 잘 검출되지 않는 속성
+		if (KT_resident != 0) {
+			complexWeight++;
+		}
+
+		if (KT_address != 0) {
+			complexWeight++;
+		}
+		if (KT_birthday != 0) {
+			complexWeight++;
+		}
 
 		return complexWeight;
 	}
