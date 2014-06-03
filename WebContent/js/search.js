@@ -72,21 +72,21 @@ $(document).ajaxStart(function() {
 
 var changeIcon = function(type) {
 	if (type == 'name') {
-		$('#nameIcon').attr('src', 'images/icon/my_name_p.png');
+		$('#nameIcon').attr('src', 'images/ihfb/icons/my_name_p.png');
 	} else if (type == 'cellphone') {
-		$('#cellphoneIcon').attr('src', 'images/icon/my_mobile_p.png');
+		$('#cellphoneIcon').attr('src', 'images/ihfb/icons/my_mobile_p.png');
 	} else if (type == 'homephone') {
-		$('#homephoneIcon').attr('src', 'images/icon/my_phone_p.png');
+		$('#homephoneIcon').attr('src', 'images/ihfb/icons/my_phone_p.png');
 	} else if (type == 'birthday') {
-		$('#birthdayIcon').attr('src', 'images/icon/my_birthday_p.png');
+		$('#birthdayIcon').attr('src', 'images/ihfb/icons/my_birthday_p.png');
 	} else if (type == 'address') {
-		$('#addressIcon').attr('src', 'images/icon/my_address_p.png');
+		$('#addressIcon').attr('src', 'images/ihfb/icons/my_address_p.png');
 	} else if (type == 'school') {
-		$('#schoolIcon').attr('src', 'images/icon/my_school_p.png');
+		$('#schoolIcon').attr('src', 'images/ihfb/icons/my_school_p.png');
 	} else if (type == 'workplace') {
-		$('#workplaceIcon').attr('src', 'images/icon/my_workplace_p.png');
+		$('#workplaceIcon').attr('src', 'images/ihfb/icons/my_workplace_p.png');
 	} else if (type == 'occupation') {
-		$('#occupationIcon').attr('src', 'images/icon/my_occupation_p.png');
+		$('#occupationIcon').attr('src', 'images/ihfb/icons/my_occupation_p.png');
 	} else {
 		alert('type undefined');
 	}

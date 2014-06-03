@@ -36,37 +36,37 @@
 	<!-- Search Bar -->
 	<div id="searchBar">
 		<!-- Search Button -->
-		<img id="search" class="ui-button" src="images/icon/search.png">
+		<img id="search" class="ui-button" src="images/ihfb/icons/search.png">
 
 		<!-- Basic Filter -->
 		<div class="mobileCut">
 			<img id="emailIcon" class="basic-filter"
-				src="images/icon/email_p.png"> <span id="separator"></span>
+				src="images/ihfb/icons/email_p.png"> <span id="separator"></span>
 			<!-- Extended Filter -->
 			<img id="nameIcon" class="ui-button filter md-trigger"
-				data-modal="name" src="images/icon/my_name.png"> <img
+				data-modal="name" src="images/ihfb/icons/my_name.png"> <img
 				id="cellphoneIcon" class="ui-button filter md-trigger"
-				data-modal="cellphone" src="images/icon/my_mobile.png"> <img
+				data-modal="cellphone" src="images/ihfb/icons/my_mobile.png"> <img
 				id="homephoneIcon" class="ui-button filter md-trigger"
-				data-modal="homephone" src="images/icon/my_phone.png"> <img
+				data-modal="homephone" src="images/ihfb/icons/my_phone.png"> <img
 				id="birthdayIcon" class="ui-button filter md-trigger"
-				data-modal="birthday" src="images/icon/my_birthday.png">
+				data-modal="birthday" src="images/ihfb/icons/my_birthday.png">
 		</div>
 
 		<div class="mobileCut">
 			<img id="addressIcon" class="ui-button filter md-trigger"
-				data-modal="address" src="images/icon/my_address.png"> <img
+				data-modal="address" src="images/ihfb/icons/my_address.png"> <img
 				id="schoolIcon" class="ui-button filter md-trigger"
-				data-modal="school" src="images/icon/my_school.png"> <img
+				data-modal="school" src="images/ihfb/icons/my_school.png"> <img
 				id="workplaceIcon" class="ui-button filter md-trigger"
-				data-modal="workplace" src="images/icon/my_workplace.png"> <img
+				data-modal="workplace" src="images/ihfb/icons/my_workplace.png"> <img
 				id="occupationIcon" class="ui-button filter md-trigger"
-				data-modal="occupation" src="images/icon/my_occupation.png">
+				data-modal="occupation" src="images/ihfb/icons/my_occupation.png">
 
 			<!-- Filter Toggle -->
 			<img id="open-filter" class="ui-button toggle-filter"
-				src="images/icon/plus.png"> <img id="close-filter"
-				class="ui-button toggle-filter" src="images/icon/minus.png">
+				src="images/ihfb/icons/plus.png"> <img id="close-filter"
+				class="ui-button toggle-filter" src="images/ihfb/icons/minus.png">
 
 		</div>
 	</div>
