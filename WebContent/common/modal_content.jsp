@@ -8,31 +8,6 @@
 	LogonDataBean c = manager.getMember(email);
 %>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('.changeInfoForm').submit(function() {
-			var formData = $(this).serialize();
-
-			$.ajax({
-				url : "./changeInfoProcess.jsp",
-				type : "POST",
-				data : formData,
-				success : function() {
-					alert("정보 수정 완료");
-				},
-				error : function() {
-					alert("정보 수정 에러");
-				},
-				complete : function() {
-					$('.md-close').click();
-				}
-			});
-
-			return false; // no redirect
-		});
-	});
-</script>
-
 <!-- Modal Dialog -->
 <!-- name -->
 <div class="md-modal md-effect-7" id="name">
@@ -53,6 +28,7 @@
 							size="10" maxlength="10" placeholder="홍길동"
 							onblur="_onCheckName(this.form)"> <%
  	} else {
+ 		out.println("<script type=\"text/javascript\">changeIcon('name');</script>");
  %>
 						<td class="signup_text font_GODOM">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
@@ -112,6 +88,8 @@
 										cell3 = c.getCellphone().substring(8, 12);
 									else if (c.getCellphone().length() == 13)
 										cell3 = c.getCellphone().substring(9, 13);
+
+									out.println("<script type=\"text/javascript\">changeIcon('cellphone');</script>");
 							%> <input type="hidden" name="type" value="cellphone"> <input
 							type="text" name="modal_cellphone1" id="modal_cellphone1"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
@@ -192,6 +170,8 @@
 										home3 = c.getHomephone().substring(8, 12);
 									else if (c.getHomephone().length() == 13)
 										home3 = c.getHomephone().substring(9, 13);
+
+									out.println("<script type=\"text/javascript\">changeIcon('homephone');</script>");
 							%>
 						<td class="signup_text font_GODOM">전 화 번 호</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
@@ -254,6 +234,7 @@
  		birth2 = c.getBirthday().substring(5, 7);
  		String birth3 = "null";
  		birth3 = c.getBirthday().substring(8, 10);
+ 		out.println("<script type=\"text/javascript\">changeIcon('birthday');</script>");
  %>
 						<td class="signup_text font_GODOM">생 년 월 일</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
@@ -309,6 +290,7 @@
 							name="modal_address" id="modal_address" class="color font_GODOM"
 							size="10" maxlength="35" value="<%=c.getAddress()%>"
 							onblur="_onCheckAddress(this.form)"> <%
+ 	out.println("<script type=\"text/javascript\">changeIcon('address');</script>");
  	}
  %>
 							<div id="address_err" class="errMsg"></div></td>
@@ -351,6 +333,7 @@
 							name="modal_school" id="modal_school" class="color font_GODOM"
 							size="10" maxlength="10" value="<%=c.getSchool()%>"
 							onblur="_onCheckSchool(this.form)"> <%
+ 	out.println("<script type=\"text/javascript\">changeIcon('school');</script>");
  	}
  %>
 							<div id="school_err" class="errMsg"></div></td>
@@ -395,6 +378,7 @@
 							class="color font_GODOM" size="10" maxlength="35"
 							value="<%=c.getWorkplace()%>"
 							onblur="_onCheckWorkplace(this.form)"> <%
+ 	out.println("<script type=\"text/javascript\">changeIcon('workplace');</script>");
  	}
  %>
 							<div id="workplace_err" class="errMsg"></div></td>
@@ -439,6 +423,7 @@
 							class="color font_GODOM" size="10" maxlength="10"
 							value="<%=c.getOccupation()%>"
 							onblur="_onCheckOccupation(this.form)"> <%
+ 	out.println("<script type=\"text/javascript\">changeIcon('occupation');</script>");
  	}
  %>
 							<div id="occupation_err" class="errMsg"></div></td>

@@ -63,13 +63,34 @@ $(document).ajaxStart(function() {
 		progressbar.progressbar("value", val + 1);
 
 		if (val < 99) {
-			setTimeout(progress, 100);
+			setTimeout(progress, 90);
 		}
 	}
 
 	setTimeout(progress, 2000);
-
 });
+
+var changeIcon = function(type) {
+	if (type == 'name') {
+		$('#nameIcon').attr('src', 'images/icon/my_name_p.png');
+	} else if (type == 'cellphone') {
+		$('#cellphoneIcon').attr('src', 'images/icon/my_mobile_p.png');
+	} else if (type == 'homephone') {
+		$('#homephoneIcon').attr('src', 'images/icon/my_phone_p.png');
+	} else if (type == 'birthday') {
+		$('#birthdayIcon').attr('src', 'images/icon/my_birthday_p.png');
+	} else if (type == 'address') {
+		$('#addressIcon').attr('src', 'images/icon/my_address_p.png');
+	} else if (type == 'school') {
+		$('#schoolIcon').attr('src', 'images/icon/my_school_p.png');
+	} else if (type == 'workplace') {
+		$('#workplaceIcon').attr('src', 'images/icon/my_workplace_p.png');
+	} else if (type == 'occupation') {
+		$('#occupationIcon').attr('src', 'images/icon/my_occupation_p.png');
+	} else {
+		alert('type undefined');
+	}
+};
 
 var _onFilp = function(n) {
 	$('#content' + n).slideToggle('slow');
