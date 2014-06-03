@@ -9,12 +9,12 @@
 		if (session.getAttribute("memEmail") == null) {
 	%>
 		<a id="logo" class="brand" href="main.jsp"><img
-		src="./images/logo.png"></a>
+		src="./images/ihfb/main_logo/pi_144x44.png"></a>
 	<%
 		} else {
 	%>
 	<a id="logo" class="brand" href="main.jsp"><img
-		src="./images/logo.png"></a>
+		src="./images/ihfb/main_logo/pi_144x44.png"></a>
 	<!-- Nav -->
 	<div class="navbar">
 		<span class="comment font_GODOM">&lt; <%=session.getAttribute("memEmail")%>님

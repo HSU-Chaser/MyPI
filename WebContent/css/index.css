@@ -4,7 +4,6 @@
 }
 /*describe for MyPI - index.html*/
 .Mypi {
-	width: 100%;
 	border-radius: 0.7em;
 }
 
@@ -14,6 +13,7 @@ input#fid, input#fpass {
 	margin: 6% auto 6% auto;
 	border: 1px solid white;
 	color: rgb(184, 138, 120);
+	float: right;
 }
 .login_session {
 	width: 73%;

@@ -140,7 +140,7 @@ p, ul, ol, dl, table {
 }
 
 header {
-	padding: 1em;
+	padding: 8px;
 	margin-bottom: 1em;
 }
 
@@ -668,11 +668,11 @@ table.default tbody {
 	left: 0;
 	top: 0;
 	width: 100%;
-	background: #fff;
-	background: rgba(255,255,255,0.95);
+	background: rgba(255,255,255,0.6);
 	height: 3em;
 	line-height: 3em;
 	box-shadow: 0 0 0.15em 0 rgba(0,0,0,0.1);
+	border-bottom:4px solid #0c4881;
 }
 
 body {
@@ -840,35 +840,31 @@ body {
 /*********************************************************************************/
 
 #login {
-	background-color: #1376E9;
-	background-image: url('../images/junseok/header.svg'), -moz-linear-gradient(162deg, #D7CBB5 20%, #D7E6E5 60%, #784137 120%);
-	background-image: url('../images/junseok/header.svg'), -webkit-linear-gradient(162deg, #D7CBB5 20%, #D7E6E5 60%, #784137 120%);
-	background-image: url('../images/junseok/header.svg'), -o-linear-gradient(162deg, #D7CBB5 20%, #D7E6E5 60%, #784137 120%);
-	background-image: url('../images/junseok/header.svg'), -ms-linear-gradient(162deg, #D7CBB5 20%, #D7E6E5 60%, #784137 120%);
-	background-image: url('../images/junseok/header.svg'), linear-gradient(162deg, #DFD1A4 20%, #D7E6E5 60%, #784137 120%);
+	background-image: url('../images/ihfb/background/bg01.jpg');
 	background-size: 100% 100%, cover;
 	background-attachment: fixed, fixed;
 	background-position: top right, center right;
 	background-repeat: no-repeat;
+	/*opacity: 0.4;*/
 }
 /*********************************************************************************/
 /* Footer                                                                        */
 /*********************************************************************************/
 
 #footer {
+	z-index: 10000;
 	position: relative;
-	height: 3em;
+	height: 40px;
 	line-height: 5em;
-	margin: 0;
-	background: rgb(57,69,75);
+	margin: -40px;
+	background: rgba(0,0,0,0.4);
 	color: #999;
 	color: rgba(185,186,187,0.5);
 	overflow: hidden;
 }
 
 #footer a {
-	color: #999;
-	color: rgba(185,186,187,0.5);
+	color: #aaaaaa;
 }
 
 #footer a:hover {
@@ -895,7 +891,7 @@ body {
  }
  */
 #footer .menu {
-	top: -35%;
+	top: -32px;
 	text-align: center;
 	position: relative;
 	height: 3em;
@@ -904,7 +900,8 @@ body {
 }
 
 #footer .menu li {
-	font-size: 0.75em;
+	color: #aaaaaa;
+	font-size: 12pt;
 	margin: 0 2.5%;
 	padding: 0px;
 	border-left: 0;
@@ -1100,11 +1097,13 @@ table, tr, th, td, input {
 }
 /*MyPI Image+login_session - index.html*/
 .login_img {
-	width: 50%;
+	border-bottom: 2px solid #0c4881;
+	padding: 16px 0;
 	vertical-align: middle;
 }
 /*form background - all*/
 .form_background {
+	width: 600px;
 	background: none;
 	color: rgb(184, 138, 120);
 }
@@ -1132,7 +1131,6 @@ input.color:-ms-input-placeholder {/* Internet Explorer 10+ */
 }
 
 #logo > img {
-	height: 2.5em;
 	margin-top: 0.4em;
 }
 
