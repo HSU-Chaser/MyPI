@@ -74,17 +74,17 @@ table,tr,td,th {
 								onblur="_onCheckEmail(this.form)"> <span id="mailMsg"></span></td>
 							<td><input type="button" id="sendKey" name="sendKey"
 								value=" 인증키 전송 " class="button addButton font_GODOM"
-								onclick="_onSendCertKey(this.form)"></td>
+								onclick="_onSendCertKey(this.form)" disabled="disabled"></td>
 						</tr>
 						<tr>
 							<td class="signup_text font_GODOM">이메일 인증</td>
 							<td class="signup_form font_GODOM"><input type="text"
 								name="certkey" id="certkey" class="color font_GODOM" size="10"
-								maxlength="35" placeholder="인증키"><span id="keyMsg"></span></td>
+								maxlength="35" placeholder="시연기간 중 인증통과" disabled="disabled"><span id="keyMsg"></span></td>
 							<td class="font_GODOM"><input type="button"
 								name="confirm_email" value=" 인증 확인 "
 								class="button addButton font_GODOM"
-								onclick="_onConfirmCertKey(this.form)"></td>
+								onclick="_onConfirmCertKey(this.form)" disabled="disabled"></td>
 						</tr>
 						<tr>
 							<td class="signup_text font_GODOM">비밀번호</td>

@@ -8,14 +8,39 @@
 	LogonDataBean c = manager.getMember(email);
 %>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.changeInfoForm').submit(function() {
+			var formData = $(this).serialize();
+
+			$.ajax({
+				url : "./changeInfoProcess.jsp",
+				type : "POST",
+				data : formData,
+				success : function() {
+					alert("정보 수정 완료");
+				},
+				error : function() {
+					alert("정보 수정 에러");
+				},
+				complete : function() {
+					$('.md-close').click();
+				}
+			});
+
+			return false; // no redirect
+		});
+	});
+</script>
+
 <!-- Modal Dialog -->
 <!-- name -->
 <div class="md-modal md-effect-7" id="name">
 	<div class="md-content">
 		<div>
 			<h3 class="font_GODOM">정보 수정</h3>
-			<form method="post" action="changeInfoProcess.jsp"
-				name="userinput_name" onSubmit="return checkIt()">
+			<form class="changeInfoForm" method="post" action=""
+				name="userinput_name">
 				<table>
 					<tr>
 						<%
@@ -56,17 +81,16 @@
 	<div class="md-content">
 		<div>
 			<h3 class="font_GODOM">정보 수정</h3>
-			<form method="post" action="changeInfoProcess.jsp"
-				name="userinput_cellphone" onSubmit="return checkIt()">
+			<form class="changeInfoForm" class="changeInfoForm" method="post"
+				action="" name="userinput_cellphone">
 				<table>
 					<tr>
 						<td class="signup_text font_GODOM">전 화 번 호</td>
 						<td class="signup_form font_GODOM">
 							<%
 								if (c.getCellphone().equals("null")) {
-							%> <input type="hidden"
-							name="type" value="cellphone"> <input type="text"
-							name="modal_cellphone1" id="modal_cellphone1"
+							%> <input type="hidden" name="type" value="cellphone"> <input
+							type="text" name="modal_cellphone1" id="modal_cellphone1"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
 							placeholder="010" onblur="_onCheckCellphone(this.form)">
 							<input type="text" name="modal_cellphone2" id="modal_cellphone2"
@@ -77,15 +101,19 @@
 							placeholder="5678" onblur="_onCheckCellphone(this.form)">
 							<%
 								} else {
-									String cell1 = c.getCellphone().substring(0,3);
-									String cell2="null" ;
-									if(c.getCellphone().length()==12) cell2=c.getCellphone().substring(4,7);
-									else if(c.getCellphone().length() == 13) cell2=c.getCellphone().substring(4,8);
-									String cell3="null" ;
-									if(c.getCellphone().length() == 12) cell3 = c.getCellphone().substring(8,12);
-									else if(c.getCellphone().length() == 13) cell3 = c.getCellphone().substring(9,13);
-							%> <input type="hidden" name="type" value="cellphone">
-							<input type="text" name="modal_cellphone1" id="modal_cellphone1"
+									String cell1 = c.getCellphone().substring(0, 3);
+									String cell2 = "null";
+									if (c.getCellphone().length() == 12)
+										cell2 = c.getCellphone().substring(4, 7);
+									else if (c.getCellphone().length() == 13)
+										cell2 = c.getCellphone().substring(4, 8);
+									String cell3 = "null";
+									if (c.getCellphone().length() == 12)
+										cell3 = c.getCellphone().substring(8, 12);
+									else if (c.getCellphone().length() == 13)
+										cell3 = c.getCellphone().substring(9, 13);
+							%> <input type="hidden" name="type" value="cellphone"> <input
+							type="text" name="modal_cellphone1" id="modal_cellphone1"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
 							value="<%=cell1%>" onblur="_onCheckCellphone(this.form)">
 							<input type="text" name="modal_cellphone2" id="modal_cellphone2"
@@ -117,8 +145,8 @@
 	<div class="md-content">
 		<div>
 			<h3 class="font_GODOM">정보 수정</h3>
-			<form method="post" action="changeInfoProcess.jsp"
-				name="userinput_homephone" onSubmit="return checkIt()">
+			<form class="changeInfoForm" class="changeInfoForm" method="post"
+				action="" name="userinput_homephone">
 				<table>
 					<tr>
 						<%
@@ -138,23 +166,32 @@
 							placeholder="5678" onblur="_onCheckHomephone(this.form)">
 							<%
 								} else {
-									String home1="null";
-									if(c.getHomephone().substring(0,3).equals("02-") && c.getHomephone().length() == 11)
-										home1 = c.getHomephone().substring(0,2);
-									else if(c.getHomephone().length() == 12) home1=c.getHomephone().substring(4,7);
-									else if(c.getHomephone().length() == 13) home1=c.getHomephone().substring(4,8);
-									
-									String home2="null";
-									if(c.getHomephone().substring(0,3).equals("02-") && c.getHomephone().length() ==11)
-										home2 = c.getHomephone().substring(3,6);
-									else if(c.getHomephone().length() == 12) home2 = c.getHomephone().substring(4,7);
-									else if(c.getHomephone().length() == 13) home2 = c.getHomephone().substring(4,8);
-									
-									String home3="null";
-									if(c.getHomephone().substring(0,3).equals("02-") && c.getHomephone().length()==11)
-										home3 = c.getHomephone().substring(7,11);
-									else if(c.getHomephone().length() == 12) home3=c.getHomephone().substring(8,12);
-									else if(c.getHomephone().length() == 13) home3=c.getHomephone().substring(9,13);
+									String home1 = "null";
+									if (c.getHomephone().substring(0, 3).equals("02-")
+											&& c.getHomephone().length() == 11)
+										home1 = c.getHomephone().substring(0, 2);
+									else if (c.getHomephone().length() == 12)
+										home1 = c.getHomephone().substring(4, 7);
+									else if (c.getHomephone().length() == 13)
+										home1 = c.getHomephone().substring(4, 8);
+
+									String home2 = "null";
+									if (c.getHomephone().substring(0, 3).equals("02-")
+											&& c.getHomephone().length() == 11)
+										home2 = c.getHomephone().substring(3, 6);
+									else if (c.getHomephone().length() == 12)
+										home2 = c.getHomephone().substring(4, 7);
+									else if (c.getHomephone().length() == 13)
+										home2 = c.getHomephone().substring(4, 8);
+
+									String home3 = "null";
+									if (c.getHomephone().substring(0, 3).equals("02-")
+											&& c.getHomephone().length() == 11)
+										home3 = c.getHomephone().substring(7, 11);
+									else if (c.getHomephone().length() == 12)
+										home3 = c.getHomephone().substring(8, 12);
+									else if (c.getHomephone().length() == 13)
+										home3 = c.getHomephone().substring(9, 13);
 							%>
 						<td class="signup_text font_GODOM">전 화 번 호</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
@@ -191,8 +228,8 @@
 	<div class="md-content">
 		<div>
 			<h3 class="font_GODOM">정보 수정</h3>
-			<form method="post" action="changeInfoProcess.jsp"
-				name="userinput_birthday" onSubmit="return checkIt()">
+			<form class="changeInfoForm" class="changeInfoForm" method="post"
+				action="" name="userinput_birthday">
 				<table>
 					<tr>
 						<%
@@ -211,12 +248,12 @@
 							class="color font_GODOM inputSize" size="10" maxlength="2"
 							placeholder="14" onblur="_onCheckBirthday(this.form)"> <%
  	} else {
- 		String birth1="null"; 
- 		birth1= c.getBirthday().substring(0,4);
- 		String birth2="null"; 
- 		birth2= c.getBirthday().substring(5,7);
- 		String birth3="null"; 
- 		birth3= c.getBirthday().substring(8,10);
+ 		String birth1 = "null";
+ 		birth1 = c.getBirthday().substring(0, 4);
+ 		String birth2 = "null";
+ 		birth2 = c.getBirthday().substring(5, 7);
+ 		String birth3 = "null";
+ 		birth3 = c.getBirthday().substring(8, 10);
  %>
 						<td class="signup_text font_GODOM">생 년 월 일</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
@@ -251,8 +288,8 @@
 	<div class="md-content">
 		<div>
 			<h3 class="font_GODOM">정보 수정</h3>
-			<form method="post" action="changeInfoProcess.jsp"
-				name="userinput_address" onSubmit="return checkIt()">
+			<form class="changeInfoForm" class="changeInfoForm" method="post"
+				action="" name="userinput_address">
 				<table>
 					<tr>
 						<%
@@ -293,8 +330,8 @@
 	<div class="md-content">
 		<div>
 			<h3 class="font_GODOM">정보 수정</h3>
-			<form method="post" action="changeInfoProcess.jsp"
-				name="userinput_school" onSubmit="return checkIt()">
+			<form class="changeInfoForm" class="changeInfoForm" method="post"
+				action="" name="userinput_school">
 				<table>
 					<tr>
 						<%
@@ -335,8 +372,8 @@
 	<div class="md-content">
 		<div>
 			<h3 class="font_GODOM">정보 수정</h3>
-			<form method="post" action="changeInfoProcess.jsp"
-				name="userinput_workplace" onSubmit="return checkIt()">
+			<form class="changeInfoForm" class="changeInfoForm" method="post"
+				action="" name="userinput_workplace">
 				<table>
 					<tr>
 						<%
@@ -379,8 +416,8 @@
 	<div class="md-content">
 		<div>
 			<h3 class="font_GODOM">정보 수정</h3>
-			<form method="post" action="changeInfoProcess.jsp"
-				name="userinput_occupation" onSubmit="return checkIt()">
+			<form class="changeInfoForm" method="post" action=""
+				name="userinput_occupation">
 				<table>
 					<tr>
 						<%

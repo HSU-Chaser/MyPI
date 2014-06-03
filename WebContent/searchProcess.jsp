@@ -19,22 +19,72 @@
 	margin-bottom: 2%;
 }
 
-.resultObject .div-th {
-	width: 100%;
-	height: 3em;
-	border: 0;
-	cellspacing: 0;
-	cellpadding: 0;
-	border: .1 solid white;
-	cellpadding: 0;
+.resultObject .div-num {
+	width: 8%;
+	height: 2em;
+	float: left;
+	background-color: #ffffff;
+	display: inline;
 	text-align: center;
+	height: 2em;
+	display: inline;
+	vertical-align: middle;
+	padding-left: 2%;
+	padding-right: 2%;
+	width: 8%;
+}
+
+.resultObject .div-title {
+	width: 82%;
+	height: 2em;
+	float: left;
+	background-color: #ffffff;
+	display: inline-block;
+	text-align: left;
+	height: 2em;
+	vertical-align: middle;
+	position: relative;
+}
+
+.resultObject .div-title .title {
+	position: absolute;
+	max-width: 100%;
+	height: 100%;
+	word-spacing: 1px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	color: #0c76c7;
+	text-decoration: none;
+	height: 100%;
+	white-space: nowrap;
+}
+
+.resultObject .div-exp {
+	width: 10%;
+	height: 2em;
+	float: left;
+	background-color: #ffffff;
+	display: inline;
+	text-align: center;
+	height: 2em;
+	vertical-align: middle;
+}
+
+.resultObject .div-graph {
+	width: 100%;
+	border: 0;
+	cellpadding: 0;
+	cellspacing: 0;
+	background-color: white;
+	color: #0c76c7;
+	text-align: center;
+	background-color: white;
 }
 
 .resultObject .div-tr {
 	width: 100%;
 	border: 0;
-	cellspacing: 0;
-	cellpadding: 0;
 	border: .1 solid white;
 	cellpadding: 0;
 	text-align: center;
@@ -82,28 +132,27 @@
 	<br>
 	<br>
 
-	<h2 class="font_GODOM" align="center">
+	<h2 class="font_GODOM" align="center" style="color: white;">
 		<%=memberEmail%>
 		님의 MyPI 솔루션 검색 결과
 	</h2>
 	<br>
 	<br>
 
-	<h2 class="resultObject font_GODOM">그래프</h2>
 	<div id="graph" class="resultObject">
-		<div class="div-th">
-			<div class="div-td font_GODOM" style="width: 50%; float: left">검색
-				엔진 비율</div>
-			<div class="div-td font_GODOM" style="width: 50%; float: left">검색
+		<div>
+			<div class="div-graph font_GODOM"
+				style="width: 49%; float: left; color:">검색 엔진 비율</div>
+			<div class="div-graph font_GODOM" style="width: 49%; float: right">검색
 				통계</div>
 		</div>
 		<div style="clear: both;"></div>
 		<div class="div-tr">
-			<div class="div-td" style="width: 50%; float: left">
+			<div class="div-td" style="width: 49%; float: left">
 				<iframe src="engineGraph.jsp" frameborder="0" name="engineGraph"
 					align="center" width="100%" height="300px" scrolling='no'></iframe>
 			</div>
-			<div class="div-td" style="width: 50%; float: left">
+			<div class="div-td" style="width: 49%; float: right">
 				<iframe src="exposureGraph.jsp" frameborder="0" name="exposureGraph"
 					align="center" width="100%" height="300px" scrolling='auto'></iframe>
 			</div>
@@ -111,12 +160,14 @@
 		<div style="clear: both;"></div>
 	</div>
 
-	<h2 class="resultObject font_GODOM">이미지</h2>
+	<h2 class="resultObject font_GODOM" style="color: white">이미지</h2>
 	<div id="image" class="resultObject">
 		<div class="div-tr">
 			<%
-				System.out.println(ImageStorage.getImgUrlList().size());
-					for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
+				if (ImageStorage.getImgUrlList().size() == 0) {
+						out.println("<h3 class='font_GODOM'>이미지 결과가 없습니다.</h3>");
+					} else {
+						for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
 			%>
 			<div class="div-td" align="center"
 				style="position: relative; width: 20%; height: 0; float: left; overflow: hidden; padding-bottom: 20%">
@@ -128,17 +179,22 @@
 			%><div style="clear: both;"></div>
 			<%
 				}
+						}
 					}
 			%>
 		</div>
-<div style="clear: both;"></div>
+		<div style="clear: both;"></div>
 	</div>
 
-	<h2 class="resultObject font_GODOM">Static Search</h2>
+	<h2 class="resultObject font_GODOM" style="color: white">Static
+		Search</h2>
 	<div class="resultObject font_GODOM">
 		<div class="div-tr">
 			<%
-				for (int i = 0; i < ExtendedStorage.imgList.size(); i++) {
+				if (ExtendedStorage.exposureUrlList.size() == 0) {
+						out.println("<h3 class='font_GODOM'>주요 노출 사이트 결과가 없습니다.</h3>");
+					} else {
+						for (int i = 0; i < ExtendedStorage.exposureUrlList.size(); i++) {
 			%>
 			<div class="div-td" style="float: left; width: 12.5%">
 				<a href="<%=ExtendedStorage.exposureUrlList.get(i)%>"
@@ -147,31 +203,33 @@
 			</div>
 			<%
 				}
+					}
 			%>
 		</div>
 		<div style="clear: both"></div>
 	</div>
 
-	<h2 class="resultObject font_GODOM">Dynamic Search</h2>
+	<h2 class="resultObject font_GODOM" style="color: white">Dynamic
+		Search</h2>
 	<div class="resultObject font_GODOM">
 		<!-- TH	 -->
-		<div class="div-th">
+		<!-- 		<div class="div-th">
 			<div class="div-td" style="width: 5%; float: left">번호</div>
 			<div class="div-td" style="width: 82%; float: left">제목</div>
 			<div class="div-td" style="width: 10%; float: left">위험도</div>
 			<div class="div-td" style="width: 3%; float: left">-</div>
 			<div style="clear: both;"></div>
-		</div>
+		</div> -->
 		<%
 			for (int i = 0; i < result.size(); i++) {
 		%>
 		<!-- TR -->
 		<div class="div-tr" onclick="_onFilp(<%=i + 1%>)">
-			<div class="div-td" style="width: 5%; float: left;"><%=i + 1%></div>
-			<div class="div-td" style="width: 82%; float: left;">
-				<a href="<%=result.get(i).getURL()%>" target="_blank"><%=result.get(i).getTitle()%></a>
+			<div class="div-num"><%=i + 1%></div>
+			<div class="div-title">
+				<a class="title" href="<%=result.get(i).getURL()%>" target="_blank"><%=result.get(i).getTitle()%></a>
 			</div>
-			<div class="div-td" style="width: 10%; float: left;">
+			<div class="div-exp">
 				<%
 					double exp = result.get(i).getExposure();
 							if (exp >= 70.0) {
@@ -189,7 +247,7 @@
 					}
 				%>
 			</div>
-			<div class="div-td" style="width: 3%; float: left">▼</div>
+			<!-- <div class="div-td" style="width: 3%; float: left">▼</div> -->
 			<div style="clear: both"></div>
 		</div>
 
@@ -284,6 +342,7 @@
 			</div>
 			<div style="clear: both"></div>
 		</div>
+		<div style="margin-bottom: 1em"></div>
 		<%
 			}
 				ImageStorage.getImgUrlList().clear();

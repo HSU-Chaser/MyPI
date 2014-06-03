@@ -1157,37 +1157,55 @@ input.color:-ms-input-placeholder {/* Internet Explorer 10+ */
 	margin-top: 2em;
 	left: 0px;
 	width: 100%;
-	height: 56px;
+	height: 60px;
 	position: fixed;
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(12, 118, 199, 0.5);
 	padding: 0.3% 36px;
 }
+
 div#searchBar img {
 	vertical-align: middle;
 }
+
 #searchBar .basic-filter {
 	float: left;
+	vertical-align: middle;
 }
+
 #searchBar .filter {
 	display: none;
 	float: left;
+	vertical-align: middle;
 }
+
 #searchBar .toggle-filter {
 	float: left;
+	vertical-align: middle;
 }
-#searchBar button {
-	margin-right: 2%;
-}
+
 #close-filter {
 	display: none;
+	vertical-align: middle;
 }
+
+#separator {
+	float: left;
+	vertical-align: middle;
+	width: 1px;
+	height: 40px;
+	border-right: 1px solid white;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 10px;
+}
+
 #search {
 	float: right;
 }
+
 .comment {
-	display : inline-block;
+	display: inline-block;
 	vertical-align: super;
-	
 }
 
 .inputSize {

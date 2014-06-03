@@ -68,6 +68,8 @@ public class NaverSearch {
 						.getTextContent();
 				title = element.getElementsByTagName("title").item(0)
 						.getTextContent();
+				title = title.replaceAll(
+						"<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
 				snippet = element.getElementsByTagName("description").item(0)
 						.getTextContent();
 			}
@@ -118,7 +120,7 @@ public class NaverSearch {
 		request.append("&display=" + limit); // 결과값 제한 조정
 
 		System.out.println("네이버API XML 주소 : " + request);
-		
+
 		searchPage = request.toString();
 		System.out.println("네이버 searchPage : " + searchPage);
 		return request.toString();

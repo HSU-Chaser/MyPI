@@ -38,56 +38,38 @@
 	<!-- Search Bar -->
 	<div id="searchBar">
 		<!-- Search Button -->
-		<button id="search" class="ui-button">
-			<img src="images/icon/search.png">
-		</button>
+		<img id="search" class="ui-button" src="images/icon/search.png">
+
 		<!-- Basic Filter -->
 		<div class="mobileCut">
-			<button id="email" class="basic-filter ui-button">
-				<img src="images/icon/email.png">
-			</button>
+			<img id="email" class="basic-filter" src="images/icon/email_p.png">
+			<span id="separator"></span>
 			<!-- Extended Filter -->
-			<button id="name" class="filter ui-button md-trigger"
-				data-modal="name">
-				<img src="images/icon/name.png">
-			</button>
-			<button id="cellphone" class="filter ui-button md-trigger"
-				data-modal="cellphone">
-				<img src="images/icon/cellphone.png">
-			</button>
-			<button id="homephone" class="filter ui-button md-trigger"
-				data-modal="homephone">
-				<img src="images/icon/homephone.png">
-			</button>
-			<button id="birthday" class="filter ui-button md-trigger"
-				data-modal="birthday">
-				<img src="images/icon/birthday.png">
-			</button>
+			<img id="name" class="ui-button filter md-trigger" data-modal="name"
+				src="images/icon/my_name.png"> <img id="cellphone"
+				class="ui-button filter md-trigger" data-modal="cellphone"
+				src="images/icon/my_mobile.png"> <img id="homephone"
+				class="ui-button filter md-trigger" data-modal="homephone"
+				src="images/icon/my_phone.png"> <img id="birthday"
+				class="ui-button filter md-trigger" data-modal="birthday"
+				src="images/icon/my_birthday.png">
 		</div>
+
 		<div class="mobileCut">
-			<button id="address" class="filter ui-button md-trigger"
-				data-modal="address">
-				<img src="images/icon/address.png">
-			</button>
-			<button id="school" class="filter ui-button md-trigger"
-				data-modal="school">
-				<img src="images/icon/school.png">
-			</button>
-			<button id="workplace" class="filter ui-button md-trigger"
-				data-modal="workplace">
-				<img src="images/icon/workplace.png">
-			</button>
-			<button id="occupation" class="filter ui-button md-trigger"
-				data-modal="occupation">
-				<img src="images/icon/occupation.png">
-			</button>
+			<img id="address" class="ui-button filter md-trigger"
+				data-modal="address" src="images/icon/my_address.png"> <img
+				id="school" class="ui-button filter md-trigger" data-modal="school"
+				src="images/icon/my_school.png"> <img id="workplace"
+				class="ui-button filter md-trigger" data-modal="workplace"
+				src="images/icon/my_workplace.png"> <img id="occupation"
+				class="ui-button filter md-trigger" data-modal="occupation"
+				src="images/icon/my_occupation.png">
+
 			<!-- Filter Toggle -->
-			<button id="open-filter" class="toggle-filter ui-button">
-				<img src="images/icon/plus.png">
-			</button>
-			<button id="close-filter" class="toggle-filter ui-button">
-				<img src="images/icon/minus.png">
-			</button>
+			<img id="open-filter" class="ui-button toggle-filter"
+				src="images/icon/plus.png"> <img id="close-filter"
+				class="ui-button toggle-filter" src="images/icon/minus.png">
+
 		</div>
 	</div>
 	

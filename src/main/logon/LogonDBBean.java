@@ -182,6 +182,7 @@ public class LogonDBBean {
 				member.setWorkplace(rs.getString("workplace"));
 				member.setOccupation(rs.getString("occupation"));
 				member.setCurrent_grade(rs.getInt("current_grade"));
+				member.setNew_client(rs.getBoolean("new_client"));
 
 			}
 		} catch (Exception ex) {
@@ -559,6 +560,34 @@ public class LogonDBBean {
 				}
 		}
 	}
+	
+	//  isnew_client
+		public void updateNew_Client(LogonDataBean member, Boolean new_client) throws Exception {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("update member set new_client=? where email=?");
+				pstmt.setBoolean(1, new_client);
+				pstmt.setString(2, member.getEmail());
+				pstmt.executeUpdate();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if (pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException ex) {
+					}
+				if (conn != null)
+					try {
+						conn.close();
+					} catch (SQLException ex) {
+					}
+			}
+		}
 
 	// 회원 탈퇴
 	public int deleteMember(String email, String password) throws Exception {

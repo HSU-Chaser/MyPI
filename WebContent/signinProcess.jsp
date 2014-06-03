@@ -27,12 +27,14 @@
 
 	int check = manager.userCheck(email, password);
 	LogonDataBean member = manager.getMember(email);
-	
-	
+
 	if (check == 1) {
 		session.setAttribute("memEmail", email);
-		session.setAttribute("client_num", member.getClient_num()+"");
-		response.sendRedirect("main.jsp");
+		session.setAttribute("client_num", member.getClient_num() + "");
+		if (member.getNew_client() == true) {
+			response.sendRedirect("ChangeInfoAll.jsp");
+		} else
+			response.sendRedirect("main.jsp");
 	} else if (check == 0) {
 %>
 
