@@ -726,10 +726,10 @@ body {
 /*********************************************************************************/
 
 #intro {
-	background: url('images/overlay.png'), url('../images/junseok/forest.jpg');
+	background: url('images/overlay.png'), url('../images/ihfb/background/bg02.jpg');
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
-	/*background-position: top left, bottom center;*/
+	background-position: top left, bottom center;
 	background-repeat: repeat, no-repeat;
 }
 
@@ -760,10 +760,11 @@ body {
 /*********************************************************************************/
 
 #work {
-	background: url('images/overlay.png'), url('../images/junseok/steps.jpg');
+	background: url('images/overlay.png'), url('../images/ihfb/background/bg03.jpg');
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
-	background-position: top right, center right;
+	background-position: top left, bottom center;
+	background-repeat: repeat, no-repeat;
 }
 
 #work .row.images {
@@ -808,7 +809,7 @@ body {
 #contact {
 	padding-bottom: 0;
 	overflow: hidden;
-	background: url('images/overlay.png'), url('../images/junseok/2.jpg');
+	background:  url('images/overlay.png'), url('../images/ihfb/background/bg03.jpg');
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
 	background-position: top right, center right;
