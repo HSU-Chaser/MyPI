@@ -826,6 +826,7 @@ body {
 /* Contact                                                                       */
 /*********************************************************************************/
 #contact {
+	max-width: 1280px;
 	padding-bottom: 0;
 	overflow: hidden;
 	background: url('images/overlay.png'), url('images/bg03.jpg');
@@ -1229,12 +1230,11 @@ div#searchBar img {
 	float: left;
 	vertical-align: middle;
 	width: 1px;
-	height: 1em;
+	height: 40px;
 	border-right: 1px solid white;
 	padding-left: 4px;
 	padding-right: 4px;
 	padding-top: 10px;
-	width: 1px;
 }
 
 #search {
