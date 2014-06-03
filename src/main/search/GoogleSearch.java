@@ -71,6 +71,7 @@ public class GoogleSearch {
 						.getTextContent();
 				title = title.replaceAll(
 						"<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+
 				snippet = element.getElementsByTagName("S").item(0)
 						.getTextContent();
 			}

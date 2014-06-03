@@ -64,7 +64,6 @@
 	chart.SetSeriesValuesFromString(0, series);
 
 	// Set the chart title
-	chart.SetTitle("검색 엔진 비율");
 
 	// Apply a Pie style
 	// The chart type is stored in the style file (*.scs)
