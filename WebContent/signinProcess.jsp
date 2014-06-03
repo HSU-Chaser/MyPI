@@ -31,10 +31,7 @@
 	if (check == 1) {
 		session.setAttribute("memEmail", email);
 		session.setAttribute("client_num", member.getClient_num() + "");
-		if (member.getNew_client() == true) {
-			response.sendRedirect("ChangeInfoAll.jsp");
-		} else
-			response.sendRedirect("main.jsp");
+		response.sendRedirect("main.jsp");
 	} else if (check == 0) {
 %>
 

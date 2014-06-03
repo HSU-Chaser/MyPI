@@ -2,14 +2,6 @@ package main.logon;
 
 public class LogonDataBean {
 
-	public boolean getCertStatus() {
-		return certStatus;
-	}
-
-	public void setCertStatus(boolean certStatus) {
-		this.certStatus = certStatus;
-	}
-
 	// 이하 추가된 부분
 
 	private int client_num;
@@ -28,18 +20,7 @@ public class LogonDataBean {
 	private String school ="null";
 	private String workplace="null";
 	private String occupation="null";
-	private int current_grade=-1;
-	private boolean certStatus;
-	private boolean new_client=true;
 	
-	public boolean getNew_client() {
-		return new_client;
-	}
-
-	public void setNew_client(boolean new_client) {
-		this.new_client = new_client;
-	}
-
 	public int getClient_num() {
 		return client_num;
 	}
@@ -58,14 +39,6 @@ public class LogonDataBean {
 
 	public void setWorkplace(String workplace) {
 		this.workplace = workplace;
-	}
-
-	public int getCurrent_grade() {
-		return current_grade;
-	}
-
-	public void setCurrent_grade(int exp_grade) {
-		this.current_grade = exp_grade;
 	}
 
 	public String getName() {

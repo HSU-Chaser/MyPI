@@ -39,9 +39,7 @@
 		location.replace("index.jsp");
 	</script>
 	<%
-		} else if (c.getNew_client() == false) {
-			response.sendRedirect("main.jsp");
-		} else {
+		}else {
 	%>
 	<form method="post" action="ChangeInfoAllProcess.jsp" name="userinput"
 		onSubmit="return checkIt()">

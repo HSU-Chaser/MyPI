@@ -43,11 +43,6 @@
 		manager.updateSchool(c,school);
 		manager.updateWorkPlace(c,workplace);
 		manager.updateOccuPation(c,occupation);
-		Boolean new_client = c.getNew_client();
-		if(new_client == true){
-			new_client = false;
-			manager.updateNew_Client(c, new_client);
-		}
 		response.sendRedirect("main.jsp");
 	%>
 </body>

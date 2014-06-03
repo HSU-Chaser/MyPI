@@ -32,7 +32,7 @@ public class LogonDBBean {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("insert into member values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			pstmt = conn.prepareStatement("insert into member values(?,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setInt(1, member.getClient_num());
 			pstmt.setString(2, member.getEmail());
 			pstmt.setString(3, member.getPassword());
@@ -44,9 +44,6 @@ public class LogonDBBean {
 			pstmt.setString(9, member.getSchool());
 			pstmt.setString(10, member.getWorkplace());
 			pstmt.setString(11, member.getOccupation());
-			pstmt.setInt(12, member.getCurrent_grade());
-			pstmt.setBoolean(13, member.getCertStatus());
-			pstmt.setBoolean(14, member.getNew_client());
 
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
@@ -181,8 +178,6 @@ public class LogonDBBean {
 				member.setSchool(rs.getString("school"));
 				member.setWorkplace(rs.getString("workplace"));
 				member.setOccupation(rs.getString("occupation"));
-				member.setCurrent_grade(rs.getInt("current_grade"));
-				member.setNew_client(rs.getBoolean("new_client"));
 
 			}
 		} catch (Exception ex) {
@@ -251,33 +246,6 @@ public class LogonDBBean {
 				}
 		}
 		return x;
-	}
-
-	public void updateCertStatus(String email) throws Exception {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-
-		try {
-			conn = getConnection();
-			pstmt = conn
-					.prepareStatement("update member set mail_cert_status=?");
-			pstmt.setBoolean(1, true);
-			pstmt.executeUpdate();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (pstmt != null)
-				try {
-					pstmt.close();
-				} catch (SQLException ex) {
-				}
-			if (conn != null)
-				try {
-					conn.close();
-				} catch (SQLException ex) {
-				}
-		}
 	}
 
 	// 폼 나온 후에 수정 필요
@@ -561,34 +529,6 @@ public class LogonDBBean {
 		}
 	}
 	
-	//  isnew_client
-		public void updateNew_Client(LogonDataBean member, Boolean new_client) throws Exception {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-
-			try {
-				conn = getConnection();
-				pstmt = conn.prepareStatement("update member set new_client=? where email=?");
-				pstmt.setBoolean(1, new_client);
-				pstmt.setString(2, member.getEmail());
-				pstmt.executeUpdate();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			} finally {
-				if (pstmt != null)
-					try {
-						pstmt.close();
-					} catch (SQLException ex) {
-					}
-				if (conn != null)
-					try {
-						conn.close();
-					} catch (SQLException ex) {
-					}
-			}
-		}
-
 	// 회원 탈퇴
 	public int deleteMember(String email, String password) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
