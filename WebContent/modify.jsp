@@ -49,14 +49,10 @@
 
 		LogonDBBean manager = LogonDBBean.getInstance();
 		LogonDataBean c = manager.getMember(email);
-
-		if (c.getCertStatus() == false) {
-			// 인증이 안되어 있을 경우
 	%>
 
 	<%
-		} else {
-			try {
+		try {
 	%>
 
 
@@ -94,7 +90,6 @@
 </body>
 <%
 	} catch (Exception e) {
-		}
 	}
 %>
 </html>

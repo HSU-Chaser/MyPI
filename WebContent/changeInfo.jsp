@@ -77,22 +77,6 @@ table,th,tr,td {
 	<jsp:include page="/common/header.jsp" />
 
 	<!-- Change Info -->
-	<%
-		if (c.getCertStatus() == false) {
-	%>
-	<form action="mailCert.jsp" method="post" name="certinput">
-	<table>
-	<tr><td>인증코드</td></tr>
-		<tr>
-			<td>인증번호 입력 :</td>
-			<td><input type="text" name="cert" id="cert"></td>
-			<td><input type="submit" name ="submit" class ="button junseok9" value="제출">
-		</tr>
-	</table>
-	</form>
-	<%
-		} else {
-	%>
 	<section id="contact" class="main style3 secondary">
 		<div class="content container">
 			<form method="post" action="modifyProcess.jsp" name="userinput"
@@ -133,7 +117,6 @@ table,th,tr,td {
 
 </body>
 <%
-	}
 	} catch (Exception e) {
 	}
 %>
