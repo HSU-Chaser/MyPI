@@ -22,14 +22,14 @@
 			환영합니다. &gt;
 		</span>
 	</div>
-	<div class="navbar" style="top: 10px;">
+	<div class="navbar" style="top: 0.35em;">
 		<span>
 			<a class="font_GODOM" href="ChangeInfoAll.jsp"><img
 				src="./images/ihfb/icons/myinfo_edit.png"
-				style="border-left: 0.1em solid #0c76c6;"></a> 
+				style="border-left: 0.1em solid #0c76c6; width: 45%;"></a> 
 			<a class="font_GODOM" href="signout.jsp"><img
 				src="./images/ihfb/icons/signout.png"
-				style="border-left: 0.1em solid #0c76c6;"></a>
+				style="border-left: 0.1em solid #0c76c6; width: 45%;"></a>
 		</span>
 	</div>
 	<%

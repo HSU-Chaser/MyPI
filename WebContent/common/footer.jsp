@@ -69,10 +69,10 @@
 		<li>Design: J, Develop: s, s, y, o</li>
 		<li>Support	:<a href="https://www.facebook.com/ihateflyingbugs"
 			style="text-decoration: blink;"> I Hate Flying Bugs</a></li>
-		<li>Contact: <a class="md-trigger" data-modal="mailMd">hsuteamchaser@gmail.com</a></li>
+		<li>Contact: <a class="ui-button md-trigger" data-modal="mailMd">hsuteamchaser@gmail.com</a></li>
 	</ul>
 	<!-- effecter2_start -->
-		<div class="md-overlay"></div><!-- the overlay element -->
+		<div class="md-overlay" style="background:rgba(0,0,0,0.6);"></div><!-- the overlay element -->
 	
 		<!-- classie.js by @desandro: https://github.com/desandro/classie -->
 		<script src="js/effecter/classie.js"></script>
