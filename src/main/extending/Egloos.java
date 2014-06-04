@@ -6,8 +6,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
-import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
+import main.extending.form.SiteInfo;
 
 public class Egloos extends Search {
 	public Egloos() {
@@ -41,8 +41,13 @@ public class Egloos extends Search {
 					setNickName((list.get(i).substring(29).replace('"', '!')
 							.split("!")[1]));
 					storage.nickNameList.add(getNickName());
-					storage.exposureUrlList.add(getUrl());
-					ExtendedStorage.imgList.add("https://lh4.ggpht.com/aqtv6-0J9Aoczc1T663jms8fngcFG0BFl7oEZHQYIgFUxbp3INij-Mzlkl2wiK-QxZAi=w300-rw");
+					
+					SiteInfo siteInfo = new SiteInfo();
+					siteInfo.setSiteImage("https://lh4.ggpht.com/aqtv6-0J9Aoczc1T663jms8fngcFG0BFl7oEZHQYIgFUxbp3INij-Mzlkl2wiK-QxZAi=w300-rw");
+					siteInfo.setUrl(getUrl());
+					siteInfo.setSiteName("이글루스 블로그");
+					storage.siteInfoList.add(siteInfo);
+					
 				} 
 				if (list.get(i).contains("img src")) {
 					setImgUrl((list.get(i).split("<")[2].replace('"', '!')

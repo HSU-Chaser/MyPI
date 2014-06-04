@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
+import main.extending.form.SiteInfo;
 
 public class NaverBlog extends Search {
 
@@ -43,8 +44,12 @@ public class NaverBlog extends Search {
 				i++;
 			}
 			br.close();
-			storage.exposureUrlList.add(getUrl());
-			ExtendedStorage.imgList.add("https://lh4.ggpht.com/LgVIzIKFwA6PqUq3p6FJoS41c0ZC0z0Xvu6O_pMNnNIUNjnUh1Bld3A4V2FSw8QChpE=w300-rw");
+			
+			SiteInfo siteInfo = new SiteInfo();
+			siteInfo.setSiteImage("https://lh4.ggpht.com/LgVIzIKFwA6PqUq3p6FJoS41c0ZC0z0Xvu6O_pMNnNIUNjnUh1Bld3A4V2FSw8QChpE=w300-rw");
+			siteInfo.setUrl(getUrl());
+			siteInfo.setSiteName("네이버 블로그");
+			storage.siteInfoList.add(siteInfo);
 			
 		} catch (Exception e) {
 			if(e.toString().contains("FileNotFoundException")){

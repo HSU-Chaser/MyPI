@@ -2,6 +2,7 @@ package main.extending;
 
 import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
+import main.extending.form.SiteInfo;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -21,9 +22,12 @@ public class Tistory extends Search {
 		try {
 			doc = Jsoup.connect(getUrl()).get();
 
-			storage.exposureUrlList.add(getUrl());
-			ExtendedStorage.imgList.add("https://lh3.ggpht.com/XJv1v_rHNeMXCBmTauDbepxVgIOhArGVZMCBt0UoC3QJLm3YpQ-gLRRmc0wRlFQXyN0=w300-rw");
-
+			SiteInfo siteInfo = new SiteInfo();
+			siteInfo.setSiteImage("https://lh3.ggpht.com/XJv1v_rHNeMXCBmTauDbepxVgIOhArGVZMCBt0UoC3QJLm3YpQ-gLRRmc0wRlFQXyN0=w300-rw");
+			siteInfo.setUrl(getUrl());
+			siteInfo.setSiteName("티스토리 블로그");
+			storage.siteInfoList.add(siteInfo);
+			
 			Elements text = doc.select("div.author");
 			Elements img = doc.select("div.wrapBottomM div.profileImageWrap");
 

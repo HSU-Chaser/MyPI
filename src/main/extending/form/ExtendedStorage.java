@@ -19,9 +19,11 @@ import main.ranking.ImageStorage;
 
 public class ExtendedStorage {
 	public static ArrayList<String> nickNameList = null;
+	
+	//프로필 이미지
 	public static ArrayList<String> imgUrlList = null;
-	public static ArrayList<String> exposureUrlList = null;
-	public static ArrayList<String> imgList = null;
+	public static ArrayList<SiteInfo> siteInfoList = null;
+	
 	public static String realName = "null";
 	public static String realBirthday = "null";
 	public static String realEmail = "null";
@@ -42,10 +44,10 @@ public class ExtendedStorage {
 		nickNameList = new ArrayList<String>();
 		imgUrlList = null;
 		imgUrlList = new ArrayList<String>();
-		exposureUrlList = null;
-		exposureUrlList = new ArrayList<String>();
-		imgList = null;
-		imgList = new ArrayList<String>();
+	
+		siteInfoList = null;
+		siteInfoList = new ArrayList<SiteInfo>();
+			
 	}
 
 	class staticThread implements Runnable {
@@ -114,8 +116,8 @@ public class ExtendedStorage {
 		}
 		System.out.println("");
 		System.out.println(getClientId() + "님의 주요 신상정보 노출 웹");
-		for (int i = 0; i < exposureUrlList.size(); i++) {
-			System.out.println(exposureUrlList.get(i));
+		for (int i = 0; i < siteInfoList.size(); i++) {
+			System.out.println(siteInfoList.get(i).getUrl());
 		}
 
 		System.out.println("");

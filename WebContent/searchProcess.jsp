@@ -152,16 +152,17 @@
 				</div>
 				<div class="div-tr">
 					<%
-						if (ExtendedStorage.exposureUrlList.size() == 0) {
+						if (ExtendedStorage.siteInfoList.size() == 0) {
 								out.println("<p>주요 노출 사이트 결과가 없습니다.</p>");
 							} else {
-								for (int i = 0; i < ExtendedStorage.exposureUrlList.size(); i++) {
+								for (int i = 0; i < ExtendedStorage.siteInfoList.size(); i++) {
 					%>
 					<div class="div-td" style="float: left; width: 12.5%">
-						<a href="<%=ExtendedStorage.exposureUrlList.get(i)%>"
+						<a href="<%=ExtendedStorage.siteInfoList.get(i).getUrl()%>"
 							target="_blank"><img
-							src="<%=ExtendedStorage.imgList.get(i)%>" width="100%"
+							src="<%=ExtendedStorage.siteInfoList.get(i).getSiteImage()%>" width="100%"
 							align="middle" alt="Image"></a>
+						<span><%=ExtendedStorage.siteInfoList.get(i).getSiteName()%></span>
 					</div>
 					<%
 						}

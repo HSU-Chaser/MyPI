@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
+import main.extending.form.SiteInfo;
 
 public class NaverKin extends Search {
 	public NaverKin() {
@@ -40,9 +41,13 @@ public class NaverKin extends Search {
 					if (!coreMaterial.equals(getNickName())) {
 						storage.nickNameList.add(getNickName());
 					}
-					storage.exposureUrlList.add(getUrl());
-					ExtendedStorage.imgList.add("https://lh5.ggpht.com/mNkYMueGE34aH1vRv2zs13NOv6gHyK39Gcj7mz-M2WTIYTxyUVnC5QtFxrSE6OD_ZQM=w300-rw");
-					break;
+					
+					SiteInfo siteInfo = new SiteInfo();
+					siteInfo.setSiteImage("https://lh5.ggpht.com/mNkYMueGE34aH1vRv2zs13NOv6gHyK39Gcj7mz-M2WTIYTxyUVnC5QtFxrSE6OD_ZQM=w300-rw");
+					siteInfo.setUrl(getUrl());
+					siteInfo.setSiteName("네이버 지식인");
+					storage.siteInfoList.add(siteInfo);
+					
 				}
 				i++;
 			}

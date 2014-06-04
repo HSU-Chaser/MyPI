@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
+import main.extending.form.SiteInfo;
 
 public class Gallog extends Search {
 	public Gallog() {
@@ -41,10 +42,15 @@ public class Gallog extends Search {
 						setNickName(list.get(i).split(">")[2].split("<")[0]);	
 					else
 						setNickName(list.get(i).split(">")[1].split("<")[0]);
+					
 					storage.nickNameList.add(getNickName());
-					storage.exposureUrlList.add(getUrl());
-					ExtendedStorage.imgList.add("https://lh6.ggpht.com/NRyDtq-pg84zE188hTkcVj8gzo3KYfXWrOm1VuO1HBHsIJQs44AM_mIxMsXbE7BQp34=w300-rw");
-
+					
+					SiteInfo siteInfo = new SiteInfo();
+					siteInfo.setSiteImage("https://lh6.ggpht.com/NRyDtq-pg84zE188hTkcVj8gzo3KYfXWrOm1VuO1HBHsIJQs44AM_mIxMsXbE7BQp34=w300-rw");
+					siteInfo.setUrl(getUrl());
+					siteInfo.setSiteName("디시인사이드 갤로그");
+					storage.siteInfoList.add(siteInfo);
+			
 				}
 				i++;
 			}

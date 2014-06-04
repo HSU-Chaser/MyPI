@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
+import main.extending.form.SiteInfo;
 
 public class Twitter extends Search{
 	public Twitter() {
@@ -36,8 +37,14 @@ public class Twitter extends Search{
 				if (list.get(i).contains("트위터의")) {
 					setNickName(list.get(i).substring(18).split(" ")[0]);
 					storage.nickNameList.add(getNickName());
-					storage.exposureUrlList.add(getUrl());
-					ExtendedStorage.imgList.add("https://lh3.ggpht.com/lSLM0xhCA1RZOwaQcjhlwmsvaIQYaP3c5qbDKCgLALhydrgExnaSKZdGa8S3YtRuVA=w300-rw");
+
+					SiteInfo siteInfo = new SiteInfo();
+					siteInfo.setSiteImage("https://lh3.ggpht.com/lSLM0xhCA1RZOwaQcjhlwmsvaIQYaP3c5qbDKCgLALhydrgExnaSKZdGa8S3YtRuVA=w300-rw");
+					siteInfo.setUrl(getUrl());
+					siteInfo.setSiteName("트위터");
+					storage.siteInfoList.add(siteInfo);
+					
+				
 				}
 				else if(list.get(i).contains("profile_images")){
 					setImgUrl(list.get(i).replace('"', '@').split("@")[1]);

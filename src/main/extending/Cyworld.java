@@ -6,8 +6,9 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
-import main.extending.form.Search;
 import main.extending.form.ExtendedStorage;
+import main.extending.form.Search;
+import main.extending.form.SiteInfo;
 
 public class Cyworld extends Search {
 	public Cyworld() {
@@ -26,7 +27,7 @@ public class Cyworld extends Search {
 		BufferedReader br = null;
 		int i = 0;
 		String tid = ""; // uid에 대한 tid
-		
+
 		try {
 			InputStream inputURL = new URL(getUrl()).openStream();
 			InputStreamReader rd = new InputStreamReader(inputURL, "euc-kr");
@@ -36,10 +37,9 @@ public class Cyworld extends Search {
 
 				list.add(buffer);
 				if (list.get(i).contains("nameUIOpen")) {
-					
-					
+
 					tid = list.get(i).split("'")[1].split("'")[0];
-					
+
 					break;
 				}
 				i++;
@@ -55,29 +55,33 @@ public class Cyworld extends Search {
 
 		try {
 			// http://search.cyworld.com/search/all.html?thr=sbus&ssn=043&asn=004300673&q=yangsy0714%40naver.com
-			setUrl("http://minihp.cyworld.com/svcs/MiniHp.cy/index/" + tid	+ "?tid=" + tid + "&urlstr=&f=&gate=_top");
+			setUrl("http://minihp.cyworld.com/svcs/MiniHp.cy/index/" + tid
+					+ "?tid=" + tid + "&urlstr=&f=&gate=_top");
 			InputStream inputURL = new URL(getUrl()).openStream();
 
-			
 			InputStreamReader rd = new InputStreamReader(inputURL, "euc-kr");
 			br = new BufferedReader(rd);
 
 			while ((buffer = br.readLine()) != null) {
 
 				list.add(buffer);
-				
+
 				if (list.get(i).contains("검색결과가 없습니다")) {
 					System.out.println("싸이월드가 없습니다");
 					break;
 				}
-				
+
 				if (list.get(i).contains("tName")) {
 
 					String name = list.get(i).replace('"', '!').split("!")[5];
-					storage.exposureUrlList
-							.add("http://minihp.cyworld.com/pims/main/pims_main.asp?tid="
-									+ tid);
-					ExtendedStorage.imgList.add("https://lh4.ggpht.com/2o1VGcBQshLa5JWsHfPdC2dhtHLe0FoMWML0UCuumcpysj7L2kJNGm8vLkDMxg38fw=w300-rw");
+
+					SiteInfo siteInfo = new SiteInfo();
+					siteInfo.setSiteImage("https://lh4.ggpht.com/2o1VGcBQshLa5JWsHfPdC2dhtHLe0FoMWML0UCuumcpysj7L2kJNGm8vLkDMxg38fw=w300-rw");
+					siteInfo.setUrl("http://minihp.cyworld.com/pims/main/pims_main.asp?tid="
+							+ tid);
+					siteInfo.setSiteName("싸이월드");
+					storage.siteInfoList.add(siteInfo);
+
 					if (name != null && name.length() != 0) {
 
 						ExtendedStorage.realName = name;
@@ -112,7 +116,7 @@ public class Cyworld extends Search {
 
 				if (list.get(i).contains("swfphotoPath")) {
 					setImgUrl(list.get(i).replace('"', '!').split("!")[5]);
-//					storage.imgUrlList.add(getImgUrl());
+					// storage.imgUrlList.add(getImgUrl());
 				}
 				i++;
 			}

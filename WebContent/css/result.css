@@ -19,7 +19,10 @@
 	overflow: auto;
 	color: white;
 }
-
+.div-tr {
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
 .moduleTitle {
 	width: 19%;
 	float: left;
@@ -123,8 +126,6 @@
 	float: left;
 	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
 	font-size: 18pt;
-	padding-top: 12px;
-	padding-bottom: 12px;
 	color: #444444;
 	text-decoration: none;
 }

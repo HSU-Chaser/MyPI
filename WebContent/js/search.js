@@ -64,7 +64,7 @@ $(document).ajaxStart(function() {
 		// progressbar.progressbar("value", false);
 
 		val++;
-		if (val < 200) {
+		if (val < 60) {
 
 			if (val >= 1 && val < 4) {
 				progressLabel.text("Static Search를 시작합니다.");
@@ -117,9 +117,11 @@ var changeIcon = function(type) {
 
 var _onFilp = function(n) {
 	if ($('#content' + n).css('display') == 'none') {
-		$('#title' + n).css('color', '#0c76c7').css('background','#ffffff');
+		$('#title' + n).css('color', '#0c76c7').css('background','rgba(255,255,255,1)');
+		$('#title' + n > '.list-title' > 'a.title').css('color', '#0c76c7');
 	} else {
-		$('#title' + n).css('color', '#ffffff').css('background','#ffffff');
+		$('#title' + n).css('color', '#ffffff').css('background','rgba(255,255,255,0)');
+		$('#title' + n > '.list-title').css('color', '#ffffff');
 	}
 	$('#content' + n).slideToggle('slow');
 };

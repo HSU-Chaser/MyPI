@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
+import main.extending.form.SiteInfo;
 
 public class CyworldBlog extends Search {
 
@@ -40,13 +41,20 @@ public class CyworldBlog extends Search {
 				if (list.get(i).contains("author")) {
 					setNickName(list.get(i).replace('"', '!').split("!")[3]);
 					storage.nickNameList.add(getNickName());
-					storage.exposureUrlList.add(getUrl());
-					ExtendedStorage.imgList.add("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQEMm-PRtTxhqlixw5B9razURdXydJ6rb-RwjsVwKRFR6ZA1Mi5rA");
-			
+//					storage.exposureUrlList.add(getUrl());
+//					ExtendedStorage.imgList.add("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQEMm-PRtTxhqlixw5B9razURdXydJ6rb-RwjsVwKRFR6ZA1Mi5rA");
+//					
+					SiteInfo siteInfo = new SiteInfo();
+					siteInfo.setSiteImage("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQEMm-PRtTxhqlixw5B9razURdXydJ6rb-RwjsVwKRFR6ZA1Mi5rA");
+					siteInfo.setUrl(getUrl());
+					siteInfo.setSiteName("싸이월드 블로그");
+					storage.siteInfoList.add(siteInfo);
+					
+					
 				} else if (list.get(i).contains("og:image")) {
 					;
 					setImgUrl(list.get(i).replace('"', '!').split("!")[3]);
-//					storage.imgUrlList.add(getImgUrl());
+					storage.imgUrlList.add(getImgUrl());
 					break;
 				}
 				i++;
