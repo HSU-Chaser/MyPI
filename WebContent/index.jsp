@@ -49,7 +49,7 @@
 	<!--  Login -->
 	<section id="login" class="main style4 primary loginForm">
 		<div class="content container">
-			<div class="box container small form_background">
+			<div class="box container small form_background" style="margin-bottom: 12em;">
 
 				<!-- 
 					<table>
@@ -111,8 +111,8 @@
 				</div>
 			</div>
 		</div>
-	</section>
 	<!-- footer -->
 	<jsp:include page="/common/footer.jsp" />
+	</section>
 </body>
 </html>

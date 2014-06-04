@@ -2,17 +2,15 @@
 
 #solution {
 	background-color: rgba(255, 255, 255, 0.2);
-	max-width: 1280px;
+	max-width: 60%;
 	margin: auto;
-	margin-left: 3%;
-	margin-right: 3%;
 }
 
 .moduleContainer {
 	margin-left: 3%;
 	margin-right: 3%;
-	padding-top: 20px;
-	padding-bottom: 60px;
+	padding-top: 3%;
+	padding-bottom: 3%;
 	text-align: left;
 	border-bottom: 2px solid white;
 	clear: both;
@@ -21,15 +19,22 @@
 }
 
 .div-tr {
-	padding-top: 12px;
-	padding-bottom: 12px;
+	padding: 1% 0;
+}
+
+.div-td {
+	margin-right: 3%;
+}
+
+.div-static {
+	
 }
 
 .moduleTitle {
 	width: 19%;
 	float: left;
 	font-family: GODOB, "고도B", GODOBeof, GODOBwoff, sans-serif;
-	font-size: 34pt;
+	font-size: 180%;
 }
 
 .moduleContent {
@@ -39,7 +44,10 @@
 
 .describe {
 	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
-	font-size: 24pt;
+}
+.describe p {
+	margin: 0;
+	text-align: left;
 }
 
 .listTitle {
@@ -56,7 +64,8 @@
 	width: 19%;
 	float: left;
 	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
-	font-size: 24pt;
+	font-size: 120%;
+	margin: 17.2% 3%;
 }
 
 .moduleContent .copyright {
@@ -72,31 +81,32 @@
 
 .moduleContent .gradeTitle {
 	border-bottom: 1px solid white;
-	padding-bottom: 40px;
+	padding-bottom: 5%;
 	font-family: GODOB, "고도B", GODOBeof, GODOBwoff, sans-serif;
-	font-size: 28pt;
+	font-size: 110%;
 }
 
 .moduleContent .gradeResult {
 	font-family: GODOB, "고도B", GODOBeof, GODOBwoff, sans-serif;
-	font-size: 34pt;
+	font-size: 165%;
 }
 
 .moduleContent .gradeContent {
 	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
-	font-size: 20pt;
+	font-size: 110%;
 }
 /* --- Graph --- */
 .moduleContent .engineGraph {
 	width: 48.5%;
 	float: left;
 	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
-	font-size: 24pt;
+	font-size: 150%;
 }
 
 .moduleContent .exposureGraph {
 	width: 48.5%;
 	float: right;
+	font-size: 150%;
 }
 /* --- Image Search --- */
 
@@ -155,7 +165,6 @@
 
 .resultContent {
 	display: none;
-	padding-left: 6%;
 }
 
 .upside {
@@ -163,7 +172,7 @@
 }
 
 .snippetContainer {
-	width: 49%;
+	width: 50%;
 	float: left;
 	border-right: 1px solid white;
 }
@@ -177,11 +186,12 @@
 .snippetContainer .snippetContent {
 	width: 66%;
 	float: right;
-	padding-right: 3%
+	padding-right: 3%;
+	font-size: 87%;
 }
 
 .engineContainer {
-	width: 49%;
+	width: 50%;
 	float: right;
 }
 
@@ -192,6 +202,11 @@
 
 .engineContainer .engintContent {
 	width: 66%;
+	float: right;
+	font-size: 87%;
+}
+
+.engineContainer .engintContent p {
 	float: right;
 }
 

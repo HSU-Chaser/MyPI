@@ -73,7 +73,7 @@
 	<!--  content -->
 	<section id="ChangeInfoAll" class="main style4 primary changeForm">
 		<div class="content container">
-			<div class="box container small form_background">
+			<div class="box container small form_background" style="margin-bottom: 12em;">
 				<!--
 				<form method="post" action="ChangeInfoAllProcess.jsp" name="userinput"
 					onSubmit="return checkIt()">
@@ -313,10 +313,10 @@
 				
 			</div>
 		</div>
-	</section>
-	
 	<!-- footer -->
 	<jsp:include page="/common/footer.jsp" />
+	</section>
+	
 	<%
 		}
 	%>

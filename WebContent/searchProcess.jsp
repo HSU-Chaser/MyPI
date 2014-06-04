@@ -114,8 +114,7 @@
 			<!-- Content -->
 			<div id="image" class="moduleContent">
 				<div class="describe">
-					<p>MY-Pi 솔루션을 통해 찾아낸 회원님과 관련된 이미지 검색 결과입니다.</p>
-					<p>혹시 회원님과 관련된 이미지가 있으신가요?</p>
+					<p>MY-Pi 솔루션을 통해 찾아낸<br/> 회원님과 관련된 이미지 검색 결과입니다.</p>
 				</div>
 				<div class="div-tr">
 					<%
@@ -148,7 +147,7 @@
 			<!-- Content -->
 			<div class="moduleContent">
 				<div class="describe">
-					<p>MY-Pi 솔루션을 통해 찾아낸 회원님의 주요 신상정보 노출사이트 목록입니다.</p>
+					<p>MY-Pi 솔루션을 통해 찾아낸 회원님의<br/>주요 신상정보 노출사이트 목록입니다.</p>
 				</div>
 				<div class="div-tr">
 					<%
@@ -157,13 +156,14 @@
 							} else {
 								for (int i = 0; i < ExtendedStorage.siteInfoList.size(); i++) {
 					%>
-					<div class="div-td" style="float: left; width: 12.5%">
+					<div class="div-td div-static" style="float: left; width: 12.5%; font-size: 80%;">
 						<a href="<%=ExtendedStorage.siteInfoList.get(i).getUrl()%>"
 							target="_blank"><img
 							src="<%=ExtendedStorage.siteInfoList.get(i)
 								.getSiteImage()%>"
-							width="100%" align="middle" alt="Image"></a> <span><%=ExtendedStorage.siteInfoList.get(i)
-								.getSiteName()%></span>
+							width="100%" align="middle" alt="Image"></a>
+							<!-- <div><%=ExtendedStorage.siteInfoList.get(i)
+								.getSiteName()%></div>-->
 					</div>
 					<%
 						}
@@ -182,9 +182,9 @@
 				<!-- Content -->
 				<div class="moduleContent">
 					<div class="describe">
-						MY-Pi 솔루션을 통해 찾아낸 회원님의 개인정보가 담긴 웹 데이터 입니다.<br> 총
-						<%=result.size()%>개의 게시물이 검색되었습니다.<br> 각 게시물을 클릭하시면, 간략한 내용과
-						함께, 해당 게시물을 삭제할 수 있는 솔루션이 제공됩니다.
+						MY-Pi 솔루션을 통해 찾아낸<br/>회원님의 개인정보가 담긴 웹 데이터 입니다.<br/> 총
+						<%=result.size()%>개의 게시물이 검색되었습니다.<br/> 각 게시물을 클릭하시면, 간략한 내용과
+						함께,<br/>해당 게시물을 삭제할 수 있는 솔루션이 제공됩니다.
 					</div>
 				</div>
 			</div>
@@ -236,13 +236,13 @@
 					<div class="upside">
 						<div class="snippetContainer">
 							<div class="snippetTitle listTitle">
-								<span>검색된 내용 미리보기</span>
+								<span>검색된 내용<br/>미리보기</span>
 							</div>
 							<div class="snippetContent content"><%=result.get(i).getSnippet()%></div>
 						</div>
 						<div class="engineContainer">
 							<div class="engineTitle listTitle">
-								<span>이 결과가 검색되지 않게 하기</span>
+								<span>이 결과가 검색<br/>되지 않게 하기</span>
 							</div>
 							<div class="engineContent content">
 								<%

@@ -843,7 +843,6 @@ body {
 	z-index: 10000;
 	position: relative;
 	height: 40px;
-	line-height: 5em;
 	margin: -40px;
 	background: rgba(0,0,0,0.4);
 	color: #999;

@@ -96,7 +96,7 @@
 	</section>
 
 	<!-- Result -->
-	<section id="contact" style="display: none">
+	<section id="contact" style="display: none; margin-bottom: 0;line-height: 3em;">
 		<div id="result" class="content"></div>
 	</section>
 
