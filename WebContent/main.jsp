@@ -80,8 +80,11 @@
 	<div class="md-overlay" style="background: rgba(0, 0, 0, 0.5);"></div>
 
 	<!-- Loading -->
-	<section id="work" class="main style2 fullscreen" style="display: none">
-		<div class="content container">
+	<section id="work" class="main style2 fullscreen">
+		<div id="loadingContainer">
+			<div id="loadingLogo">
+				<img src="images/ihfb/main_logo/pi_130x44.png">
+			</div>
 			<div id="progressbar"
 				class="ui-progressbar ui-widget ui-widget-content ui-corner-all">
 				<div class="ui-progressbar-value ui-widget-header ui-corner-left"
@@ -89,6 +92,7 @@
 			</div>
 			<div class="ui-progress-label">Loading...</div>
 		</div>
+
 	</section>
 
 	<!-- Result -->
