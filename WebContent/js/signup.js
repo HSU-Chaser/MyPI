@@ -198,12 +198,10 @@ var _onCheckPassword2 = function(userinput) {
 		return true;
 	}
 };
-var onreset = function() {
+var msgreset = function() {
 	$('#mailMsg').html('');
-	$('#keyMsg').html('');
 	$('#pass1Msg').html('');
 	$('#pass2Msg').html('');
-	return true;
 };
 
 var check = function() {
