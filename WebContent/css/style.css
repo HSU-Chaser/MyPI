@@ -848,7 +848,7 @@ body {
 	background: rgba(0,0,0,0.4);
 	color: #999;
 	color: rgba(185,186,187,0.5);
-	overflow: hidden;
+	overflow: visible;
 }
 
 #footer a {
@@ -879,10 +879,9 @@ body {
  }
  */
 #footer .menu {
-	top: -32px;
 	text-align: center;
 	position: relative;
-	height: 3em;
+	height: 2em;
 	/*line-height: 5em;*/
 	margin: 0;
 }
@@ -894,6 +893,17 @@ body {
 	padding: 0px;
 	border-left: 0;
 	
+}
+
+
+#footer .menu li {
+	color: #aaaaaa;
+	font-size: 12pt;
+	margin: 0 2.5%;
+	padding: 0px;
+	border-left: 0;
+	vertical-align: top;
+	padding-top: 0.85%;
 }
 
 /*********************************************************************************/
@@ -1189,13 +1199,13 @@ div#searchBar img {
 }
 
 #search {
-	float: right;
+	float: right;#
 }
 
 .comment {
 	display: inline-block;
 	vertical-align: super;
-	font-size: 0.65em;
+	font-size: 0.8em;
 	color:#0c76c7;
 	margin-right: 7em;
 }
@@ -1214,11 +1224,11 @@ div#searchBar img {
 /*question bar*/
 #questionBar {  
     top: 70%;
-    width: 100%;  
+    width: 5%;  
     height: 56px;  position: fixed;    
     padding: 0.3% 36px;
 }
 #question_button {
-	float: right;
+	float: left;
 	margin-right: 2%;
 }

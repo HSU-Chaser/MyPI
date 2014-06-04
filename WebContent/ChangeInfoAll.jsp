@@ -56,7 +56,7 @@
 	LogonDBBean manager = LogonDBBean.getInstance();
 	LogonDataBean c = manager.getMember(email);
 %>
-<body>
+<body style="overflow-x:hidden;">
 	<%
 		if (request.getSession().getAttribute("memEmail") == null) {
 	%>

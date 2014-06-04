@@ -32,7 +32,11 @@
 		});
 	});
 </script>
-
+<style>
+.modifyColor {
+	color:rgb(12, 118, 199);
+}
+</style>
 <!-- Modal Dialog -->
 <!-- name -->
 <div class="md-modal md-effect-7" id="name">
@@ -46,7 +50,7 @@
 						<%
 							if (c.getName().equals("null")) {
 						%>
-						<td class="signup_text font_GODOM">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</td>
+						<td class="signup_text modifyColor font_GODOM">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="name"> <input type="text"
 							name="modal_name" id="modal_name" class="color font_GODOM"
@@ -55,7 +59,7 @@
  	} else {
  		out.println("<script type=\"text/javascript\">changeIcon('name');</script>");
  %>
-						<td class="signup_text font_GODOM">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</td>
+						<td class="signup_text modifyColor font_GODOM">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="name"> <input type="text"
 							name="modal_name" id="modal_name" class="color font_GODOM"
@@ -86,7 +90,7 @@
 				action="" name="userinput_cellphone">
 				<table>
 					<tr>
-						<td class="signup_text font_GODOM">전 화 번 호</td>
+						<td class="signup_text modifyColor font_GODOM">전 화 번 호</td>
 						<td class="signup_form font_GODOM">
 							<%
 								if (c.getCellphone().equals("null")) {
@@ -146,7 +150,7 @@
 						<%
 							if (c.getHomephone().equals("null")) {
 						%>
-						<td class="signup_text font_GODOM">전 화 번 호</td>
+						<td class="signup_text modifyColor font_GODOM">전 화 번 호</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="homephone"> <input type="text"
 							name="modal_homephone1" id="modal_homephone1"
@@ -162,8 +166,10 @@
 								} else {
 									String[] home = null;
 									home = c.getHomephone().split("-");
+									
+									out.println("<script type=\"text/javascript\">changeIcon('homephone');</script>");
 							%>
-						<td class="signup_text font_GODOM">전 화 번 호</td>
+						<td class="signup_text modifyColor font_GODOM">전 화 번 호</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="homephone"> <input type="text"
 							name="modal_homephone1" id="modal_homephone1"
@@ -204,7 +210,7 @@
 						<%
 							if (c.getBirthday().equals("null")) {
 						%>
-						<td class="signup_text font_GODOM">생 년 월 일</td>
+						<td class="signup_text modifyColor font_GODOM">생 년 월 일</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="birthday"> <input type="text"
 							name="modal_birthday1" id="modal_birthday1"
@@ -219,9 +225,9 @@
  	} else {
  		String[] birth = null;
  		birth = c.getBirthday().split("\\.");
- 		
+ 		out.println("<script type=\"text/javascript\">changeIcon('birthday');</script>");
  %>
-						<td class="signup_text font_GODOM">생 년 월 일</td>
+						<td class="signup_text modifyColor font_GODOM">생 년 월 일</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="birthday"> <input type="text"
 							name="modal_birthday1" id="modal_birthday1"
@@ -263,7 +269,7 @@
 						<%
 							if (c.getAddress().equals("null")) {
 						%>
-						<td class="signup_text font_GODOM">집 주 소</td>
+						<td class="signup_text modifyColor font_GODOM">집 주 소</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="address"><input type="text"
 							name="modal_address" id="modal_address" class="color font_GODOM"
@@ -271,7 +277,7 @@
 							onblur="return _onCheckAddress(this.form)"> <%
  	} else {
  %>
-						<td class="signup_text font_GODOM">집 주 소</td>
+						<td class="signup_text modifyColor font_GODOM">집 주 소</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="address"><input type="text"
 							name="modal_address" id="modal_address" class="color font_GODOM"
@@ -306,7 +312,7 @@
 						<%
 							if (c.getSchool().equals("null")) {
 						%>
-						<td class="signup_text font_GODOM">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;교</td>
+						<td class="signup_text modifyColor font_GODOM">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;교</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="school"><input type="text"
 							name="modal_school" id="modal_school" class="color font_GODOM"
@@ -314,7 +320,7 @@
 							onblur="return _onCheckSchool(this.form)"> <%
  	} else {
  %>
-						<td class="signup_text font_GODOM">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;교</td>
+						<td class="signup_text modifyColor font_GODOM">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;교</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="school"><input type="text"
 							name="modal_school" id="modal_school" class="color font_GODOM"
@@ -349,7 +355,7 @@
 						<%
 							if (c.getWorkplace().equals("null")) {
 						%>
-						<td class="signup_text font_GODOM">직 장 주 소</td>
+						<td class="signup_text modifyColor font_GODOM">직 장 주 소</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="workplace"><input type="text"
 							name="modal_workplace" id="modal_workplace"
@@ -358,7 +364,7 @@
 							<%
 								} else {
 							%>
-						<td class="signup_text font_GODOM">직 장 주 소</td>
+						<td class="signup_text modifyColor font_GODOM">직 장 주 소</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="workplace"><input type="text"
 							name="modal_workplace" id="modal_workplace"
@@ -393,7 +399,7 @@
 						<%
 							if (c.getOccupation().equals("null")) {
 						%>
-						<td class="signup_text font_GODOM">직&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;업</td>
+						<td class="signup_text modifyColor font_GODOM">직&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;업</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="occupation"><input type="text"
 							name="modal_occupation" id="modal_occupation"
@@ -402,7 +408,7 @@
 							<%
 								} else {
 							%>
-						<td class="signup_text font_GODOM">직&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;업</td>
+						<td class="signup_text modifyColor font_GODOM">직&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;업</td>
 						<td class="signup_form font_GODOM"><input type="hidden"
 							name="type" value="occupation"><input type="text"
 							name="modal_occupation" id="modal_occupation"
@@ -425,4 +431,4 @@
 	</div>
 </div>
 
-<div class="md-overlay"></div>
+<div class="md-overlay" style="background: rgba(0,0,0,0.6);"></div>

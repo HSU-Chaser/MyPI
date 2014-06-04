@@ -41,7 +41,7 @@ table,tr,td,th {
 </head>
 <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
 
-<body>
+<body style="overflow-x:hidden;">
 	<%
 		if (session.getAttribute("memEmail") != null) {
 	%>

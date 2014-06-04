@@ -43,10 +43,9 @@
 /*********************************************************************************/
 	
 	#footer {
-		height: auto;
+		height: 40px;
 		line-height: inherit;
 		text-align: center;
-		padding: 2em 1em 2em 1em;
 	}
 
 		#footer .actions {
@@ -65,18 +64,13 @@
 			height: auto;
 			line-height: inherit;
 		}
+		#footer .menu li {
+			margin: 0 0.5%;
+		}
 /*********************************************************************************/
 /*add                                                                */
 /*********************************************************************************/
-#searchBar {
-	height: 44px;
-	padding: 0.3% 36px;
-}
 
-div#searchBar img {
-	width: 30px;
-	height: 30px;
-}
 
 div#questionBar img {
 	width: 30px;
