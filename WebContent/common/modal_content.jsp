@@ -194,7 +194,6 @@
 
 <!-- birthday -->
 <div class="md-modal md-effect-7" id="birthday">
-	<
 	<div class="md-content">
 		<div>
 			<h3 class="font_GODOM">정보 수정</h3>

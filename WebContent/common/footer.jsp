@@ -20,13 +20,13 @@
 	<!-- Menu -->
 	
 	<!-- effecter1_start -->
-		<div class="md-modal md-effect-12" id="mailMd" style="z-index:10001">
+		<div class="md-modal md-effect-12" id="mailMd">
 			<div class="md-content">
 				<!-- Contact -->
 								<div class="content container" style="margin-top: 100px;">
-									<header style="padding: 0; margin: 0;">
+									<div>
 										<h2 style="text-align: center;">Sending &nbsp;&nbsp;Message</h2>
-									</header>
+									</div>
 									<div class="box container small" style="width: 100%; padding-bottom: 0;">
 										<form action="mail.php" method="post">
 											<div class="row half">
