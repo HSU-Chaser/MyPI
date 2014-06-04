@@ -129,7 +129,7 @@ public class Ranking {
 		expData = new ExpDataBean();
 		expData = getExpData(client_num, finalExp);
 		
-		int grade = (int) (Math.round(finalExp) / 1000);
+		int grade = (int) (Math.round(sumExp) / 1000);
 		
 		setGradeText(getGrade(grade));
 		

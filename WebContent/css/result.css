@@ -19,10 +19,12 @@
 	overflow: auto;
 	color: white;
 }
+
 .div-tr {
 	padding-top: 12px;
 	padding-bottom: 12px;
 }
+
 .moduleTitle {
 	width: 19%;
 	float: left;
@@ -121,19 +123,30 @@
 	float: left;
 }
 
+.list-head {
+	border-bottom: 1px solid white;
+	padding-top: 12px;
+	margin-bottom: 12px;
+	background-color: rgba(255, 255, 255, 0.2);
+	display: flex;
+}
+
 .list-title {
 	width: 82%;
 	float: left;
 	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
 	font-size: 18pt;
-	color: #444444;
-	text-decoration: none;
+	color: #888888;
+	overflow: hidden;
+	display: inline-block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	word-wrap: normal;
 }
 
 .list-title a {
 	text-decoration: none;
 }
-
 
 .list-filp {
 	width: 6%;

@@ -200,7 +200,7 @@
 				<%
 					for (int i = 0; i < result.size(); i++) {
 				%>
-				<div id="title<%=i + 1%>">
+				<div id="title<%=i + 1%>" class="list-head">
 					<div class="list-no describe"><%=i + 1%></div>
 					<div class="list-exp">
 						<%
@@ -227,7 +227,7 @@
 							src="images/ihfb/icons/plus.png" onclick="_onFilp(<%=i + 1%>)">
 					</div>
 
-					<div style="clear: both"></div>
+					<!-- <div style="clear: both"></div> -->
 				</div>
 				<!-- Result Content -->
 				<div id="content<%=i + 1%>" class="resultContent"

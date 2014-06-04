@@ -59,10 +59,6 @@ $(document).ajaxStart(function() {
 	});
 
 	function progress() {
-
-		// progressbar.progressbar("value")
-		// progressbar.progressbar("value", false);
-
 		val++;
 		if (val < 60) {
 
@@ -83,6 +79,7 @@ $(document).ajaxStart(function() {
 			}
 			if (val >= 25) {
 				progressLabel.text("곧 결과 화면이 출력됩니다. 잠시만 기다려주십시오. ");
+				return;
 			}
 
 		}
