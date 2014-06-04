@@ -55,7 +55,7 @@
 							name="type" value="name"> <input type="text"
 							name="modal_name" id="modal_name" class="color font_GODOM"
 							size="10" maxlength="10" placeholder="홍길동"
-							onblur="return _onCheckName(this.form)"> <%
+							onblur="_onCheckName(this.form)" onSubmit="return chekk()"> <%
  	} else {
  		out.println("<script type=\"text/javascript\">changeIcon('name');</script>");
  %>
@@ -64,7 +64,7 @@
 							name="type" value="name"> <input type="text"
 							name="modal_name" id="modal_name" class="color font_GODOM"
 							size="10" maxlength="10" value="<%=c.getName()%>"
-							onblur="return _onCheckName(this.form)"> <%
+							onblur="_onCheckName(this.form)"> <%
  	}
  %>
 							<div id="name_err" class="errMsg"></div></td>
@@ -97,13 +97,13 @@
 							%> <input type="hidden" name="type" value="cellphone"> <input
 							type="text" name="modal_cellphone1" id="modal_cellphone1"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							placeholder="010" onblur="return _onCheckCellphone(this.form)">
+							placeholder="010" onblur="_onCheckCellphone(this.form)">
 							<input type="text" name="modal_cellphone2" id="modal_cellphone2"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							placeholder="1234" onblur="return _onCheckCellphone(this.form)">
+							placeholder="1234" onblur="_onCheckCellphone(this.form)">
 							<input type="text" name="modal_cellphone3" id="modal_cellphone3"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							placeholder="5678" onblur="return _onCheckCellphone(this.form)">
+							placeholder="5678" onblur="_onCheckCellphone(this.form)">
 							<%
 								} else {
 										String[] cell = null;
@@ -113,13 +113,13 @@
 							%> <input type="hidden" name="type" value="cellphone"> <input
 							type="text" name="modal_cellphone1" id="modal_cellphone1"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							value="<%=cell[0]%>" onblur="return _onCheckCellphone(this.form)">
+							value="<%=cell[0]%>" onblur="_onCheckCellphone(this.form)">
 							<input type="text" name="modal_cellphone2" id="modal_cellphone2"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							value="<%=cell[1]%>" onblur="return _onCheckCellphone(this.form)">
+							value="<%=cell[1]%>" onblur="_onCheckCellphone(this.form)">
 							<input type="text" name="modal_cellphone3" id="modal_cellphone3"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							value="<%=cell[2]%>" onblur="return _onCheckCellphone(this.form)">
+							value="<%=cell[2]%>" onblur="_onCheckCellphone(this.form)">
 							<%
 								}
 							%>
@@ -127,8 +127,9 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="signup_text" align="center"><input type="submit"
-							name="confirm" class="button addButton font_GODOM" value=" 입력 "></td>
+						<td class="signup_text" align="center"><input
+							id="cellPhoneInput" type="submit" name="confirm"
+							class="button addButton font_GODOM" value=" 입력 "></td>
 						<td class="signup_text" align="center"><input type="button"
 							class="button addButton font_GODOM md-close" value=" 취소 "></td>
 					</tr>
@@ -155,13 +156,13 @@
 							name="type" value="homephone"> <input type="text"
 							name="modal_homephone1" id="modal_homephone1"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							placeholder="02" onblur="return _onCheckHomephone(this.form)"> <input
+							placeholder="02" onblur="_onCheckHomephone(this.form)"> <input
 							type="text" name="modal_homephone2" id="modal_homephone2"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							placeholder="1234" onblur="return _onCheckHomephone(this.form)">
+							placeholder="1234" onblur="_onCheckHomephone(this.form)">
 							<input type="text" name="modal_homephone3" id="modal_homephone3"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							placeholder="5678" onblur="return _onCheckHomephone(this.form)">
+							placeholder="5678" onblur="_onCheckHomephone(this.form)">
 							<%
 								} else {
 									String[] home = null;
@@ -174,13 +175,13 @@
 							name="type" value="homephone"> <input type="text"
 							name="modal_homephone1" id="modal_homephone1"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							value="<%=home[0] %>" onblur="return _onCheckHomephone(this.form)">
+							value="<%=home[0] %>" onblur="_onCheckHomephone(this.form)">
 							<input type="text" name="modal_homephone2" id="modal_homephone2"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							value="<%=home[1] %>" onblur="return _onCheckHomephone(this.form)">
+							value="<%=home[1] %>" onblur="_onCheckHomephone(this.form)">
 							<input type="text" name="modal_homephone3" id="modal_homephone3"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							value="<%=home[2] %>" onblur="return _onCheckHomephone(this.form)">
+							value="<%=home[2] %>" onblur="_onCheckHomephone(this.form)">
 							<%
 								}
 							%>
@@ -215,13 +216,13 @@
 							name="type" value="birthday"> <input type="text"
 							name="modal_birthday1" id="modal_birthday1"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							placeholder="1990" onblur="return _onCheckBirthday(this.form)">
+							placeholder="1990" onblur="_onCheckBirthday(this.form)">
 							<input type="text" name="modal_birthday2" id="modal_birthday2"
 							class="color font_GODOM inputSize" size="10" maxlength="2"
-							placeholder="07" onblur="return _onCheckBirthday(this.form)"> <input
+							placeholder="07" onblur="_onCheckBirthday(this.form)"> <input
 							type="text" name="modal_birthday3" id="modal_birthday3"
 							class="color font_GODOM inputSize" size="10" maxlength="2"
-							placeholder="14" onblur="return _onCheckBirthday(this.form)"> <%
+							placeholder="14" onblur="_onCheckBirthday(this.form)"> <%
  	} else {
  		String[] birth = null;
  		birth = c.getBirthday().split("\\.");
@@ -232,15 +233,15 @@
 							name="type" value="birthday"> <input type="text"
 							name="modal_birthday1" id="modal_birthday1"
 							class="color font_GODOM inputSize" size="10" maxlength="4"
-							value="<%=birth[0] %>" onblur="return _onCheckBirthday(this.form)">
+							value="<%=birth[0] %>" onblur="_onCheckBirthday(this.form)">
 							
 							<input type="text" name="modal_birthday2" id="modal_birthday2"
 							class="color font_GODOM inputSize" size="10" maxlength="2"
-							value="<%=birth[1] %>" onblur="return _onCheckBirthday(this.form)">
+							value="<%=birth[1] %>" onblur="_onCheckBirthday(this.form)">
 							
 							<input type="text" name="modal_birthday3" id="modal_birthday3"
 							class="color font_GODOM inputSize" size="10" maxlength="2"
-							value="<%=birth[2] %>" onblur="return _onCheckBirthday(this.form)">
+							value="<%=birth[2] %>" onblur="_onCheckBirthday(this.form)">
 							<%
 								}
 							%>
@@ -274,7 +275,7 @@
 							name="type" value="address"><input type="text"
 							name="modal_address" id="modal_address" class="color font_GODOM"
 							size="10" maxlength="35" placeholder="서울 성북구 삼선1동"
-							onblur="return _onCheckAddress(this.form)"> <%
+							onblur="_onCheckAddress(this.form)"> <%
  	} else {
  %>
 						<td class="signup_text modifyColor font_GODOM">집 주 소</td>
@@ -282,7 +283,7 @@
 							name="type" value="address"><input type="text"
 							name="modal_address" id="modal_address" class="color font_GODOM"
 							size="10" maxlength="35" value="<%=c.getAddress()%>"
-							onblur="return _onCheckAddress(this.form)"> <%
+							onblur="_onCheckAddress(this.form)"> <%
  	out.println("<script type=\"text/javascript\">changeIcon('address');</script>");
  	}
  %>
@@ -317,7 +318,7 @@
 							name="type" value="school"><input type="text"
 							name="modal_school" id="modal_school" class="color font_GODOM"
 							size="10" maxlength="10" placeholder="한 성 대"
-							onblur="return _onCheckSchool(this.form)"> <%
+							onblur="_onCheckSchool(this.form)"> <%
  	} else {
  %>
 						<td class="signup_text modifyColor font_GODOM">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;교</td>
@@ -325,7 +326,7 @@
 							name="type" value="school"><input type="text"
 							name="modal_school" id="modal_school" class="color font_GODOM"
 							size="10" maxlength="10" value="<%=c.getSchool()%>"
-							onblur="return _onCheckSchool(this.form)"> <%
+							onblur="_onCheckSchool(this.form)"> <%
  	out.println("<script type=\"text/javascript\">changeIcon('school');</script>");
  	}
  %>
@@ -360,7 +361,7 @@
 							name="type" value="workplace"><input type="text"
 							name="modal_workplace" id="modal_workplace"
 							class="color font_GODOM" size="10" maxlength="35"
-							placeholder="한 성 대" onblur="return _onCheckWorkplace(this.form)">
+							placeholder="한 성 대" onblur="_onCheckWorkplace(this.form)">
 							<%
 								} else {
 							%>
@@ -370,7 +371,7 @@
 							name="modal_workplace" id="modal_workplace"
 							class="color font_GODOM" size="10" maxlength="35"
 							value="<%=c.getWorkplace()%>"
-							onblur="return _onCheckWorkplace(this.form)"> <%out.println("<script type=\"text/javascript\">changeIcon('workplace');</script>");
+							onblur="_onCheckWorkplace(this.form)"> <%out.println("<script type=\"text/javascript\">changeIcon('workplace');</script>");
  	}
  %>
 							<div id="workplace_err" class="errMsg"></div></td>
@@ -404,7 +405,7 @@
 							name="type" value="occupation"><input type="text"
 							name="modal_occupation" id="modal_occupation"
 							class="color font_GODOM" size="10" maxlength="10"
-							placeholder="학 생" onblur="return _onCheckOccupation(this.form)">
+							placeholder="학 생" onblur="_onCheckOccupation(this.form)">
 							<%
 								} else {
 							%>
@@ -414,7 +415,7 @@
 							name="modal_occupation" id="modal_occupation"
 							class="color font_GODOM" size="10" maxlength="10"
 							value="<%=c.getOccupation()%>"
-							onblur="return _onCheckOccupation(this.form)"> <%out.println("<script type=\"text/javascript\">changeIcon('occupation');</script>");
+							onblur="_onCheckOccupation(this.form)"> <%out.println("<script type=\"text/javascript\">changeIcon('occupation');</script>");
  	}
  %>
 							<div id="occupation_err" class="errMsg"></div></td>

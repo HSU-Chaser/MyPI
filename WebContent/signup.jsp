@@ -129,7 +129,7 @@ table,tr,td,th {
 					</div>
 					<div style="clear:both;"></div>	
 					<hr style="margin: 0 8%; border: 2px solid #0c4881;">
-					<form action="signupProcess.jsp" method="post">
+					<form action="signupProcess.jsp" method="post" onSubmit="return check()">
 						<div class="font_GODOM sign_number">
 							1. 이메일을 입력하신 후, 발송된 메일을 확인하여 인증해 주세요.
 						</div>
@@ -198,7 +198,7 @@ table,tr,td,th {
 						</div>
 						<div style="clear: both; background-color: rgba(12, 83, 129, 0.6); padding: 3% 0">
 							<input type="reset" id="reset" name="reset" class="button_some sign_button button addButton font_GODOB"
-										value=" 다시 입력 " style="margin-right:1.5%;">
+										value=" 다시 입력 " onclick="msgreset()" style="margin-right:1.5%;">
 							<input type="button" class="button_some sign_button button addButton font_GODOB" value=" 가입 취소 "
 									onclick="javascript:window.location='index.jsp'" style="margin-left:1.5%;">
 						</div>

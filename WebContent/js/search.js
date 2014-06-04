@@ -91,22 +91,29 @@ $(document).ajaxStart(function() {
 
 var changeIcon = function(type) {
 	if (type == 'name') {
-		$('#nameIcon').attr('src', 'images/ihfb/icons/my_name_p.png');
+		if($('#modal_name').val() =='')$('#nameIcon').attr('src', 'images/ihfb/icons/my_name.png');
+		else $('#nameIcon').attr('src', 'images/ihfb/icons/my_name_p.png');
 	} else if (type == 'cellphone') {
-		$('#cellphoneIcon').attr('src', 'images/ihfb/icons/my_mobile_p.png');
+		if($('#modal_cellphone1').val() =='' && $('#modal_cellphone2').val() =='' && $('#modal_cellphone3').val() =='') $('#cellphoneIcon').attr('src', 'images/ihfb/icons/my_mobile.png');
+		else $('#cellphoneIcon').attr('src', 'images/ihfb/icons/my_mobile_p.png');
 	} else if (type == 'homephone') {
-		$('#homephoneIcon').attr('src', 'images/ihfb/icons/my_phone_p.png');
+		if($('#modal_homephone1').val() =='' && $('#modal_homephone2').val() =='' && $('#modal_homephone3').val() =='') $('#homephoneIcon').attr('src', 'images/ihfb/icons/my_phone.png');
+		else $('#homephoneIcon').attr('src', 'images/ihfb/icons/my_phone_p.png');
 	} else if (type == 'birthday') {
-		$('#birthdayIcon').attr('src', 'images/ihfb/icons/my_birthday_p.png');
+		if($('#modal_birthday1').val() =='' && $('#modal_birthday2').val() =='' && $('#modal_birthday3').val() =='') $('#birthdayIcon').attr('src', 'images/ihfb/icons/my_birthday.png');
+		else $('#birthdayIcon').attr('src', 'images/ihfb/icons/my_birthday_p.png');
 	} else if (type == 'address') {
-		$('#addressIcon').attr('src', 'images/ihfb/icons/my_address_p.png');
+		if($('#modal_address').val() =='') $('#addressIcon').attr('src', 'images/ihfb/icons/my_address.png');
+		else $('#addressIcon').attr('src', 'images/ihfb/icons/my_address_p.png');
 	} else if (type == 'school') {
-		$('#schoolIcon').attr('src', 'images/ihfb/icons/my_school_p.png');
+		if($('#modal_school').val() =='') $('#schoolIcon').attr('src', 'images/ihfb/icons/my_school.png');
+		else $('#schoolIcon').attr('src', 'images/ihfb/icons/my_school_p.png');
 	} else if (type == 'workplace') {
-		$('#workplaceIcon').attr('src', 'images/ihfb/icons/my_workplace_p.png');
+		if($('#modal_workplace').val() =='') $('#workplaceIcon').attr('src', 'images/ihfb/icons/my_workplace.png');
+		else $('#workplaceIcon').attr('src', 'images/ihfb/icons/my_workplace_p.png');
 	} else if (type == 'occupation') {
-		$('#occupationIcon').attr('src',
-				'images/ihfb/icons/my_occupation_p.png');
+		if($('#modal_occupation').val() =='') $('#occupationIcon').attr('src', 'images/ihfb/icons/my_occupation.png');
+		else $('#occupationIcon').attr('src', 'images/ihfb/icons/my_occupation_p.png');
 	} else {
 		alert('type undefined');
 	}
@@ -152,7 +159,6 @@ var _onSendMail = function(userinput) {
 				success : function(result) {
 					if (result == "true") {
 						alert("이메일을 보냈습니다.");
-						location.replace("./main.jsp");
 					} else {
 						alert("이메일을 보내는 데 실패하였습니다.");
 					}

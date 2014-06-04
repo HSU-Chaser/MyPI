@@ -1,27 +1,35 @@
-$(document).ready(function() {
-	$('.changeInfoForm').submit(function() {
-		var formData = $(this).serialize();
-		var type = $(this).find('[name=type]').val();
+$(document).ready(
+		function() {
+			$('.changeInfoForm').submit(
+					function() {
+						var formData = $(this).serialize();
+						var type = $(this).find('[name=type]').val();
 
-		$.ajax({
-			url : "./changeInfoProcess.jsp",
-			type : "POST",
-			data : formData,
-			success : function() {
-				//alert("정보 수정 완료");
-			},
-			error : function() {
-				alert("정보 수정 에러");
-			},
-			complete : function() {
-				$('.md-close').click();
-				changeIcon(type);
-			}
+						$.ajax({
+							url : "./changeInfoProcess.jsp",
+							type : "POST",
+							data : formData,
+							success : function() {
+								changeIcon(type);
+								$('#name_err').html('');
+								$('#cellphone_err').html('');
+								$('#homephone_err').html('');
+								$('#birthday_err').html('');
+								$('#address_err').html('');
+								$('#school_err').html('');
+								$('#workplace_err').html('');
+								$('#occupation_err').html('');
+							},
+							error : function() {
+								alert("정보 수정 에러");
+							},
+							complete : function() {
+							}
+						});
+
+						return false; // no redirect
+					});
 		});
-
-		return false; // no redirect
-	});
-});
 
 // 1. 이름 체크
 var _onCheckName = function(userinput) {
