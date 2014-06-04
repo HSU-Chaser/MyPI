@@ -17,7 +17,7 @@
 	<%
 		String memberEmail = (String) session.getAttribute("memEmail");
 
-			if (memberEmail == null) {
+		if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -51,7 +51,7 @@
 			</div>
 			<div class="resultObject">
 				<div>
-					<!-- 로고 -->
+					<img src="images/ihfb/main_logo/logo_300x100.png">
 				</div>
 				<div>
 					<p class="font_GODOB" style="color: white;">
@@ -59,9 +59,8 @@
 						님의 MyPI 솔루션 검색 결과
 					</p>
 				</div>
-				<div>
-					<!-- 등급 -->
-				</div>
+
+				<div>회원님의 보안 등급은 ' ' 입니다.</div>
 			</div>
 		</div>
 
@@ -130,8 +129,8 @@
 		<!-- Static Search -->
 		<div class="resultList">
 			<div class="resultTitle">
-				<p class="resultObject font_GODOM" style="color: white">Static
-					Search</p>
+				<h3 class="resultObject font_GODOM" style="color: white">Static
+					Search</h3>
 			</div>
 			<div class="resultObject font_GODOM">
 				<div class="desc">
@@ -171,139 +170,141 @@
 					<%=result.size()%>개의 게시물이 검색되었습니다.<br> 각 게시물을 클릭하시면, 간략한 내용과
 					함께, 해당 게시물을 삭제할 수 있는 솔루션이 제공됩니다.<br>
 				</div>
-				<!-- TH	 -->
-				<!-- 		<div class="div-th">
+				<div>
+					<%
+						for (int i = 0; i < result.size(); i++) {
+					%>
+					<!-- TR -->
+					<div class="div-tr" onclick="_onFilp(<%=i + 1%>)">
+						<div class="div-num"><%=i + 1%></div>
+						<div class="div-title">
+							<a class="title" href="<%=result.get(i).getURL()%>"
+								target="_blank"><%=result.get(i).getTitle()%></a>
+						</div>
+						<div class="div-exp">
+							<%
+								double exp = result.get(i).getExposure();
+										if (exp >= 70.0) {
+							%>
+							<img alt="위험" src="images/icon/birthday.png">
+							<%
+								} else if (exp >= 30.0 && exp < 70.0) {
+							%>
+							<img alt="주의" src="images/icon/email.png">
+							<%
+								} else {
+							%>
+							<img alt="안전" src="images/icon/name.png">
+							<%
+								}
+							%>
+						</div>
+						<!-- <div class="div-td" style="width: 3%; float: left">▼</div> -->
+						<div style="clear: both"></div>
+					</div>
+
+					<div id="content<%=i + 1%>" style="display: none"
+						onclick="_onFilp(<%=i + 1%>)">
+						<!-- TR -->
+						<div class="div-tr">
+							<div class="div-td" align="center"><%=result.get(i).getSnippet()%>
+							</div>
+						</div>
+						<div style="clear: both"></div>
+
+						<!-- TR -->
+						<div class="div-tr">
+							<div class="div-td" align="center">
+								<!-- Engine Solution -->
+								<%
+									if (result.get(i).getEngine().matches(".*Naver.*") == true) {
+								%>
+								<jsp:include page="/Solution/Naver.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getEngine().matches(".*Daum.*") == true) {
+								%>
+								<jsp:include page="/Solution/Daum.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getEngine().matches(".*Google.*") == true) {
+								%>
+								<jsp:include page="/Solution/Google.jsp" flush="false" />
+								<%
+									}
+								%>
+							</div>
+						</div>
+						<div style="clear: both"></div>
+						<!-- TR -->
+						<div class="div-tr">
+							<div class="div-td" align="center">
+								<!-- Static Solution -->
+								<%
+									if (result.get(i).getURL().matches(".*blog.naver.*") == true) {
+								%>
+								<jsp:include page="/Solution/NaverBlog.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getURL().matches(".*kin.naver.*") == true) {
+								%>
+								<jsp:include page="/Solution/NaverKin.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getURL()
+													.matches(".*blog.cyworld.*") == true) {
+								%>
+								<jsp:include page="/Solution/CyworldBlog.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getURL().matches(".*cyworld.*") == true) {
+								%>
+								<jsp:include page="/Solution/Cyworld.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getURL().matches(".*blog.daum.*") == true) {
+								%>
+								<jsp:include page="/Solution/DaumBlog.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getURL().matches(".*dreamwiz.*") == true) {
+								%>
+								<jsp:include page="/Solution/Dreamwiz.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getURL().matches(".*egloos.*") == true) {
+								%>
+								<jsp:include page="/Solution/Egloos.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getURL().matches(".*gallog.*") == true) {
+								%>
+								<jsp:include page="/Solution/Gallog.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getURL().matches(".*me2day.*") == true) {
+								%>
+								<jsp:include page="/Solution/NaverMe2day.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getURL().matches(".*tistory.*") == true) {
+								%>
+								<jsp:include page="/Solution/Tistory.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getURL().matches(".*todayhumor.*") == true) {
+								%>
+								<jsp:include page="/Solution/TodayHumor.jsp" flush="false" />
+								<%
+									} else if (result.get(i).getURL().matches(".*twitter.*") == true) {
+								%>
+								<jsp:include page="/Solution/Twitter.jsp" flush="false" />
+								<%
+									}
+								%>
+							</div>
+						</div>
+						<div style="clear: both"></div>
+					</div>
+					<!-- TH	 -->
+					<!-- 		<div class="div-th">
 			<div class="div-td" style="width: 5%; float: left">번호</div>
 			<div class="div-td" style="width: 82%; float: left">제목</div>
 			<div class="div-td" style="width: 10%; float: left">위험도</div>
 			<div class="div-td" style="width: 3%; float: left">-</div>
 			<div style="clear: both;"></div>
 		</div> -->
-			</div>
-		</div>
-		<div class="resultList">
-			<%
-				for (int i = 0; i < result.size(); i++) {
-			%>
-			<!-- TR -->
-			<div class="div-tr" onclick="_onFilp(<%=i + 1%>)">
-				<div class="div-num"><%=i + 1%></div>
-				<div class="div-title">
-					<a class="title" href="<%=result.get(i).getURL()%>" target="_blank"><%=result.get(i).getTitle()%></a>
 				</div>
-				<div class="div-exp">
-					<%
-						double exp = result.get(i).getExposure();
-								if (exp >= 70.0) {
-					%>
-					<img alt="위험" src="images/icon/birthday.png">
-					<%
-						} else if (exp >= 30.0 && exp < 70.0) {
-					%>
-					<img alt="주의" src="images/icon/email.png">
-					<%
-						} else {
-					%>
-					<img alt="안전" src="images/icon/name.png">
-					<%
-						}
-					%>
-				</div>
-				<!-- <div class="div-td" style="width: 3%; float: left">▼</div> -->
-				<div style="clear: both"></div>
 			</div>
 
-			<div id="content<%=i + 1%>" style="display: none"
-				onclick="_onFilp(<%=i + 1%>)">
-				<!-- TR -->
-				<div class="div-tr">
-					<div class="div-td" align="center"><%=result.get(i).getSnippet()%>
-					</div>
-				</div>
-				<div style="clear: both"></div>
-
-				<!-- TR -->
-				<div class="div-tr">
-					<div class="div-td" align="center">
-						<!-- Engine Solution -->
-						<%
-							if (result.get(i).getEngine().matches(".*Naver.*") == true) {
-						%>
-						<jsp:include page="/Solution/Naver.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getEngine().matches(".*Daum.*") == true) {
-						%>
-						<jsp:include page="/Solution/Daum.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getEngine().matches(".*Google.*") == true) {
-						%>
-						<jsp:include page="/Solution/Google.jsp" flush="false" />
-						<%
-							}
-						%>
-					</div>
-				</div>
-				<div style="clear: both"></div>
-				<!-- TR -->
-				<div class="div-tr">
-					<div class="div-td" align="center">
-						<!-- Static Solution -->
-						<%
-							if (result.get(i).getURL().matches(".*blog.naver.*") == true) {
-						%>
-						<jsp:include page="/Solution/NaverBlog.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getURL().matches(".*kin.naver.*") == true) {
-						%>
-						<jsp:include page="/Solution/NaverKin.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getURL()
-											.matches(".*blog.cyworld.*") == true) {
-						%>
-						<jsp:include page="/Solution/CyworldBlog.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getURL().matches(".*cyworld.*") == true) {
-						%>
-						<jsp:include page="/Solution/Cyworld.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getURL().matches(".*blog.daum.*") == true) {
-						%>
-						<jsp:include page="/Solution/DaumBlog.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getURL().matches(".*dreamwiz.*") == true) {
-						%>
-						<jsp:include page="/Solution/Dreamwiz.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getURL().matches(".*egloos.*") == true) {
-						%>
-						<jsp:include page="/Solution/Egloos.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getURL().matches(".*gallog.*") == true) {
-						%>
-						<jsp:include page="/Solution/Gallog.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getURL().matches(".*me2day.*") == true) {
-						%>
-						<jsp:include page="/Solution/NaverMe2day.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getURL().matches(".*tistory.*") == true) {
-						%>
-						<jsp:include page="/Solution/Tistory.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getURL().matches(".*todayhumor.*") == true) {
-						%>
-						<jsp:include page="/Solution/TodayHumor.jsp" flush="false" />
-						<%
-							} else if (result.get(i).getURL().matches(".*twitter.*") == true) {
-						%>
-						<jsp:include page="/Solution/Twitter.jsp" flush="false" />
-						<%
-							}
-						%>
-					</div>
-				</div>
-				<div style="clear: both"></div>
-			</div>
 			<div style="margin-bottom: 1em"></div>
 			<%
 				}
@@ -312,7 +313,6 @@
 				}
 			%>
 		</div>
-	</div>
 	</div>
 </body>
 </html>

@@ -129,7 +129,7 @@ table,tr,td,th {
 					</div>
 					<div style="clear:both;"></div>	
 					<hr style="margin: 0 8%; border: 2px solid #0c4881;">
-					<form action="signinProcess.jsp" method="post">
+					<form action="signupProcess.jsp" method="post">
 						<div class="font_GODOM sign_number">
 							1. 이메일을 입력하신 후, 발송된 메일을 확인하여 인증해 주세요.
 						</div>
