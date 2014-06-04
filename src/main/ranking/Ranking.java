@@ -124,7 +124,7 @@ public class Ranking {
 		}
 		System.out.println("이게 사용자 특정화 데이터 : " + sumExp);
 		
-		finalExp = sumExp;
+		finalExp = Math.round(sumExp / 100);
 		
 		expData = new ExpDataBean();
 		expData = getExpData(client_num, finalExp);
@@ -132,7 +132,6 @@ public class Ranking {
 		int grade = (int) (Math.round(finalExp) / 1000);
 		
 		setClient_grade(grade);
-		System.out.println("ranking : " + getClient_grade());
 		
 		try {
 			expGraph.insertExprecord(expData);

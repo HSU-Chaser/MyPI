@@ -1,0 +1,112 @@
+@CHARSET "UTF-8";
+
+#solution {
+	background-color: rgba(255, 255, 255, 0.2);
+	max-width: 1280px;
+}
+
+.resultList {
+	margin-left: 3%;
+	margin-right: 3%;
+	padding-top: 20px;
+	padding-bottom: 60px;
+	text-align: left;
+	border-bottom: 2px solid white;
+	clear: both;
+	overflow: auto;
+}
+
+.resultTitle {
+	width: 19%;
+	float: left;
+}
+
+.resultTitle h3 {
+	font-size: 34pt;
+}
+
+.resultObject {
+	width: 72%;
+	float: right;
+}
+
+.resultObject .desc {
+	font-size: 24pt;
+}
+
+.resultObject .div-num {
+	width: 8%;
+	height: 2em;
+	float: left;
+	background-color: #ffffff;
+	display: inline;
+	text-align: center;
+	height: 2em;
+	display: inline;
+	vertical-align: middle;
+	padding-left: 2%;
+	padding-right: 2%;
+	width: 8%;
+}
+
+.resultObject .div-title {
+	width: 82%;
+	height: 2em;
+	float: left;
+	background-color: #ffffff;
+	display: inline-block;
+	text-align: left;
+	height: 2em;
+	vertical-align: middle;
+	position: relative;
+}
+
+.resultObject .div-title .title {
+	position: absolute;
+	max-width: 100%;
+	height: 100%;
+	word-spacing: 1px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	color: #0c76c7;
+	text-decoration: none;
+	height: 100%;
+	white-space: nowrap;
+}
+
+.resultObject .div-exp {
+	width: 10%;
+	height: 2em;
+	float: left;
+	background-color: #ffffff;
+	display: inline;
+	text-align: center;
+	height: 2em;
+	vertical-align: middle;
+}
+
+.resultObject .div-graph {
+	width: 100%;
+	border: 0;
+	cellpadding: 0;
+	cellspacing: 0;
+	background-color: white;
+	color: #0c76c7;
+	text-align: center;
+	background-color: white;
+}
+
+.resultObject .div-tr {
+	width: 100%;
+	border: 0;
+	border: .1 solid white;
+	cellpadding: 0;
+	text-align: center;
+}
+
+.resultObject .div-td {
+	background-color: rgba(255, 255, 255, .5);
+	border: thin solid white;
+	text-align: center;
+}
