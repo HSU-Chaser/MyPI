@@ -17,10 +17,10 @@
 /*input size + align 1*/
 input#email, input#certkey, input#password, input#password2 {
 	width: 40%;
-	border: 1px solid white;
 	color: white;
 	display: inline;
 	margin-right: 3%;
+	background-color: rgba(77,155,183,0.6);
 }
 #reset {
 	width: 6%;
@@ -33,16 +33,17 @@ input#email, input#certkey, input#password, input#password2 {
 	margin: 2% 3% 0 0;
 	float: center;
 	color: #0c4881;
-	font-size: 1.15em;
+	font-size: 1em;
 	margin-right: 3%;
 	display: inline;
 }
 .sign_button {
 	width: 24%;
 	float: center;
+	font-size: 0.9em;
 }
-.marginbottom {
-	margin-bottom: 0.8em;
+.margintop {
+	margin-top: 0.8em;
 }
 .sign_number {
 	font-size: 75%;

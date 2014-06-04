@@ -68,6 +68,8 @@ var _onConfirmCertKey = function(userinput) {
 	if (userinput.certkey.value == "") {
 		alert("인증키를 입력하세요.");
 		$('#keyMsg').css('color', 'red');
+		$('#keyMsg').css('font-size', '1em;');
+		$('#keyMsg').attr('class','font_GODOM');
 		$('#keyMsg').html("인증키를 입력하세요.");
 	} else {
 		$.ajax({
@@ -77,6 +79,8 @@ var _onConfirmCertKey = function(userinput) {
 				if (result == "true") {
 					alert("인증을 완료하였습니다.");
 					$('#keyMsg').css('color', '#0c4881');
+					$('#keyMsg').css('font-size', '1em;');
+					$('#keyMsg').attr('class','font_GODOM');
 					$('#keyMsg').html('이메일이 인증되었습니다.');
 					return true;
 				} else {

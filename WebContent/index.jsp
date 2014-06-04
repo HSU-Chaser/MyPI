@@ -85,7 +85,7 @@
 					<hr style="margin: 0 8%; border: 2px solid #0c4881;">
 					<div style="width: 100%;">
 						<div class="font_GODOM"
-							style="width: 50%; float: left; padding: 8% 3% 8% 8%; font-size: 1.15em; color: #0c4881; line-height: 65px;">
+							style="width: 50%; float: left; padding: 8% 3% 8% 8%; font-size: 1em; color: #0c4881; line-height: 65px;">
 							정보의 바다에서 떠도는<br /> 당신의 기록,<br />스스로 지켜주세요.
 						</div>
 						<div class=""

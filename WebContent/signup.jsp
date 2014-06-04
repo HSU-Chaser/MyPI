@@ -134,7 +134,7 @@ table,tr,td,th {
 							1. 이메일을 입력하신 후, 발송된 메일을 확인하여 인증해 주세요.
 						</div>
 						<div style="padding: 0 8% 2% 8%;">
-							<div class="marginbottom">
+							<div>
 								<div class="font_GODOM sign_text">메일주소 입력</div>
 								<input type="text"
 								name="email" id="email" class="signup_input color font_GODOM" size="10"
@@ -143,9 +143,9 @@ table,tr,td,th {
 								<input type="button" id="sendKey" name="sendKey"
 								value=" 인증키 전송 " class="sign_button button addButton font_GODOB"
 								onclick="_onSendCertKey(this.form)">
-								<span id="mailMsg" style="float:center;"></span>
 							</div>
-							<div class="marginbottom">
+								<span id="mailMsg" style="float:center;"></span>
+							<div class="margintop">
 								<div class="font_GODOM sign_text">인증번호 입력</div>
 								<input type="text"
 								name="certkey" id="certkey" class="signup_input color font_GODOM" size="10"
@@ -154,8 +154,8 @@ table,tr,td,th {
 								name="confirm_email" value=" 인증 확인 "
 								class="sign_button button addButton font_GODOB"
 								onclick="_onConfirmCertKey(this.form)">
-								<span id="keyMsg" style="float:center;"></span>
 							</div>
+								<span id="keyMsg" style="float:center;"></span>
 						</div>
 						<div style="clear: both;"></div>
 						
@@ -165,7 +165,7 @@ table,tr,td,th {
 							2. 비밀번호를 입력하신 후, 정확하게 다시 한 번 입력해 주세요.
 						</div>
 						<div style="padding: 0 8% 2% 8%;">
-							<div class="marginbottom">
+							<div>
 								<div class="font_GODOM sign_text">비밀번호 입력</div>
 								<input type="password"
 								name="password" id="password" class="signup_input color font_GODOM" size="15"
@@ -174,9 +174,9 @@ table,tr,td,th {
 								<input type="button" id="sendKey" name="sendKey"
 								value=" 인증키 전송 " class="sign_button button addButton font_GODOM"
 								style="visibility: hidden;">
-								<span id="pass1Msg" style="float:center;"></span>
 							</div>
-							<div class="marginbottom">
+								<span id="pass1Msg" style="float:center;"></span>
+							<div class="margintop" style="margin-bottom: 0.8em;">
 								<div class="font_GODOM sign_text">비밀번호 확인</div>
 								<input type="password"
 								name="password2" id="password2" class="signup_input color font_GODOB"
@@ -186,8 +186,8 @@ table,tr,td,th {
 								name="confirm_email" value=" 인증 확인 "
 								class="sign_button button addButton font_GODOB"
 								style="visibility: hidden;">
-								<span id="pass2Msg" style="float:center;"></span>
 							</div>
+								<span id="pass2Msg" style="float:center;"></span>
 							<div style="clear: both;"></div>
 							
 							<hr style="border: 1px solid #0c4881;">
