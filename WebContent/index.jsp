@@ -112,6 +112,7 @@
 			</div>
 		</div>
 	</section>
+	<!-- footer -->
 	<jsp:include page="/common/footer.jsp" />
 </body>
 </html>

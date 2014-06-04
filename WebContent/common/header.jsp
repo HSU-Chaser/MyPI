@@ -20,8 +20,17 @@
 	<div class="navbar">
 		<span class="comment font_GODOM">&lt; <%=session.getAttribute("memEmail")%>님
 			환영합니다. &gt;
-		</span> <a class="font_GODOM" href="signout.jsp"><img
-			src="./images/signout1.png" style="width: 35px;"></a>
+		</span>
+	</div>
+	<div class="navbar" style="top: 10px;">
+		<span>
+			<a class="font_GODOM" href="ChangeInfoAll.jsp"><img
+				src="./images/ihfb/icons/myinfo_edit.png"
+				style="border-left: 0.1em solid #0c76c6;"></a> 
+			<a class="font_GODOM" href="signout.jsp"><img
+				src="./images/ihfb/icons/signout.png"
+				style="border-left: 0.1em solid #0c76c6;"></a>
+		</span>
 	</div>
 	<%
 		}

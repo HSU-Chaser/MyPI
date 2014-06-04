@@ -32,7 +32,7 @@
 		String birthday1 = request.getParameter("modal_birthday1");
 		String birthday2 = request.getParameter("modal_birthday2");
 		String birthday3 = request.getParameter("modal_birthday3");
-		String day = birthday1+"."+birthday2+"."+birthday3;
+		String day = birthday1+"."+birthday2+"."+birthday3+".";
 		manager.updateBirthDay(c,day);
 	}else if(type.equals("address")){
 		String address = request.getParameter("modal_address");

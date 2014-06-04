@@ -824,6 +824,18 @@ body {
 	/*opacity: 0.4;*/
 }
 /*********************************************************************************/
+/*  ChangeInfoAll:                     ;                                                                */
+/*********************************************************************************/
+
+#ChangeInfoAll {
+	background-image: url('../images/ihfb/background/bg02.jpg');
+	background-size: 100% 100%, cover;
+	background-attachment: fixed, fixed;
+	background-position: top right, center right;
+	background-repeat: no-repeat;
+	/*opacity: 0.4;*/
+}
+/*********************************************************************************/
 /* Footer                                                                        */
 /*********************************************************************************/
 
@@ -1073,6 +1085,12 @@ table, tr, th, td, input {
 	vertical-align: middle;
 	float: left;
 }
+/*MyPI image+signup_session - signup.jsp*/
+.changeinfo_img {
+	padding: 16px 8%;
+	vertical-align: middle;
+	float: left;
+}
 /*form background - all*/
 .form_background {
 	width: 600px;
@@ -1177,6 +1195,9 @@ div#searchBar img {
 .comment {
 	display: inline-block;
 	vertical-align: super;
+	font-size: 0.65em;
+	color:#0c76c7;
+	margin-right: 7em;
 }
 
 .inputSize {
