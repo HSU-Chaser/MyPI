@@ -3,9 +3,12 @@
 #solution {
 	background-color: rgba(255, 255, 255, 0.2);
 	max-width: 1280px;
+	margin: auto;
+	margin-left: 3%;
+	margin-right: 3%;
 }
 
-.resultList {
+.moduleContainer {
 	margin-left: 3%;
 	margin-right: 3%;
 	padding-top: 20px;
@@ -14,85 +17,176 @@
 	border-bottom: 2px solid white;
 	clear: both;
 	overflow: auto;
+	color: white;
 }
 
-.resultTitle {
+.moduleTitle {
 	width: 19%;
 	float: left;
-}
-
-.resultTitle h3 {
+	font-family: GODOB, "고도B", GODOBeof, GODOBwoff, sans-serif;
 	font-size: 34pt;
 }
 
-.resultObject {
+.moduleContent {
 	width: 72%;
 	float: right;
 }
 
-.resultObject .desc {
+.describe {
+	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
 	font-size: 24pt;
 }
 
-.resultObject .div-num {
-	width: 8%;
-	height: 2em;
-	float: left;
-	background-color: #ffffff;
-	display: inline;
-	text-align: center;
-	height: 2em;
-	display: inline;
-	vertical-align: middle;
-	padding-left: 2%;
-	padding-right: 2%;
-	width: 8%;
+.listTitle {
+	color: rgba(255, 255, 255, 0.6);
 }
 
-.resultObject .div-title {
+.content {
+	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
+	font-size: 16pt;
+}
+
+/* --- Summary --- */
+.moduleDate {
+	width: 19%;
+	float: left;
+	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
+	font-size: 24pt;
+}
+
+.moduleContent .copyright {
+	float: right;
+	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
+	font-size: 12pt;
+}
+
+.moduleContent .logo {
+	background-image: images/ihfb/main_logo/logo_300x100.png";
+	margin-bottom: 40px;
+}
+
+.moduleContent .gradeTitle {
+	border-bottom: 1px solid white;
+	padding-bottom: 40px;
+	font-family: GODOB, "고도B", GODOBeof, GODOBwoff, sans-serif;
+	font-size: 28pt;
+}
+
+.moduleContent .gradeResult {
+	font-family: GODOB, "고도B", GODOBeof, GODOBwoff, sans-serif;
+	font-size: 34pt;
+}
+
+.moduleContent .gradeContent {
+	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
+	font-size: 20pt;
+}
+/* --- Graph --- */
+.moduleContent .engineGraph {
+	width: 48.5%;
+	float: left;
+	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
+	font-size: 24pt;
+}
+
+.moduleContent .exposureGraph {
+	width: 48.5%;
+	float: right;
+}
+/* --- Image Search --- */
+
+/* --- Static Search --- */
+
+/* --- Dynamic Search --- */
+.moduleResult {
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.list-no {
+	width: 6%;
+	float: left;
+	text-align: center;
+}
+
+.list-label {
+	float: right;
+}
+
+.list-exp {
+	width: 6%;
+	float: left;
+}
+
+.list-title {
 	width: 82%;
-	height: 2em;
 	float: left;
-	background-color: #ffffff;
-	display: inline-block;
-	text-align: left;
-	height: 2em;
-	vertical-align: middle;
-	position: relative;
+	font-family: GODOM, "고도M", GODOMeof, GODOMwoff, sans-serif;
+	font-size: 18pt;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	color: #444444;
+	text-decoration: none;
 }
 
-.resultObject .div-exp {
-	width: 10%;
-	height: 2em;
+.list-title a {
+	text-decoration: none;
+}
+
+
+.list-filp {
+	width: 6%;
 	float: left;
-	background-color: #ffffff;
-	display: inline;
-	text-align: center;
-	height: 2em;
-	vertical-align: middle;
 }
 
-.resultObject .div-graph {
-	width: 100%;
-	border: 0;
-	cellpadding: 0;
-	cellspacing: 0;
-	background-color: white;
-	color: #0c76c7;
-	text-align: center;
-	background-color: white;
+.resultContent {
+	display: none;
+	padding-left: 6%;
 }
 
-.resultObject .div-tr {
-	width: 100%;
-	border: 0;
-	border: .1 solid white;
-	cellpadding: 0;
-	text-align: center;
+.upside {
+	border-bottom: 1px solid white;
 }
 
-.resultObject .div-td {
-	background-color: rgba(255, 255, 255, .5);
-	border: thin solid white;
-	text-align: center;
+.snippetContainer {
+	width: 49%;
+	float: left;
+	border-right: 1px solid white;
+}
+
+.snippetContainer .snippetTitle {
+	width: 33%;
+	float: left;
+	padding-right: 2%
+}
+
+.snippetContainer .snippetContent {
+	width: 66%;
+	float: right;
+	padding-right: 3%
+}
+
+.engineContainer {
+	width: 49%;
+	float: right;
+}
+
+.engineContainer .engineTitle {
+	width: 33%;
+	float: left;
+}
+
+.engineContainer .engintContent {
+	width: 66%;
+	float: right;
+}
+
+.deleteTitle {
+	width: 12%;
+	float: left;
+}
+
+.deleteContainer {
+	width: 85%;
+	float: right;
 }

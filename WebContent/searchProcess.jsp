@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="main.ranking.ProgressObserver"%>
 <%@page import="main.search.MakeObject"%>
 <%@page import="main.ranking.ImageStorage"%>
@@ -17,7 +18,7 @@
 	<%
 		String memberEmail = (String) session.getAttribute("memEmail");
 
-		if (memberEmail == null) {
+			if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -25,7 +26,6 @@
 	</script>
 	<%
 		} else {
-
 			String client_str = (String) session.getAttribute("client_num");
 			int client_num = Integer.parseInt(client_str);
 			ProgressObserver observer = new ProgressObserver();
@@ -38,72 +38,89 @@
 
 			Vector<SearchResult> result = ranking.getResult(searchDic
 					.getSearchWordList());
-			/* MakeObject object = new MakeObject();
-			ArrayList<SearchResult> result = object.getResult(searchDic
-					.getSearchWordList()); */
 	%>
+	<br>
+	<br>
+	<br>
+	<br>
 	<div id="solution" align="center">
-		<br> <br> <br> <br>
 		<!-- Summary -->
-		<div class="resultList">
-			<div class="resultTitle">
-				<p>2014-06-05</p>
+		<div class="moduleContainer">
+			<!-- Title -->
+			<div class="moduleDate describe">
+				<span> <%
+ 	java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat(
+ 				"yyyy-MM-dd");
+ 		String today = formatter.format(new java.util.Date());
+ 		out.println(today);
+ %></span>
 			</div>
-			<div class="resultObject">
-				<div>
+			<!-- Content -->
+			<div class="moduleContent">
+				<!-- Copyright -->
+				<div class="copyright">
+					<span>ⓒ Team Chaser</span>
+				</div>
+				<!-- Logo -->
+				<div class="logo">
 					<img src="images/ihfb/main_logo/logo_300x100.png">
 				</div>
-				<div>
-					<p class="font_GODOB" style="color: white;">
-						<%=memberEmail%>
-						님의 MyPI 솔루션 검색 결과
+				<!-- Result Title -->
+				<div class="gradeTitle">
+					<p>
+						<span><%=memberEmail%></span> 님의 MyPI 솔루션 검색 결과
 					</p>
 				</div>
-
-				<div>회원님의 보안 등급은 ' ' 입니다.</div>
+				<!-- Security Grade -->
+				<div class="gradeResult">
+					<p>
+						회원님의 보안 등급은
+						<%=ranking.getGradeText()[0]%>
+						입니다.
+					</p>
+				</div>
+				<div class="gradeContent">
+					<p>
+						<%=ranking.getGradeText()[1]%>
+					</p>
+				</div>
 			</div>
 		</div>
-
+		<!-- ↑ Summary End -->
 		<!-- Graph -->
-		<div class="resultList">
-			<div class="resultTitle">
-				<h3>Graph</h3>
-			</div>
-
-			<div id="graph" class="resultObject">
-				<div>
-					<div class="div-graph font_GODOM"
-						style="width: 49%; float: left; color:">검색 엔진 비율</div>
-					<div class="div-graph font_GODOM" style="width: 49%; float: right">검색
-						통계</div>
+		<div class="moduleContainer">
+			<!-- Title -->
+			<div class="moduleTitle">Graph</div>
+			<!-- Content -->
+			<div class="moduleContent">
+				<div class="engineGraph describe">
+					<span>검색 엔진 비율</span>
+					<iframe src="engineGraph.jsp" frameborder="0" name="engineGraph"
+						align="center" width="100%" height="200px" scrolling='no'></iframe>
 				</div>
-				<div style="clear: both;"></div>
-				<div class="div-tr">
-					<div class="div-td" style="width: 49%; float: left">
-						<iframe src="engineGraph.jsp" frameborder="0" name="engineGraph"
-							align="center" width="100%" height="300px" scrolling='no'></iframe>
-					</div>
-					<div class="div-td" style="width: 49%; float: right">
-						<iframe src="exposureGraph.jsp" frameborder="0"
-							name="exposureGraph" align="center" width="100%" height="300px"
-							scrolling='auto'></iframe>
-					</div>
+				<div class="exposureGraph describe">
+					<span>검색 통계</span>
+					<iframe src="exposureGraph.jsp" frameborder="0"
+						name="exposureGraph" align="center" width="100%" height="200px"
+						scrolling='auto'></iframe>
 				</div>
-				<div style="clear: both;"></div>
 			</div>
 		</div>
-
+		<!-- ↑ Graph End -->
 		<!-- Images -->
-		<div class="resultList">
-			<div class="resultTitle">
-				<h3 class="resultObject font_GODOM" style="color: white">이미지</h3>
-			</div>
-			<div id="image" class="resultObject">
-				<div class="desc"></div>
+		<div class="moduleContainer">
+			<!-- Title -->
+			<div class="moduleTitle">Images</div>
+			<!-- Content -->
+			<div id="image" class="moduleContent">
+				<div class="describe">
+					<p>MY-Pi 솔루션을 통해 찾아낸 회원님과 관련된 이미지 검색 결과입니다.</p>
+					<p>혹시 회원님과 관련된 이미지가 있으신가요?</p>
+				</div>
 				<div class="div-tr">
 					<%
 						if (ImageStorage.getImgUrlList().size() == 0) {
-								out.println("<h3 class='font_GODOM'>이미지 결과가 없습니다.</h3>");
+								out.println("<p'>이미지 결과가 없습니다.</p>");
 							} else {
 								for (int i = 0; i < ImageStorage.getImgUrlList().size(); i++) {
 					%>
@@ -117,29 +134,26 @@
 										out.println("<div style='claer:both;'></div>");
 									}
 								}
-					%>
-					<%
-						}
+							}
 					%>
 				</div>
 				<div style="clear: both;"></div>
 			</div>
 		</div>
-
+		<!-- ↑ Images End -->
 		<!-- Static Search -->
-		<div class="resultList">
-			<div class="resultTitle">
-				<h3 class="resultObject font_GODOM" style="color: white">Static
-					Search</h3>
-			</div>
-			<div class="resultObject font_GODOM">
-				<div class="desc">
-					MY-Pi 솔루션을 통해 찾아낸<br> 회원님의 주요 신상정보 노출사이트 목록입니다.
+		<div class="moduleContainer">
+			<!-- Title -->
+			<div class="moduleTitle">Static Search</div>
+			<!-- Content -->
+			<div class="moduleContent">
+				<div class="describe">
+					<p>MY-Pi 솔루션을 통해 찾아낸 회원님의 주요 신상정보 노출사이트 목록입니다.</p>
 				</div>
 				<div class="div-tr">
 					<%
 						if (ExtendedStorage.exposureUrlList.size() == 0) {
-								out.println("<h3 class='font_GODOM'>주요 노출 사이트 결과가 없습니다.</h3>");
+								out.println("<p>주요 노출 사이트 결과가 없습니다.</p>");
 							} else {
 								for (int i = 0; i < ExtendedStorage.exposureUrlList.size(); i++) {
 					%>
@@ -159,63 +173,77 @@
 		</div>
 
 		<!-- Dynamic Search -->
-		<div class="resultList">
-			<div class="resultTitle">
-				<h3 class="resultObject font_GODOM" style="color: white">Dynamic
-					Search</h3>
-			</div>
-			<div class="resultObject font_GODOM">
-				<div class="desc">
-					MY-Pi 솔루션을 통해 찾아낸<br> 회원님의 개인정보가 담긴 웹 데이터 입니다.<br> 총
-					<%=result.size()%>개의 게시물이 검색되었습니다.<br> 각 게시물을 클릭하시면, 간략한 내용과
-					함께, 해당 게시물을 삭제할 수 있는 솔루션이 제공됩니다.<br>
+		<div class="moduleContainer">
+			<div class="devider">
+				<!--  Title -->
+				<div class="moduleTitle">Dynamic Search</div>
+				<!-- Content -->
+				<div class="moduleContent">
+					<div class="describe">
+						MY-Pi 솔루션을 통해 찾아낸 회원님의 개인정보가 담긴 웹 데이터 입니다.<br> 총
+						<%=result.size()%>개의 게시물이 검색되었습니다.<br> 각 게시물을 클릭하시면, 간략한 내용과
+						함께, 해당 게시물을 삭제할 수 있는 솔루션이 제공됩니다.
+					</div>
 				</div>
-				<div>
-					<%
-						for (int i = 0; i < result.size(); i++) {
-					%>
-					<!-- TR -->
-					<div class="div-tr" onclick="_onFilp(<%=i + 1%>)">
-						<div class="div-num"><%=i + 1%></div>
-						<div class="div-title">
-							<a class="title" href="<%=result.get(i).getURL()%>"
-								target="_blank"><%=result.get(i).getTitle()%></a>
-						</div>
-						<div class="div-exp">
-							<%
-								double exp = result.get(i).getExposure();
-										if (exp >= 70.0) {
-							%>
-							<img alt="위험" src="images/icon/birthday.png">
-							<%
-								} else if (exp >= 30.0 && exp < 70.0) {
-							%>
-							<img alt="주의" src="images/icon/email.png">
-							<%
-								} else {
-							%>
-							<img alt="안전" src="images/icon/name.png">
-							<%
-								}
-							%>
-						</div>
-						<!-- <div class="div-td" style="width: 3%; float: left">▼</div> -->
-						<div style="clear: both"></div>
+			</div>
+			<div style="clear: both"></div>
+			<!-- Result Item -->
+			<div class="moduleResult">
+				<div class="list-no describe">
+					<span>No.</span>
+				</div>
+				<div class="list-label describe">
+					<span>Search Results</span>
+				</div>
+				<div style="clear: both"></div>
+				<%
+					for (int i = 0; i < result.size(); i++) {
+				%>
+				<div id="title<%=i + 1%>">
+					<div class="list-no describe"><%=i + 1%></div>
+					<div class="list-exp">
+						<%
+							double exp = result.get(i).getExposure();
+									if (exp >= 120.0) {
+										out.println("<img alt='" + exp
+												+ "' src='images/ihfb/icons/risk_high.png'>");
+									} else if (exp >= 20.0 && exp < 120.0) {
+										out.println("<img alt='" + exp
+												+ "' src='images/ihfb/icons/risk_mid.png'>");
+
+									} else {
+										out.println("<img alt='" + exp
+												+ "' src='images/ihfb/icons/risk_low.png'>");
+									}
+						%>
+					</div>
+					<div class="list-title">
+						<a class="title" href="<%=result.get(i).getURL()%>"
+							target="_blank"><%=result.get(i).getTitle()%></a>
+					</div>
+					<div class="list-flip">
+						<img class="filp ui-button" alt="flip"
+							src="images/ihfb/icons/plus.png" onclick="_onFilp(<%=i + 1%>)">
 					</div>
 
-					<div id="content<%=i + 1%>" style="display: none"
-						onclick="_onFilp(<%=i + 1%>)">
-						<!-- TR -->
-						<div class="div-tr">
-							<div class="div-td" align="center"><%=result.get(i).getSnippet()%>
+					<div style="clear: both"></div>
+				</div>
+				<!-- Result Content -->
+				<div id="content<%=i + 1%>" class="resultContent"
+					onclick="_onFilp(<%=i + 1%>)">
+					<!-- Upside -->
+					<div class="upside">
+						<div class="snippetContainer">
+							<div class="snippetTitle listTitle">
+								<span>검색된 내용 미리보기</span>
 							</div>
+							<div class="snippetContent content"><%=result.get(i).getSnippet()%></div>
 						</div>
-						<div style="clear: both"></div>
-
-						<!-- TR -->
-						<div class="div-tr">
-							<div class="div-td" align="center">
-								<!-- Engine Solution -->
+						<div class="engineContainer">
+							<div class="engineTitle listTitle">
+								<span>이 결과가 검색되지 않게 하기</span>
+							</div>
+							<div class="engineContent content">
 								<%
 									if (result.get(i).getEngine().matches(".*Naver.*") == true) {
 								%>
@@ -233,86 +261,92 @@
 								%>
 							</div>
 						</div>
-						<div style="clear: both"></div>
-						<!-- TR -->
-						<div class="div-tr">
-							<div class="div-td" align="center">
-								<!-- Static Solution -->
-								<%
-									if (result.get(i).getURL().matches(".*blog.naver.*") == true) {
-								%>
-								<jsp:include page="/Solution/NaverBlog.jsp" flush="false" />
-								<%
-									} else if (result.get(i).getURL().matches(".*kin.naver.*") == true) {
-								%>
-								<jsp:include page="/Solution/NaverKin.jsp" flush="false" />
-								<%
-									} else if (result.get(i).getURL()
-													.matches(".*blog.cyworld.*") == true) {
-								%>
-								<jsp:include page="/Solution/CyworldBlog.jsp" flush="false" />
-								<%
-									} else if (result.get(i).getURL().matches(".*cyworld.*") == true) {
-								%>
-								<jsp:include page="/Solution/Cyworld.jsp" flush="false" />
-								<%
-									} else if (result.get(i).getURL().matches(".*blog.daum.*") == true) {
-								%>
-								<jsp:include page="/Solution/DaumBlog.jsp" flush="false" />
-								<%
-									} else if (result.get(i).getURL().matches(".*dreamwiz.*") == true) {
-								%>
-								<jsp:include page="/Solution/Dreamwiz.jsp" flush="false" />
-								<%
-									} else if (result.get(i).getURL().matches(".*egloos.*") == true) {
-								%>
-								<jsp:include page="/Solution/Egloos.jsp" flush="false" />
-								<%
-									} else if (result.get(i).getURL().matches(".*gallog.*") == true) {
-								%>
-								<jsp:include page="/Solution/Gallog.jsp" flush="false" />
-								<%
-									} else if (result.get(i).getURL().matches(".*me2day.*") == true) {
-								%>
-								<jsp:include page="/Solution/NaverMe2day.jsp" flush="false" />
-								<%
-									} else if (result.get(i).getURL().matches(".*tistory.*") == true) {
-								%>
-								<jsp:include page="/Solution/Tistory.jsp" flush="false" />
-								<%
-									} else if (result.get(i).getURL().matches(".*todayhumor.*") == true) {
-								%>
-								<jsp:include page="/Solution/TodayHumor.jsp" flush="false" />
-								<%
-									} else if (result.get(i).getURL().matches(".*twitter.*") == true) {
-								%>
-								<jsp:include page="/Solution/Twitter.jsp" flush="false" />
-								<%
-									}
-								%>
-							</div>
-						</div>
-						<div style="clear: both"></div>
+						<div style="clear: both;"></div>
 					</div>
-					<!-- TH	 -->
-					<!-- 		<div class="div-th">
-			<div class="div-td" style="width: 5%; float: left">번호</div>
-			<div class="div-td" style="width: 82%; float: left">제목</div>
-			<div class="div-td" style="width: 10%; float: left">위험도</div>
-			<div class="div-td" style="width: 3%; float: left">-</div>
-			<div style="clear: both;"></div>
-		</div> -->
-				</div>
-			</div>
 
-			<div style="margin-bottom: 1em"></div>
-			<%
-				}
-					ImageStorage.getImgUrlList().clear();
-					SearchDic.getSearchWordList().clear();
-				}
-			%>
+					<!-- ↑ Upside End -->
+
+					<!-- Downside -->
+					<div class="downside">
+						<div class="deleteTitle listTitle">
+							<span>검색된 게시물 삭제하기</span>
+						</div>
+						<div class="deleteContainer content">
+							<%
+								if (result.get(i).getURL().matches(".*blog.naver.*") == true) {
+							%>
+							<jsp:include page="/Solution/NaverBlog.jsp" flush="false" />
+							<%
+								} else if (result.get(i).getURL().matches(".*kin.naver.*") == true) {
+							%>
+							<jsp:include page="/Solution/NaverKin.jsp" flush="false" />
+							<%
+								} else if (result.get(i).getURL()
+												.matches(".*blog.cyworld.*") == true) {
+							%>
+							<jsp:include page="/Solution/CyworldBlog.jsp" flush="false" />
+							<%
+								} else if (result.get(i).getURL().matches(".*cyworld.*") == true) {
+							%>
+							<jsp:include page="/Solution/Cyworld.jsp" flush="false" />
+							<%
+								} else if (result.get(i).getURL().matches(".*blog.daum.*") == true) {
+							%>
+							<jsp:include page="/Solution/DaumBlog.jsp" flush="false" />
+							<%
+								} else if (result.get(i).getURL().matches(".*dreamwiz.*") == true) {
+							%>
+							<jsp:include page="/Solution/Dreamwiz.jsp" flush="false" />
+							<%
+								} else if (result.get(i).getURL().matches(".*egloos.*") == true) {
+							%>
+							<jsp:include page="/Solution/Egloos.jsp" flush="false" />
+							<%
+								} else if (result.get(i).getURL().matches(".*gallog.*") == true) {
+							%>
+							<jsp:include page="/Solution/Gallog.jsp" flush="false" />
+							<%
+								} else if (result.get(i).getURL().matches(".*me2day.*") == true) {
+							%>
+							<jsp:include page="/Solution/NaverMe2day.jsp" flush="false" />
+							<%
+								} else if (result.get(i).getURL().matches(".*tistory.*") == true) {
+							%>
+							<jsp:include page="/Solution/Tistory.jsp" flush="false" />
+							<%
+								} else if (result.get(i).getURL().matches(".*todayhumor.*") == true) {
+							%>
+							<jsp:include page="/Solution/TodayHumor.jsp" flush="false" />
+							<%
+								} else if (result.get(i).getURL().matches(".*twitter.*") == true) {
+							%>
+							<jsp:include page="/Solution/Twitter.jsp" flush="false" />
+							<%
+								}
+							%>
+						</div>
+
+						<div style="clear: both;"></div>
+					</div>
+					<!-- ↑ Downside End -->
+				</div>
+				<!-- ↑ Result Content End -->
+				<div style="clear: both"></div>
+				<%
+					}
+						ImageStorage.getImgUrlList().clear();
+						SearchDic.getSearchWordList().clear();
+				%>
+
+			</div>
+			<!-- ↑ Result Item End -->
 		</div>
+		<!-- ↑ Dynamic Search End -->
 	</div>
+	<!-- ↑ Solution End -->
+	<%
+		}
+	%>
+
 </body>
 </html>

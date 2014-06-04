@@ -46,11 +46,12 @@ $(document).ready(function() {
 $(document).ajaxStart(function() {
 	var progressbar = $("#progressbar");
 	var progressLabel = $(".ui-progress-label");
+	var val = 0;
 
 	progressbar.progressbar({
 		value : false,
 		change : function() {
-			progressLabel.text(progressbar.progressbar("value") + "%");
+			progressLabel.text("MYPI Search Start!");
 		},
 		complete : function() {
 			progressLabel.text("Complete!");
@@ -58,13 +59,34 @@ $(document).ajaxStart(function() {
 	});
 
 	function progress() {
-		var val = progressbar.progressbar("value") || 0;
 
-		progressbar.progressbar("value", val + 1);
+		// progressbar.progressbar("value")
+		// progressbar.progressbar("value", false);
 
-		if (val < 99) {
-			setTimeout(progress, 110);
+		val++;
+		if (val < 200) {
+
+			if (val >= 1 && val < 4) {
+				progressLabel.text("Static Search를 시작합니다.");
+			}
+			if (val == 4) {
+				progressLabel.text("Static Search가 완료되었습니다.");
+			}
+			if (val >= 5 && val < 20) {
+				progressLabel.text("Dynamic Search를 시작합니다.");
+			}
+			if (val == 20) {
+				progressLabel.text("Dynamic Search가 완료되었습니다.");
+			}
+			if (val >= 21 && val < 25) {
+				progressLabel.text("최종 데이터 분석 중입니다.");
+			}
+			if (val >= 25) {
+				progressLabel.text("곧 결과 화면이 출력됩니다. 잠시만 기다려주십시오. ");
+			}
+
 		}
+		setTimeout(progress, 1000);
 	}
 
 	setTimeout(progress, 2000);
@@ -86,13 +108,19 @@ var changeIcon = function(type) {
 	} else if (type == 'workplace') {
 		$('#workplaceIcon').attr('src', 'images/ihfb/icons/my_workplace_p.png');
 	} else if (type == 'occupation') {
-		$('#occupationIcon').attr('src', 'images/ihfb/icons/my_occupation_p.png');
+		$('#occupationIcon').attr('src',
+				'images/ihfb/icons/my_occupation_p.png');
 	} else {
 		alert('type undefined');
 	}
 };
 
 var _onFilp = function(n) {
+	if ($('#content' + n).css('display') == 'none') {
+		$('#title' + n).css('color', '#0c76c7').css('background','#ffffff');
+	} else {
+		$('#title' + n).css('color', '#ffffff').css('background','#ffffff');
+	}
 	$('#content' + n).slideToggle('slow');
 };
 

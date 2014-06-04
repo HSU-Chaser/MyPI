@@ -35,7 +35,7 @@
 	int naverCount = 0;
 	int daumCount = 0;
 	double rate[] = { 0 , 0, 0 };
-/* 	for (int i = 0; i < Ranking.result.size(); i++) {
+ 	for (int i = 0; i < Ranking.result.size(); i++) {
 
 		if (Ranking.result.get(i).getEngine().equals("Google")) {
 			googleCount++;
@@ -44,10 +44,8 @@
 		} else if (Ranking.result.get(i).getEngine().equals("Daum")) {
 			daumCount++;
 		}
-	} */
-	googleCount = 100;
-	naverCount = 70;
-	daumCount = 40;
+	}
+
 	EngineGraph engineGraph = new EngineGraph(googleCount, naverCount,
 			daumCount);
 	System.out.println("카운트가 어떻게 되는데 그래요? : " + googleCount + "   "

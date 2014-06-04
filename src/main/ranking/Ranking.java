@@ -15,7 +15,7 @@ import main.search.SearchResult;
 public class Ranking {
 	public static Vector<SearchResult> result;
 	private int client_num;
-	private int client_grade;
+	private String[] gradeText = new String[2];
 	public ProgressObserver observer;
 
 	public void setObserver(ProgressObserver observer) {
@@ -131,7 +131,7 @@ public class Ranking {
 		
 		int grade = (int) (Math.round(finalExp) / 1000);
 		
-		setClient_grade(grade);
+		setGradeText(getGrade(grade));
 		
 		try {
 			expGraph.insertExprecord(expData);
@@ -144,6 +144,38 @@ public class Ranking {
 
 	}
 
+	public String[] getGrade(int grade){
+		
+		String gradeText[] = {" ", " "};
+		
+		if(grade == 0){
+			gradeText[0] = "<span style='color: #0c4881'>'안전'</span>";
+			gradeText[1] = "회원님의 개인 정보는 비교적 안전하게 관리되고 있습니다. \n 회원정보를 모두 입력하지 않으셨을 경우, 검색되는 데이터의 질이 떨어질 수 있습니다.";
+			return gradeText;
+		}
+		else if(grade == 1){
+			gradeText[0] = "<span style='color: #ffe355'>'경고'</span>";
+			gradeText[1] = "회원님의 개인 정보가 일부 웹에 존재합니다. \n 검색결과를 보시고, 제공되는 솔루션을 통해 자신의 개인정보를 관리해보세요";
+			return gradeText;
+		}
+		else if(grade == 2){
+			gradeText[0] = "<span style='color: #ffa94f'>'위험'</span>";
+			gradeText[1] = "회원님의 중요한 개인 정보가 일부 웹에 노출되어 있습니다. \n 검색결과를 보시고, 제공되는 솔루션을 통해 자신의 개인정보를 관리해보세요";
+			return gradeText;
+		}
+		else if(grade >= 3){
+			gradeText[0] = "<span style='color: #ff5f45'>'매우 위험'</span>";
+			gradeText[1] = "회원님의 중요한 개인 정보가 웹에 다수 노출되어 있습니다. \n 검색결과를 보시고, 제공되는 솔루션을 통해 자신의 개인정보를 관리해보세요";
+			return gradeText;
+		}
+		else {
+			gradeText[0] = "<span style='color: #ff5f45'>'알수없음'</span>";
+			gradeText[1] = "검색결과가 불분명합니다. 너무 많은 정보가 검색되어 트래픽 문제가 발생하였습니다.";
+			return gradeText;
+		}
+		
+	}
+	
 	public ExpDataBean getExpData(int client_num, double finalExp) {
 		ExpDataBean expData = null;
 		expData = new ExpDataBean();
@@ -236,11 +268,11 @@ public class Ranking {
 		}
 	}
 
-	public int getClient_grade() {
-		return client_grade;
+	public String[] getGradeText() {
+		return gradeText;
 	}
 
-	public void setClient_grade(int client_grade) {
-		this.client_grade = client_grade;
+	public void setGradeText(String[] gradeText) {
+		this.gradeText = gradeText;
 	}
 }

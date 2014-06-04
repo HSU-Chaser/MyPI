@@ -27,22 +27,23 @@ public class SearchDic {
 
 		return searchWordList;
 	}
-	
+
 	private static String imgSearchWord;
 
-	public static String getImgSearchWord(){
-		
+	public static String getImgSearchWord() {
+
 		return imgSearchWord;
 	}
-	public void setImgSearchWord(String imgSearchWord){
+
+	public void setImgSearchWord(String imgSearchWord) {
 		this.imgSearchWord = imgSearchWord;
 	}
-	
+
 	// 검색어 사전을 만드는 모듈
 	public void bindingWord(HashMap<String, String> map) {
 		searchWordList = null;
 		imgSearchWord = "";
-		
+
 		ArrayList<String> singleWord = new ArrayList<String>();
 		ArrayList<String> complexWord = new ArrayList<String>();
 		int singleGrammar;
@@ -60,6 +61,10 @@ public class SearchDic {
 						+ map.get("cellphone") + "\"",
 				"\"" + map.get("name") + "\"" + "+AND+" + "\""
 						+ map.get("school") + "\"",
+
+				"\"" + map.get("name") + "\"" + "+AND+" + "\""
+						+ map.get("workplace") + "\"",
+
 				"\"" + map.get("name") + "\"" + "+AND+" + "\""
 						+ map.get("email") + "\"",
 				"\"" + map.get("id") + "\"" + "+AND+" + "\""
@@ -79,18 +84,19 @@ public class SearchDic {
 				"\"" + map.get("id") + "\"" + "+AND+" + "\""
 						+ map.get("nickname4") + "\"",
 				"\"" + map.get("id") + "\"" + "+AND+" + "\""
-						+ map.get("nickname5") + "\"" };
-		
-		
-		
-		if((!map.get("name").equals("null")) && (!map.get("occupation").equals("null"))){
-			setImgSearchWord("\"" + map.get("name") + "\"" + "+" + map.get("workplace") + "+OR+" + map.get("school"));
+						+ map.get("nickname5") + "\""
+
+		};
+
+		if ((!map.get("name").equals("null"))
+				&& (!map.get("occupation").equals("null"))) {
+			setImgSearchWord("\"" + map.get("name") + "\"" + "+"
+					+ map.get("workplace") + "+OR+" + map.get("school"));
 		}
-		
-		else{
+
+		else {
 			setImgSearchWord("\"" + map.get("email") + "\"");
 		}
-		
 
 		singleGrammar = singleBinding.length;
 		for (int i = 0; i < singleGrammar; i++) {
@@ -99,10 +105,10 @@ public class SearchDic {
 
 		// 처음엔 이렇게 넣어버리고, 그 뒤부턴 addAll
 		for (int i = 0; i < singleWord.size(); i++) {
-			
+
 			getSearchWordList().add(removeNull(singleWord).get(i));
 			System.out.println(getSearchWordList().size());
-		
+
 		}
 
 		complexGrammar = complexBinding.length;
