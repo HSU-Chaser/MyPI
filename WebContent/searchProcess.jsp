@@ -18,7 +18,7 @@
 	<%
 		String memberEmail = (String) session.getAttribute("memEmail");
 
-			if (memberEmail == null) {
+		if (memberEmail == null) {
 	%>
 	<script type="text/javascript">
 		alert("로그인 정보가 없습니다.");
@@ -160,9 +160,10 @@
 					<div class="div-td" style="float: left; width: 12.5%">
 						<a href="<%=ExtendedStorage.siteInfoList.get(i).getUrl()%>"
 							target="_blank"><img
-							src="<%=ExtendedStorage.siteInfoList.get(i).getSiteImage()%>" width="100%"
-							align="middle" alt="Image"></a>
-						<span><%=ExtendedStorage.siteInfoList.get(i).getSiteName()%></span>
+							src="<%=ExtendedStorage.siteInfoList.get(i)
+								.getSiteImage()%>"
+							width="100%" align="middle" alt="Image"></a> <span><%=ExtendedStorage.siteInfoList.get(i)
+								.getSiteName()%></span>
 					</div>
 					<%
 						}
@@ -230,8 +231,7 @@
 					<!-- <div style="clear: both"></div> -->
 				</div>
 				<!-- Result Content -->
-				<div id="content<%=i + 1%>" class="resultContent"
-					onclick="_onFilp(<%=i + 1%>)">
+				<div id="content<%=i + 1%>" class="resultContent">
 					<!-- Upside -->
 					<div class="upside">
 						<div class="snippetContainer">

@@ -80,7 +80,7 @@
 	<div class="md-overlay" style="background: rgba(0, 0, 0, 0.5);"></div>
 
 	<!-- Loading -->
-	<section id="work" class="main style2 fullscreen">
+	<section id="work" class="main style2 fullscreen" style="display: none">
 		<div id="loadingContainer">
 			<div id="loadingLogo">
 				<img src="images/ihfb/main_logo/pi_130x44.png">

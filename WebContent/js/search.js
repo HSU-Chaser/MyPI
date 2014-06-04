@@ -114,11 +114,19 @@ var changeIcon = function(type) {
 
 var _onFilp = function(n) {
 	if ($('#content' + n).css('display') == 'none') {
-		$('#title' + n).css('color', '#0c76c7').css('background','rgba(255,255,255,1)');
-		$('#title' + n > '.list-title' > 'a.title').css('color', '#0c76c7');
+		$('#title' + n).css('color', '#0c76c7').css('background',
+				'rgba(255,255,255,1)');
+		$('#title' + n + '.list-head > div.list-title > a.title').css('color',
+				'#0c76c7');
+		$('#title' + n + '.list-head > div.list-flip > img.filp.ui-button')
+				.attr('src', 'images/ihfb/minus.png');
 	} else {
-		$('#title' + n).css('color', '#ffffff').css('background','rgba(255,255,255,0)');
-		$('#title' + n > '.list-title').css('color', '#ffffff');
+		$('#title' + n).css('color', '#ffffff').css('background',
+				'rgba(255,255,255,0.2)');
+		$('#title' + n + '.list-head > div.list-title > a.title').css('color',
+				'#888888');
+		$('#title' + n + '.list-head > div.list-flip > img.filp.ui-button')
+		.attr('src', 'images/ihfb/plus.png');
 	}
 	$('#content' + n).slideToggle('slow');
 };
