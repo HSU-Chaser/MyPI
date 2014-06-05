@@ -70,6 +70,8 @@ public class NaverSearch {
 						.getTextContent();
 				title = title.replaceAll(
 						"<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+				
+				
 				snippet = element.getElementsByTagName("description").item(0)
 						.getTextContent();
 			}

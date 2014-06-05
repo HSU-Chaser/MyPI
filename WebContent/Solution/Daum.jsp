@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<noscript>
+	<link rel="stylesheet" href="css/style.css" />
+</noscript>
 <style type="text/css">
 button {
 	width: 40%;
@@ -27,7 +30,7 @@ button:hover {
 </head>
 <body>
 <p>다음 검색 API</p>
-<button><a href="http://cs.daum.net/mail/form/15.html" target="_blank">다음 검색엔진 정보 삭제</a></button> - 다음 삭제 요청
+<button><a href="http://cs.daum.net/mail/form/15.html" target="_blank" class="font_GODOM">다음 정보 삭제</a></button> - 다음 삭제 요청
 
 <p>결과가 내가아닌 타인에 의해 개인의 금융정보 유출이나 심각한 개인정보 피해를 야기할 수 있게 되었다면,</p> 
 <p>위 링크를 통해 처리과정을 참고한 후 게시중단요청을 진행하시기 바랍니다.</p> 

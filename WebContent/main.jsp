@@ -42,9 +42,9 @@
 	<!-- Header -->
 	<jsp:include page="/common/header.jsp" />
 	<!-- effecter1_start -->
-	<div class="md-modal md-effect-12" id="question">
+	<div class="md-modal md-effect-12" id="question" style="top:55%">
 		<div class="md-content">
-			<img src="./images/ihfb/help.png" id="help">
+			<img src="./images/ihfb/help.png" id="help" style="width:100%;">
 			<button id="closeHelp" class="button addButton font_GODOM md-close">Close me!</button>
 		</div>
 	</div>

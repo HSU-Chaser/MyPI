@@ -162,8 +162,6 @@
 							src="<%=ExtendedStorage.siteInfoList.get(i)
 								.getSiteImage()%>"
 							width="100%" align="middle" alt="Image"></a>
-							<span><%=ExtendedStorage.siteInfoList.get(i)
-								.getSiteName()%></span>
 					</div>
 					<%
 						}
@@ -222,6 +220,8 @@
 					<div class="list-title">
 						<a class="title" href="<%=result.get(i).getURL()%>"
 							target="_blank"><%=result.get(i).getTitle()%></a>
+					
+					
 					</div>
 					<div class="list-flip">
 						<img class="filp ui-button" alt="flip"
@@ -244,7 +244,7 @@
 							<div class="engineTitle listTitle">
 								<span>이 결과가 검색<br/>되지 않게 하기</span>
 							</div>
-							<div class="engineContent content">
+							<div class="engineContent content" style="float: right; width: 66%;">
 								<%
 									if (result.get(i).getEngine().matches(".*Naver.*") == true) {
 								%>
