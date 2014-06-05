@@ -162,7 +162,7 @@
 							src="<%=ExtendedStorage.siteInfoList.get(i)
 								.getSiteImage()%>"
 							width="100%" align="middle" alt="Image"></a>
-							<span style="white-space: nowrap;"><%=ExtendedStorage.siteInfoList.get(i)
+							<span><%=ExtendedStorage.siteInfoList.get(i)
 								.getSiteName()%></span>
 					</div>
 					<%

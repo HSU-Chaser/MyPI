@@ -21,8 +21,8 @@ public class SearchTest {
 		ExtendedInfo extend;
 		
 		//jsp 에서는 세션값으로 이메일을 받아서 넣으면 됩니다.
-		extend = new ExtendedInfo("gtaer@naver.com");
-		searchDic = new SearchDic("gtaer@naver.com"); // binding 에 전달
+		extend = new ExtendedInfo("tera16@naver.com");
+		searchDic = new SearchDic("tera16@naver.com"); // binding 에 전달
 		extend.makeKeywordMap();
 		searchDic.bindingWord(extend.getKeywordMap());
 		
