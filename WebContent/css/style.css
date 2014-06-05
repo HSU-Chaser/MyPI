@@ -79,7 +79,7 @@ em, i {
 }
 
 a {
-	color: #777777;
+	color: #dddddd;
 	-moz-transition: all 0.2s ease-in-out, color 0.2s ease-in-out;
 	-webkit-transition: all 0.2s ease-in-out, color 0.2s ease-in-out;
 	-o-transition: all 0.2s ease-in-out, color 0.2s ease-in-out;
