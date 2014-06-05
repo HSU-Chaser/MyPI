@@ -156,14 +156,14 @@
 							} else {
 								for (int i = 0; i < ExtendedStorage.siteInfoList.size(); i++) {
 					%>
-					<div class="div-td div-static" style="float: left; width: 12.5%; font-size: 80%;">
+					<div class="div-static">
 						<a href="<%=ExtendedStorage.siteInfoList.get(i).getUrl()%>"
 							target="_blank"><img
 							src="<%=ExtendedStorage.siteInfoList.get(i)
 								.getSiteImage()%>"
 							width="100%" align="middle" alt="Image"></a>
-							<!-- <div><%=ExtendedStorage.siteInfoList.get(i)
-								.getSiteName()%></div>-->
+							<span style="white-space: nowrap;"><%=ExtendedStorage.siteInfoList.get(i)
+								.getSiteName()%></span>
 					</div>
 					<%
 						}

@@ -131,7 +131,7 @@ var _onFilp = function(n) {
 		$('#title' + n).css('color', '#ffffff').css('background',
 				'rgba(255,255,255,0.2)');
 		$('#title' + n + '.list-head > div.list-title > a.title').css('color',
-				'#888888');
+				'#dddddd');
 		$('#title' + n + '.list-head > div.list-flip > img.filp.ui-button')
 		.attr('src', 'images/ihfb/icons/plus.png');
 	}
