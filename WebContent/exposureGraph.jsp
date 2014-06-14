@@ -79,7 +79,7 @@
 	//반복효과
 	chart.SetLooping(false);
 
-	chart.SetOutputFormat("SWF");
+	chart.SetOutputFormat("PNG");
 	
 	// 출력 스트림 중복 사용 배제
 	out.clear();

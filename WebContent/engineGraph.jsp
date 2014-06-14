@@ -1,5 +1,5 @@
 <%@page import="main.ranking.Ranking"%>
-<%@page import="main.ranking.EngineGraph" %>
+<%@page import="main.ranking.EngineGraph"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -30,13 +30,12 @@
 	// Fill the series and categories
 	String categories = "Google" + sep + "Naver" + sep + "Daum";
 	chart.SetCategoriesFromString(categories);
-	
+
 	int googleCount = 0;
 	int naverCount = 0;
 	int daumCount = 0;
-	double rate[] = { 0 , 0, 0 };
- 	for (int i = 0; i < Ranking.result.size(); i++) {
-
+	double rate[] = { 0, 0, 0 };
+	for (int i = 0; i < Ranking.result.size(); i++) {
 		if (Ranking.result.get(i).getEngine().equals("Google")) {
 			googleCount++;
 		} else if (Ranking.result.get(i).getEngine().equals("Naver")) {
@@ -52,13 +51,12 @@
 			+ naverCount + "    " + daumCount);
 
 	rate = engineGraph.computeEngineRate();
-	
-	
+
 	String series = rate[0] + sep + rate[1] + sep + rate[2];
-	
+
 	chart.SetSeriesValueColor(0, 30, "black");
-	chart.SetSeriesColor(1, "black");	
-	
+	chart.SetSeriesColor(1, "black");
+
 	chart.SetSeriesValuesFromString(0, series);
 
 	// Set the chart title
@@ -74,6 +72,7 @@
 
 	chart.SetLooping(false);
 
+	chart.SetOutputFormat("PNG");
 	// 출력 스트림 중복 사용 배제
 	out.clear();
 	out = pageContext.pushBody();
