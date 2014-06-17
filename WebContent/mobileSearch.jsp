@@ -17,8 +17,8 @@
 	int client_num = 1; //Integer.parseInt(client_str);
 	ProgressObserver observer = new ProgressObserver();
 	Ranking ranking = new Ranking(client_num, observer);
-	ExtendedInfo extend = new ExtendedInfo("gtaer@naver.com");
-	SearchDic searchDic = new SearchDic("gtaer@naver.com");
+	ExtendedInfo extend = new ExtendedInfo((String)session.getAttribute("memEmail"));
+	SearchDic searchDic = new SearchDic((String)session.getAttribute("memEmail"));
 	extend.makeKeywordMap();
 
 	searchDic.bindingWord(extend.getKeywordMap());
