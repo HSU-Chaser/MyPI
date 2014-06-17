@@ -103,6 +103,6 @@ public class LogonDataBean {
 
 	// 로그인 암호화
 	public void setPassword(String password) {
-		this.password = Encryptor.encryptSHA(password);
+		this.password = password;
 	}
 }
