@@ -25,8 +25,6 @@
 
 	int check = manager.userCheck(email, password);
 	LogonDataBean member = manager.getMember(email);
-
-	System.out.println(check);
 	
 	if (check == 1) {
 		session.setAttribute("memEmail", email);
