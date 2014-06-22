@@ -21,7 +21,7 @@ public class Ranking {
 	public void setObserver(ProgressObserver observer) {
 		this.observer = observer;
 	}
-	
+
 	public Ranking(int client_num, ProgressObserver observer) {
 		this.client_num = client_num;
 		this.setObserver(observer);
@@ -37,7 +37,7 @@ public class Ranking {
 		@Override
 		public void run() {
 			result.get(i).openURL();
-			
+
 			return;
 		}
 	}
@@ -53,32 +53,28 @@ public class Ranking {
 
 		double finalExp = 0;
 
-		// 먼저, 구글, 네이버, 다음 검색하게 하고
 		result = makeObject.getResult(searchWordList);
-		
+
 		int googleCount = 0, naverCount = 0, daumCount = 0;
-		for(int i=0; i<result.size(); i++){
-			if(result.get(i).getEngine().equals("Daum")){
+		for (int i = 0; i < result.size(); i++) {
+			if (result.get(i).getEngine().equals("Daum")) {
 				daumCount++;
-			}
-			else if(result.get(i).getEngine().equals("Naver")){
+			} else if (result.get(i).getEngine().equals("Naver")) {
 				naverCount++;
-			}
-			else if(result.get(i).getEngine().equals("Google")){
+			} else if (result.get(i).getEngine().equals("Google")) {
 				googleCount++;
 			}
 		}
-		System.out.println(googleCount + "    " + naverCount + "     " +  daumCount);
-		
-		
+		System.out.println(googleCount + "    " + naverCount + "     "
+				+ daumCount);
+
 		// 중복 URL 체크
-		System.out.println("중복체크 이전의 result 사이즈 : " + result.size());
 		checkDupUrl();
-		System.out.println("중복체크 직후의 result 사이즈 : " + result.size());
+
 
 		// 페이지 분석 Threading
 		ExecutorService service = Executors.newFixedThreadPool(50);
-		
+
 		for (int i = 0; i < result.size(); i++) {
 			service.execute(new ResultThread(i));
 		}
@@ -96,16 +92,14 @@ public class Ranking {
 			}
 		}
 
-		
 		// 페이지 분석 후 위험도 계산
 		System.out.println("======위험도 계산중...======");
 		for (int i = 0; i < result.size(); i++) {
-			
-			//result.get(i).calExp();
-			
+
 			calExp = new CalculateExp(result.get(i).rankingCount);
-			result.get(i).setExposure(calExp.getExposure(result.get(i).getPr()));
-			
+			result.get(i)
+					.setExposure(calExp.getExposure(result.get(i).getPr()));
+
 		}
 		System.out.println("======위험도 계산 끝======");
 
@@ -115,24 +109,22 @@ public class Ranking {
 		System.out
 				.println("pruningAlgorithm 직후의 result 사이즈 : " + result.size());
 
-		
-		
 		double sumExp = 0;
-		
-		for(int i=0; i<result.size(); i++){
+
+		for (int i = 0; i < result.size(); i++) {
 			sumExp += result.get(i).getExposure();
 		}
 		System.out.println("이게 사용자 특정화 데이터 : " + sumExp);
-		
+
 		finalExp = Math.round(sumExp / 100);
-		
+
 		expData = new ExpDataBean();
 		expData = getExpData(client_num, finalExp);
-		
+
 		int grade = (int) (Math.round(sumExp) / 1000);
-		
+
 		setGradeText(getGrade(grade));
-		
+
 		try {
 			expGraph.insertExprecord(expData);
 		} catch (Exception e) {
@@ -144,38 +136,34 @@ public class Ranking {
 
 	}
 
-	public String[] getGrade(int grade){
-		
-		String gradeText[] = {" ", " "};
-		
-		if(grade == 0){
+	public String[] getGrade(int grade) {
+
+		String gradeText[] = { " ", " " };
+
+		if (grade == 0) {
 			gradeText[0] = "<span style='color: #0c4881'>'안전'</span>";
 			gradeText[1] = "회원님의 개인 정보는 비교적 안전하게 관리되고 있습니다. \n 회원정보를 모두 입력하지 않으셨을 경우, 검색되는 데이터의 질이 떨어질 수 있습니다.";
 			return gradeText;
-		}
-		else if(grade == 1){
+		} else if (grade == 1) {
 			gradeText[0] = "<span style='color: #ffe355'>'경고'</span>";
 			gradeText[1] = "회원님의 개인 정보가 일부 웹에 존재합니다. \n 검색결과를 보시고, 제공되는 솔루션을 통해 자신의 개인정보를 관리해보세요";
 			return gradeText;
-		}
-		else if(grade == 2){
+		} else if (grade == 2) {
 			gradeText[0] = "<span style='color: #ffa94f'>'위험'</span>";
 			gradeText[1] = "회원님의 중요한 개인 정보가 일부 웹에 노출되어 있습니다. \n 검색결과를 보시고, 제공되는 솔루션을 통해 자신의 개인정보를 관리해보세요";
 			return gradeText;
-		}
-		else if(grade >= 3){
+		} else if (grade >= 3) {
 			gradeText[0] = "<span style='color: #ff5f45'>'매우 위험'</span>";
 			gradeText[1] = "회원님의 중요한 개인 정보가 웹에 다수 노출되어 있습니다. \n 검색결과를 보시고, 제공되는 솔루션을 통해 자신의 개인정보를 관리해보세요";
 			return gradeText;
-		}
-		else {
+		} else {
 			gradeText[0] = "<span style='color: #ff5f45'>'알수없음'</span>";
 			gradeText[1] = "검색결과가 불분명합니다. 너무 많은 정보가 검색되어 트래픽 문제가 발생하였습니다.";
 			return gradeText;
 		}
-		
+
 	}
-	
+
 	public ExpDataBean getExpData(int client_num, double finalExp) {
 		ExpDataBean expData = null;
 		expData = new ExpDataBean();
@@ -196,7 +184,6 @@ public class Ranking {
 	public void pruningAlgorithm() {
 		int resultSize = result.size();
 
-		// exposure 0, -1인 객체 삭제
 		for (int i = 0; i < resultSize; i++) {
 
 			if ((result.get(i).getExposure() == 0)
@@ -225,7 +212,7 @@ public class Ranking {
 		}
 	}
 
-	// quick_sort
+	// inversed quick_sort
 	public void sortResult() {
 		quicksort(result, 0, result.size() - 1);
 	}
@@ -240,11 +227,8 @@ public class Ranking {
 		int storeIndex = left;
 
 		for (int i = left; i < right; i++) {
-			if (arr.get(i).getExposure() > pivotValue.getExposure()) { // '<'를
-																		// ">로
-																		// 바꿔서
-																		// 오름차순
-																		// 정렬완료
+			if (arr.get(i).getExposure() > pivotValue.getExposure()) {
+
 				tmp = arr.get(i);
 				arr.set(i, arr.get(storeIndex));
 				arr.set(storeIndex, tmp);

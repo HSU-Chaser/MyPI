@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
-import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 import main.extending.form.SiteInfo;
 
@@ -32,7 +31,9 @@ public class DaumBlog extends Search {
 
 				list.add(buffer);
 				if (list.get(i).contains("frame src")) {
-					setUrl("http://blog.daum.net" +list.get(i).replace('"', '!').split("!")[1].replace("&amp;", "&"));
+					setUrl("http://blog.daum.net"
+							+ list.get(i).replace('"', '!').split("!")[1]
+									.replace("&amp;", "&"));
 					break;
 				}
 				i++;
@@ -43,15 +44,14 @@ public class DaumBlog extends Search {
 			inputURL = new URL(getUrl()).openStream();
 			rd = new InputStreamReader(inputURL);
 			br = new BufferedReader(rd);
-		
+
 			while ((buffer = br.readLine()) != null) {
 
 				list.add(buffer);
 				if (list.get(i).contains("author")) {
 					setNickName(list.get(i).replace('"', '!').split("!")[3]);
 					storage.nickNameList.add(getNickName());
-				}
-				else if(list.get(i).contains("profileImg")){
+				} else if (list.get(i).contains("profileImg")) {
 					setImgUrl(list.get(i).replace('"', '!').split("!")[3]);
 					storage.imgUrlList.add(getImgUrl());
 					break;
@@ -62,15 +62,12 @@ public class DaumBlog extends Search {
 			br.close();
 			rd.close();
 			inputURL.close();
-			
+
 			SiteInfo siteInfo = new SiteInfo();
 			siteInfo.setSiteImage("http://m1.daumcdn.net/svc/image/U03/common_icon/50B477DF063B790002");
 			siteInfo.setUrl(getUrl());
 			siteInfo.setSiteName("다음 블로그");
 			storage.siteInfoList.add(siteInfo);
-//			
-//			storage.exposureUrlList.add(getUrl());
-//			ExtendedStorage.imgList.add("http://m1.daumcdn.net/svc/image/U03/common_icon/50B477DF063B790002");
 
 		} catch (Exception e) {
 			if (e.toString().contains("FileNotFoundException")) {

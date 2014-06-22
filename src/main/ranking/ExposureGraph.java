@@ -1,6 +1,5 @@
 package main.ranking;
 
-import java.io.Reader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,11 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import main.logon.LogonDataBean;
-
 public class ExposureGraph {
-
-	// getExprecord에 세션으로 email을 넣으면, 해당 세션에 해당하는
 
 	private static Connection getConnection() throws Exception {
 		String jdbcDriver = "jdbc:mysql://localhost:3306/debind?"
@@ -21,7 +16,6 @@ public class ExposureGraph {
 		return DriverManager.getConnection(jdbcDriver, "debind", "chaser/14");
 	}
 
-	// 넣을 때 멤버에 저장된 해당 멤버의 client_num, 노출도, 날짜를 셋팅한 객체를 넣어줘야함
 	public static void insertExprecord(ExpDataBean expData) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
@@ -31,7 +25,9 @@ public class ExposureGraph {
 		try {
 			conn = getConnection();
 
-			pstmt = conn.prepareStatement("select count(*) from exprecord where client_num = " + client_num);
+			pstmt = conn
+					.prepareStatement("select count(*) from exprecord where client_num = "
+							+ client_num);
 
 			rs = pstmt.executeQuery();
 
@@ -39,18 +35,17 @@ public class ExposureGraph {
 
 				if (rs.getInt(1) == 10) {
 
-					// 가장 오래된 데이터 삭제
-
 					pstmt = conn
-							.prepareStatement("delete from exprecord where data_index = 1 and client_num = "+ client_num);
+							.prepareStatement("delete from exprecord where data_index = 1 and client_num = "
+									+ client_num);
 					pstmt.executeUpdate();
 
 					pstmt = conn
-							.prepareStatement("update exprecord set data_index = data_index - 1 where client_num = " + client_num);
+							.prepareStatement("update exprecord set data_index = data_index - 1 where client_num = "
+									+ client_num);
 					pstmt.executeUpdate();
 
 				}
-				// 데이터 입력
 
 				int count = rs.getInt(1);
 				System.out.println(count);
@@ -91,8 +86,8 @@ public class ExposureGraph {
 		}
 	}
 
-	// 해당그래프에서 전체를 긁어서 리스트를 가져옵니다.
-	public static ArrayList<ExpDataBean> getExprecord(String email) throws Exception {
+	public static ArrayList<ExpDataBean> getExprecord(String email)
+			throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -150,32 +145,9 @@ public class ExposureGraph {
 				}
 
 		}
-	
+
 		return expDataList;
 
 	}
 
-//	public static void main(String[] args) {
-//
-//		ExpDataBean expData = null;
-//		try {
-//			expData = new ExpDataBean();
-//
-//			expData.setClient_num(13);
-//			expData.setDate("14.06.01");
-//			expData.setExposure(120);
-//
-//			insertExprecord(expData);
-//			
-//			
-//			
-//
-//		} catch (Exception e) {
-//			System.out.println(e);
-//		}
-//
-//	}
-
 }
-
-

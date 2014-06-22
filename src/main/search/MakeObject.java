@@ -16,8 +16,8 @@ public class MakeObject {
 	NaverSearch naverSearch = null;
 	DaumSearch daumSearch = null;
 
-	String naverCategory[] = { "blog", "news", "cafearticle",  "webkr",	"doc" };
-	String daumCategory[] = { "board", "web", "knowledge" ,"cafe", "blog" };
+	String naverCategory[] = { "blog", "news", "cafearticle", "webkr", "doc" };
+	String daumCategory[] = { "board", "web", "knowledge", "cafe", "blog" };
 
 	class searchThread implements Runnable {
 		String engine, query;
@@ -40,15 +40,13 @@ public class MakeObject {
 				addingGoogle(query, 30);
 			} else if (engine.equals("Naver")) {
 				addingNaver(query, 10, category);
-			}
-			else if(engine.equals("Daum")){
+			} else if (engine.equals("Daum")) {
 				addingDaum(query, 10, category);
 			}
 			return;
 		}
 	}
 
-	// 구글 기준의 검색어를 입력받는다.
 	public Vector<SearchResult> getResult(ArrayList<String> searchWordList)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, IOException {
@@ -58,17 +56,14 @@ public class MakeObject {
 		result = null;
 		result = new Vector<SearchResult>();
 
-		// null이 들어오지않게 하는 검색으로, 여기서 이미지 검색어를 넣어주면 될 것 같다.
 		googleSearch = new GoogleSearch(searchWordList.get(0), 5);
 		result = googleSearch.getResult();
 
 		ExecutorService service = Executors.newFixedThreadPool(50);
-		// Google 검색 실시
 		for (int i = 1; i < searchWordList.size(); i++) {
 			service.execute(new searchThread("Google", searchWordList.get(i)));
 		}
 
-		// Naver 검색 실시- searchWordList를 Naver식으로 변형하는 한 어레이 리스트
 		for (int i = 0; i < searchWordList.size(); i++) {
 			if (searchWordList.get(i).contains("AND")) {
 				searchWordList
@@ -76,12 +71,11 @@ public class MakeObject {
 			}
 			naverSearchWordList.add(searchWordList.get(i));
 			for (int j = 0; j < naverCategory.length; j++) {
-				service.execute(new searchThread("Naver", searchWordList.get(i),
-						naverCategory[j]));
+				service.execute(new searchThread("Naver",
+						searchWordList.get(i), naverCategory[j]));
 			}
 		}
-		
-		// Daum 검색 실시- searchWordList를 Naver식으로 변형하는 한 어레이 리스트
+
 		for (int i = 0; i < searchWordList.size(); i++) {
 			if (searchWordList.get(i).contains("AND")) {
 				searchWordList
@@ -93,7 +87,6 @@ public class MakeObject {
 						daumCategory[j]));
 			}
 		}
-		
 
 		System.out.println("======정보 검색중...======");
 		service.shutdown();
@@ -109,13 +102,10 @@ public class MakeObject {
 			}
 		}
 
-		// Google 이미지 검색 실시 limit 8이 한계
-
 		try {
 			ImageSearch.setImageSearchResult(SearchDic.getImgSearchWord(), 8);
 		} catch (IllegalAccessException | InvocationTargetException
 				| NoSuchMethodException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

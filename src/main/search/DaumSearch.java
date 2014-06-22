@@ -17,7 +17,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class DaumSearch {
-	private static final String daum = "http://apis.daum.net/search/"; // web검색
+	private static final String daum = "http://apis.daum.net/search/";
 	private static final String key = "&apikey=d3e3b817ed7f274dc721bda8eb9bdd1e8d6eeac7";
 	private ArrayList<SearchResult> result = new ArrayList<SearchResult>();
 	private String query;
@@ -81,12 +81,12 @@ public class DaumSearch {
 	private String buildSearchUrl() {
 		// Required parameters
 		StringBuilder request = new StringBuilder(daum);
-		request.append(category + "?"); // 카테고리 조정
+		request.append(category + "?");
 		request.append("q=" + query);
 		request.append(key);
 
 		// Optional parameters
-		request.append("&result=" + limit); // 검색 제한 수 조정
+		request.append("&result=" + limit);
 
 		System.out.println("다음API XML 주소 : " + request);
 

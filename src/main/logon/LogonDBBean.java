@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LogonDBBean {
-	
+
 	private static LogonDBBean instance = new LogonDBBean();
 
 	public static LogonDBBean getInstance() {
@@ -32,7 +32,8 @@ public class LogonDBBean {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("insert into member values(?,?,?,?,?,?,?,?,?,?,?)");
+			pstmt = conn
+					.prepareStatement("insert into member values(?,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setInt(1, member.getClient_num());
 			pstmt.setString(2, member.getEmail());
 			pstmt.setString(3, member.getPassword());
@@ -277,34 +278,33 @@ public class LogonDBBean {
 		}
 	}
 
-	// 각 재료별 수정함수 만들어봄
-	
 	// 비밀번호 수정
-		public void updatePassword(String password) throws Exception {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = null;
-			PreparedStatement pstmt = null;
+	public void updatePassword(String password) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 
-			try {
-				conn = getConnection();
-				pstmt = conn.prepareStatement("update member set password=?");
-				pstmt.setString(1, Encryptor.encryptSHA(password));
-				pstmt.executeUpdate();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			} finally {
-				if (pstmt != null)
-					try {
-						pstmt.close();
-					} catch (SQLException ex) {
-					}
-				if (conn != null)
-					try {
-						conn.close();
-					} catch (SQLException ex) {
-					}
-			}
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update member set password=?");
+			pstmt.setString(1, Encryptor.encryptSHA(password));
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
 		}
+	}
+
 	// 이름 수정
 	public void updateName(LogonDataBean member, String name) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -313,7 +313,8 @@ public class LogonDBBean {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update member set name=? where email=?");
+			pstmt = conn
+					.prepareStatement("update member set name=? where email=?");
 			pstmt.setString(1, name);
 			pstmt.setString(2, member.getEmail());
 			pstmt.executeUpdate();
@@ -334,14 +335,16 @@ public class LogonDBBean {
 	}
 
 	// 핸드폰 번호 변경
-	public void updateCellPhone(LogonDataBean member, String cellphone) throws Exception {
+	public void updateCellPhone(LogonDataBean member, String cellphone)
+			throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update member set cellphone=? where email=?");
+			pstmt = conn
+					.prepareStatement("update member set cellphone=? where email=?");
 			pstmt.setString(1, cellphone);
 			pstmt.setString(2, member.getEmail());
 			pstmt.executeUpdate();
@@ -362,14 +365,16 @@ public class LogonDBBean {
 	}
 
 	// 집번호 변경
-	public void updateHomePhone(LogonDataBean member, String homephone) throws Exception {
+	public void updateHomePhone(LogonDataBean member, String homephone)
+			throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update member set homephone=? where email=?");
+			pstmt = conn
+					.prepareStatement("update member set homephone=? where email=?");
 			pstmt.setString(1, homephone);
 			pstmt.setString(2, member.getEmail());
 			pstmt.executeUpdate();
@@ -390,14 +395,16 @@ public class LogonDBBean {
 	}
 
 	// 생일 수정
-	public void updateBirthDay(LogonDataBean member, String birthday) throws Exception {
+	public void updateBirthDay(LogonDataBean member, String birthday)
+			throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update member set birthday=? where email=?");
+			pstmt = conn
+					.prepareStatement("update member set birthday=? where email=?");
 			pstmt.setString(1, birthday);
 			pstmt.setString(2, member.getEmail());
 			pstmt.executeUpdate();
@@ -418,14 +425,16 @@ public class LogonDBBean {
 	}
 
 	// 집주소 수정
-	public void updateAddress(LogonDataBean member, String address) throws Exception {
+	public void updateAddress(LogonDataBean member, String address)
+			throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update member set address=? where email=?");
+			pstmt = conn
+					.prepareStatement("update member set address=? where email=?");
 			pstmt.setString(1, address);
 			pstmt.setString(2, member.getEmail());
 			pstmt.executeUpdate();
@@ -446,14 +455,16 @@ public class LogonDBBean {
 	}
 
 	// 학교 수정
-	public void updateSchool(LogonDataBean member, String school) throws Exception {
+	public void updateSchool(LogonDataBean member, String school)
+			throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update member set school=? where email=?");
+			pstmt = conn
+					.prepareStatement("update member set school=? where email=?");
 			pstmt.setString(1, school);
 			pstmt.setString(2, member.getEmail());
 			pstmt.executeUpdate();
@@ -474,14 +485,16 @@ public class LogonDBBean {
 	}
 
 	// 직장 수정
-	public void updateWorkPlace(LogonDataBean member, String workplace) throws Exception {
+	public void updateWorkPlace(LogonDataBean member, String workplace)
+			throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update member set workplace=? where email=?");
+			pstmt = conn
+					.prepareStatement("update member set workplace=? where email=?");
 			pstmt.setString(1, workplace);
 			pstmt.setString(2, member.getEmail());
 			pstmt.executeUpdate();
@@ -502,14 +515,16 @@ public class LogonDBBean {
 	}
 
 	// 학업 수정
-	public void updateOccuPation(LogonDataBean member, String occupation) throws Exception {
+	public void updateOccuPation(LogonDataBean member, String occupation)
+			throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update member set occupation=? where email=?");
+			pstmt = conn
+					.prepareStatement("update member set occupation=? where email=?");
 			pstmt.setString(1, occupation);
 			pstmt.setString(2, member.getEmail());
 			pstmt.executeUpdate();
@@ -528,7 +543,7 @@ public class LogonDBBean {
 				}
 		}
 	}
-	
+
 	// 회원 탈퇴
 	public int deleteMember(String email, String password) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");

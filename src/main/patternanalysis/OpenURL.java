@@ -26,12 +26,12 @@ public class OpenURL {
 	}
 
 	public void urlRead() throws IOException {
-		String charsetBuffer = ""; // charset finding
+		String charsetBuffer = "";
 		String charset = "";
 		boolean check = false;
 		BufferedReader brChar, br = null;
-		String charsetArray[] = { "euc-kr", "ksc5601", "iso-8859-1", "8859_1", "ms949",
-				"ascii", "utf-8" };
+		String charsetArray[] = { "euc-kr", "ksc5601", "iso-8859-1", "8859_1",
+				"ms949", "ascii", "utf-8" };
 		String charsetArrayBig[] = new String[charsetArray.length];
 
 		for (int i = 0; i < charsetArrayBig.length; i++) {
@@ -40,7 +40,8 @@ public class OpenURL {
 
 		try {
 			URL urlChar = new URL(originUrl);
-			HttpURLConnection conChar = (HttpURLConnection) urlChar.openConnection();
+			HttpURLConnection conChar = (HttpURLConnection) urlChar
+					.openConnection();
 
 			conChar.addRequestProperty("User-Agent", "Mozilla/4.0");
 			conChar.setConnectTimeout(5000);
@@ -84,7 +85,6 @@ public class OpenURL {
 			rdChar.close();
 			brChar.close();
 
-
 		} catch (Exception e) {
 			System.err.println(e);
 		}
@@ -99,7 +99,7 @@ public class OpenURL {
 
 			InputStream inputURL = con.getInputStream();
 			InputStreamReader rd = null;
-			
+
 			rd = new InputStreamReader(inputURL, charset);
 			br = new BufferedReader(rd);
 

@@ -1,6 +1,5 @@
 package main.extending;
 
-import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 import main.extending.form.SiteInfo;
 
@@ -27,7 +26,7 @@ public class Tistory extends Search {
 			siteInfo.setUrl(getUrl());
 			siteInfo.setSiteName("티스토리 블로그");
 			storage.siteInfoList.add(siteInfo);
-			
+
 			Elements text = doc.select("div.author");
 			Elements img = doc.select("div.wrapBottomM div.profileImageWrap");
 
@@ -42,10 +41,10 @@ public class Tistory extends Search {
 				setImgUrl(e.html().split(" ")[5].replace('"', ' ').split(" ")[1]);
 				storage.imgUrlList.add(getImgUrl());
 			}
-			
-			
+
 		} catch (Exception e) {
-			if (e.toString().contains("FileNotFoundException") && e.toString().contains("404")) {
+			if (e.toString().contains("FileNotFoundException")
+					&& e.toString().contains("404")) {
 				System.out.println("티스토리가 없습니다.");
 			} else if (e.toString().contains(
 					"Server returned HTTP response code")) {

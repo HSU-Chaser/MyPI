@@ -1,6 +1,5 @@
 package main.extending.form;
 
-
 abstract public class Search {
 
 	protected static ExtendedStorage storage = new ExtendedStorage("");
@@ -9,8 +8,7 @@ abstract public class Search {
 	private String nickName;
 	private String imgUrl;
 	private String url;
-	
-	
+
 	public String getBasicForm() {
 		return basicForm;
 	}
@@ -45,6 +43,5 @@ abstract public class Search {
 	public void setUrl(String url) {
 		this.url = url;
 	};
-
 
 }

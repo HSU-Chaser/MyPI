@@ -19,11 +19,9 @@ import main.ranking.ImageStorage;
 
 public class ExtendedStorage {
 	public static ArrayList<String> nickNameList = null;
-	
-	//프로필 이미지
 	public static ArrayList<String> imgUrlList = null;
 	public static ArrayList<SiteInfo> siteInfoList = null;
-	
+
 	public static String realName = "null";
 	public static String realBirthday = "null";
 	public static String realEmail = "null";
@@ -44,10 +42,10 @@ public class ExtendedStorage {
 		nickNameList = new ArrayList<String>();
 		imgUrlList = null;
 		imgUrlList = new ArrayList<String>();
-	
+
 		siteInfoList = null;
 		siteInfoList = new ArrayList<SiteInfo>();
-			
+
 	}
 
 	class staticThread implements Runnable {
@@ -76,7 +74,6 @@ public class ExtendedStorage {
 		webSite[8] = new Dreamwiz();
 		webSite[9] = new CyworldBlog();
 		webSite[10] = new Cyworld();
-		// webSite[11] = new Tistory(); // 진행중
 
 		System.out.println("======Static Search 시작======");
 		ExecutorService service = Executors.newFixedThreadPool(webSite.length);
@@ -101,7 +98,6 @@ public class ExtendedStorage {
 
 		checkDupNick();
 
-		// 프로필 이미지 저장
 		ImageStorage.getImgUrlList().addAll(imgUrlList);
 
 		System.out.println("");
@@ -128,7 +124,6 @@ public class ExtendedStorage {
 
 	}
 
-	// 중복 배제
 	public void checkDupNick() {
 		int currentSize = nickNameList.size();
 
