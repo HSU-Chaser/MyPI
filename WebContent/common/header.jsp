@@ -81,7 +81,7 @@
 	</div>
 
 	<div class="md-overlay"></div>
-	<jsp:include page="/common/modal_content.jsp" />
+	<jsp:include page="/common/modalContent.jsp" />
 
 	<%
 		}
