@@ -15,8 +15,6 @@ public class Cyworld extends Search {
 		setBasicForm("http://search.cyworld.com/search/all.html?thr=sbus&ssn=043&q=");
 	}
 
-	// cyworld는 매우 중요한 정보를 다룸, 특히 coreMaterial은 이메일을 쪼갠 id를 받지만, 싸이월드는 이메일을 받아야됨
-	// 아얘 이메일부분을 case로 다양화할 필요도 있음 1개 나올때까지 계속 돌리기 등
 	public void searchMaterials(String coreMaterial) {
 
 		String buffer = "";
@@ -26,7 +24,7 @@ public class Cyworld extends Search {
 		ArrayList<String> list = new ArrayList<String>();
 		BufferedReader br = null;
 		int i = 0;
-		String tid = ""; // uid에 대한 tid
+		String tid = "";
 
 		try {
 			InputStream inputURL = new URL(getUrl()).openStream();
@@ -54,7 +52,7 @@ public class Cyworld extends Search {
 		}
 
 		try {
-			// http://search.cyworld.com/search/all.html?thr=sbus&ssn=043&asn=004300673&q=yangsy0714%40naver.com
+
 			setUrl("http://minihp.cyworld.com/svcs/MiniHp.cy/index/" + tid
 					+ "?tid=" + tid + "&urlstr=&f=&gate=_top");
 			InputStream inputURL = new URL(getUrl()).openStream();
@@ -108,8 +106,8 @@ public class Cyworld extends Search {
 					}
 				}
 
-				if (list.get(i).contains("미니홈피 주소")) { // 주소 뒷부분에 코어한 정보가 많아서
-														// nickname으로 빼놓음
+				if (list.get(i).contains("미니홈피 주소")) {
+
 					setNickName(list.get(i).split("/")[3]);
 					storage.nickNameList.add(getNickName());
 				}

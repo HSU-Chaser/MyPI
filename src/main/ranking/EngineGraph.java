@@ -10,31 +10,31 @@ public class EngineGraph {
 	private int naverCount;
 	private int daumCount;
 
-	public EngineGraph(int googleCount, int naverCount, int daumCount){
-		
+	public EngineGraph(int googleCount, int naverCount, int daumCount) {
+
 		this.googleCount = googleCount;
 		this.naverCount = naverCount;
 		this.daumCount = daumCount;
 	}
-	
+
 	public double[] computeEngineRate() {
 
-		String count[] = { googleCount + "", naverCount + "", daumCount+ "" };
-		double doubleCount[] = { (Double.parseDouble(count[0])), (Double.parseDouble(count[1])), (Double.parseDouble(count[2]))};
+		String count[] = { googleCount + "", naverCount + "", daumCount + "" };
+		double doubleCount[] = { (Double.parseDouble(count[0])),
+				(Double.parseDouble(count[1])), (Double.parseDouble(count[2])) };
 		double rate[] = new double[3];
 		double sum = 0;
-		
+
 		for (int i = 0; i < rate.length; i++) {
 			sum += doubleCount[i];
 		}
-		
-		//Math.round는 반올림
-		rate[0] = Math.round((Double.parseDouble(count[0])/sum * 100));
-		rate[1] = Math.round((Double.parseDouble(count[1])/sum * 100));
-		rate[2] = Math.round((Double.parseDouble(count[2])/sum * 100));
-		
-		for(int i=0; i<rate.length; i++){
-			
+
+		rate[0] = Math.round((Double.parseDouble(count[0]) / sum * 100));
+		rate[1] = Math.round((Double.parseDouble(count[1]) / sum * 100));
+		rate[2] = Math.round((Double.parseDouble(count[2]) / sum * 100));
+
+		for (int i = 0; i < rate.length; i++) {
+
 			System.out.println(rate[i]);
 		}
 

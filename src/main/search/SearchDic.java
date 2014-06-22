@@ -39,7 +39,7 @@ public class SearchDic {
 		this.imgSearchWord = imgSearchWord;
 	}
 
-	// 검색어 사전을 만드는 모듈
+	// generate searchword dictionary
 	public void bindingWord(HashMap<String, String> map) {
 		searchWordList = null;
 		imgSearchWord = "";
@@ -48,7 +48,6 @@ public class SearchDic {
 		ArrayList<String> complexWord = new ArrayList<String>();
 		int singleGrammar;
 		int complexGrammar;
-		// 단일 항목 검색
 
 		String[] singleBinding = { "\"" + map.get("id") + "\"",
 				"\"" + map.get("email") + "\"",
@@ -103,7 +102,6 @@ public class SearchDic {
 			singleWord.add(singleBinding[i]);
 		}
 
-		// 처음엔 이렇게 넣어버리고, 그 뒤부턴 addAll
 		for (int i = 0; i < singleWord.size(); i++) {
 
 			getSearchWordList().add(removeNull(singleWord).get(i));
@@ -118,11 +116,8 @@ public class SearchDic {
 
 		getSearchWordList().addAll(removeNull(complexWord));
 
-		System.out.println("현재 전체 들어간 전체 검색어의 개수 : "
-				+ getSearchWordList().size());
 	}
 
-	// null일경우 해당 항목 삭제하면서 갑니다.
 	public ArrayList<String> removeNull(ArrayList<String> list) {
 
 		int size = list.size();
@@ -131,7 +126,6 @@ public class SearchDic {
 
 			if (list.get(i).contains("null")) {
 
-				System.out.println("clearNullOne 들어왔습니다 : " + list.get(i));
 				list.remove(i);
 				i--;
 				size--;

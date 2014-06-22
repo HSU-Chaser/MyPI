@@ -50,11 +50,6 @@ public class NaverSearch {
 		Element root = document.getDocumentElement();
 		NodeList list = root.getElementsByTagName("item");
 
-		/*
-		 * Element channel = (Element) root.getLastChild(); if
-		 * (channel.getNodeName() != "channel") { return null; // No Results }
-		 */
-
 		// Make SearchResult ArrayList
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
@@ -70,8 +65,7 @@ public class NaverSearch {
 						.getTextContent();
 				title = title.replaceAll(
 						"<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
-				
-				
+
 				snippet = element.getElementsByTagName("description").item(0)
 						.getTextContent();
 			}
@@ -79,8 +73,6 @@ public class NaverSearch {
 
 			SearchResult searchResult = new SearchResult("Naver", title,
 					urlConversion(url), snippet, searchPage, resultNumber);
-
-			// urlConversion(url)
 
 			result.add(searchResult);
 		}

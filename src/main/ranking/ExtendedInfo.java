@@ -25,13 +25,11 @@ public class ExtendedInfo {
 		return keywordMap;
 	}
 	
-	// 확장된 키워드에 대한 헤쉬맵 생성
 	public void makeKeywordMap() {
 		keywordMap = new HashMap<String, String>();
 		LogonDataBean dataBean;
 		String memberId = memberEmail.split("@")[0];
 
-		// searchWord = "\"" + memberId + "\"" + "_"; // _는 구분자 역할
 
 		storage = new ExtendedStorage(memberEmail);
 		storage.execute(); // start the extending algorithm
@@ -62,7 +60,7 @@ public class ExtendedInfo {
 			
 			for (int i = 0; i < nickNameCount; i++) {
 				switch (i) {
-				// MAXIMUM of NickNameList = 5
+				
 				case 0:
 					keywordMap.put("nickname1", storage.nickNameList.get(i));
 					
@@ -91,7 +89,6 @@ public class ExtendedInfo {
 					keywordMap.put("nickname" + (nickNameCount+i+1), "null");
 					
 				}
-				
 			}
 			
 			System.out.println(keywordMap.get("nickname1") + "   " + keywordMap.get("nickname2") + "   " + keywordMap.get("nickname3") + "   " + keywordMap.get("nickname4") + "   " + keywordMap.get("nickname5"));

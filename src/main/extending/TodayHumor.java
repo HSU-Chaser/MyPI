@@ -6,12 +6,11 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
-import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 import main.extending.form.SiteInfo;
 
 public class TodayHumor extends Search {
-	
+
 	public TodayHumor() {
 		setBasicForm("http://www.todayhumor.co.kr/board/list.php?kind=search&keyfield=name&keyword=");
 	}
@@ -32,20 +31,20 @@ public class TodayHumor extends Search {
 			while ((buffer = br.readLine()) != null) {
 
 				list.add(buffer);
-				if (list.get(i).contains("DEF2FF")) { // 게시글에 쓰는 백그라운드 색상 #DEF2FF
-					
+				if (list.get(i).contains("DEF2FF")) { 
+
 					SiteInfo siteInfo = new SiteInfo();
 					siteInfo.setSiteImage("https://lh6.ggpht.com/cycHBk33W7Ul_BQnn3a85C0Ej33J_W1c1gdU0ENCsIlQdxa853C8e8SUm1FamHIANHM=w300-rw");
 					siteInfo.setUrl(getUrl());
 					siteInfo.setSiteName("오늘의유머");
 					storage.siteInfoList.add(siteInfo);
-				
+
 					check = 1;
 					break;
 				}
 				i++;
 			}
-			if(check == 0){
+			if (check == 0) {
 				System.out.println("오늘의유머 게시물이 없습니다.");
 			}
 

@@ -11,14 +11,8 @@ public class CalculateExp implements Constant {
 	}
 
 	public double getExposure(int pr) {
-//		PageRank pageRank = new PageRank();
 
 		double urlExposure = 0;
-
-		int totalKeyword = TOTALKEYWORD;
-		int complexWeight = 0;
-
-		// 가중치 먹이고
 
 		double KT_resident = 2 * (1 - Math.pow(0.5,
 				rankingCount.getResidentCount()));
@@ -48,18 +42,11 @@ public class CalculateExp implements Constant {
 				+ KT_school * 4.9 + KT_occupation * 4.9 + KT_nickname * 6.1
 				* 0.5;
 
-		// int pr = pageRank.getPR(URL);
-
-		// * (1 + pr); // / totalKeyword
-
 		int KC = calCoupling(KT_resident, KT_cellphone, KT_homephone, KT_id,
 				KT_email, KT_name, KT_address, KT_workplace, KT_birthday,
 				KT_school, KT_occupation, KT_nickname);
 
 		urlExposure = KF_WT * KC;
-
-		// pr 은 pagerank 값
-		// urlExposure = urlExposure * ((1 + pr )* 1.1 ) ;
 
 		System.out.println("주민" + rankingCount.getResidentCount() + " " + "핸드폰"
 				+ rankingCount.getCellphoneCount() + " " + "집전화"
@@ -85,7 +72,6 @@ public class CalculateExp implements Constant {
 			double KT_school, double KT_occupation, double KT_nickname) {
 		int complexWeight = 0;
 
-		// 단일
 		if (KT_homephone != 0) {
 			complexWeight++;
 		}
@@ -96,7 +82,6 @@ public class CalculateExp implements Constant {
 			complexWeight++;
 		}
 
-		// 복합
 		if ((KT_id != 0) && (KT_name != 0)) {
 			complexWeight++;
 		}
@@ -113,7 +98,7 @@ public class CalculateExp implements Constant {
 		if ((KT_name != 0) && (KT_occupation != 0)) {
 			complexWeight++;
 		}
-		
+
 		if ((KT_name != 0) && (KT_occupation != 0)) {
 			complexWeight++;
 		}
@@ -121,14 +106,13 @@ public class CalculateExp implements Constant {
 		if ((KT_nickname != 0) && (KT_id != 0)) {
 			complexWeight++;
 		}
-		
-		if (rankingCount.getIdCount() + rankingCount.getNicknameCount() >= 20){
+
+		if (rankingCount.getIdCount() + rankingCount.getNicknameCount() >= 20) {
 			complexWeight++;
 			complexWeight++;
 			complexWeight++;
 		}
 
-		// 잘 검출되지 않는 속성
 		if (KT_resident != 0) {
 			complexWeight++;
 		}
@@ -136,6 +120,7 @@ public class CalculateExp implements Constant {
 		if (KT_address != 0) {
 			complexWeight++;
 		}
+
 		if (KT_birthday != 0) {
 			complexWeight++;
 		}

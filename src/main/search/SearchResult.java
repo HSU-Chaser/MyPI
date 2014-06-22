@@ -80,25 +80,18 @@ public class SearchResult implements Serializable {
 		try {
 			openUrl.urlRead();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("들어간 URL : " + url);
 		this.rankingCount = openUrl.counting();
-		
-//		calPR();
+
+		// calPR();
 	}
 
-	public void calPR(){
+	public void calPR() {
 		PageRank pageRank = new PageRank();
 
 		setPr(pageRank.getPR(url));
 	}
-	
-//	public void calExp() {
-//
-//		CalculateExp calExp = new CalculateExp(rankingCount);
-//		exposure = calExp.getExposure(url);
-//		System.out.println("이 url의 노출도는 : " + exposure);
-//	}
+
 }

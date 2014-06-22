@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
-import main.extending.form.ExtendedStorage;
 import main.extending.form.Search;
 import main.extending.form.SiteInfo;
 
@@ -37,20 +36,17 @@ public class CyworldBlog extends Search {
 					System.out.println("싸이월드 블로그가 없습니다");
 					break;
 				}
-				
+
 				if (list.get(i).contains("author")) {
 					setNickName(list.get(i).replace('"', '!').split("!")[3]);
 					storage.nickNameList.add(getNickName());
-//					storage.exposureUrlList.add(getUrl());
-//					ExtendedStorage.imgList.add("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQEMm-PRtTxhqlixw5B9razURdXydJ6rb-RwjsVwKRFR6ZA1Mi5rA");
-//					
+
 					SiteInfo siteInfo = new SiteInfo();
 					siteInfo.setSiteImage("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQEMm-PRtTxhqlixw5B9razURdXydJ6rb-RwjsVwKRFR6ZA1Mi5rA");
 					siteInfo.setUrl(getUrl());
 					siteInfo.setSiteName("싸이월드 블로그");
 					storage.siteInfoList.add(siteInfo);
-					
-					
+
 				} else if (list.get(i).contains("og:image")) {
 					;
 					setImgUrl(list.get(i).replace('"', '!').split("!")[3]);

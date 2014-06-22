@@ -16,12 +16,12 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public class ImageSearch {
+
 	public static void setImageSearchResult(String searchWord, int limit)
 			throws IOException, IllegalAccessException,
 			InvocationTargetException, NoSuchMethodException {
-		ArrayList<String> imageSearchList = new ArrayList<String>();
 
-		System.out.println("검색어와 한계점 : " + searchWord + "   " + limit);
+		ArrayList<String> imageSearchList = new ArrayList<String>();
 
 		String query = searchWord;
 		URL url = new URL(
@@ -41,8 +41,6 @@ public class ImageSearch {
 			builder.append(line);
 		}
 
-		// System.out.println(builder);
-
 		Map<String, Object> classMap = new HashMap<String, Object>();
 		JSONObject jsonObject = JSONObject.fromObject(builder.toString());
 		Map<String, Object> model = (Map<String, Object>) JSONObject.toBean(
@@ -53,9 +51,8 @@ public class ImageSearch {
 		JSONObject results = responseData.getJSONObject(0);
 		JSONArray image_data = JSONArray.fromObject(results.get("results"));
 
-		System.out.println("이미지 데이터 사이즈 : " + image_data.size());
 		for (int i = 0; i < image_data.size(); i++) {
-			// System.out.println( image_data.get(i) );
+
 			JSONArray img_url = JSONArray.fromObject(image_data.get(i));
 			imageSearchList.add((JSONObject.fromObject(img_url.get(0))
 					.get("url")).toString());
@@ -64,16 +61,9 @@ public class ImageSearch {
 					.get("url")).toString());
 		}
 
-		System.out.println("이미지서치 끝, 넘긴 이미지 개수 - 전: " + imageSearchList.size());
-
-		ImageStorage.init();
 		ImageStorage.getImgUrlList().addAll(imageSearchList);
-
-		System.out
-				.println("이미지서치 끝, 넘긴 이미지 개수 - 후 : " + imageSearchList.size());
-		System.out.println("이미지서치 끝, 이미지스토리지 이미지 개수 : "
-				+ ImageStorage.getImgUrlList().size());
-
 		ImageStorage.deleteBlank();
+
 	}
+
 }

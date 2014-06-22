@@ -22,7 +22,7 @@ public class GoogleSearch {
 	private static final String cx = "&cx=010276989280583185703:8ss-tvlus7w";
 	private Vector<SearchResult> result = new Vector<SearchResult>();
 	private String query;
-	private String searchPage; // 검색된 페이지(xml 페이지가 아님)
+	private String searchPage;
 	private int limit;
 
 	public GoogleSearch(String query, int limit) {
@@ -51,10 +51,7 @@ public class GoogleSearch {
 		if (res.getNodeName() != "RES") {
 			return result; // No Results
 		}
-
-		// Make SearchResult ArrayList
-		// System.out.println(Integer.parseInt(res.getAttribute("SN")));
-		// System.out.println(Integer.parseInt(res.getAttribute("EN")));
+		
 		NodeList list = res.getElementsByTagName("R");
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
@@ -87,14 +84,12 @@ public class GoogleSearch {
 	}
 
 	private String buildSearchUrl() {
-		// Required parameters
+
 		StringBuilder request = new StringBuilder(google);
 		request.append("start=0");
 		request.append("&num=" + limit); // 검색 제한 수 조정
 		request.append(key); // API Key
 		request.append(cx); // Custom Search Engine ID
-		// request.append("&as_q=&as_epq=" + query); // Query
-		// request.append("&as_oq=");
 
 		request.append("&q=" + query);
 

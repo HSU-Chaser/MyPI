@@ -13,6 +13,7 @@ import com.sun.mail.smtp.SMTPTransport;
 public class MailService {
 	public static boolean send(String from, String to, String subject,
 			String content) {
+		
 		// JavaMail Session
 		Properties props = System.getProperties();
 		props.put("mail.smtp.host", "mypi.co.kr");

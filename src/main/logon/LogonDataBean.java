@@ -2,8 +2,6 @@ package main.logon;
 
 public class LogonDataBean {
 
-	// 이하 추가된 부분
-
 	private int client_num;
 	private String email;
 
@@ -11,16 +9,16 @@ public class LogonDataBean {
 		this.client_num = client_num;
 	}
 
-	private String password="null";
-	private String name="null";
-	private String cellphone="null";
-	private String homephone="null";
-	private String birthday="null";
-	private String address="null";
-	private String school ="null";
-	private String workplace="null";
-	private String occupation="null";
-	
+	private String password = "null";
+	private String name = "null";
+	private String cellphone = "null";
+	private String homephone = "null";
+	private String birthday = "null";
+	private String address = "null";
+	private String school = "null";
+	private String workplace = "null";
+	private String occupation = "null";
+
 	public int getClient_num() {
 		return client_num;
 	}

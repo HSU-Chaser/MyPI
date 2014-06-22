@@ -34,21 +34,20 @@ public class Egloos extends Search {
 					System.out.println("이글루가 없습니다.");
 					break;
 				}
-				
 
-				if (i == 5 && list.get(i).contains("author")) { //author가 5번째에 나오는것을 쓴다고 확정지어버림
+				if (i == 5 && list.get(i).contains("author")) {
 
 					setNickName((list.get(i).substring(29).replace('"', '!')
 							.split("!")[1]));
 					storage.nickNameList.add(getNickName());
-					
+
 					SiteInfo siteInfo = new SiteInfo();
 					siteInfo.setSiteImage("https://lh4.ggpht.com/aqtv6-0J9Aoczc1T663jms8fngcFG0BFl7oEZHQYIgFUxbp3INij-Mzlkl2wiK-QxZAi=w300-rw");
 					siteInfo.setUrl(getUrl());
 					siteInfo.setSiteName("이글루스 블로그");
 					storage.siteInfoList.add(siteInfo);
-					
-				} 
+
+				}
 				if (list.get(i).contains("img src")) {
 					setImgUrl((list.get(i).split("<")[2].replace('"', '!')
 							.split("!")[1]));
