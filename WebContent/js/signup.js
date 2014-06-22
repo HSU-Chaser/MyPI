@@ -136,9 +136,7 @@ var _onCheckPassword1 = function(userinput) {
 			$('#pass2Msg').html('적합한 비밀번호입니다.');
 			return true;
 		}
-	}
-	// ㅇㅋ 통과.
-	else {
+	} else {
 		$('#pass1Msg').css('color', '#0c4881');
 		$('#pass1Msg').css('font-size', '1em;');
 		$('#pass1Msg').attr('class', 'font_GODOM');
@@ -188,9 +186,7 @@ var _onCheckPassword2 = function(userinput) {
 			$('#pass2Msg').html('적합한 비밀번호입니다.');
 			return true;
 		}
-	}
-	// ㅇㅋ 통과.
-	else {
+	} else {
 		$('#pass2Msg').css('color', '#0c4881');
 		$('#pass2Msg').css('font-size', '1em;');
 		$('#pass2Msg').attr('class', 'font_GODOM');
@@ -217,5 +213,6 @@ var check = function() {
 			|| password1 == "" || password2 == "") {
 		alert("정확한 정보를 입력하셔야 합니다.");
 		return false;
-	}else return true;
+	} else
+		return true;
 };
