@@ -204,7 +204,6 @@ table,tr,td,th {
 						</div>
 					</form>
 				</div>
-				
 			</div>
 		</div>
 	</section>
