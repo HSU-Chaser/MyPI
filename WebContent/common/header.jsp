@@ -24,7 +24,7 @@
 	</div>
 	<div class="navbar" style="top: 0.35em;">
 		<span>
-			<a class="font_GODOM" href="ChangeInfoAll.jsp"><img
+			<a class="font_GODOM" href="changeInfoAll.jsp"><img
 				src="./images/ihfb/icons/myinfo_edit.png"
 				style="border-left: 0.1em solid #0c76c6; width: 45%;"></a> 
 			<a class="font_GODOM" href="signout.jsp"><img

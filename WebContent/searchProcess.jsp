@@ -88,24 +88,7 @@
 		</div>
 		<!-- ↑ Summary End -->
 		<!-- Graph -->
-		<div class="moduleContainer">
-			<!-- Title -->
-			<div class="moduleTitle">Graph</div>
-			<!-- Content -->
-			<div class="moduleContent">
-				<div class="engineGraph describe">
-					<span>검색 엔진 비율</span>
-					<iframe src="engineGraph.jsp" frameborder="0" name="engineGraph"
-						align="center" width="100%" height="200px" scrolling='no'></iframe>
-				</div>
-				<div class="exposureGraph describe">
-					<span>검색 통계</span>
-					<iframe src="exposureGraph.jsp" frameborder="0"
-						name="exposureGraph" align="center" width="100%" height="200px"
-						scrolling='auto'></iframe>
-				</div>
-			</div>
-		</div>
+		<!-- Removed -->
 		<!-- ↑ Graph End -->
 		<!-- Images -->
 		<div class="moduleContainer">
