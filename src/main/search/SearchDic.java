@@ -134,4 +134,9 @@ public class SearchDic {
 		return list;
 	}
 
+	public void trash(){
+		System.out.println("say trash");
+	}
+	
+
 }
