@@ -129,7 +129,8 @@ public class SearchDic {
 				list.remove(i);
 				i--;
 				size--;
-
+				size++;
+				size--;
 			}
 		}
 		return list;
